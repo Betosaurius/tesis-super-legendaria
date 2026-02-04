@@ -9,7 +9,7 @@
 % \syntaxonly
 
 % Palabras clave en distintos idiomas
-\usepackage[activeacute]{babel}
+%\usepackage[activeacute]{babel}
 
 % Patrones para division en silabas
 \hyphenation{par-ti-cu-lar}
@@ -126,22 +126,13 @@
 \usepackage{cleveref}
 
 % Definiciones de nuevos ambientes
-\newtheorem{teorema}{Teorema}[section]
-\newtheorem{lema}[teorema]{Lema}
-\newtheorem{proposicion}[teorema]{Proposici\'on}
-\newtheorem{corolario}[teorema]{Corolario}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definicion}[teorema]{Definici\'on}
-
-% Nombres para cleveref
-\crefname{teorema}{el Teorema}{los Teoremas}
-\crefname{lema}{el Lema}{los Lemas}
-\crefname{proposicion}{la Proposici\'on}{las Proposiciones}
-\crefname{corolario}{el Corolario}{los Corolarios}
-\crefname{algorithm}{el Algoritmo}{los Algoritmos}
-\crefname{section}{la Secci\'on}{las Secciones}
-\crefname{figure}{la Figura}{las Figuras}
+\newtheorem{definition}[theorem]{Definition}
 
 % Redefinicion para que las demostraciones terminen con cuadrito negro
 \renewenvironment{proof}[1][\proofname.]{\par
@@ -178,14 +169,14 @@
 
 \include{caratula}
 \include{hojadedatos}
-\include{agradecimientos}
+\include{acknowledgements}
 \tableofcontents
 
 
 \mainmatter
 
-\include{introduccion}
-\include{capitulo1}
+\include{introduction}
+\include{chapter2}
 
 
 \backmatter
