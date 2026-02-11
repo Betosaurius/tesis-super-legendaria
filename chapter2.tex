@@ -5,8 +5,16 @@
 \label{sec:previous}
 
 \begin{proposition}
-    Union of two monopolar graphs is monopolar.
+    Let $G$ and $H$ be graphs.   If $G$ and $H$ are monopolar, then $G+H$ is
+    monopolar.
 \end{proposition}
+\begin{proof}
+    Let $(A_1, B_1)$ and $(A_2, B_2)$ be the monopolar partitions of $G$ and
+    $H$, respectively.   Since $A_1$ and $A_2$ are independent, we have that
+    $A_1 \cup A_2$ is also independent.   Analogously, $B_1$ and $B_2$ are
+    clusters, so their union is also a cluster.   Hence, $(A_1 \cup A_2, B_1
+    \cup B_2)$ is a monopolar partition of $G+H$.
+\end{proof}
 
 \begin{corollary}
     Every minimal obstruction for monopolarity is a connected graph.
@@ -22,7 +30,7 @@
     \centering
     \begin{tikzpicture}[every node/.style={vertex, fill=black},
         node distance=1cm, on grid]
-        \begin{scope}[xshift=0cm]
+        \begin{scope}[xshift=-4.5cm]
             \node (a) {};
             \node (b) [right= of a] {};
             \node (c) [below= of a] {};
@@ -42,7 +50,7 @@
             \draw[edge] (e) to (f);
         \end{scope}
 
-        \begin{scope}[xshift=-3cm]
+        \begin{scope}[xshift=-1.5cm]
             \node (a) {};
             \node (b) [right= of a] {};
             \node (c) [below= of a] {};
@@ -61,7 +69,7 @@
             \draw[edge] (e) to (f);
         \end{scope}
 
-        \begin{scope}[xshift=-6cm]
+        \begin{scope}[xshift=4.5cm]
             \node (a) {};
             \node (b) [right= of a] {};
             \node (c) [below= of a] {};
@@ -79,7 +87,7 @@
             \draw[edge] (e) to (f);
         \end{scope}
 
-        \begin{scope}[xshift=3cm]
+        \begin{scope}[xshift=1.5cm]
             \node (a) {};
             \node (b) [below right= of a] {};
             \node (c) [below left= of a] {};
