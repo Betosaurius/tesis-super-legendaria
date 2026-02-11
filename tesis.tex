@@ -1,6 +1,6 @@
 % !TEX TS-program = latexmk
 
-\documentclass[12pt,twoside,spanish]{book}
+\documentclass[12pt,twoside]{book}
 
 % Verificacion de sintaxis sin producir salida:
 % descomentar la segunda linea para verificar
@@ -27,6 +27,9 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 
+% Bullets especiales
+\usepackage{enumerate}
+
 % Colores
 \usepackage[table]{xcolor}
 
@@ -42,29 +45,6 @@
   colorlinks,
   urlcolor={malva}
 }
-
-% Codigo
-\usepackage{listings}
-\lstset{
-  language=[LaTeX]TeX,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  extendedchars=true,
-  numberstyle=\tiny\color{gris},
-  keywordstyle=\color{blue},
-  commentstyle=\color{verdeOscuro},
-  stringstyle=\color{malva},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-  backgroundcolor=\color{grisClaro},
-  moretexcs={color},
-}
-
 
 % Algoritmos
 \usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
