@@ -33,6 +33,9 @@
 % Colores
 \usepackage[table]{xcolor}
 
+%TODO
+\usepackage{todonotes}
+
 \definecolor{verdeOscuro}{rgb}{0,0.6,0}
 \definecolor{verdeAzulado}{RGB}{3,168,108}
 \definecolor{gris}{rgb}{0.5,0.5,0.5}
@@ -63,6 +66,7 @@
 \tikzstyle{vertex}=[circle, draw, minimum size=6pt,
                     line width=0.75pt, inner sep=0pt,
                     outer sep=0pt]
+\tikzstyle{label} =[inner sep=1pt, fill=none, draw=none]
 
 
 % Ajuste de parametros en la pagina
@@ -142,6 +146,10 @@
 \newcommand{\indiceSub}[2]{%
 \textbf{#2}\index{#1!#2}%
 }
+
+%Macros para delimitadores
+\renewcommand{\l}[1]{\left\{#1\right\}}
+\newcommand{\p}[1]{\left(#1\right)}
 
 \begin{document}
 
