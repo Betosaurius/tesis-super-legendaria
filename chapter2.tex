@@ -32,37 +32,38 @@
 \section{Chordal \texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs}
 \label{sec:chordal}
 
-In \todo{agregar cita}, the monopolarity problem for cographs was solved. We
-could save some work by considering only those chordal graphs that are not
-cographs, that is, those that contain an induced $P_4$. Before stating the main
-result of this section, we prove the following properties regarding the
-structure of the exact neighborhoods of a chordal graph with an induces $P_4$
-and no induced $P_5$ (notice that the house contains a $C_4$, so no chordal
-graph contains a house).
+In \todo{agregar cita}, \textsc{Monopolarity} was solved for cographs. We could
+save some work by considering only those chordal graphs that are not cographs.
+Before stating the main result of this section, we prove the following
+properties regarding the structure of the exact neighborhoods of a chordal graph
+with an induces $P_4$ and no induced $P_5$ (notice that the house contains a
+$C_4$, so no chordal graph contains a house).
+\todo{agregar referencia de quasi-threshold/trivially perfect (heggerness)}
 
 \begin{lemma}
     \label{lem:neighborhoods-chordal}
     Let $G$ be a connected chordal $P_5$-free graph and let $P=(a,b,c,d)$ be an induced
     $P_4$ in $G$. If $S=\l{a,b,c,d}$, then:
     \begin{enumerate}[(i)]
-        \item If $X\subseteq S$ is such that it contains $x$ and $y$
-        non-consecutive vertices of $P$ and it does not contain any vertex of
-        $P$ between $x$ and $y$, then $N_X=\varnothing$.
+        \item If $X\subseteq S$ is such that it contains $x$ and $z$
+            non-consecutive vertices of $P$ and it does not contain any vertex
+            of $P$ between $x$ and $z$, then $N_X=\varnothing$.
         \item $N_a = N_d = \varnothing$.
-        \item If $\varnothing \subsetneq X \subsetneq S$, then $N_X$ is
-        completely not adjacent to $N_{S\setminus X}$.
+        \item If $\varnothing \neq X \subset S$, then $N_X$ is anticomplete to
+            $N_{S\setminus X}$.
         \item If $X,Y\subseteq S$ are such that their intersection has two
-        non-consecutive vertices of $P$, then $N_X$ is completely adjacent to
-        $N_Y$. In particular, this implies that $N_X$ is a clique.
+            non-consecutive vertices of $P$, then $N_X$ is complete to $N_Y$. In
+            particular, this implies that $N_X$ is a clique.
         \item If $X$ consists of three consecutive vertices of $P$ and $Y$
-        intersects $X$ in two consecutive vertices of $P$, one being an endpoint
-        of $P$, then $N_X$ is completely adjacent to $N_Y$.
-        \item If $\varnothing\subsetneq X\subset S$ of cardinality at most two,
-        then $N_{\varnothing}$ is completely not adjacent to $N_X$, unless
-        $X=\l{bc}$. Moreover, each connected component of $G[N_\varnothing]$ is
-        homogeneous to vertices in $N_Y$ for $Y\subseteq S$ of cardinality at
-        exactly three, and to $N_{bc}$, and each component is adjacent to at
-        least one vertex of the prior sets or to $N_S$.
+            intersects $X$ in two consecutive vertices of $P$, one being an
+            endpoint of $P$, then $N_X$ is complete to $N_Y$.
+        \item If $\varnothing \neq X\subset S$ of cardinality at most two,
+            then $N_{\varnothing}$ is anticomplete to $N_X$, unless $X=\l{bc}$.
+            Moreover, each connected component of $G[N_\varnothing]$ is
+            homogeneous to vertices in $N_Y$ for $Y\subseteq S$ of cardinality
+            at exactly three, and to $N_{bc}$, and each component is adjacent to
+            at least one vertex of the prior sets or to $N_S$.
+            \todo{partir el \'ultimo punto}
     \end{enumerate}
 \end{lemma}
 
@@ -70,36 +71,37 @@ graph contains a house).
     \leavevmode \par
     \begin{enumerate}[(i)]
         \item Suppose $w$ is a vertex in $N_X$. If $x$ and $z$ are
-        non-consecutive vertices of $P$ in $X$, either one or two vertices of
-        $P$ are between $x$ and $z$. If there is just one, $y$, then
-        $\p{w,x,y,z,w}$ is a $C_4$, contradicting that $G$ is chordal. If there
-        are two, $y$ and $y'$, then $\p{w,x,y,y',z,w}$ is a $C_5$, contradicting
-        that $G$ is chordal.
+            non-consecutive vertices of $P$ in $X$, either one or two vertices
+            of $P$ are between $x$ and $z$. If there is just one, $y$, then
+            $\p{w,x,y,z,w}$ is a $C_4$, contradicting that $G$ is chordal. If
+            there are two, $y$ and $y'$, then $\p{w,x,y,y',z,w}$ is a $C_5$,
+            contradicting that $G$ is chordal.
         \item If $w$ is a vertex in $N_a$, then $\p{w,a,b,c,d}$ is a $P_5$. The
-        same argument applies to $N_d$.
+            same argument applies to $N_d$.
         \item Suppose $w$ is a vertex in $N_X$ and $z$ is a vertex in
-        $N_{S\setminus X}$ such that $w$ and $z$ are adjacent. Since $X$ is not
-        empty nor $S$, there are two consecutive vertices of $P$, say $x$ and
-        $y$, such that $x\in X$ and $y\in S\setminus X$. Then $\p{w,x,y,z,w}$ is
-        a $C_4$.
+            $N_{S\setminus X}$ such that $w$ and $z$ are adjacent. Since $X$ is
+            neither empty nor $S$, there are two consecutive vertices of $P$,
+            say $x$ and $y$, such that $x\in X$ and $y\in S\setminus X$. Then
+            $\p{w,x,y,z,w}$ is a $C_4$.
         \item Suppose $w$ is a vertex in $N_X$ and $z$ is a vertex in $N_Y$ such
-        that $w$ and $z$ are not adjacent. Since $X\cap Y$ contains two
-        non-consecutive vertices of $P$, say $x$ and $y$, then $\p{w,x,z,y,w}$
-        is a $C_4$.
-        \item Suppose without loss of generality that $X=\l{a,b,c}$, so
-        $Y=\l{a,b}$. If $w$ and $w'$ are vertices in $N_X$ and $N_Y$,
-        respectively, such that $w$ and $w'$ are not adjacent, then
-        $\p{d,c,w,a,w'}$ is a $P_5$.
-        \item Since $X$ is not $\l{bc}$ and it has at most two vertices, there
-        are two consecutive vertices of $P$ that are not in $X$, say $x$ and
-        $y$, such that $y$ is adjacent to some vertex $z$ in $X$. If $w$ and
-        $w'$ are vertices in $N_\varnothing$ and $N_X$, respectively, such that
-        $w$ and $w'$ are adjacent, then $\p{w,w',z,y,x}$ is a $P_5$. The
-        remaining part of the statement follows from the fact that $G$ is
-        connected and, if $x$ and $y$ are adjacent in $N_\varnothing$ and such
-        that $x$ is adjacent to $w$ in $N_Y$, but $y$ is not adjacent to $w$,
-        then $\p{y,x,w,u,v}$ is a $P_5$, where $u$ and $v$ are two vertices in
-        $P$ with $u$ in $Y$ and $v$ in $S\setminus Y$.
+            that $w$ and $z$ are not adjacent. Since $X\cap Y$ contains two
+            non-consecutive vertices of $P$, say $x$ and $y$, then
+            $\p{w,x,z,y,w}$ is a $C_4$.
+        \item Suppose without loss of generality that $X=\l{a,b,c}$.   By the
+            first item we have that $Y=\l{a,b}$. If $w$ and $w'$ are vertices in
+            $N_X$ and $N_Y$, respectively, such that $w$ and $w'$ are not
+            adjacent, then $\p{d,c,w,a,w'}$ is a $P_5$.
+        \item By the first item, we assume that $X$ consists of consecutive
+            vertices.  Since $X$ is not $\l{bc}$ and it has at most two
+            vertices, there are two consecutive vertices of $P$ that are not in
+            $X$, say $x$ and $y$, such that $y$ is adjacent to some vertex $z$
+            in $X$. If $w$ and $w'$ are vertices in $N_\varnothing$ and $N_X$,
+            respectively, such that $w$ and $w'$ are adjacent, then
+            $\p{w,w',z,y,x}$ is a $P_5$. For the last statement, if $x$ and $y$
+            are adjacent in $N_\varnothing$ and such that $x$ is adjacent to $w$
+            in $N_Y$, but $y$ is not adjacent to $w$, then $\p{y,x,w,u,v}$ is a
+            $P_5$, where $u$ and $v$ are two vertices in $P$ with $u$ in $Y$ and
+            $v$ in $S\setminus Y$.
     \end{enumerate}
 \end{proof}
 
@@ -286,7 +288,7 @@ graph contains a house).
 \begin{proposition}
     A connected chordal $(P_5,\text{house})$-free graph with an induced $P_4$ is
     monopolar if and only if it does not contain any of the graphs depicted in
-    \cref{fig:chordal-p5-free-obstructions} as an induced subgraph.
+    \Cref{fig:chordal-p5-free-obstructions} as an induced subgraph.
 \end{proposition}
 
 \begin{proof}
@@ -296,20 +298,23 @@ graph contains a house).
         minima}
         \item[$\boxed{\Leftarrow}$] Let $G$ be a chordal
         $(P_5,\text{house})$-free graph that does not contain any of the graphs
-        depicted in \cref{fig:chordal-p5-free-obstructions}.
+        depicted in \Cref{fig:chordal-p5-free-obstructions}.
 
         Let $P=(a,b,c,d)$ be an induced $P_4$ in $G$ and let $V=\l{a,b,c,d}$. By (i)
-        and (ii) of \cref{lem:neighborhoods-chordal}, the only possible non-empty
+        and (ii) of \Cref{lem:neighborhoods-chordal}, the only possible non-empty
         sets are
         \[
             N_{b}, N_{c}, N_{ab}, N_{bc}, N_{cd}, N_{abc}, N_{bcd}, N_V 
             \text{ and } N_{\varnothing}.
         \]
-        By (iii) of \cref{lem:neighborhoods-chordal}, along with the fact that
+        By (iii) of \Cref{lem:neighborhoods-chordal}, along with the fact that
         $G$ is $H_6$-free, we must have that each vertex in $N_{bc}$ is adjacent
         to at least one vertex in $N_{ab} \cup N_{cd}$. Nonetheless, if all
         three are non-empty, the aforementioned fact implies that $G$ would have
         a $P_5$. Thus, not all three can be non-empty, so two cases arise:
+
+        \paragraph{Caso A} Mejora usa esto en lugar de items.
+
         \begin{itemize}
             \item $N_{ab} = \varnothing$ (symmetric to $N_{cd} = \varnothing$). From
             here, two new cases arise:
@@ -325,25 +330,25 @@ graph contains a house).
                 to just $w$. Then, notice that $\l{u,v,d,w,u'}$ induces either a
                 $P_5$ or a $C_5$, depending on whether $u'$ is adjacent to $u$
                 or not. Then $K$ is a clique and $N_{cd}\setminus K$ is
-                completely not adjacent to $N_c$.
+                anticomplete to $N_c$.
                 
                 Now, for each edge $vw$ in $G[N_{cd}\setminus K]$, we claim
-                thatat least one of $v$ and $w$ is completely adjacent to $K$.
-                If not, there are vertices $v'$ and $w'$ in $K$ such that $v'$
-                is not adjacent to $v$ and $w'$ is not adjacent to $w$. Since
-                $v'$ is in $K$, there is some vertex $u$ in $N_c$ that is
-                adjacent to $v'$. Since $G$ is $H_2$-free and $v$ is not
-                adjacent to $v'$, it follows that $v'$ is adjacent to $w$.
-                Similarly, $w'$ is adjacent to $v$. Then, $\p{v,w',v',w,v}$ is a
-                $C_4$, a contradiction. Hence, vertices of $N_{cd}\setminus K$
-                can be partitioned into two sets, $S$ and $K'$, such that $S$ is
-                stable and $K'$ are vertices that are completely adjacent to
-                $K$, with the additional property that $S$ is maximal, that is,
-                every vertex in $K'$ is adjacent to at least one vertex in $S$.
-                We claim that $K'$ is a clique. If not, there are two vertices
-                that are not adjacent, say $v$ and $w$. By the maximality of
-                $S$, there are vertices $v'$ and $w'$ in $S$ such that $v$ is
-                adjacent to $v'$ and $w$ is adjacent to $w'$. If $v'\neq w'$,
+                thatat least one of $v$ and $w$ is complete to $K$. If not,
+                there are vertices $v'$ and $w'$ in $K$ such that $v'$ is not
+                adjacent to $v$ and $w'$ is not adjacent to $w$. Since $v'$ is
+                in $K$, there is some vertex $u$ in $N_c$ that is adjacent to
+                $v'$. Since $G$ is $H_2$-free and $v$ is not adjacent to $v'$,
+                it follows that $v'$ is adjacent to $w$. Similarly, $w'$ is
+                adjacent to $v$. Then, $\p{v,w',v',w,v}$ is a $C_4$, a
+                contradiction. Hence, vertices of $N_{cd}\setminus K$ can be
+                partitioned into two sets, $S$ and $K'$, such that $S$ is stable
+                and $K'$ are vertices that are complete to $K$, with the
+                additional property that $S$ is maximal, that is, every vertex
+                in $K'$ is adjacent to at least one vertex in $S$. We claim that
+                $K'$ is a clique. If not, there are two vertices that are not
+                adjacent, say $v$ and $w$. By the maximality of $S$, there are
+                vertices $v'$ and $w'$ in $S$ such that $v$ is adjacent to $v'$
+                and $w$ is adjacent to $w'$. If $v'\neq w'$,
                 \todo{terminar este caso}
                 
                 Since $G$ is $H_4$-free, vertices in $N_{bc}$ must be adjacent
@@ -353,9 +358,9 @@ graph contains a house).
                 Thus, $N_{bc}$ must be empty. The same argument applies to see
                 that $N_{abc}$ is empty.
 
-                By (v) of \cref{lem:neighborhoods-chordal}, $N_{bcd}$ is
-                completely adjacent to $N_{cd}$, while (iv) of the same lemma
-                implies that $N_{bcd}$ is a clique.
+                By (v) of \Cref{lem:neighborhoods-chordal}, $N_{bcd}$ is
+                complete to $N_{cd}$, while (iv) of the same lemma implies that
+                $N_{bcd}$ is a clique.
                 
                 For a $w$ in $N_V$, the set $\l{a,b,c,d,w,x}$ induces either
                 $H_2$ or $H_3$, depending on whether $w$ is adjacent to $x$ or
@@ -363,19 +368,18 @@ graph contains a house).
                 actually says that $N_{cd}$ not empty implies $N_V =
                 \varnothing$).
 
-                Since $G$ is $H_7$-free and $N_b$ is completely not adjacent to
-                $N_{cd}$ by (iii) of \cref{lem:neighborhoods-chordal}, it
-                follows that $N_b$ is $P_3$-free. Furthermore, since $G$ is
-                $H_2$-free, $N_b$ is completely not adjacent to $N_{bcd}$.
+                Since $G$ is $H_7$-free and $N_b$ is anticomplete to $N_{cd}$ by
+                (iii) of \Cref{lem:neighborhoods-chordal}, it follows that $N_b$
+                is $P_3$-free. Furthermore, since $G$ is $H_2$-free, $N_b$ is
+                anticomplete to $N_{bcd}$.
 
                 For $N_\varnothing$, by (vi) of
-                \cref{lem:neighborhoods-chordal}, each connected component of
-                $G[N_\varnothing]$ is completely adjacent to at least one vertex
-                of $N_{bcd}$, since this is the only non-empty set to which it
-                can be adjacent. Since $G$ is $H_4$-free and $N_{bcd}$ is
-                completely adjacent to $N_{cd}$, each component of
-                $G[N_\varnothing]$ is trivial, that is, $N_\varnothing$ is an
-                independent set.
+                \Cref{lem:neighborhoods-chordal}, each connected component of
+                $G[N_\varnothing]$ is complete to at least one vertex of
+                $N_{bcd}$, since this is the only non-empty set to which it can
+                be adjacent. Since $G$ is $H_4$-free and $N_{bcd}$ is complete
+                to $N_{cd}$, each component of $G[N_\varnothing]$ is trivial,
+                that is, $N_\varnothing$ is an independent set.
 
                 Finally, suppose $v$ and $w$ are two adjacent vertices in $N_c$.
                 Since $G$ is $H_4$-free, at least one between $v$ and $w$ is
@@ -547,7 +551,7 @@ graph contains a house).
 \begin{proposition}
     A $(P_5,\text{house})$-free graph $G$ with and induced $C_5$ is monopolar if
     and only if it does not contain any of the graphs depicted in
-    \cref{fig:p5-house-obstruction-with-c5} as an induced subgraph.
+    \Cref{fig:p5-house-obstruction-with-c5} as an induced subgraph.
 \end{proposition}
 
 % TO DO: Structure of monopolar partitions given a C5
@@ -591,6 +595,6 @@ graph contains a house).
     A $(P_5,\text{house})$-free graph $G$ with no induced $C_5$ is monopolar if
     and only if it does not contain any of the previous minimal obstructions
     which are $C_5$-free and the graph depicted in
-    \cref{fig:p5-house-obstruction-no-c5} as an induced subgraph.
+    \Cref{fig:p5-house-obstruction-no-c5} as an induced subgraph.
 \end{proposition}
 
