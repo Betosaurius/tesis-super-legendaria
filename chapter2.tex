@@ -50,13 +50,15 @@ $C_4$, so no chordal graph contains a house).
             of $P$ between $x$ and $z$, then $N_X=\varnothing$.
         \item $N_a = N_d = \varnothing$.
         \item If $\varnothing \neq X \subset S$, then $N_X$ is anticomplete to
-            $N_{S\setminus X}$.
+            $N_{Y}$ with $\varnothing \neq Y\subseteq S\setminus X$.
         \item If $X,Y\subseteq S$ are such that their intersection has two
             non-consecutive vertices of $P$, then $N_X$ is complete to $N_Y$. In
             particular, this implies that $N_X$ is a clique.
         \item If $X$ consists of three consecutive vertices of $P$ and $Y$
-            intersects $X$ in two consecutive vertices of $P$, one being an
-            endpoint of $P$, then $N_X$ is complete to $N_Y$.
+            intersects $X$ in exactly two consecutive vertices of $P$, one being
+            an endpoint of $P$, then $N_X$ is complete to $N_Y$.
+        \item If $X,Y \subseteq S$ are both different and of size $2$, then
+            $N_X$ is anticomplete to $N_Y$.
         \item If $\varnothing \neq X\subset S$ of cardinality at most two,
             then $N_{\varnothing}$ is anticomplete to $N_X$, unless $X=\l{bc}$.
             Moreover, each connected component of $G[N_\varnothing]$ is
@@ -78,11 +80,10 @@ $C_4$, so no chordal graph contains a house).
             contradicting that $G$ is chordal.
         \item If $w$ is a vertex in $N_a$, then $\p{w,a,b,c,d}$ is a $P_5$. The
             same argument applies to $N_d$.
-        \item Suppose $w$ is a vertex in $N_X$ and $z$ is a vertex in
-            $N_{S\setminus X}$ such that $w$ and $z$ are adjacent. Since $X$ is
-            neither empty nor $S$, there are two consecutive vertices of $P$,
-            say $x$ and $y$, such that $x\in X$ and $y\in S\setminus X$. Then
-            $\p{w,x,y,z,w}$ is a $C_4$.
+        \item Suppose $w$ is a vertex in $N_X$ and $z$ is a vertex in $N_{Y}$
+            such that $w$ and $z$ are adjacent. Since $X$ is neither empty nor
+            $S$ and due to (ii), $X$ and $Y$ have both a vertex between $b$ and
+            $c$, say $b\in X$ and $c\in Y$. Then $\p{w,b,c,z,w}$ is a $C_4$.
         \item Suppose $w$ is a vertex in $N_X$ and $z$ is a vertex in $N_Y$ such
             that $w$ and $z$ are not adjacent. Since $X\cap Y$ contains two
             non-consecutive vertices of $P$, say $x$ and $y$, then
@@ -91,8 +92,13 @@ $C_4$, so no chordal graph contains a house).
             first item we have that $Y=\l{a,b}$. If $w$ and $w'$ are vertices in
             $N_X$ and $N_Y$, respectively, such that $w$ and $w'$ are not
             adjacent, then $\p{d,c,w,a,w'}$ is a $P_5$.
+        \item By the first item, $X$ and $Y$ can be one of $\l{a,b},$, $\l{b,c}$
+            or $\l{c,d}$. If they are the first and the last, then the statement
+            follows from the third item. Suppose without loss of generality that
+            $X=\l{b,c}$ and $Y=\l{c,d}$. If $w$ in $N_X$ is adjacent to $w'$ in
+            $N_Y$, then $\p{a,b,w,w',d}$ is a $P_5$.
         \item By the first item, we assume that $X$ consists of consecutive
-            vertices.  Since $X$ is not $\l{bc}$ and it has at most two
+            vertices.  Since $X$ is not $\l{b,c}$ and it has at most two
             vertices, there are two consecutive vertices of $P$ that are not in
             $X$, say $x$ and $y$, such that $y$ is adjacent to some vertex $z$
             in $X$. If $w$ and $w'$ are vertices in $N_\varnothing$ and $N_X$,
@@ -285,11 +291,11 @@ $C_4$, so no chordal graph contains a house).
     \label{fig:chordal-p5-free-obstructions}
 \end{figure}
 
-\begin{proposition}
+\begin{theorem}
     A connected chordal $(P_5,\text{house})$-free graph with an induced $P_4$ is
     monopolar if and only if it does not contain any of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions} as an induced subgraph.
-\end{proposition}
+\end{theorem}
 
 \begin{proof}
     \leavevmode \par
@@ -300,103 +306,240 @@ $C_4$, so no chordal graph contains a house).
         $(P_5,\text{house})$-free graph that does not contain any of the graphs
         depicted in \Cref{fig:chordal-p5-free-obstructions}.
 
-        Let $P=(a,b,c,d)$ be an induced $P_4$ in $G$ and let $V=\l{a,b,c,d}$. By (i)
-        and (ii) of \Cref{lem:neighborhoods-chordal}, the only possible non-empty
-        sets are
+        Let $P=(a,b,c,d)$ be an induced $P_4$ in $G$ and let $V=\l{a,b,c,d}$. By
+        (i) and (ii) of \Cref{lem:neighborhoods-chordal}, the only possible
+        non-empty sets are
         \[
             N_{b}, N_{c}, N_{ab}, N_{bc}, N_{cd}, N_{abc}, N_{bcd}, N_V 
             \text{ and } N_{\varnothing}.
         \]
-        By (iii) of \Cref{lem:neighborhoods-chordal}, along with the fact that
-        $G$ is $H_6$-free, we must have that each vertex in $N_{bc}$ is adjacent
-        to at least one vertex in $N_{ab} \cup N_{cd}$. Nonetheless, if all
-        three are non-empty, the aforementioned fact implies that $G$ would have
-        a $P_5$. Thus, not all three can be non-empty, so two cases arise:
 
-        \paragraph{Caso A} Mejora usa esto en lugar de items.
+        By (v) of \Cref{lem:neighborhoods-chordal}, $N_{bcd}$ is complete to
+        $N_{cd}$, while (iv) of the same lemma implies that $N_{bcd}$ is a
+        clique. The same arguments lead to $N_{abc}$ being complete to $N_{ab}$
+        and $N_{abc}$ being a clique.
 
-        \begin{itemize}
-            \item $N_{ab} = \varnothing$ (symmetric to $N_{cd} = \varnothing$). From
-            here, two new cases arise:
-            \begin{itemize}
-                \item $N_{cd}$ is not a clique. Let $x$ and $y$ be two
-                non-adjacent vertices in $N_{cd}$. Let $K$ be the vertices of
-                $N_{cd}$ that are adjacent to at least one vertex in $N_c$. We
-                claim that $K$ is a clique. If not, there are $v$ and $w$ in $K$
-                that are not adjacent. If a single vertex $u$ in $N_c$ is
-                adjacent to both $v$ and $w$, then $\p{u,v,d,w,u}$ is a $C_4$.
-                Then, there is a vertex $u$ is adjacent to just one of them, say
-                $v$. Similarly, there is a vertex $u'$ in $N_c$ that is adjacent
-                to just $w$. Then, notice that $\l{u,v,d,w,u'}$ induces either a
-                $P_5$ or a $C_5$, depending on whether $u'$ is adjacent to $u$
-                or not. Then $K$ is a clique and $N_{cd}\setminus K$ is
-                anticomplete to $N_c$.
-                
-                Now, for each edge $vw$ in $G[N_{cd}\setminus K]$, we claim
-                thatat least one of $v$ and $w$ is complete to $K$. If not,
-                there are vertices $v'$ and $w'$ in $K$ such that $v'$ is not
-                adjacent to $v$ and $w'$ is not adjacent to $w$. Since $v'$ is
-                in $K$, there is some vertex $u$ in $N_c$ that is adjacent to
-                $v'$. Since $G$ is $H_2$-free and $v$ is not adjacent to $v'$,
-                it follows that $v'$ is adjacent to $w$. Similarly, $w'$ is
-                adjacent to $v$. Then, $\p{v,w',v',w,v}$ is a $C_4$, a
-                contradiction. Hence, vertices of $N_{cd}\setminus K$ can be
-                partitioned into two sets, $S$ and $K'$, such that $S$ is stable
-                and $K'$ are vertices that are complete to $K$, with the
-                additional property that $S$ is maximal, that is, every vertex
-                in $K'$ is adjacent to at least one vertex in $S$. We claim that
-                $K'$ is a clique. If not, there are two vertices that are not
-                adjacent, say $v$ and $w$. By the maximality of $S$, there are
-                vertices $v'$ and $w'$ in $S$ such that $v$ is adjacent to $v'$
-                and $w$ is adjacent to $w'$. If $v'\neq w'$,
-                \todo{terminar este caso}
-                
-                Since $G$ is $H_4$-free, vertices in $N_{bc}$ must be adjacent
-                to at least one of $x$ and $y$. If $w\in N_{bc}$ is adjacent to
-                just one, say $x$, then $\p{b,w,x,d,y}$ is a $P_5$. Hence, $w$
-                is also adjacent to $y$, but then $\p{w,x,d,y,w}$ is a $C_4$.
-                Thus, $N_{bc}$ must be empty. The same argument applies to see
-                that $N_{abc}$ is empty.
+        Once more by (iv) of \Cref{lem:neighborhoods-chordal}, $N_{V}$ is a
+        clique and is complete to both $N_{abc}$ and $N_{bcd}$.
 
-                By (v) of \Cref{lem:neighborhoods-chordal}, $N_{bcd}$ is
-                complete to $N_{cd}$, while (iv) of the same lemma implies that
-                $N_{bcd}$ is a clique.
-                
-                For a $w$ in $N_V$, the set $\l{a,b,c,d,w,x}$ induces either
-                $H_2$ or $H_3$, depending on whether $w$ is adjacent to $x$ or
-                not, respectively. Thus, $N_V = \varnothing$ (this last argument
-                actually says that $N_{cd}$ not empty implies $N_V =
-                \varnothing$).
+        By (iii) of \Cref{lem:neighborhoods-chordal}, $N_{b}$ is anticomplete to
+        $N_{cd}$ and $N_{c}$ is anticomplete to $N_{ab}$.
 
-                Since $G$ is $H_7$-free and $N_b$ is anticomplete to $N_{cd}$ by
-                (iii) of \Cref{lem:neighborhoods-chordal}, it follows that $N_b$
-                is $P_3$-free. Furthermore, since $G$ is $H_2$-free, $N_b$ is
-                anticomplete to $N_{bcd}$.
+        Since $G$ is $H_3$-free, it must happen that $N_{abc}$ is anticomplete
+        to $N_{cd}$. Similarly, $N_{bcd}$ is anticomplete to $N_{ab}$. Also due
+        to $H_3$, we have that $N_{abc}$ is complete to $N_{bcd}$.
 
-                For $N_\varnothing$, by (vi) of
-                \Cref{lem:neighborhoods-chordal}, each connected component of
-                $G[N_\varnothing]$ is complete to at least one vertex of
-                $N_{bcd}$, since this is the only non-empty set to which it can
-                be adjacent. Since $G$ is $H_4$-free and $N_{bcd}$ is complete
-                to $N_{cd}$, each component of $G[N_\varnothing]$ is trivial,
-                that is, $N_\varnothing$ is an independent set.
+        Consider the following cases:
 
-                Finally, suppose $v$ and $w$ are two adjacent vertices in $N_c$.
-                Since $G$ is $H_4$-free, at least one between $v$ and $w$ is
-                adjacent to at least one vertex between $x$ and $y$. Say $v$ is
-                adjacent to $x$. Notice $v$ is not adjacent to $y$, otherwise,
-                $\p{v,x,d,y,v}$ is a $C_4$. By the same argument, $w$ cannot be
-                adjacent to both $x$ and $y$, otherwise $\p{w,x,d,y,w}$ is a
-                $C_4$. On the one hand, since $G$ is chordal, in particular is
-                $C_5$-free, so $w$ cannot be adjacent to $y$. On the other hand,
-                since $G$ is $H_2$-free, $w$ cannot be adjacent to $x$. Then,
-                $\p{w,v,x,d,y}$ is a $P_5$, a contradiction. Hence, $N_c$ is an
-                independent set.
+        \paragraph{Case 1: $N_V\neq \varnothing$.} Let $w$ be a vertex in $N_V$.
+        If $u$ and $v$ are adjacent vertices in $N_b$, then one of those must be
+        adjacent to $v$, otherwise, $\l{a,b,c,w,u,v}$ induces an $H_4$. Let $u$
+        be adjacent to $w$. If $v$ is not adjacent to $w$, then
+        $\l{u,v,w,b,c,d}$ induces an $H_3$. Furthermore, if $u$ is adjacent to
+        $w$, then the same vertex set induces an $H_2$. Thus, $N_b$ is a stable
+        set. Analogously, $N_c$ is a stable set.
 
-                Hence, $(S\cup N_\varnothing \cup N_c,K\cup K'\cup N_{bcd}\cup
-                N_b)$ is a monopolar partition of $G$.
-            \end{itemize}
-        \end{itemize}
+        Similarly, if $v$ is a vertex in $N_{ab}$, then $\l{a,b,c,d,v,w}$
+        induces either an $H_2$ or an $H_3$, depending on whether $v$ is
+        adjacent or not to $w$, respectively. Hence, $N_{ab}$ is empty.
+        Analogously, it follows that $N_{cd}$ is empty as well.
+
+        Let $K$ be the set of vertices in $N_{bc}$ that are not anticomplete to
+        $N_b\cup N_c$. Let $u$ and $v$ be non-adjacent vertices in $K$. If both
+        are adjacent to a vertex $x$ in $N_b$, then $\p{u,x,v,c,u}$ is a $C_4$.
+        Analogously, no vertex in $N_c$ can be adjacent to both $u$ and $v$.
+        Thus, suppose without loss of generality that $x$ in $N_b$ is adjacent
+        to $u$ and not adjacent to $v$, while $y$ in $N_c$ is adjacent to $v$
+        and not adjacent to $u$. Then, $\l{u,x,b,c,v,y}$ induces an $H_3$.
+        Therefore, $K$ is a clique. Moreover, take $z\in N_{abc} \cup N_{bcd}
+        \cup N_V$. If $z\in N_V$, and $u$ is not adjacent to $z$, then
+        $\p{x,u,c,z,x}$ is a $C_4$ if $x$ is adjacent to $z$, while
+        $\l{u,x,b,c,z,d}$ induces a $H_3$ if $x$ is not adjacent to $z$. Since
+        the previous $C_4$ and $H_3$ did not use $a$, the same argument shows
+        that $u$ must be complete to both $N_{bcd}$ and $N_V$. Finally, if $z\in
+        N_{abc}$, then $\p{x,u,c,z,x}$ is a $C_4$ if $x$ is adjacent to $z$,
+        while $\p{x,u,c,z,a}$ is a $P_5$ if $x$ is not adjacent to $z$. This
+        shows that $K$ is complete to $N_{abc} \cup N_{bcd} \cup N_V$, so
+        $N_{abc} \cup N_{bcd} \cup N_V \cup K$ is a clique. 
+
+        Now let $S$ be the set of vertices in $N_{bc}\setminus K$ that are not
+        complete to $K \cup N_{abc} \cup N_{bcd} \cup N_V$. Notice this set is
+        anticomplete to $N_b\cup N_c$. Let $u$ and $v$ be adjacent vertices in
+        $S$. If both $u$ and $v$ are not adjacent to a vertex $x\in N_{abc}$,
+        then $\l{u,v,b,c,x,a}$ induces an $H_2$. Analogously, $u$ and $v$ cannot
+        be non-adjacent to a vertex in $N_{bcd}$ or in $N_V$. If they are both
+        non-adjacent to a vertex $x$ in $K$, suppose without loss of generality
+        that $x'$ in $N_b$ is adjacent to $K$. Then, $\l{u,v,b,c,x,x'}$ induces
+        an $H_2$. This means that there exists vertices $x$ and $y$ in
+        $N_{abc}\cup N_{bcd} \cup N_v \cup K$ such that $x$ is adjacent to $u$
+        and not adjacent to $v$, and $y$ adjacent to $v$ and not adjacent to
+        $u$. Observe $x$ and $y$ are adjacent since $N_{abc} \cup N_{bcd} \cup
+        N_V \cup K$ is a clique. Thus $\p{x,u,v,y,x}$ is a $C_4$. Therefore, $S$
+        is stable.
+
+        Notice $N_{bc}\setminus \p{S\cup K}$ is $2K_2$-free since $G$ is
+        $H_1$-free. Therefore, since $G$ is chordal, it follows that
+        $G[N_{bc}\setminus \p{S\cup K}]$ is split and there is a partition of
+        $N_{bc}\setminus \p{S\cup K}$ into $S'$ a stable set and $K'$ a clique.
+        On the one hand, $N_{abc} \cup N_{bcd} \cup K \cup K'$ is a clique. On
+        the other hand, $S'$ is anticomplete to $N_b$ and $N_c$. Meanwhile, if
+        $u$ is a vertex in $S$ adjacent to a vertex $v$ in $S'$, since $K'$ is a
+        maximum clique, there is a vertex $x$ in $K'$ not adjacent to $v$.
+        
+        Consider now $K'$ to be the subset of $N_{bc}\setminus (S\cup K)$ that
+        is not anticomplete to $S$. Notice vertices in $K'$ are complete to
+        $N_{abc}\cup N_{bcd}\cup N_V \cup K$. Let $u$ and $v$ be non-adjacent
+        vertices in $K'$. On the one hand, if $u$ and $v$ are both adjacent to
+        $x\in S$ and $x'$ is a vertex in $N_{abc}\cup N_{bcd} \cup N_V \cup K$
+        such that $x$ is not adjacent to $x'$, then $\p{x,u,x',v,x}$ is a $C_4$.
+        On the other hand, if $x$ in $S$ is adjacent to $u$ and not adjacent to
+        $v$, while $y$ is adjacent to $v$ and not adjacent to $u$, then
+        $\l{u,x,b,c,v,y}$ induces an $H_1$. Therefore, $K'$ is a clique, so
+        $N_{abc} \cup N_{bcd} \cup N_V \cup K \cup K'$ is a clique.
+
+        Finally, consider $S'$ to be the subset of vertices in $N_{bc} \setminus
+        \p{S \cup K \cup K'}$ that are not complete to $K'$. Observe that this
+        set is anticomplete to $N_b \cup N_c \cup S$. Let $u$ and $v$ be
+        adjacent vertices in $S'$. If both are not adjacent to a vertex $x$ in
+        $K'$ and $x'$ is a vertex in $S$ not adjacent to $x$, it follows that
+        $\l{u,v,b,c,x,x'}$ induces an $H_1$. Therefore, there are vertices $x$
+        and $y$ in $K'$ such that $x$ is adjacent to $u$ and not adjacent to
+        $v$, while $y$ is adjacent to $v$ and not adjacent to $u$. Hence,
+        $\p{x,u,v,y,x}$ is a $C_4$. Therefore, $S'$ is a stable set.
+        Furthermore, $N_b \cup N_c \cup S \cup S'$ is a stable set.
+        
+        Observe that $K'' = N_{bc} \setminus \p{S\cup K' \cup S'}$ is complete
+        to $N_{abc} \cup N_{bcd} \cup N_V \cup K \cup K'$.
+
+
+        \paragraph{Case 2: $N_V = \varnothing$ and $N_{abc}\neq \varnothing$.}
+        We first shall consider as a subcase when $N_{abc}$ or $N_{bcd}$ are
+        non-empty, say $N_{abc}$ is non-empty. 
+
+
+        
+        Since $G$ is chordal, $N_{bc}$ is $(C_4,C_5)$-free. Moreover, since $G$
+        is $H_1$-free, $N_{bc}$ is also $2K_2$-free, so $G[N_{bc}]$ is split and
+        there exists a partition of $N_{bc}$ in $S$ a stable set and $K$ a
+        clique. If $u$ in $N_b$ is adjacent to $v$ in $S$, then 
+
+
+
+        By (vi) of \Cref{lem:neighborhoods-chordal} we must have that at least
+        one of $N_{ab}$, $N_{bc}$ and $N_{cd}$ is empty, otherwise, $G$ has an
+        $H_6$.
+
+        
+
+        % \paragraph{Case 1: $N_{ab} = \varnothing$.} Note this case is symmetric
+        % to the case $N_{cd} = \varnothing$. From here, two cases
+        % arise:
+        
+        % \paragraph{Case 1.1: $N_{cd} \neq \varnothing$.} Let $x$ be a vertex in
+        % $N_{cd}$. For a $w$ in $N_V$, the set $\l{a,b,c,d,w,x}$ induces either
+        % $H_2$ or $H_3$, depending on whether $w$ is adjacent to $x$ or not,
+        % respectively. Thus, $N_V = \varnothing$. Once more, two subcases are
+        % presented:
+        
+        % \paragraph{Case 1.1.1: $N_{cd}$ is not a clique.} Let $x$ and $y$ be two
+        % non-adjacent vertices in $N_{cd}$.
+
+        % Since $G$ is $H_4$-free, vertices in $N_{bc}$ must be adjacent to at
+        % least one of $x$ and $y$. Nonetheless, $N_{bc}$ is anticomplete to
+        % $N_{cd}$. Thus, $N_{bc}$ must be empty. Similarly, since $G$ is
+        % $H_4$-free, a vertex $w$ in $N_{abc}$ must be adjacent to some vertex
+        % between $x$ and $y$, say $x$. Then, $\l{a,b,w,c,x,d}$ induces an $H_3$.
+        % Therefore, $N_{abc}$ is also empty.
+
+        % Since $G$ is $H_7$-free, it follows that $N_b$ is $P_3$-free.
+        % Furthermore, since $G$ is $H_2$-free, $N_b$ is anticomplete to
+        % $N_{bcd}$.
+
+        % For $N_\varnothing$, by (vii) of \Cref{lem:neighborhoods-chordal}, each
+        % connected component of $G[N_\varnothing]$ is complete to at least one
+        % vertex of $N_{bcd}$, since this is the only non-empty set to which it
+        % can be adjacent. Since $G$ is $H_4$-free and $N_{bcd}$ is complete to
+        % $N_{cd}$, each component of $G[N_\varnothing]$ is trivial, that is,
+        % $N_\varnothing$ is an independent set.
+
+        % For $N_c$, since $G$ is chordal, a vertex $u$ in $N_c$ is adjacent to at
+        % most one between $x$ and $y$, otherwise, $\p{u,x,d,y,u}$ is a $C_4$
+        % (this argument actually says that any vertex in $N_c$ is adjacent to at
+        % most one of two non-adjacent vertices in $N_{cd}$). Then, if $u$ and
+        % $u'$ in $N_c$ are adjacent, since $G$ is $H_4$-free, it follows that at
+        % least one between $u$ and $u'$ is adjacent to at least one of $x$ and
+        % $y$, say $u$ is adjacent to $x$. As previously stated, no vertex in
+        % $N_c$ is adjacent to two non-adjacent vertices in $N_{cd}$, so $u'$ is
+        % adjacent to at most one between $x$ and $y$. On the one hand, since $G$
+        % is chordal, $u'$ is not adjacent to $y$, otherwise $\p{u,x,d,y,u',u}$ is
+        % a $C_5$. On the other hand, since $G$ is $H_2$-free, $u'$ cannot be
+        % adjacent to $x$. Then, $\p{u',u,x,d,y}$ is a $P_5$. Hence, $N_c$ is a
+        % stable set.
+
+        % Finally, since $G$ is $H_1$-free, $G[N_{cd}]$ is $(2K_2, C_4,
+        % C_5)$-free, hence, is split. Let $(S,K)$ be a split partition of
+        % $N_{cd}$, with $S$ stable and $K$ a clique. If no vertex in $N_c$ is
+        % adjacent to vertices in $S$, then we are done and 
+        % \[
+        %     (S\cup N_c \cup N_\varnothing \cup \l{a} , 
+        %     K \cup N_{bcd}\cup N_b \cup \l{a,c,d})
+        % \]
+        % is a monopolar partition of $G$. On the contrary, let $v$ be a vertex in
+        % $S$ such that is adjacent to a vertex $u$ in $N_c$. Once more, recall
+        % that vertices in $N_c$ are adjacent to at most one of two non-adjacent
+        % vertices in $N_{cd}$. Thus, each vertex in $N_c$ is adjacent to at most
+        % one vertex in $S$, that is, $v$ is the sole vertex in $S$ adjacent to
+        % vertices in $N_c$. We claim that $v$ is adjacent to all vertices of $K$
+        % except for maybe one. Indeed, if $w$ and $w'$ are vertices in $K$ not
+        % adjacent to $v$, then $u$ is not adjacent to neither $w$ nor $w'$ (since
+        % $u$ is already adjacent to $v$), so $\l{u,v,c,d,w,w'}$ induces $H_2$.
+        % Then, if $v$ is adjacent to all vertices in $K$, we are done and
+        % \[
+        %     (S\setminus \l{v} \cup N_c \cup N_\varnothing \cup \l{a} , 
+        %     K\cup\l{v} \cup N_{bcd}\cup N_b \cup \l{a,c,d})
+        % \]
+        % is a monopolar partition of $G$. Otherwise, let $w$ be the sole vertex
+        % in $K$ not adjacent to $v$. Notice $w$ is not adjacent to any vertex in
+        % $S\setminus \l{v}$, otherwise, if $v'$ in $S\setminus \l{v}$ is adjacent
+        % to $w$, then $\l{u,v,c,d,w,v'}$ induces $H_2$. Then,
+        % $S\cup \l{w}\setminus \l{v}$ is a stable set anticomplete to $N_c$, and
+        % $K\cup \l{v}\setminus \l{w}$ is a clique. Thus,
+        % \[
+        %     (S \cup \l{w} \setminus \l{v} \cup N_c \cup N_\varnothing \cup \l{a} , 
+        %     K\cup\l{v} \setminus\l{w} \cup N_{bcd}\cup N_b \cup \l{a,c,d})
+        % \]
+        % is a monopolar partition of $G$.
+
+        % \paragraph{Case 1.1.2: $N_{cd}$ is a clique.} Notice now that $N_{abc}$
+        % and $N_{bc}$ could be non-empty.
+
+        % Recall that $N_V$ and $N_{cd}$ cannot be both non-empty at the same,
+        % otherwise, one would have either $H_2$ or $H_3$. Then, let us consider
+        % another two subcases:
+
+        % \paragraph {Case 1.2: $N_{cd} = \varnothing$.} 
+        
+        % \paragraph{Case 2: $N_{bc}=\varnothing$.} Since $G$ is $H_7$-free, at
+        % least one between $N_{ab}$ and $N_{cd}$ is a clique, recalling that
+        % these two sets are anticomplete to each other by (iii) of
+        % \Cref{lem:neighborhoods-chordal}. Suppose without loss of generality
+        % that $N_{ab}$ is a clique. If $N_{cd}$ is not a clique, then the same
+        % arguments as in Case 1.1 apply to find a monopolar partition, aside for
+        % the fact that $N_{ab}$ could be non-empty in this case. However, since
+        % $N_{cd}$ is not empty and $G$ is $H_2$-free, it follows that $N_{ab}$ is
+        % anticomplete to $N_{bcd}$. Addtionally, since $G$ is $H_7$-free and
+        % $N_{cd}$ is not a clique, it follows that $N_{ab}$ is anticomplete to
+        % $N_{b}$. Then, $N_{ab}\cup\l{a}$ is a clique that is not adjacent to any
+        % of the sets in the cluster part of the three monopolar partitions found
+        % in Case 1.1, so we can add $N_{ab}\cup\l{a}$ to the cluster part of any
+        % of those three partitions to obtain a monopolar partition of $G$.
+
+        % Suppose now that $N_{cd}$ is a clique. As in case 1.1, since $G$ is
+        % $H_3$-free and $P_5$-free, $N_{abc}$ is anticomplete to $N_{cd}$ and
+        % complete to $N_{ab}$. Analogously, $N_{bcd}$ is anticomplete to $N_{ab}$
+        % and complete to $N_{cd}$. Furthermore, since $G$ is $H_3$-free,
+        % $N_{abc}$ is complete to $N_{bcd}$.
+
     \end{description}
 \end{proof}
 
