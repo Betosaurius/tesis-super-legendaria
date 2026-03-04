@@ -317,7 +317,7 @@ $C_4$, so no chordal graph contains a house).
 
     Let $P=(a,b,c,d)$ be an induced $P_4$ in $G$ and let $V=\l{a,b,c,d}$. By
     (i) and (ii) of \Cref{lem:neighborhoods-chordal}, the only possible
-    non-empty sets are
+    nonempty sets are
     \[
         N_{b}, N_{c}, N_{ab}, N_{bc}, N_{cd}, N_{abc}, N_{bcd}, N_V 
         \text{ and } N_{\varnothing}.
@@ -354,7 +354,7 @@ $C_4$, so no chordal graph contains a house).
     Analogously, it follows that $N_{cd}$ is empty as well.
 
     Let $K$ be the set of vertices in $N_{bc}$ that are not anticomplete to
-    $N_b\cup N_c$. Let $u$ and $v$ be non-adjacent vertices in $K$. If both
+    $N_b\cup N_c$. Let $u$ and $v$ be nonadjacent vertices in $K$. If both
     are adjacent to a vertex $x$ in $N_b$, then $\p{u,x,v,c,u}$ is a $C_4$.
     Analogously, no vertex in $N_c$ can be adjacent to both $u$ and $v$.
     Thus, suppose without loss of generality that $x$ in $N_b$ is adjacent
@@ -376,8 +376,8 @@ $C_4$, so no chordal graph contains a house).
     anticomplete to $N_b\cup N_c$. Let $u$ and $v$ be adjacent vertices in
     $S$. If both $u$ and $v$ are not adjacent to a vertex $x\in N_{abc}$,
     then $\l{u,v,b,c,x,a}$ induces an $H_2$. Analogously, $u$ and $v$ cannot
-    be non-adjacent to a vertex in $N_{bcd}$ or in $N_V$. If they are both
-    non-adjacent to a vertex $x$ in $K$, suppose without loss of generality
+    be nonadjacent to a vertex in $N_{bcd}$ or in $N_V$. If they are both
+    nonadjacent to a vertex $x$ in $K$, suppose without loss of generality
     that $x'$ in $N_b$ is adjacent to $K$. Then, $\l{u,v,b,c,x,x'}$ induces
     an $H_2$. This means that there exists vertices $x$ and $y$ in
     $N_{abc}\cup N_{bcd} \cup N_v \cup K$ such that $x$ is adjacent to $u$
@@ -397,7 +397,7 @@ $C_4$, so no chordal graph contains a house).
     
     Consider now $K'$ to be the subset of $N_{bc}\setminus (S\cup K)$ that
     is not anticomplete to $S$. Notice vertices in $K'$ are complete to
-    $N_{abc}\cup N_{bcd}\cup N_V \cup K$. Let $u$ and $v$ be non-adjacent
+    $N_{abc}\cup N_{bcd}\cup N_V \cup K$. Let $u$ and $v$ be nonadjacent
     vertices in $K'$. On the one hand, if $u$ and $v$ are both adjacent to
     $x\in S$ and $x'$ is a vertex in $N_{abc}\cup N_{bcd} \cup N_V \cup K$
     such that $x$ is not adjacent to $x'$, then $\p{x,u,x',v,x}$ is a $C_4$.
@@ -423,7 +423,7 @@ $C_4$, so no chordal graph contains a house).
 
     \paragraph{Case 2: $N_V = \varnothing$ and $N_{abc}\neq \varnothing$.}
     We first shall consider as a subcase when $N_{abc}$ or $N_{bcd}$ are
-    non-empty, say $N_{abc}$ is non-empty. 
+    nonempty, say $N_{abc}$ is nonempty. 
 
 
     
@@ -451,7 +451,7 @@ $C_4$, so no chordal graph contains a house).
     % presented:
     
     % \paragraph{Case 1.1.1: $N_{cd}$ is not a clique.} Let $x$ and $y$ be two
-    % non-adjacent vertices in $N_{cd}$.
+    % nonadjacent vertices in $N_{cd}$.
 
     % Since $G$ is $H_4$-free, vertices in $N_{bc}$ must be adjacent to at
     % least one of $x$ and $y$. Nonetheless, $N_{bc}$ is anticomplete to
@@ -466,7 +466,7 @@ $C_4$, so no chordal graph contains a house).
 
     % For $N_\varnothing$, by (vii) of \Cref{lem:neighborhoods-chordal}, each
     % connected component of $G[N_\varnothing]$ is complete to at least one
-    % vertex of $N_{bcd}$, since this is the only non-empty set to which it
+    % vertex of $N_{bcd}$, since this is the only nonempty set to which it
     % can be adjacent. Since $G$ is $H_4$-free and $N_{bcd}$ is complete to
     % $N_{cd}$, each component of $G[N_\varnothing]$ is trivial, that is,
     % $N_\varnothing$ is an independent set.
@@ -474,11 +474,11 @@ $C_4$, so no chordal graph contains a house).
     % For $N_c$, since $G$ is chordal, a vertex $u$ in $N_c$ is adjacent to at
     % most one between $x$ and $y$, otherwise, $\p{u,x,d,y,u}$ is a $C_4$
     % (this argument actually says that any vertex in $N_c$ is adjacent to at
-    % most one of two non-adjacent vertices in $N_{cd}$). Then, if $u$ and
+    % most one of two nonadjacent vertices in $N_{cd}$). Then, if $u$ and
     % $u'$ in $N_c$ are adjacent, since $G$ is $H_4$-free, it follows that at
     % least one between $u$ and $u'$ is adjacent to at least one of $x$ and
     % $y$, say $u$ is adjacent to $x$. As previously stated, no vertex in
-    % $N_c$ is adjacent to two non-adjacent vertices in $N_{cd}$, so $u'$ is
+    % $N_c$ is adjacent to two nonadjacent vertices in $N_{cd}$, so $u'$ is
     % adjacent to at most one between $x$ and $y$. On the one hand, since $G$
     % is chordal, $u'$ is not adjacent to $y$, otherwise $\p{u,x,d,y,u',u}$ is
     % a $C_5$. On the other hand, since $G$ is $H_2$-free, $u'$ cannot be
@@ -495,7 +495,7 @@ $C_4$, so no chordal graph contains a house).
     % \]
     % is a monopolar partition of $G$. On the contrary, let $v$ be a vertex in
     % $S$ such that is adjacent to a vertex $u$ in $N_c$. Once more, recall
-    % that vertices in $N_c$ are adjacent to at most one of two non-adjacent
+    % that vertices in $N_c$ are adjacent to at most one of two nonadjacent
     % vertices in $N_{cd}$. Thus, each vertex in $N_c$ is adjacent to at most
     % one vertex in $S$, that is, $v$ is the sole vertex in $S$ adjacent to
     % vertices in $N_c$. We claim that $v$ is adjacent to all vertices of $K$
@@ -520,9 +520,9 @@ $C_4$, so no chordal graph contains a house).
     % is a monopolar partition of $G$.
 
     % \paragraph{Case 1.1.2: $N_{cd}$ is a clique.} Notice now that $N_{abc}$
-    % and $N_{bc}$ could be non-empty.
+    % and $N_{bc}$ could be nonempty.
 
-    % Recall that $N_V$ and $N_{cd}$ cannot be both non-empty at the same,
+    % Recall that $N_V$ and $N_{cd}$ cannot be both nonempty at the same,
     % otherwise, one would have either $H_2$ or $H_3$. Then, let us consider
     % another two subcases:
 
@@ -534,7 +534,7 @@ $C_4$, so no chordal graph contains a house).
     % \Cref{lem:neighborhoods-chordal}. Suppose without loss of generality
     % that $N_{ab}$ is a clique. If $N_{cd}$ is not a clique, then the same
     % arguments as in Case 1.1 apply to find a monopolar partition, aside for
-    % the fact that $N_{ab}$ could be non-empty in this case. However, since
+    % the fact that $N_{ab}$ could be nonempty in this case. However, since
     % $N_{cd}$ is not empty and $G$ is $H_2$-free, it follows that $N_{ab}$ is
     % anticomplete to $N_{bcd}$. Additionally, since $G$ is $H_7$-free and
     % $N_{cd}$ is not a clique, it follows that $N_{ab}$ is anticomplete to
@@ -710,19 +710,20 @@ $C_4$, so no chordal graph contains a house).
     
 \end{proof}
 
-Throughout the following proofs we will always denote a $C_5$ of graph $G$ by $C
-= \p{a,b,c,d,e,a}$ and the set $\l{a,b,c,d,e}$ will be denoted by $V$.
+Throughout the following proofs we will always denote an induced copy of $C_5$
+in a graph $G$ by $C = \p{a,b,c,d,e,a}$ and the set $\l{a,b,c,d,e}$ will be
+denoted by $V$.
 
 \begin{lemma}
     \label{lem:pre_neighborhoods_c5}
-    Let $G$ be a $(P_5,\text{house})$-free monopolar graph with an induced
-    $C_5$. Let $X\subset V$.
+    Let $G$ be a $(P_5,\text{house})$-free graph with an induced $C_5$. Let $X$
+    and $Y$ be proper subsets of $V$.
     \begin{enumerate}[(i)]
-        \item If $\varnothing \neq X$ is such that it does not have
-            non-adjacent vertices of $C$, then $N_X = \varnothing$.
+        \item If $X$ is nonempty and consists of at most two adjacent vertices
+            of $C$, then $N_X = \varnothing$.
         \item If $X$ has three non-consecutive vertices, then $N_X =
             \varnothing$.
-        \item If $X=\varnothing$ and $\varnothing \neq Y\subset V$, then $N_X$
+        \item If $X=\varnothing$ and $Y \neq \varnothing$, then $N_X$
             is anticomplete to $N_Y$.
     \end{enumerate}
 \end{lemma}
@@ -732,39 +733,39 @@ Throughout the following proofs we will always denote a $C_5$ of graph $G$ by $C
     \leavevmode \par
     \begin{enumerate}[(i)]
         \item Since $X$ is not empty, suppose without loss of generality that
-            $a\in X$. Since $X$ does not contain non-adjacent vertices of $C$, it
-            follows that $X$ has at most one additional vertex, either $b$ or $e$,
-            both not both. Suppose without loss of generality that $X\subseteq
-            \l{a,e}$. If $x\in N_X$, then $\p{x,a,b,c,d}$ is a $P_5$. Therefore,
-            $N_X=\varnothing$.
+            $a\in X$. Since $X$ does not contain nonadjacent vertices of $C$, it
+            follows that $X$ has at most one additional vertex, either $b$ or
+            $e$, but not both. Suppose without loss of generality that
+            $X\subseteq \l{a,e}$. If $x\in N_X$, then $\p{x,a,b,c,d}$ is a
+            $P_5$. Therefore, $N_X=\varnothing$.
 
         \item Since $X$ is not $V$, suppose without loss of generality that $X$
             has $a$, $c$, $d$, and possibly $e$, but $b\notin X$. If $x\in X$,
             then $\l{a,b,c,x,d}$ induces a house. Hence, $N_X = \varnothing$.
         
         \item Since $Y\neq V$, by the previous two items, $Y$ either consists of
-            two non-adjacent vertices or three consecutive vertices. Thus, suppose
-            $Y\subseteq \l{a,b,c}$. If $x$ in $N_{\varnothing}$ is adjacent to $y\in
-            N_y$, then $\p{x,y,a,e,d}$ is a $P_5$. It follows that $N_{\varnothing}$
-            is anticomplete to $N_Y$.
+            two nonadjacent vertices or three consecutive vertices. Thus,
+            suppose $Y\subseteq \l{a,b,c}$. If $x$ in $N_{\varnothing}$ is
+            adjacent to $y\in N_y$, then $\p{x,y,a,e,d}$ is a $P_5$. It follows
+            that $N_{\varnothing}$ is anticomplete to $N_Y$.
     \end{enumerate}
 \end{proof}
 
 From \Cref{lem:pre_neighborhoods_c5}, it follows that the only exact
-neighborhoods $N_X$ of a $5$-cycle $C$ that can be non-empty are of three types:
-$X$ consists of three consecutive vertices in $C$, or $X$ consists of two
-non-consecutive vertices of $C$, or $X=V$. Additionally, if $X\neq V$, taking
-the complement of one of those neighborhoods, along with the complement of $C$,
-gives back another neighborhood of the three aformentioned types for
-$\overline{C}$, recalling that the complement of a $5$-cycle is once more a
-$5$-cycle (see \Cref{fig:complement}). This fact implies that, for any two of
-these type of neighborhoods, if a relation between them (as being anticomplete
-or complete to each other) is forced due to a $P_5$ or a house, then the
-complementary relation must hold for the complement types of neighborhood. For
-example, as we will see in the next lemma, if $N_X$ and $N_Y$ are complete to
-each other due to a $P_5$, then $N_{\overline{X}}$ and $N_{\overline{Y}}$ are
-anticomplete to each other, since otherwise one would have a house, recalling
-that the complement of $P_5$ is the house.
+neighborhoods $N_X$ of a $5$-cycle $C$ that can be nonempty are of three types:
+$X$ consists of three consecutive vertices of $C$, or $X$ consists of two
+non-consecutive vertices of $C$, or $X=V$. Additionally, by recalling that the
+complement of a $5$-cycle is once again a $5$-cycle (see \Cref{fig:complement}),
+we observe that if $X \neq V$, then in $\overline{G}$ the set $N_X$ is an exact
+neighborhood of the complement of $C$ of one of the aforementioned types.  This
+fact implies that, for any two of these types of neighborhoods, if a relation
+between them (such as being anticomplete or complete to each other) is forced
+due to a $P_5$ or a house, then the complementary relation must hold for the
+complement types of neighborhoods. For example, as we will see in the next
+lemma, if $N_X$ and $N_Y$ are complete to each other due to a $P_5$, then $N_{V
+\setminus X}$ and $N_{V \setminus Y}$ are anticomplete to each other, since
+otherwise one would have a house, recalling that the complement of $P_5$ is the
+house.
 
 \begin{figure}[h]
     \centering
@@ -844,7 +845,7 @@ that the complement of $P_5$ is the house.
     \leavevmode \par
     \begin{enumerate}[(i)]
         \item Suppose without loss of generality that $X=\l{a,c}$ and
-            $Y=\l{c,d}$. If $x\in N_X$ is non-adjacent to $y\in N_Y$, then
+            $Y=\l{c,d}$. If $x\in N_X$ is nonadjacent to $y\in N_Y$, then
             $\p{a,x,c,d,y}$ is a $P_5$. Then, $N_X$ is complete to $N_Y$.
         \item Notice $X$ and $Y$ are such that $\overline{X}$ and
             $\overline{Y}$ are as in the previous item. Then, since
@@ -871,7 +872,7 @@ that the complement of $P_5$ is the house.
             $\l{a,b,c,x,y}$ induces an $H_{11}$. Hence, $N_X$ is anticomplete to
             $N_Y$.
         \item Suppose without loss of generality that $X=\l{a,b,c}$. Let $x$ and
-            $x'$ be non-adjacent vertices in $N_X$. Then, $\l{x,a,x',c,b}$ induces
+            $x'$ be nonadjacent vertices in $N_X$. Then, $\l{x,a,x',c,b}$ induces
             an $H_{11}$. Therefore, $N_X$ is a clique.
         \item Suppose without loss of generality that $X=\l{a,c}$ and suppose
             $N_X$ is not a cluster. Then, there exists $b'$, $b''$ and $b'''$
@@ -903,38 +904,37 @@ that the complement of $P_5$ is the house.
     induced subgraphs.
     
     Due to (i) and (ii) of \Cref{lem:pre_neighborhoods_c5}, the only exact
-    neighborhoods of $C$ which have a chance to be non-empty are the
-    neighborhoods of two non-consecutive vertices and the neighborhoods of three
-    consecutive vertices. Furthermore, since $G$ is connected, every connected
-    component of $G[N_\varnothing]$ is not anticomplete to $N_V$. However, since
-    $G$ is $H_8$-free, it follows that both $N_V$ and $N_\varnothing$ are empty.
-    Hence, the only possibly non-empty sets are
+    neighborhoods of $C$ which can be nonempty are the neighborhoods of two
+    non-consecutive vertices and the neighborhoods of three consecutive
+    vertices.   Since $G$ is $H_8$-free, $N_V$ is empty, but by (iii) in
+    \Cref{lem:pre_neighborhoods_c5} and the connectedness of $G$ we conclude
+    that $N_\varnothing$ is also empty. Hence, the only possibly nonempty sets
+    are
     \[
-        N_{ac}, N_{ad}, N_{bd}, N_{be}, N_{ce}, N_{abc}, N_{bcd}, N_{cde}, N_{ade}
-        \text{ and } N_{abe}.
+        N_{ac}, N_{ad}, N_{bd}, N_{be}, N_{ce}, N_{abc}, N_{bcd}, N_{cde},
+        N_{ade} \text{ and } N_{abe}.
     \]
-    By simplicity throughout the proof, the sets $N_X$ when $X$ is of size two
+    For simplicity, throughout the proof, the sets $N_X$ when $X$ is of size two
     will be called $2$-bags. Similarly, sets $N_X$ when $X$ is of size three
     will be called $3$-bags.
     
-    Let $W$, $X$, $Y$ and $Z$ be different subsets of $V$, all of them of size
-    three. Notice three of them must intersect in a single vertex, so suppose
-    without loss of generality that $W=\l{a,b,c}$, $X=\l{b,c,d}$ and
-    $Y=\l{c,d,e}$. If $w\in N_W$, $x\in N_X$ and $y\in N_Y$, by (ii) and (iv) of
-    \Cref{lem:neighborhoods_c5} it follows that $x$ is adjacent to both $w$ and
-    $y$, while these last two are non-adjacent. Therefore, $\l{w,x,y,b,c,d}$
-    induces an $H_1$. Thus, it cannot be that more than three $3$-bags that are
-    non-empty. We proceed by first considering the case in which three of these
-    are non-empty. 
+    Let $W$, $X$, $Y$ and $Z$ be different $3$-bags. Notice that three of them
+    must intersect in a single vertex, so suppose without loss of generality
+    that $W=\l{a,b,c}$, $X=\l{b,c,d}$ and $Y=\l{c,d,e}$. If $w\in N_W$, $x\in
+    N_X$ and $y\in N_Y$, by (ii) and (iv) of \Cref{lem:neighborhoods_c5} it
+    follows that $x$ is adjacent to both $w$ and $y$, while these last two are
+    nonadjacent. Therefore, $\l{w,x,y,b,c,d}$ induces an $H_1$. Thus, it cannot
+    be that more than three $3$-bags that are nonempty. We proceed by first
+    considering the case in which three of these are nonempty. 
     
-    \paragraph{Case 1: Three $3$-bags are non-empty.} The aformentioned argument
+    \paragraph{Case 1: Three $3$-bags are nonempty.} The aforementioned argument
     implies that no vertex of $C$ is adjacent to all the $3$-bags. Hence,
     suppose without loss of generality that these are $N_{abc}$, $N_{bcd}$ and
     $N_{ade}$. Take $b'\in N_{abc}$, $c'\in N_{bcd}$ and $e'\in N_{ade}$. By
     (ii) and (iv) of \Cref{lem:neighborhoods_c5}, it follows that $b'$ is
-    adjacent to $c'$ and $e'$ is non-adjacent to both. If $b''\in N_{ac}$, by
+    adjacent to $c'$ and $e'$ is nonadjacent to both. If $b''\in N_{ac}$, by
     (v)-(vii) of \Cref{lem:neighborhoods_c5}, $b''$ is adjacent to $c'$ and
-    non-adjacent to both $b'$ and $e'$. Then, $\l{a,b,b',c,c',b''}$ induces an
+    nonadjacent to both $b'$ and $e'$. Then, $\l{a,b,b',c,c',b''}$ induces an
     $H_{13}$. It follows that $N_{ac}$ is empty, and analogously $N_{bd}$ is
     empty.
 
@@ -957,19 +957,19 @@ that the complement of $P_5$ is the house.
     \]
     is a monopolar partition of $G$.
 
-    \paragraph{Case 2: Two $3$-bags are not empty.} If the non-empty $3$-bags
+    \paragraph{Case 2: Two $3$-bags are not empty.} If the nonempty $3$-bags
     are such that two vertices of $C$ are adjacent to both, then the partition
     of the previous case still is a monopolar partition for $G$, noting that any
     of the obstructions mentioned in that case did not use the fact that
-    $N_{ade}$ was non-empty. Then, suppose without loss of generality that
-    $N_{abc}$ and $N_{cde}$ are the non-empty $3$-bags.
+    $N_{ade}$ was nonempty. Then, suppose without loss of generality that
+    $N_{abc}$ and $N_{cde}$ are the nonempty $3$-bags.
 
     Let $b'\in N_{abc}$ and $d'\in N_{cde}$. By (x) of
     \Cref{lem:neighborhoods_c5}, $N_{bd}$ and $N_{be}$ are stable sets, while
     (iii) of the same lemma implies that they are anticomplete to each other. 
     
     Now, consider as a subcase that one of $N_{ac}$ and $N_{ce}$ is not empty.
-    If both were to be non-empty, take $b''\in N_{ac}$ and $d''\in N_{ce}$. By
+    If both were to be nonempty, take $b''\in N_{ac}$ and $d''\in N_{ce}$. By
     (iii) of \Cref{lem:neighborhoods-chordal}, $b''$ is not adjacent to $d''$,
     while (vii) of the same lemma ensures that $b''$ is not adjacent to $b'$.
     Thus, $\l{a,b,c,d,e,b',b'',d''}$ induces an $H_9$. As a consequence, suppose
@@ -991,15 +991,15 @@ that the complement of $P_5$ is the house.
     N_{be}$ and $e'\in N_{ad}$. By (v) of \Cref{lem:neighborhoods_c5}, $a'$ is
     adjacent to $b'$ and $e'$ is adjacent to $d'$, (i) of the same lemma implies
     that $a'$ is adjacent to $e'$, and (ii) of the same lemma ensures that $b'$
-    is non-adjacent to $d'$. Hence, $\l{a,a',b,b',d,d',e,e'}$ induces an
+    is nonadjacent to $d'$. Hence, $\l{a,a',b,b',d,d',e,e'}$ induces an
     $H_{12}$. Then, suppose without loss of generality that $N_{ad}$ is empty.
     Notice that the last monopolar partition given is still a monopolar
     partition of $G$.
     
-    \paragraph{Case 3: Only one $3$-bag is non-empty.} Suppose without loss of
-    generality that $N_{abc}\neq \varnothing$. If $N_{ac}$ is non-empty, as in
-    the previous case, $H_{9}$ forbids $N_{ad}$ and $N_{ce}$ being non-empty.
-    Since $N_{abc}$ is non-empty, it follows from (x) of
+    \paragraph{Case 3: Only one $3$-bag is nonempty.} Suppose without loss of
+    generality that $N_{abc}\neq \varnothing$. If $N_{ac}$ is nonempty, as in
+    the previous case, $H_{9}$ forbids $N_{ad}$ and $N_{ce}$ being nonempty.
+    Since $N_{abc}$ is nonempty, it follows from (x) of
     \Cref{lem:neighborhoods_c5} that $N_{bd}$ and $N_{be}$ are stable, while
     (iii) of the same lemma implies that they are anticomplete to each other.
     Meanwhile, (ix) of \Cref{lem:neighborhoods_c5} implies that $N_{ac}$ is a
@@ -1010,10 +1010,10 @@ that the complement of $P_5$ is the house.
     \]
     is a monopolar partition of $G$.
 
-    If $N_{ac}$ is empty, suppose $N_{bd}$ and $N_{be}$ are non-empty. Let
+    If $N_{ac}$ is empty, suppose $N_{bd}$ and $N_{be}$ are nonempty. Let
     $c'\in N_{bd}$ and $a'\in N_{be}$. If $d'\in N_{ce}$ (i) of
     \Cref{lem:neighborhoods_c5} implies that $d'$ is adjacent to $c'$, while
-    (iii) of the same lemma implies that $a'$ is non-adjacent to both. Thus,
+    (iii) of the same lemma implies that $a'$ is nonadjacent to both. Thus,
     $\l{a,a'b,c,c',d,d'e,}$ induces an $H_{10}$. It follows that $N_{ce}$ is
     empty, and analogously $N_{ad}$ is empty. Then, the previous monopolar
     partition of $G$ is still valid.
@@ -1030,9 +1030,9 @@ that the complement of $P_5$ is the house.
 
     On the contrary, suppose $N_{ce}$ is not empty. If $a'\in N_{be}$, suppose
     $d'$ and $d''$ are adjacent vertices in $N_{ce}$. By (iii) of
-    \Cref{lem:neighborhoods_c5}, $a'$ is non-adjacent to both $d'$ and $d''$.
+    \Cref{lem:neighborhoods_c5}, $a'$ is nonadjacent to both $d'$ and $d''$.
     Then, $\l{a,a',b,c,d,d',d'',e}$ induces an $H_{9}$. Thus, $N_{ce}$ is stable
-    provided that $N_{be}$ is non-empty. Since $N_{be}$ is anticomplete to
+    provided that $N_{be}$ is nonempty. Since $N_{be}$ is anticomplete to
     $N_{ce}$ by (iii) of \Cref{lem:neighborhoods_c5}, $N_{be}$ is stable due to
     (x) of the same lemma, and $N_{ad}$ is a cluster and anticomplete to
     $N_{abc}$ by (ix) and (vi) of the same lemma, it follows that
@@ -1054,19 +1054,19 @@ that the complement of $P_5$ is the house.
 
     \paragraph{Case 4: All $3$-bags are empty.} In this case, if some $2$-bag were not
     stable, say $N_{ac}$ has $b'$ and $b''$ adjacent, then taking the cycle
-    $\p{a,b',c,d,e}$, one can check that it has a non-empty $3$-bag, since $b''$
+    $\p{a,b',c,d,e}$, one can check that it has a nonempty $3$-bag, since $b''$
     is in $N_{ab'c}$. Therefore, one can proceed as in the previous case.
     Therefore, consider all $2$-bags to be stable.
     
     Observe that (i) and (iii) of \Cref{lem:neighborhoods_c5}, along with
-    $H_{10}$, imply that at most three $2$-bags are non-empty. If three of them
-    happen to be non-empty, a vertex in $C$ must be adjacent to two of them.
+    $H_{10}$, imply that at most three $2$-bags are nonempty. If three of them
+    happen to be nonempty, a vertex in $C$ must be adjacent to two of them.
     Suppose without loss of generality that $N_{ac}$ and $N_{ad}$ are such
-    $2$-bags. Once more, due to $H_{10}$, only $N_{be}$ can be non-empty. Then
+    $2$-bags. Once more, due to $H_{10}$, only $N_{be}$ can be nonempty. Then
     \[
         \p{N_{ac} \cup N_{ad} \cup \l{b,e} , N_{be} \cup \l{a,c,d}}
     \]
-    is a monopolar partition of $G$. If there were less that three non-empty
+    is a monopolar partition of $G$. If there were less that three nonempty
     $2$-bags, notice the same partition is stil a monopolar partition of $G$.
 
     At last, we conclude that $G$ is monopolar.
@@ -1215,7 +1215,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
             vertices in $N_X$ are non-adajcent to at least one vertex of $C$,
             say $a$, and one between $b$ and $c$ is in $X$, say $b$. If adjacent
             vertices $u$ and $v$ in $N_{\varnothing}$ are such that $v$ is
-            adjacent to $x\in N_X$ and $u$ is non-adjacent to $x$, then
+            adjacent to $x\in N_X$ and $u$ is nonadjacent to $x$, then
             $\p{u,v,x,b,a}$ is a $P_5$. Thus, every $K_2$ in $N_{\varnothing}$
             is either complete or anticomplete to each vertex in an $N_X$. This
             shows that each component of $G[N_{\varnothing}]$ is homogeneous to
@@ -1223,11 +1223,11 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
 
             Now suppose that $u\in N_{\varnothing}$ is adjacent to $b'\in
             N_{abc}$ and let $C_u$ be the connected component of $u$ in
-            $G[N_\varnothing]$. Since $N_{abc}$ is non-empty, by (xi), the only
+            $G[N_\varnothing]$. Since $N_{abc}$ is nonempty, by (xi), the only
             bags to which $N_\varnothing$ can be not anticomplete are $N_{acd}$,
             $N_{ac}$ and $N_{bd}$. On the one hand, if $C_u$ is not anticomplete
             to $N_{acd}$, then it must be that $u$ is adjacent to a vertex
-            $d'\in N_{acd}$. Thus, since $b'$ is non-adjacent to $d'$ due to
+            $d'\in N_{acd}$. Thus, since $b'$ is nonadjacent to $d'$ due to
             (iii), $\l{a,b,b',d',u}$ induces a house. Then, $C_u$ is
             anticomplete to $N_{acd}$. By the same reason, $C_u$ is anticomplete
             to $N_{ac}$. On the other hand, if $C_u$ is not anticomplete to
@@ -1257,7 +1257,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
             $\l{x,y,z}$. Suppose without loss of generality that they are
             anticomplete to $\l{y,z}$ and $u$ is adjacent to $x$. Then,
             $\l{x,y,z,u,v,a}$ induces an $H_{2}$ if $v$ is adjacent to $x$,
-            while $\l{v,u,x,y,z}$ induces a $P_5$ if $v$ is non-adjacent to $x$.
+            while $\l{v,u,x,y,z}$ induces a $P_5$ if $v$ is nonadjacent to $x$.
             Hence, $\l{u,v}$ is not anticomplete to $\l{y,z}$. Moreover, suppose
             $\l{u,v}$ is anticomplete to $y$. If $u$ is adjacent to $z$, then
             $\l{u,x,y,z,a}$ induces an $H_{11}$. On the contrary, $y$ is
@@ -1292,17 +1292,17 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     as induced subgraphs.
 
     Due to (i) and (ii) of \Cref{lem:neighborhoods_no_c5}, the only possibly
-    non-empty exact neighborhoods of the $4$-cycle $C$ are
+    nonempty exact neighborhoods of the $4$-cycle $C$ are
     \[
         N_\varnothing, N_{a}, N_{b}, N_{c}, N_{d}, N_{ac}, N_{bd}, N_{abc}, N_{bcd},
         N_{acd} \text{ and } N_{abd}.
     \]
-    We proceed by considering the case where at least one $3$-bag is non-empty.
+    We proceed by considering the case where at least one $3$-bag is nonempty.
 
-    \paragraph{Case 1: At least one $3$-bag is non-empty.} Suppose without loss of
+    \paragraph{Case 1: At least one $3$-bag is nonempty.} Suppose without loss of
     generality that $N_{abc}\neq \varnothing$ and let $b'\in N_{abc}$. By (x) of
     \Cref{lem:neighborhoods_no_c5}, $N_{bcd} = N_{abd} = \varnothing$, so the
-    only other possibly non-empty $3$-bag is $N_{acd}$. Additionally, (iii) of
+    only other possibly nonempty $3$-bag is $N_{acd}$. Additionally, (iii) of
     the same lemma ensures that $N_{abc}$ is anticomplete to $N_{acd}$.
 
     If $x$ and $x'$ are adjacent vertices in $N_{bd}$, by (iv) of
@@ -1312,7 +1312,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     By (xi) of \Cref{lem:neighborhoods_no_c5}, suppose without loss of
     generality that $N_c$ is empty. If $N_a$ has vertices $x$, $x'$ and $x''$
     that induce a $P_3$, then, by (vi) of \Cref{lem:neighborhoods_no_c5}, these
-    three vertices are non-adjacent to $b'$, so $\l{x,x',x'',a,b,b'}$ induces an
+    three vertices are nonadjacent to $b'$, so $\l{x,x',x'',a,b,b'}$ induces an
     $H_4$. Hence, $N_a$ is a cluster.
 
     On the one hand, by (v) of \Cref{lem:neighborhoods_no_c5}, $N_{ac}$ is
@@ -1402,7 +1402,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     partition for $N_{\varnothing}$ will be used throughout all subcases of case
     1.
     
-    \paragraph{Case 1.2: $N_d$ is non-empty and $N_{acd}$ is empty.} Notice
+    \paragraph{Case 1.2: $N_d$ is nonempty and $N_{acd}$ is empty.} Notice
     $G[N_d]$ is $C_5$-free since $G$ is, $C_4$-free due to $H_{11}$, and
     $2K_2$-free due to $H_{14}$. Then $G[N_d]$ is split, so there is a partition
     $(S,K)$ with $S$ stable and $K$ a clique, with the property that $S$ is
@@ -1420,19 +1420,19 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     \]
     is a monopolar partition of $G$.
 
-    \paragraph{Case 1.3: $N_b$ is non-empty.} Observe first that the case for
-    $N_d$ and $N_{acd}$ non-empty is analogous to the case where $N_b$ is
-    non-empty, since we have already supposed that $N_{abc}$ is non-empty. Let
+    \paragraph{Case 1.3: $N_b$ is nonempty.} Observe first that the case for
+    $N_d$ and $N_{acd}$ nonempty is analogous to the case where $N_b$ is
+    nonempty, since we have already supposed that $N_{abc}$ is nonempty. Let
     $E$ be the subset of vertices in $N_b$ that are complete to $N_{abc}$, and
     let $D= N_b \setminus E$. Suppose $u$ and $v$ are adjacent vertices in $D$.
     Since $G$ is $H_{4}$-free, it cannot be that none of $u$ and $v$ are
     adjacent to each vertex in $N_{abc}$. Nonetheless, since $u$ and $v$ are in
     $D$, it follows that there is a $u'$ in $N_{abc}$ that is adjacent to $u$
-    and non-adjacent to $v$. Similarly, there is a $v'$ in $N_{abc}$ that is
-    adjacent to $v$ and non-adjacent to $u$. Since $N_{abc}$ is a clique, it
+    and nonadjacent to $v$. Similarly, there is a $v'$ in $N_{abc}$ that is
+    adjacent to $v$ and nonadjacent to $u$. Since $N_{abc}$ is a clique, it
     follows that $u'$ is adjacent to $v'$. Then, $\l{b,u,u',v,v'}$ induces an
     $H_{11}$. Therefore, $D$ is stable. Additionally, if $u\in E$ is adjacent to
-    $v\in D$, letting $v'$ to be a vertex in $N_{abc}$ that is non-adjacent to
+    $v\in D$, letting $v'$ to be a vertex in $N_{abc}$ that is nonadjacent to
     $v$ leads to $\p{v,u,v',c,d}$ being a $P_5$. Then, $E$ is anticomplete to
     $D$. Also, due to (v) of \Cref{lem:neighborhoods_no_c5}, $D$ is anticomplete
     to $N_{bd}$, so
@@ -1446,8 +1446,8 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     $b'\in N_{abc}$. Since $u$ is in $F$, there is a $u'$ in $N_{ac}$ that is
     adjacent to $u$. Similarly, there is a $v'$ in $N_{ac}$ that is adjacent to
     $v$. If $u'=v'$, then $\l{b,b',u,v,u',c}$ induces an $H_{13}$. Then, suppose
-    $u'\neq v'$ and $u$ is non-adjacent to $v'$, as well as $v$ is non-adjacent
-    to $u'$. Then, if $u'$ is non-adjacent to $v'$, $\p{a,u',u,v,v',a}$ is a
+    $u'\neq v'$ and $u$ is nonadjacent to $v'$, as well as $v$ is nonadjacent
+    to $u'$. Then, if $u'$ is nonadjacent to $v'$, $\p{a,u',u,v,v',a}$ is a
     $C_5$. Otherwise, $u'$ is adjacent to $v'$, so $\l{a,u',u,v,v'}$ induces a
     house. It follows that $F$ is stable. Furthermore,  if $u\in F$ is adjacent
     to $v\in I$, letting $u'$ be a vertex in $N_{ac}$ adjacent to $u$, we get
@@ -1474,9 +1474,9 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     \end{align*}
     is a monopolar partition of $G$.
 
-    \paragraph{Case 2: All $3$-bags are non-empty.} Suppose $u$ and $v$ are
+    \paragraph{Case 2: All $3$-bags are nonempty.} Suppose $u$ and $v$ are
     adjacent vertices in $N_{ac}$. Then, $\p{a,u,c,d,a}$ is a $4$-cycle with a
-    non-empty $3$-bag, since $v\in N_{auc}$, so one could proceed as in the
+    nonempty $3$-bag, since $v\in N_{auc}$, so one could proceed as in the
     previous case. Thus, consider that $N_{ac}$ is stable. Similarly, consider
     $N_{bd}$ is stable. As in the previous case, by (xi) of
     \Cref{lem:neighborhoods_no_c5}, suppose without loss of generality that
@@ -1497,10 +1497,10 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     with $S$ a stable set and $K$ a maximal clique. By (v) of
     \Cref{lem:neighborhoods_no_c5}, $N_a$ is anticomplete to $N_{ac}$ and $N_b$
     is anticomplete to $N_{bd}$. Then, $S$ is anticomplete to $N_{ac}$. If $K$
-    is non-empty, due to its maximality, it has at least two vertices, $u$ and
+    is nonempty, due to its maximality, it has at least two vertices, $u$ and
     $v$. If just one of them is adjacent to $w\in N_{bd}$, say $u$, then
     $\l{u,v,a,b,w}$ induce a house. On the contrary, if both $u$ and $v$ are
-    adjacent to $w$, then $\p{a,b,w,u,a}$ is a $4$-cycle with a non-empty
+    adjacent to $w$, then $\p{a,b,w,u,a}$ is a $4$-cycle with a nonempty
     $3$-bag, since $v\in N_{avw}$. Thus, it follows that $K$ is anticomplete to
     $N_{bd}$. At any rate,
     \[
@@ -1513,9 +1513,9 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     and $N_{bd}$. Suppose without loss of generality that $N_{\varnothing}$ is
     not anticomplete to $N_{ac}$, and let $D$ be the set of vertices in
     $N_\varnothing$ that are not anticomplete to $N_{ac}$. Let $u$ and $v$ be
-    vertices in $N_{ac}$. Suppose there are non-adjacent vertices $u'$ and $v'$
-    in $D$ such that $u$ is adjacent to $u'$ and non-adjacent to $v'$, and $v$
-    is adjacent to $v'$ and non-adjacent to $u'$. Then, since $N_{ac}$ is
+    vertices in $N_{ac}$. Suppose there are nonadjacent vertices $u'$ and $v'$
+    in $D$ such that $u$ is adjacent to $u'$ and nonadjacent to $v'$, and $v$
+    is adjacent to $v'$ and nonadjacent to $u'$. Then, since $N_{ac}$ is
     stable, $\p{u,u',b,v,v'}$ is a $P_5$. This implies that the vertices in
     $N_{ac}$ are ordered by the connected components to which they are adjacent.
     
@@ -1527,7 +1527,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     \Cref{lem:neighborhoods_no_c5}, $D$ is either a cluster or split. Let $u$ be
     in $D$. If $v$ and $w$ are adjacent vertices in $N_b$, then $x$ is adjacent
     to both, otherwise, $\p{u,x,c,b,v}$ or $\p{u,x,c,b,w}$ are a $P_5$. Then,
-    $\p{a,b,v,x,a}$ is a $C_4$ with a non-empty $3$-bag, since $w\in N_{bvx}$.
+    $\p{a,b,v,x,a}$ is a $C_4$ with a nonempty $3$-bag, since $w\in N_{bvx}$.
     Thus, $N_b$ is stable. Consider the following subcases:
 
     \paragraph{Case 2.1.1: $E = N_\varnothing\setminus D = \varnothing$.} Then
@@ -1540,7 +1540,7 @@ following lemma regarding the structure of the exact neighborhoods of $C$.
     $(S',K')$ be a partition of $D$ with $S'$ a stable set and $K'$ a maximal
     clique. If $K'$ is not trivial, then $x$ is the only vertex in $N_{ac}$ that
     is not anticomplete to $K'$, otherwise, one would get a $C_4$ with a
-    non-empty $3$-bag. Therefore,
+    nonempty $3$-bag. Therefore,
     \[
         \p{N_{bd} \cup N_b \cup \l{a,c} \cup S' , N_{ac} \cup N_a \cup \l{b,d} 
         \cup K'}
