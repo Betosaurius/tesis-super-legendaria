@@ -717,14 +717,14 @@ denoted by $V$.
 \begin{lemma}
     \label{lem:pre_neighborhoods_c5}
     Let $G$ be a $(P_5,\text{house})$-free graph with an induced $C_5$. Let $X$
-    and $Y$ be proper subsets of $V$.
+    be a proper subset of $V$.
     \begin{enumerate}[(i)]
         \item If $X$ is nonempty and consists of at most two adjacent vertices
             of $C$, then $N_X = \varnothing$.
         \item If $X$ has three non-consecutive vertices, then $N_X =
             \varnothing$.
-        \item If $X=\varnothing$ and $Y \neq \varnothing$, then $N_X$
-            is anticomplete to $N_Y$.
+        \item If $X \neq \varnothing$, then $N_\varnothing$ is anticomplete to
+            $N_X$.
     \end{enumerate}
 \end{lemma}
 
@@ -743,29 +743,33 @@ denoted by $V$.
             has $a$, $c$, $d$, and possibly $e$, but $b\notin X$. If $x\in X$,
             then $\l{a,b,c,x,d}$ induces a house. Hence, $N_X = \varnothing$.
         
-        \item Since $Y\neq V$, by the previous two items, $Y$ either consists of
-            two nonadjacent vertices or three consecutive vertices. Thus,
-            suppose $Y\subseteq \l{a,b,c}$. If $x$ in $N_{\varnothing}$ is
-            adjacent to $y\in N_y$, then $\p{x,y,a,e,d}$ is a $P_5$. It follows
-            that $N_{\varnothing}$ is anticomplete to $N_Y$.
+        \item Since $X \neq V$, by the previous two items, $X$ either consists
+            of two nonadjacent vertices or three consecutive vertices. Thus,
+            suppose $X\subseteq \l{a,b,c}$. If $z$ in $N_{\varnothing}$ is
+            adjacent to $x\in N_X$, then $\p{z,x,a,e,d}$ is a $P_5$. It follows
+            that $N_{\varnothing}$ is anticomplete to $N_X$.
     \end{enumerate}
 \end{proof}
 
 From \Cref{lem:pre_neighborhoods_c5}, it follows that the only exact
-neighborhoods $N_X$ of a $5$-cycle $C$ that can be nonempty are of three types:
-$X$ consists of three consecutive vertices of $C$, or $X$ consists of two
-non-consecutive vertices of $C$, or $X=V$. Additionally, by recalling that the
-complement of a $5$-cycle is once again a $5$-cycle (see \Cref{fig:complement}),
-we observe that if $X \neq V$, then in $\overline{G}$ the set $N_X$ is an exact
-neighborhood of the complement of $C$ of one of the aforementioned types.  This
-fact implies that, for any two of these types of neighborhoods, if a relation
-between them (such as being anticomplete or complete to each other) is forced
-due to a $P_5$ or a house, then the complementary relation must hold for the
-complement types of neighborhoods. For example, as we will see in the next
-lemma, if $N_X$ and $N_Y$ are complete to each other due to a $P_5$, then $N_{V
-\setminus X}$ and $N_{V \setminus Y}$ are anticomplete to each other, since
-otherwise one would have a house, recalling that the complement of $P_5$ is the
-house.
+neighborhoods $N_X$ of a $5$-cycle $C$ in a $\{P_5, \text{house}\}$-free graph
+that can be nonempty are of three types: $X$ consists of three consecutive
+vertices of $C$, or $X$ consists of two non-consecutive vertices of $C$, or
+$X=V$.  Moreover, the third item in \Cref{lem:pre_neighborhoods_c5} implies that
+if $G$ is connected and $N_\varnothing$ is nonempty, then some vertex in
+$N_\varnothing$ must be adjacent to some vertex in $N_V$.
+
+By recalling that the complement of a $5$-cycle is once again a $5$-cycle (see
+\Cref{fig:complement}), we observe that if $X \neq V$, then in $\overline{G}$
+the set $N_X$ is an exact neighborhood of the complement of $C$ of one of the
+aforementioned types.  This fact implies that, for any two of these types of
+neighborhoods, if a relation between them (such as being anticomplete or
+complete to each other) is forced due to a $P_5$ or a house, then the
+complementary relation must hold for the complement types of neighborhoods. For
+example, as we will see in the next lemma, if $N_X$ and $N_Y$ are complete to
+each other due to a $P_5$, then $N_{V \setminus X}$ and $N_{V \setminus Y}$ are
+anticomplete to each other, since otherwise one would have a house, recalling
+that the complement of $P_5$ is the house.
 
 \begin{figure}[h]
     \centering
@@ -899,9 +903,8 @@ house.
 \end{theorem}
 
 \begin{proof}
-    Since the monopolar property is hereditary, it follows from
-    \Cref{prop:minimal_obs_c5} that $G$ does not contain the mentioned graphs as
-    induced subgraphs.
+    Since monopolarity is hereditary, it follows from \Cref{prop:minimal_obs_c5}
+    that $G$ does not contain the mentioned graphs as induced subgraphs.
     
     Due to (i) and (ii) of \Cref{lem:pre_neighborhoods_c5}, the only exact
     neighborhoods of $C$ which can be nonempty are the neighborhoods of two
@@ -924,7 +927,7 @@ house.
     N_X$ and $y\in N_Y$, by (ii) and (iv) of \Cref{lem:neighborhoods_c5} it
     follows that $x$ is adjacent to both $w$ and $y$, while these last two are
     nonadjacent. Therefore, $\l{w,x,y,b,c,d}$ induces an $H_1$. Thus, it cannot
-    be that more than three $3$-bags that are nonempty. We proceed by first
+    be that more than three $3$-bags are nonempty. We proceed by first
     considering the case in which three of these are nonempty. 
     
     \paragraph{Case 1: Three $3$-bags are nonempty.} The aforementioned argument
@@ -948,7 +951,7 @@ house.
     $N_{bcd}$ and $N_{ade}$. Meanwhile, $N_{abc}$ is complete to $N_{bcd}$ by
     (iv) of \Cref{lem:neighborhoods_c5}, and (iii) of the same lemma ensures
     that $N_{ade}$ is anticomplete to both $N_{abc}$ and $N_{bcd}$. Also, all
-    $3$-bags are cliques due to (viii) of \Cref{lem:neighborhoods-chordal}, so
+    $3$-bags are cliques due to (viii) of \Cref{lem:neighborhoods_c5}, so
     $N_{abc} \cup N_{bcd} \cup N_{ade} \cup N_{ad} \cup \l{b,c,e}$ is a cluster.
     This proves that
     \[
@@ -970,12 +973,12 @@ house.
     
     Now, consider as a subcase that one of $N_{ac}$ and $N_{ce}$ is not empty.
     If both were to be nonempty, take $b''\in N_{ac}$ and $d''\in N_{ce}$. By
-    (iii) of \Cref{lem:neighborhoods-chordal}, $b''$ is not adjacent to $d''$,
-    while (vii) of the same lemma ensures that $b''$ is not adjacent to $b'$.
-    Thus, $\l{a,b,c,d,e,b',b'',d''}$ induces an $H_9$. As a consequence, suppose
+    (iii) of \Cref{lem:neighborhoods_c5}, $b''$ is not adjacent to $d''$, while
+    (vii) of the same lemma ensures that $b''$ is not adjacent to $b'$. Thus,
+    $\l{a,b,c,d,e,b',b'',d''}$ induces an $H_9$. As a consequence, suppose
     without loss of generality that $N_{ac}$ is not empty, so $N_{ce}$ is empty.
-    Analogously follows that $N_{ad}$ is empty. On the one hand, $N_{bd}
-    \cup N_{be} \cup \l{a,c}$ is a stable set. On the other hand, (ix) of
+    Analogously follows that $N_{ad}$ is empty. On the one hand, $N_{bd} \cup
+    N_{be} \cup \l{a,c}$ is a stable set. On the other hand, (ix) of
     \Cref{lem:neighborhoods_c5} implies that $N_{ac}$ is a cluster, (vi) and
     (vii) of the same lemma imply that $N_{ac}$ is anticomplete to $N_{abc}$ and
     $N_{cde}$, and (iii) of the same lemma implies that $N_{abc}$ is
