@@ -32,12 +32,8 @@
 \section{Chordal \texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs}
 \label{sec:chordal}
 
-In \todo{quitar p\'arrafo}, \textsc{Monopolarity} was solved for cographs. We could
-save some work by considering only those chordal graphs that are not cographs.
-Before stating the main result of this section, we prove the following
-properties regarding the structure of the exact neighborhoods of a chordal graph
-with an induces $P_4$ and no induced $P_5$ (notice that the house contains a
-$C_4$, so no chordal graph contains a house).
+
+
 
 \begin{figure}[htb!]
     \centering
@@ -237,10 +233,10 @@ obstructions.
 \end{lemma}
 
 \begin{proof}
-    Let $\p{a,b,c,d}$ be a $C_4$ in $G$ such that $a$ is adjacent to $c$ and $b$
-    is not adjacent to $c$. Suppose $G$ is monopolar and $(A,B)$ is a monopolar
-    partition of $G$. If $a\in A$, it follows from $A$ being stable that
-    $\p{b,c,d}$ is a $P_3$ in $B$, which contradicts that $B$ is a cluster.
+    Let $\p{a,b,c,d,a}$ be a $C_4$ in $G$ such that $a$ is adjacent to $c$ and
+    $b$ is not adjacent to $d$. Suppose $G$ is monopolar and $(A,B)$ is a
+    monopolar partition of $G$. If $a\in A$, it follows from $A$ being stable
+    that $\p{b,c,d}$ is a $P_3$ in $B$, which contradicts that $B$ is a cluster.
     Thus, $a\in B$, and similarly follows that $c\in B$.
 
 \end{proof}
@@ -284,7 +280,7 @@ obstructions.
     one of such sets must be contained in $A$ so that $B$ is $P_3$-free. This
     contradicts the fact that $A$ is stable. Therefore, $H_1$ is not monoplar,
     and in \Cref{fig:minimal_h1} the monopolar partitions of $H_1-v$ are shown,
-    just accouting for the non-isomorphic cases.
+    just accounting for the non-isomorphic cases.
 
     \begin{figure}[htb!]
         \centering
@@ -1085,17 +1081,17 @@ stable set and a cluster. In particular, split graphs are monopolar. Since split
 graphs are exactly the $\l{2K_2, C_4, C_5}$-free graphs, it follows that a
 chordal graph is split if and only if it is $2K_2$-free. In \todo{agregar
 referencia de split (heggerness)}, a linear-time certifying algorithm for
-recognizing split is shown. Thus, given a chordal graph, one can run such an
-algorithm to decide whether the graph is split, which in turn implies the graph
-is monopolar, or get a $2K_2$ as a certificate of non-membership. Therefore, to
-solve \textsc{Monopolarity} in chordal graphs, it suffices to solve it for those
-graphs that contain an induced $2K_2$. 
+recognizing split graphs is shown. Thus, given a chordal graph, one can run such
+an algorithm to decide whether the graph is split, which in turn implies the
+graph is monopolar, or get a $2K_2$ as a certificate of non-membership.
+Therefore, to solve \textsc{Monopolarity} in chordal graphs, it suffices to
+solve it for those graphs that contain an induced $2K_2$. 
 
 Throughout the rest of this section, we assume that the graphs have an induced
-$2K_2$, whose vertex set is denoted by $V=\l{a,b,c,d}$ and is such that $ab$ and
-$cd$ are the disjoint edges of the $2K_2$. The next lemmas describe the
-structure of the exact neighborhoods of subsets of $V$ given that a graphs is
-free of certain induced subgraphs. 
+copy of $2K_2$, whose vertex set is denoted by $V=\l{a,b,c,d}$ and it is such
+that $ab$ and $cd$ are the disjoint edges of the $2K_2$. The next lemmas
+describe the structure of the exact neighborhoods of subsets of $V$ given that a
+graph is free of certain induced subgraphs. 
 
 
 \begin{lemma}
@@ -3412,6 +3408,9 @@ that the complement of $P_5$ is the house.
 \texorpdfstring{$C_5$}{C5}}
 \label{sec:no-c5}
 
+There is a single additional minimal obstruction to monopolarity for $C_5$-free
+graphs.
+
 \begin{figure}[ht]
     \centering
     \begin{tikzpicture}[every node/.style={vertex}, node
@@ -3642,9 +3641,10 @@ Thus far, \textsc{Monopolarity} has been solved for those
 $\p{P_5,\text{house}}$-free graphs that are either chordal or have an induced
 $C_5$. If a graph in this family is neither chordal nor it has an induced $C_5$,
 it follows that it must have an induced $C_4$. Thus, all graphs considered in
-this section, unless otherwise stated, are assumed to have a $C_4$, which will
-be denoted by $C=\p{a,b,c,d,a}$, and $V=\l{a,b,c,d}$. We start by proving the
-following lemma regarding the structure of the exact neighborhoods of $C$.
+this section, unless otherwise stated, are assumed to have an induced copy of
+$C_4$, which will be denoted by $C=\p{a,b,c,d,a}$, and $V_C=\l{a,b,c,d}$. We
+start by proving the following lemma regarding the structure of the exact
+neighborhoods of $C$.
 
 \begin{lemma}
     \label{lem:neighborhoods_no_c5}
