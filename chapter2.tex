@@ -1299,9 +1299,11 @@ graph is free of certain induced subgraphs.
     is a cluster.
 
     We claim that $N_{ab}\setminus K$ is anticomplete to both $N_a$ and $N_b$.
-    Indeed, if $x$ in $N_a$ is adjacent to $y$ in $N_{ab}\setminus K$ then
-    $\p{x,y,b,u,c}$ is a $P_5$ (see \Cref{fig:N_a_adjacent_to_N_ab_K}).
-    Analogously follows that $N_b$ is anticomplete to $N_{ab}\setminus K$.
+    Since $N_a$ is anticomplete to $N_V$ by (i) of
+    \Cref{lem:neighborhoods_chordal_anticomplete}, if $x$ in $N_a$ is adjacent
+    to $y$ in $N_{ab}\setminus K$ then $\p{x,y,b,u,c}$ is a $P_5$ (see
+    \Cref{fig:N_a_adjacent_to_N_ab_K}). Analogously follows that $N_b$ is
+    anticomplete to $N_{ab}\setminus K$.
 
     \begin{figure}[htb!]
         \centering
@@ -1330,10 +1332,11 @@ graph is free of certain induced subgraphs.
         \label{fig:N_a_adjacent_to_N_ab_K}
     \end{figure}
 
-    We obtain that $S_{ab} \subseteq N_{ab} \setminus K$ is anticomplete to
-    $N_a$ and $N_b$. Observe that $N_a$ and $N_b$ are stable due to (iv) of
-    \Cref{lem:neighborhoods_chordal_types}, and anticomplete to each other due
-    to (ii) of \Cref{lem:neighborhoods_chordal_anticomplete}, so it follows that
+    We obtain that $S_{ab}$, which is a subset of $N_{ab} \setminus K$, is
+    anticomplete to $N_a$ and $N_b$. Observe that $N_a$ and $N_b$ are stable due
+    to (iv) of \Cref{lem:neighborhoods_chordal_types}, and anticomplete to each
+    other due to (ii) of \Cref{lem:neighborhoods_chordal_anticomplete}, so it
+    follows that
     \[
         S_{ab} \cup N_a \cup N_b \cup \l{v}
     \]
@@ -1349,8 +1352,7 @@ graph is free of certain induced subgraphs.
     $x\in N_{ab}\cup N_{cd}$ adjacent to a vertex $y$ of $C$. Notice $x$ must be
     adjacent to $v$, otherwise, $\p{y,x,a,v,c}$ is a $P_5$ (see
     \Cref{fig:x_adjacent_to_v}). It follows that the vertices of $N_{ab}$ to
-    which $C$ are adjacent lie in $K$, so $C$ is anticomplete to
-    $S_{ab}\subseteq N_{ab} \setminus K$.
+    which $C$ are adjacent lie in $K$, so $C$ is anticomplete to $S_{ab}$.
 
     \begin{figure}[htb!]
         \centering
@@ -1405,15 +1407,16 @@ graph is free of certain induced subgraphs.
             \draw (y) to (v);
             \draw (x) to (y);
             \draw (v) to (c);
-            \draw (z) to (y);
+            \draw (z) to (x);
         \end{tikzpicture}
         \caption{A vertex $z$ adjacent to $y$ must also be adjacent to $x$.}
         \label{fig:z_adjacent_to_x}
     \end{figure}
 
     Since $C$ is connected, it follows that $C$ is complete to $x$. Moreover, if
-    $C$ is not trivial, then edge $yz$ of $C$ implies that $\l{y,z,x,a,v,c,d}$
-    induces an $H_6$ (see \Cref{fig:C_non_trivial}). Hence, $C$ is trivial.
+    $C$ is not trivial, then the edge $yz$ of $C$ implies that
+    $\l{y,z,x,a,v,c,d}$ induces an $H_6$ (see \Cref{fig:C_non_trivial}). Hence,
+    $C$ is trivial.
 
     \begin{figure}[htb!]
         \centering
@@ -1547,28 +1550,27 @@ graph is free of certain induced subgraphs.
             \draw (v) to (x);
             \draw (w) to (x);
             \draw (w) to (a);
-            \draw (w) to (b);
             \draw (w) to (v);
         \end{tikzpicture}
-        \caption{An induced $C_4$ given that $w$ is not adjacent to $v$.}
+        \caption{An induced $H_4$ given that $w$ is not adjacent to $v$.}
         \label{fig:w_nonadjacent_to_v}
     \end{figure}
 
     Thus, $C_v$ is anticomplete to both $K$ and $K_{ab}$. Analogously, $C_v$ is
     anticomplete to $K'$, so
     \[
-        \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K \cup K_{ab} 
-        \cup \l{a,b} \cup K' \cup \l{c,d}
+        \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K
+        \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}
     \]
     is a cluster. We claim that for each $C\in \mathcal{C}\setminus
     \mathcal{C}'$, the part of such a conencted component that is anticomplete
     to $v$, $C-C_v$, is empty. Indeed, suppose that there is a vertex $z$ in
     $C-C_v$, and let $x$ be a vertex in $C_v$ adjacent to $z$. Recall from
-    \Cref{fig:x_adjacent_to_v} that the only vertices to in $N_{ab}$ to which
-    $z$ can be adjacent to are in $K$. Thus, in this case, there is a vertex $w$
-    in $N_{ab}\setminus K$ to wich $z$ is not adjcent. Similarly, from
-    \Cref{fig:w_adjacent_to_v} it follows that $w$ is not adjacent to $x$. Then,
-    $\p{w,a,v,x,z}$ is a $P_5$. \todo{agregar figura}
+    \Cref{fig:x_adjacent_to_v} that the only vertices in $N_{ab}$ to which $z$
+    can be adjacent to are in $K$. Because in this case $N_{ab}\setminus K$ is
+    nonempty, there is a vertex $w$ in $N_{ab}\setminus K$ to which $z$ is not
+    adjcent. Similarly, from \Cref{fig:w_adjacent_to_v} it follows that $w$ is
+    not adjacent to $x$. Then, $\p{w,a,v,x,z}$ is a $P_5$. \todo{agregar figura}
 
     Hence,
     \[
@@ -1684,8 +1686,8 @@ graph is free of certain induced subgraphs.
     Therefore,
     \[
         \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{cd} \cup 
-        \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} K \cup
-        \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
+        \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K
+        \cup \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
     \]
     is a monopolar partition of $G$.
 
@@ -1718,6 +1720,7 @@ graph is free of certain induced subgraphs.
             \node[above left=1cm and 0.75cm of w] (y) {};
             \node[below left=1cm and 0.75cm of w] (x) {};
             \node[below right=1cm and 0.75cm of w] (x') {};
+            \node[Label] at ($(0,0)-(x')$){};
 
             \draw (a) to (b);
             \draw (v) to (b);
@@ -1739,11 +1742,11 @@ graph is free of certain induced subgraphs.
     \end{figure}
 
     This same argument also shows that the cardinality of $\mathcal{C}_{C,1}$ is
-    at most one. If it happens to be nonempty, we claim that $D$, the unique
-    component in there, is complete to $C_v$. Indeed, if that is not the case,
-    let $x$ be a vertex of $D$ nonadjacent to a vertex $y$ of $C_v$. Since $D$
-    is not trivial, there is a vertex $w$ of $D$ adjacent to $x$. Notice $w$ is
-    not adjacent to $y$, otherwise, $\p{w,x,y,v,a}$ would be a $P_5$ (see
+    at most one. If it happens to be nonempty, we claim that $D$, its unique
+    component, is complete to $C_v$. Indeed, if that is not the case, let $x$ be
+    a vertex of $D$ nonadjacent to a vertex $y$ of $C_v$. Since $D$ is not
+    trivial, there is a vertex $w$ of $D$ adjacent to $x$. Notice $w$ is not
+    adjacent to $y$, otherwise, $\p{w,x,y,v,a}$ would be a $P_5$ (see
     \Cref{fig:z_nonadjacent_y}).
 
     \begin{figure}[htb!]
