@@ -1127,20 +1127,22 @@ graph is free of certain induced subgraphs.
         \item If $N_V \neq \varnothing$ and both $X$ and $Y$ are of size one,
         with $X\cap\l{a,b} \neq \varnothing \neq Y\cap\l{c,d}$, then at least
         one of $N_X$ and $N_Y$ is empty.
-        \item If $N_V\neq \varnothing$ and both $X$ and $Y$ consist of two
-        vertices, with empty intersection, then at least one of $N_X$ and $N_Y$
-        is complete to $N_V$.
         \item If $X$ consists of the two vertices of an edge of the $2K_2$, then
         $N_X$ is split.
     \end{enumerate}
 \end{lemma}
 
-\begin{proof}
-    \leavevmode \par
-    \begin{enumerate}[(i)]
-        \item 
+\begin{lemma}
+    \label{lem:neighborhoods_chordal_complete}
+    Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
+    free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
+    $X$ and $Y$ be different proper subsets of $V$.
+    \begin{enumerate}[(a)]
+        \item If $N_V\neq \varnothing$ and both $X$ and $Y$ consist of two
+        vertices, with empty intersection, then at least one of $N_X$ and $N_Y$
+        is complete to $N_V$.
     \end{enumerate}
-\end{proof}
+\end{lemma}
 
 \begin{theorem}
     \label{thm:monopolar_chordal}
@@ -1208,8 +1210,10 @@ graph is free of certain induced subgraphs.
         K\cup \l{a,b} \cup K' \cup \l{c,d}
     \]
     is a cluster. Consider the following subcases:
-    
-    Notice $N_{ab} \setminus K$ is split by (vii) of
+
+    \paragraph{Case 1.1: $N_{ab}$ is not complete to $v$.} By (i) of
+    \Cref{lem:neighborhoods_chordal_complete}, $N_{cd}$ is complete to $v$, so in
+    fact, $N_{cd} = K'$. Notice $N_{ab} \setminus K$ is split by (vi) of
     \Cref{lem:neighborhoods_chordal_types}, so let $(S_{ab},K_{ab})$ be a split
     partition of it, where $K_{ab}$ is a maximal clique. We claim that $K_{ab}$
     is complete to $K$. Indeed, if that was not the case, since $K_{ab}$ is
@@ -1292,14 +1296,6 @@ graph is free of certain induced subgraphs.
     \[
         K \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}
     \]
-    is a cluster. Analogously, let $(S_{cd},K_{cd})$ be a split partition of $N_{cd}\setminus K$,
-    where $K_{cd}$ is a maximal clique. By the same arguments as for $K_{ab}$,
-    $K_{cd}$ is complete to $K'$ and anticomplete to $K$. Once more, (iii) of
-    \Cref{lem:neighborhoods_chordal_anticomplete} implies that $K_{cd}$ is
-    anticomplete to $K_{ab}$, so
-    \[
-        K \cup K_{ab} \cup \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}
-    \]
     is a cluster.
 
     We claim that $N_{ab}\setminus K$ is anticomplete to both $N_a$ and $N_b$.
@@ -1341,58 +1337,20 @@ graph is free of certain induced subgraphs.
     \[
         S_{ab} \cup N_a \cup N_b \cup \l{v}
     \]
-    is stable. Similarly, $N_{cd}\setminus K'$ is anticomplete to both $N_a$ and
-    $N_b$, this time due to $C_5$ (see \Cref{fig:N_c_adjacent_to_N_cd_K}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-1.25,1.5) {};
-            \node (y) at (-1.25,-1.5) {};
-            \node [Label] at ($(0,0) -(x)$) {};
-
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (d) to (y);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw[lightgray] (v) to (b);
-            \draw (x) to (a);
-            \draw (v) to (a);
-            \draw (y) to (c);
-            \draw (x) to (y);
-            \draw (v) to (c);
-        \end{tikzpicture}
-        \caption{An induced $C_5$ given that $N_a$ is adjacent to a vertex in $N_{cd}\setminus K'$.}
-        \label{fig:N_c_adjacent_to_N_cd_K}
-    \end{figure}
-
-    Thus, $S_{cd} \subseteq N_{cd}\setminus K'$ is anticomplete to $N_a$ and
-    $N_b$, while $S_{cd}$ is anticomplete to $S_{ab}$ due to (iii) of
-    \Cref{lem:neighborhoods_chordal_anticomplete}. Therefore,
-    \[
-        S_{ab} \cup S_{cd} \cup N_a \cup N_b \cup \l{v}
-    \]
-    is a stable set.
+    is stable.
     
     Lastly, for $N_\varnothing$, let $\mathcal{C}$ be the set of connected
     components of $G[N_\varnothing]$. Since $G$ is connected, each $C\in
     \mathcal{C}$ is adjacent to at least one of the other bags. By (iv) of
     \Cref{lem:neighborhoods_chordal_anticomplete}, $C$ can only be adjacent to
-    either $v$, vertices in $N_{ab}$ or  vertices in $N_{cd}$.
+    either $v$, vertices in $N_{ab}$ or vertices in $N_{cd}$.
     
-    Let $C\in \mathcal{C}$ be anticomplete to $v$. Therefore, without loss of
-    generality, there is a vertex $x\in N_{ab}$ adjacent to a vertex $y$ of $C$.
-    Notice $x$ must be adjacent to $v$, otherwise, $\p{y,x,a,v,c}$ is a $P_5$
-    (see \Cref{fig:x_adjacent_to_v}). It follows that the vertices of $N_{ab}$
-    to which $C$ are adjacent lie in $K$, so $C$ is anticomplete to
-    $S_{ab}\subseteq N_{ab} \setminus K$. Similarly follows that $C$ is
-    anticomplete to $S_{cd}\subseteq N_{cd} \setminus K'$.
+    Let $C\in \mathcal{C}$ be anticomplete to $v$. Therefore, there is a vertex
+    $x\in N_{ab}\cup N_{cd}$ adjacent to a vertex $y$ of $C$. Notice $x$ must be
+    adjacent to $v$, otherwise, $\p{y,x,a,v,c}$ is a $P_5$ (see
+    \Cref{fig:x_adjacent_to_v}). It follows that the vertices of $N_{ab}$ to
+    which $C$ are adjacent lie in $K$, so $C$ is anticomplete to
+    $S_{ab}\subseteq N_{ab} \setminus K$.
 
     \begin{figure}[htb!]
         \centering
@@ -1490,7 +1448,7 @@ graph is free of certain induced subgraphs.
     If $\mathcal{C}'$ is the set of connected components of $G[N_\varnothing]$
     that are anticomplete to $v$, it follows that
     \[
-        \bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup S_{cd} \cup N_a \cup N_b 
+        \bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
         \cup \l{v}
     \]
     is a stable set.
@@ -1597,21 +1555,147 @@ graph is free of certain induced subgraphs.
     \end{figure}
 
     Thus, $C_v$ is anticomplete to both $K$ and $K_{ab}$. Analogously, $C_v$ is
-    anticomplete to both $K'$ and $K_{cd}$, so
+    anticomplete to $K'$, so
     \[
         \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K \cup K_{ab} 
-        \cup \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}
+        \cup \l{a,b} \cup K' \cup \l{c,d}
     \]
-    is a cluster. Let $\mathcal{C}_{C,0}$ be the set of connected components of
-    $C-C_v$ that are trivial \todo{$C-C_v$ y $N_{ab}\setminus K$ no pueden ser
-    simultaneamente no vacios ($P_5$)}. Similarly, let $\mathcal{C}_{C,1}$ be
-    the set of connected components of $C-C_v$ that are not trivial. As in
-    \Cref{fig:x_adjacent_to_v}, the only vertices of $N_{ab}$ to which $C-C_v$
-    can be adjacent are those in $K$. Thus, $C-C_v$ is anticomplete to $S_{ab}$,
-    and analogously follows that $C-C_v$ is anticomplete to $S_{cd}$. Hence,
+    is a cluster. We claim that for each $C\in \mathcal{C}\setminus
+    \mathcal{C}'$, the part of such a conencted component that is anticomplete
+    to $v$, $C-C_v$, is empty. Indeed, suppose that there is a vertex $z$ in
+    $C-C_v$, and let $x$ be a vertex in $C_v$ adjacent to $z$. Recall from
+    \Cref{fig:x_adjacent_to_v} that the only vertices to in $N_{ab}$ to which
+    $z$ can be adjacent to are in $K$. Thus, in this case, there is a vertex $w$
+    in $N_{ab}\setminus K$ to wich $z$ is not adjcent. Similarly, from
+    \Cref{fig:w_adjacent_to_v} it follows that $w$ is not adjacent to $x$. Then,
+    $\p{w,a,v,x,z}$ is a $P_5$. \todo{agregar figura}
+
+    Hence,
+    \[
+        \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
+        \cup \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} 
+        \cup K \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$ (see
+    \Cref{fig:monopolar_partition_chordal_1}).
+    
+    \begin{figure}[htb!]    
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \node (v) {};
+            \node[above left=1cm and 0.75cm of v] (a) {};
+            \node[above right=1cm and 0.75cm of v] (b) {};
+            \node[below left=1cm and 0.75cm of v] (c) {};
+            \node[below right=1cm and 0.75cm of v] (d) {};
+            \node (cd) at (0,-2) {};
+            \node (ab1) at (0,2){};
+            \node (ab2) at ($(b) + (0,0.65)$) {};
+            \node (ab3) at ($(a) + (0,0.65)$) {};
+            \node (a') at ($(a) + (120:1)$) {};
+            \node (b') at ($(b) + (60:1)$) {};
+            \node (v1) at ($(v) + (1,0)$) {};
+            \node (v2) at ($(v1) + (30:0.75)$) {};
+            \node (v3) at ($(v1) + (-30:0.75)$) {};
+            \node [Label] at ($(0,0) - (v2)$) {};
+
+            \draw (a) to (b);
+            \draw (v) to (a);
+            \draw (v) to (b);
+            \draw (v) to (c);
+            \draw (v) to (d);
+            \draw (c) to (d);
+            \draw (c) to (cd);
+            \draw (d) to (cd);
+            \draw (v) to (cd);
+            \draw (a) to (ab1);
+            \draw (b) to (ab1);
+            \draw (v) to (ab1);
+            \draw (a) to (ab2);
+            \draw (b) to (ab2);
+            \draw (a) to (ab3);
+            \draw (b) to (ab3);
+            \draw (ab2) to (ab1);
+            \draw (a') to (a);
+            \draw (b') to (b);
+            \draw (b') to (ab1);
+            \draw (v) to (v1);
+            \draw (v) to (v2);
+            \draw (v) to (v3);
+            \draw (v1) to (v2);
+            \draw (v1) to (v3);
+            \draw (v2) to (v3);
+
+            \begin{scope}[on background layer, scale=1.5]
+                \draw[fill=red!20, draw=none] \convexpath{c,d,cd}{3.5pt};
+                \draw[fill=red!20, draw=none] \convexpath{v1,v2,v3}{3.5pt};
+                \draw[fill=red!20, draw=none] \convexpath{ab1, ab2, b,
+                a}{3.5pt};
+                \node[fit= (v), inner sep=0.5pt, draw=none, fill=blue!20] {};
+                \node[fit= (a'), inner sep=0.5pt, draw=none, fill=blue!20] {};
+                \node[fit= (b'), inner sep=0.5pt, draw=none, fill=blue!20] {};
+                \node[fit= (ab3), inner sep=0.5pt, draw=none, fill=blue!20] {};
+            \end{scope}
+        \end{tikzpicture}
+        \caption{A monopolar partition of $G$.}
+        \label{fig:monopolar_partition_chordal_1}
+    \end{figure}
+
+    \paragraph{Case 1.2: $N_{cd}$ is not complete to $v$.} Once more, due to (i)
+    of \Cref{lem:neighborhoods_chordal_complete}, $N_{ab}=K'$. Also, every claim
+    from the previous subcase regarding a relation between $N_\varnothing$ and
+    $N_{ab}$ still hold substituting $N_{ab}$ for $N_{cd}$.
+
+    Additionally, $N_{cd}$ is also split by (vi) of
+    \Cref{lem:neighborhoods_chordal_types}, so let $(S_{cd},K_{cd})$ be a split
+    partition of $N_{cd}$ with $K_{cd}$ a maximal clique. As before, $K_{cd}$ is
+    complete to $K'$ and anticomplete to $K$. Finally, $N_{cd}\setminus K$ being
+    nonempty imply that both $N_a$ and $N_b$ are empty, due to either $P_5$ or
+    $C_5$ (see \Cref{fig:N_c_adjacent_to_N_cd_K}). \todo{modificar figura}
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \node (v) {};
+            \node[above left=1cm and 0.75cm of v] (a) {};
+            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+            \node[below left=1cm and 0.75cm of v] (c) {};
+            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+            \node (x) at (-1.25,1.5) {};
+            \node (y) at (-1.25,-1.5) {};
+            \node [Label] at ($(0,0) -(x)$) {};
+
+            \draw[lightgray] (a) to (b);
+            \draw[lightgray] (d) to (y);
+            \draw[lightgray] (v) to (d);
+            \draw[lightgray] (c) to (d);
+            \draw[lightgray] (v) to (b);
+            \draw (x) to (a);
+            \draw (v) to (a);
+            \draw (y) to (c);
+            \draw (x) to (y);
+            \draw (v) to (c);
+        \end{tikzpicture}
+        \caption{An induced $C_5$ given that $N_a$ is adjacent to a vertex in $N_{cd}\setminus K'$.}
+        \label{fig:N_c_adjacent_to_N_cd_K}
+    \end{figure}
+    
+    Therefore,
+    \[
+        \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{cd} \cup 
+        \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} K \cup
+        \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$.
+
+    \paragraph{Case 1.3: Both $N_{ac}$ and $N_{cd}$ are complete to $v$.} Let
+    $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_v$ that are
+    trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
+    components of $C-C_v$ that are not trivial. Clearly,
     \[
         \bigcup_{C\in \mathcal{C}'} V_C \cup \bigcup_{C\in \mathcal{C}\setminus\mathcal{C}'} 
-        \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D} \cup S_{ab} \cup S_{cd} \cup N_a \cup N_b \cup \l{v}
+        \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D} \cup N_a \cup N_b \cup \l{v}
     \]
     is stable. Furthermore, we claim that each connected component in
     $\mathcal{C}_{C,1}$ is split. If that was not the case, there is a $2K_2$ in
@@ -1696,93 +1780,30 @@ graph is free of certain induced subgraphs.
     
     Finally, since $D$ is split, it can be partitioned into $S_D$ a stable set
     and $K_D$ a maximal clique, so $K_D \cup C_v$ is a clique recalling that
-    $C_D$ is complete to $C_v$. Moreover, as in \Cref{fig:x_adjacent_to_v},
-    recall that vertices in $N_\varnothing$ not adjacent to $v$ can only be
-    adjacent to vertices in $K$ or $K'$. Therefore $S_D$ is anticomplete to
-    $S_{ab}\cup S_{cd}$, and $K_D$ is anticomplete to $K_{ab} \cup K_{cd}$.
-    Furthermore, we claim that $K_D$ is anticomplete to $K\cup K'$. Indeed, if
-    that is not the case, then $K_D$ is not trivial (since it is maximal and $D$
-    is not trivial), so there are adjacent vertices $x$ and $y$ in $K_D$, and at
-    least one of them adjacent to a vertex $w$ in $K\cup K'$. Suppose without
-    loss of generality that $w$ is in $K$ and $x$ is adjacent to $w$. As in
-    \Cref{fig:z_adjacent_to_x}, $y$ must be adjacent to $w$, otherwise,
-    $\p{y,x,w,v,c}$ is a $P_5$. Nonetheless, if $y$ is adjacent to $w$, then
-    $\l{y,x,w,v,a,c,d}$ induces an $H_6$ as in \Cref{fig:C_non_trivial}. Then, 
+    $C_D$ is complete to $C_v$. We claim that $K_D$ is anticomplete to $K\cup
+    K'$. Indeed, if that is not the case, then $K_D$ is not trivial (since it is
+    maximal and $D$ is not trivial), so there are adjacent vertices $x$ and $y$
+    in $K_D$, and at least one of them adjacent to a vertex $w$ in $K\cup K'$.
+    Suppose without loss of generality that $w$ is in $K$ and $x$ is adjacent to
+    $w$. As in \Cref{fig:z_adjacent_to_x}, $y$ must be adjacent to $w$,
+    otherwise, $\p{y,x,w,v,c}$ is a $P_5$. Nonetheless, if $y$ is adjacent to
+    $w$, then $\l{y,x,w,v,a,c,d}$ induces an $H_6$ as in
+    \Cref{fig:C_non_trivial}. Then, 
     \begin{align*}
         \Bigg(& \bigcup_{C\in \mathcal{C}'} V_C \cup \bigcup_{C\in \mathcal{C}
         \setminus\mathcal{C}'} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup S_1 \cup S_2 \cup N_a \cup 
+        \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup 
         N_b \cup \l{v}, \\ 
         & \bigcup_{C\in \mathcal{C}\setminus C'} \p{V_{C_v} \cup 
         \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup 
-        K \cup K_1 \cup \l{a,b} \cup K' \cup K_2 \cup \l{c,d} \Bigg)
+        K \cup \l{a,b} \cup K' \cup \l{c,d} \Bigg)
     \end{align*}
-    is a monopolar partition of $G$ (see
-    \Cref{fig:monopolar_partition_chordal_1}).
-    
-    \begin{figure}[htb!]    
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v] (d) {};
-            \node (cd) at (0,-2) {};
-            \node (ab1) at (0,2){};
-            \node (ab2) at ($(b) + (0,0.65)$) {};
-            \node (ab3) at ($(a) + (0,0.65)$) {};
-            \node (a') at ($(a) + (120:1)$) {};
-            \node (b') at ($(b) + (60:1)$) {};
-            \node (v1) at ($(v) + (1,0)$) {};
-            \node (v2) at ($(v1) + (30:0.75)$) {};
-            \node (v3) at ($(v1) + (-30:0.75)$) {};
-            \node [Label] at ($(0,0) - (v2)$) {};
-
-            \draw (a) to (b);
-            \draw (v) to (a);
-            \draw (v) to (b);
-            \draw (v) to (c);
-            \draw (v) to (d);
-            \draw (c) to (d);
-            \draw (c) to (cd);
-            \draw (d) to (cd);
-            \draw (v) to (cd);
-            \draw (a) to (ab1);
-            \draw (b) to (ab1);
-            \draw (v) to (ab1);
-            \draw (a) to (ab2);
-            \draw (b) to (ab2);
-            \draw (a) to (ab3);
-            \draw (b) to (ab3);
-            \draw (ab2) to (ab1);
-            \draw (a') to (a);
-            \draw (b') to (b);
-            \draw (b') to (ab1);
-            \draw (v) to (v1);
-            \draw (v) to (v2);
-            \draw (v) to (v3);
-            \draw (v1) to (v2);
-            \draw (v1) to (v3);
-            \draw (v2) to (v3);
-
-            \begin{scope}[on background layer, scale=1.5]
-                \draw[fill=red!20, draw=none] \convexpath{c,d,cd}{3.5pt};
-                \draw[fill=red!20, draw=none] \convexpath{v1,v2,v3}{3.5pt};
-                \draw[fill=red!20, draw=none] \convexpath{ab1, ab2, b,
-                a}{3.5pt};
-                \node[fit= (v), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (a'), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (b'), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (ab3), inner sep=0.5pt, draw=none, fill=blue!20] {};
-            \end{scope}
-        \end{tikzpicture}
-        \caption{A monopolar partition of $G$.}
-        \label{fig:monopolar_partition_chordal_1}
-    \end{figure}
+    is a monopolar partition of $G$ 
 
     \paragraph{Case 2: $N_V=\varnothing$.}
+
+    \paragraph{Case 2.1: At least one $3$-bag is nonempty.}
+    \paragraph{Case 2.2: No $3$-bag is nonempty.}
 \end{proof}
 
 \section{\texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs with \texorpdfstring{$C_5$}{C5}}
