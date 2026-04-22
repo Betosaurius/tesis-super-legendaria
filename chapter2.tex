@@ -1742,12 +1742,12 @@ section.
                 \label{fig:chordal_anti_2_bag}
             \end{figure}
 
-        \item Suppose without loss of generality that $X=\l{a,b}$. Let $x\in N_X \setminus K(N_X,N_Z)$ and suppose without loss of
-        generality that $x$ is not adjacent to $z$. If $x$ is adjacent to $w\in
-        N_\varnothing$, then $G$ contains an induced copy of $C_4$ or $P_5$,
-        depending on whether $w$ is adjacent to $z$ or not (see
-        \Cref{fig:chordal_anti_5}). Therefore, $N_\varnothing$ is anticomplete
-        to $N_X \setminus K(N_X,N_Z)$.
+        \item Suppose without loss of generality that $X=\l{a,b}$. Let $x\in N_X
+        \setminus K(N_X,N_Z)$ and suppose without loss of generality that $x$ is
+        not adjacent to $z$. If $x$ is adjacent to $w\in N_\varnothing$, then
+        $G$ contains an induced copy of $C_4$ or $P_5$, depending on whether $w$
+        is adjacent to $z$ or not (see \Cref{fig:chordal_anti_5}). Therefore,
+        $N_\varnothing$ is anticomplete to $N_X \setminus K(N_X,N_Z)$.
 
             \begin{figure}[htb!]
                 \centering
@@ -2274,6 +2274,7 @@ section.
 \end{theorem}
 
 \begin{proof}
+    Recall that $Z$ is the vertex set of the initial induced copy of $2K_2$.
     Since monopolarity is hereditary, it follows from
     \Cref{prop:minimal_obs_chordal} that $G$ does not contain any of the
     mentioned graphs as an induced subgraph.
@@ -2283,7 +2284,7 @@ section.
     following cases:
 
     \paragraph{Case 1: $N_Z$ is nonempty.} By \Cref{lem:chordal_types_1}, $N_Z$
-    has exactly one vertex, $z$. Additionally, \Cref{lem:chordal_types_3}
+    has exactly one vertex, namely $z$. Additionally, \Cref{lem:chordal_types_3}
     implies that no other bag is adjacent to vertices of both edges of the
     $2K_2$. Also, by \Cref{lem:chordal_types_5}, suppose without loss of
     generality that $N_c = N_d = \varnothing$.
@@ -2296,8 +2297,8 @@ section.
     \[
         K\cup \l{a,b} \cup K' \cup \l{c,d}
     \]
-    is a cluster. Now let $\mathcal{C}$ be the set of connected components in
-    $G[N_\varnothing]$. In particular, let $\mathcal{C}_z$ be the set of
+    is a $2$-cluster. Now let $\mathcal{C}$ be the set of connected components
+    in $G[N_\varnothing]$. In particular, let $\mathcal{C}_z$ be the set of
     connected components in $\mathcal{C}$ that are adjacent to $z$. For each
     $C\in \mathcal{C}_z$, let $C_z$ be the graph induced by the vertices of $C$
     that are adjacent to $z$. Notice \Cref{lem:chordal_types_K_cluster} implies
@@ -2316,13 +2317,13 @@ section.
     \[
         N_a \cup N_b \cup \l{z}
     \]
-    is stable. Observe that components $C\in \mathcal{C}\setminus \mathcal{C}_z$
-    are anticomplete to $z$. Since $G$ is connected, $V_C$ must be adjacent to
-    the set $N_{ab} \cup N_{cd}$. Due to \Cref{lem:chordal_anti_5}, $V_C$ can
-    only be adjacent to either $K$ or $K'$. Nonetheless,
-    \Cref{lem:chordal_types_trivial} imply that $C$ is the trivial graph. In
-    addition to it, \Cref{lem:chordal_anti_4} implies that $V_C$ is anticomplete
-    to both $N_a$ and $N_b$, so
+    is stable. Observe that each component $C\in \mathcal{C}\setminus
+    \mathcal{C}_z$ is anticomplete to $z$. Additionally,
+    \Cref{lem:chordal_anti_4} implies that $V_C$ is anticomplete to both $N_a$
+    and $N_b$.  Since $G$ is connected, $V_C$ must be adjacent to the set
+    $N_{ab} \cup N_{cd}$. Due to \Cref{lem:chordal_anti_5}, $V_C$ can only be
+    adjacent to either $K$ or $K'$. Nonetheless,
+    \Cref{lem:chordal_types_trivial} implies that $C$ is the trivial graph, so
     \[
         \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup N_a \cup 
         N_b \cup \l{z}
@@ -2364,7 +2365,7 @@ section.
     \paragraph{Case 1.1.2: $N_{ab}\setminus K$ is not stable.} Notice $N_{ab}
     \setminus K$ is split by \Cref{lem:chordal_types_6}, so let
     $(S_{ab},K_{ab})$ be a split partition of it, where $K_{ab}$ is a maximal
-    clique. As in the previous case, we already have that
+    clique. As in the previous subcase, we already have that
     \[
         \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup S_{ab} \cup
         N_a \cup N_b \cup \l{z}
@@ -2589,20 +2590,22 @@ section.
     \end{figure}
 
     \paragraph{Case 1.2: $N_{cd}$ is not complete to $z$.} Once more, due to
-    \Cref{lem:chordal_comp_1}, $N_{ab}=K'$. Additionally, $N_{cd}\setminus K$
+    \Cref{lem:chordal_comp_1}, $N_{ab}=K$. Additionally, $N_{cd}\setminus K'$
     being nonempty implies, by \Cref{lem:chordal_types_empty_2}, that both $N_a$
     and $N_b$ are empty.
     
     Also, every claim from the previous subcase regarding $N_{ab}$ still hold in
     this case for $N_{cd}$, since every lemma used works for any 2-bag complete
-    to the edge of a $2K_2$. Hence, if $N_{cd}\setminus K'$ is stable, then
+    to an edge of an induced copy of $2K_2$. Hence, if $N_{cd}\setminus K'$ is
+    stable, then
     \[
         \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \p{N_{cd}\setminus K'} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z} V_{C_z} 
-        \cup K\cup \l{a,b} \cup K' \cup \l{c,d}}
+        \p{N_{cd}\setminus K'} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z}
+        V_{C_z} \cup K\cup \l{a,b} \cup K' \cup \l{c,d}}
     \]
-    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K$ is not
-    stable, then
+    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K'$ is not
+    stable, then we use its split partition $(S_{cd},K_{cd})$ with $K_{cd}$ a
+    maximal clique, to obtain that
     \[
         \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
         S_{cd} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup
@@ -2610,9 +2613,9 @@ section.
     \]
     is a monopolar partition of $G$.
 
-    \paragraph{Case 1.3: Both $N_{ac}$ and $N_{cd}$ are complete to $z$.} It is
-    immediate that $N_{ac}=K$ and $N_{cd}=K'$, so we only need to check how to
-    split the sets $V_{C-C_z}$ for $C\in \mathcal{C}_z$.
+    \paragraph{Case 1.3: Both $N_{ab}$ and $N_{cd}$ are complete to $z$.} It is
+    immediate that $N_{ab}=K$ and $N_{cd}=K'$, so we only need to check how to
+    split the sets $V_{C-C_z}$ for each $C\in \mathcal{C}_z$.
     
     Let $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_z$ that
     are trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
@@ -2626,8 +2629,8 @@ section.
     \]
     is stable. Let $D\in \mathcal{C}_{C,1}$. Since $C$ is connected, there is a
     connected component of $C_z$, $D_z$, to which $D$ is adjacent. Let $x\in
-    V_{D}$ and $y\in V_{D_Z}$ be adjacent vertices. If there was a vertex $w\in
-    C_z$ not adjacent to $y$ and adjacent to $x$, then $\p{w,x,y,z,w}$ is a
+    V_{D}$ and $y\in V_{D_z}$ be adjacent vertices. If there is a vertex $w\in
+    V_{C_z}$ not adjacent to $y$ and adjacent to $x$, then $\p{w,x,y,z,w}$ is a
     $C_4$ (see \Cref{fig:more_than_one_component}).
 
     \begin{figure}[htb!]
@@ -2665,7 +2668,6 @@ section.
     Indeed, let $x$ be a vertex of $D$ adjacent to a vertex $y$ of $D_z$. If $w$
     is a vertex of $D$ adjacent to $x$, then $w$ must be adjacent to $y$,
     otherwise, $\p{w,x,y,z,a}$ is a $P_5$ (see \Cref{fig:z_nonadjacent_y}).
-
     \begin{figure}[htb!]
         \centering
         \begin{tikzpicture}[every node/.style={vertex}, node
@@ -2693,34 +2695,37 @@ section.
         \caption{An induced $H_6$ given that $w$ is adjacent to $y$.}
         \label{fig:z_nonadjacent_y}
     \end{figure}
-
+    
+    \noindent
     Since $D$ is connected, it follows that $D$ is complete to $y$. Moreover, if
     a vertex $y'$ of $D_z$ is adjacent to $y$, the aforementioned argument
     implies that either $D$ is complete to $y'$ or is anticomplete to it.
     Nonetheless, if the latter case happens, then $\l{w,x,y,y',z,c,d}$ induces
-    an $H_6$ (see \todo{figura}).
+    an $H_6$ (see \todo{figura}).   Therefore, $D$ is complete to $D_z$.
 
-    Therefore, $D$ is complete to $D_z$. Finally, we claim that $D$ is the
-    unique component in $\mathcal{C}_{C,1}$. If there was another component,
-    $D'$, the two previous claims imply that there is a unique component $D_z'$
-    of $C_z$ to which $D'$ is complete. Since $D'$ is nontrivial and connected,
-    there are adjacent vertices $x'$ and $w'$ of $D'$. Similarly, let $x$ and
-    $w$ be adjacent vertices of $D$. On the one hande, if $D_z$ happens to be
-    $D_z'$, then if $y$ is a vertex of $D_z$, it follows that
-    $\l{a,b,z,c,d,y,x,w,x',w'}$ induces an $H_5$ (see \todo{agregar figura}).
+    Finally, we claim that $D$ is the unique component in $\mathcal{C}_{C,1}$.
+    If there was another component, $D'$, the two previous claims imply that
+    there is a unique component $D_z'$ of $C_z$ to which $D'$ is complete. Since
+    $D'$ is nontrivial and connected, there are adjacent vertices $x'$ and $w'$
+    of $D'$. Similarly, let $x$ and $w$ be adjacent vertices of $D$. On the one
+    hand, if $D_z$ happens to be $D_z'$, then if $y$ is a vertex of $D_z$, it
+    follows that $\l{a,b,z,c,d,y,x,w,x',w'}$ induces an $H_5$ (see \todo{agregar
+    figura}).
 
+    \noindent
     On the other hand, let $y$ be a vertex of $D_z$ and $y'$ be a vertex of
-    $D_z'$. Recall that $C_z$ is a cluter, so $y$ and $y'$ are nonadjacent. In
+    $D_z'$. Recall that $C_z$ is a cluster, so $y$ and $y'$ are nonadjacent. In
     addition to it, since $D$ is anticomplete to all components in $C_z$ but
     $D_z$, and $D'$ is anticomplete to all components in $C_z$ but $D_z'$, we
     have that $x$ is anticomplete to $y'$ and $x'$ is anticomplete to $y$. Thus,
-    $\p{x,y,z,y',x'}$ is a $P_5$ (see \todo{figure}).
+    $\p{x,y,z,y',x'}$ is a $P_5$ (see \todo{figure}).  We conclude that $D$ is
+    unique.
 
-    We conclude that $D$ is unique. Furthermore, we claim that $D$ is split. If
-    that was not the case, there is a $2K_2$ in $D$. Let $w$ and $x$ be adjacent
-    vertices of $D$ and anticomplete to adjacent vertices $w'$ and $x'$ of $D$.
-    If $y$ is a vertex of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$
-    induces an $H_5$ (see \Cref{fig:C-C_v_split}).
+    Furthermore, we claim that $D$ is split. If that was not the case, there is
+    a $2K_2$ in $D$. Let $w$ and $x$ be adjacent vertices of $D$ and
+    anticomplete to adjacent vertices $w'$ and $x'$ of $D$. If $y$ is a vertex
+    of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$ induces an $H_5$
+    (see \Cref{fig:C-C_v_split}).
     
     \begin{figure}[htb!]
         \centering
@@ -2759,7 +2764,7 @@ section.
 
     Thus, $D$ is split, so let $(S_D,K_D)$ be a split partition of $V_D$ such
     that $K_D$ is a maximal clique. Recall that $D$ is complete to $D_z$, so
-    $V_D \cup V_{D_z}$ is a clique. Moreover, since $D$ is anticomplete to all
+    $K_D \cup V_{D_z}$ is a clique. Moreover, since $D$ is anticomplete to all
     other connected components of $C_z$, it follows that
     \begin{align*}
         \Bigg(& \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
