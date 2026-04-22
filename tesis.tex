@@ -28,7 +28,7 @@
 \usepackage{mathrsfs}
 
 % Bullets especiales
-\usepackage{enumerate}
+\usepackage{enumitem}
 
 % Colores
 \usepackage[table]{xcolor}
@@ -139,6 +139,9 @@
 
 % Referencias con nombres automaticos
 \usepackage{cleveref}
+\newlist{lemenum}{enumerate}{1}
+\setlist[lemenum]{label=(\roman*), ref=\thelemma~(\roman*)}
+\crefalias{lemenumi}{lemma}
 
 % Definiciones de nuevos ambientes
 \newtheorem{theorem}{Theorem}[section]

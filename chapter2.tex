@@ -1085,64 +1085,1186 @@ Therefore, to solve \textsc{Monopolarity} in chordal graphs, it suffices to
 solve it for those graphs that contain an induced $2K_2$. 
 
 Throughout the rest of this section, we assume that the graphs have an induced
-copy of $2K_2$, whose vertex set is denoted by $V=\l{a,b,c,d}$ and it is such
-that $ab$ and $cd$ are the disjoint edges of the $2K_2$. The next lemmas
-describe the structure of the exact neighborhoods of subsets of $V$ given that a
-graph is free of certain induced subgraphs. 
-
+copy of $2K_2$, whose vertex set is denoted by $Z=\l{a,b,c,d}$ and it is such
+that $ab$ and $cd$ are the disjoint edges of the $2K_2$. The following lemma
+asserts there are two types of $P_5$-free graphs with an induced copy of $2K_2$.
 
 \begin{lemma}
-    \label{lem:neighborhoods_chordal_anticomplete}
-    Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
-    free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
-    $X$ and $Y$ be different proper subsets of $V$.
-    \begin{enumerate}[(i)]
-        \item If $X$ is of size one, then $N_X$ is anticomplete to $N_V$.
-        \item If both $X$ and $Y$ are of size one and $X$ is complete to $Y$,
-        then $N_X$ is anticomplete to $N_Y$.
-        \item If $N_V\neq\varnothing$, and both $X$ and $Y$ are of
-        size two and their intersection is empty, then $N_X$ is anticomplete to
-        $N_Y$.
-        \item If $X$ is of size one, then $N_X$ is anticomplete to
-        $N_\varnothing$.
-        \item If $X$ consists of the two vertices of an edge of the $2K_2$, then
-        vertices in $N_\varnothing$ not anticomplete to $N_V$ are anticomplete
-        to $N_{ab}$.
+    \label{lem:chordal_connectedness}
+    Let $G$ be a $P_5$-free graphs with an induced copy of a $2K_2$, $G[Z]$. One
+    of the following must be true:
+    \begin{enumerate}[label=(\roman*)]
+        \item There is a vertex adjacent to both edges of $G[Z]$.
+        \item There are adjacent vertices $x$ and $y$ with $x$ complete to the
+        edge $ab$ and anticomplete to the edge $cd$, whereas $y$ is complete to
+        $cd$ and anticomplete to $ab$.
     \end{enumerate}
 \end{lemma}
+
+\begin{proof}
+    Suppose (i) does not happen. Since $G$ is $P_5$-free, there exists a path of
+    minimum length, $P$, whose initial vertex is in $\l{a,b}$, its final vertex
+    is in $\l{c,d}$, and all middle vertices are not in $Z$. Since (i) is not
+    true, such a path has at least 4 vertices. Moreover, if it has at least $5$
+    vertices, it follows that $P$ contains an copy of $P_5$, which is induced
+    since $P$ is of minimum length.
+
+    Therefore, suppose without loss of generality that there are adjacent
+    vertices $x$ and $y$ such that $P=\p{a,x,y,c}$. Since $x$ is of minimum
+    length, $x$ is anticomplete to $\l{c,d}$ and $y$ is anticomplete to
+    $\l{a,b}$. Moreover, if $x$ is not adjacent to $b$, notice $\p{b,a,x,y,c}$
+    is an induced copy of $P_5$ (see \Cref{fig:chordal_connectedness}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+            on grid, edge]
+            \node[Label] (z) {};
+            \node[above left=1cm and 0.75cm of z] (a) {};
+            \node[above right=1cm and 0.75cm of z] (b) {};
+            \node[below left=1cm and 0.75cm of z] (c) {};
+            \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+            \node (x) at (0,0.5) {};
+            \node (y) at (0,-0.5){};
+
+            \draw[lightgray] (c) to (d);
+            \draw (a) to (b);
+            \draw (x) to (a);
+            \draw (y) to (c);
+            \draw (x) to (y);
+        \end{tikzpicture}
+        \caption{An induced copy of $P_5$ given that $x$ is not adjacent to $b$.}
+        \label{fig:chordal_connectedness}
+    \end{figure}
+    
+    Thus, $x$ is adjacent to $b$. Similarly follows that $y$ is adjacent to $d$.
+    Hence, $x$ is complete to $\l{a,b}$ and $y$ is complete to $\l{c,d}$.
+
+\end{proof}
+
+The next lemmas describe the structure of the exact neighborhoods of subsets of
+$Z$ given that a graph is free of the minimal obstructions given in
+\Cref{fig:chordal-p5-free-obstructions}. For simplicity, throughout the chapter,
+exact neighborhoods $N_X$ when $X$ is of size one will be called 1-bags.
+Similarly, sets $N_X$ when $X$ is of size two and three will be called 2-bags
+and 3-bags, respectively.
+
+\begin{lemma}
+    \label{lem:neighborhoods_chordal_anti}
+    Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
+    free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
+    $X$ and $Y$ be different proper subsets of $Z$.
+    \begin{lemenum}
+        \item If $N_X$ and $N_Y$ are 1-bags adjacent to the same edge of the
+            $2K_2$, then $N_X$ is anticomplete to $N_Y$.
+            \label{lem:chordal_anti_2}
+        \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to $N_Z$.
+            \label{lem:chordal_anti_1}
+    \end{lemenum}
+\end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{b}$.
+            If $x\in N_X$ is adjacent to $y\in N_Y$, then $\p{a,b,y,x,a}$
+            induces a copy of $C_4$ (see \cref{fig:chordal_anti_1}). Therefore,
+            $N_X$ is anticomplete to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node[Label] (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+                    \node[above=1.5 of a] (x)  {};
+                    \node[above=1.5 of b] (y) {};
+
+                    \draw[lightgray] (c) to (d);
+                    \draw (a) to (b);
+                    \draw (x) to (a);
+                    \draw (y) to (b);
+                    \draw (x) to (y);
+                \end{tikzpicture}
+                \caption{An induced $C_4$ given that $N_X$ is not anticomplete to $N_Y$.}
+                \label{fig:chordal_anti_1}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$. If $x\in N_X$
+            is adjacent to $z\in N_Z$, then $\l{a,b,c,d,x,z}$ induces an $H_4$
+            (see \Cref{fig:chordal_anti_2}). Hence, $N_X$ is anticomplete to
+            $N_Z$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z] (d) {};
+                    \node[left=0.75 of z] (x)  {};
+
+                    \draw (c) to (d);
+                    \draw (a) to (b);
+                    \draw (x) to (a);
+                    \draw (z) to (a);
+                    \draw (z) to (b);
+                    \draw (z) to (c);
+                    \draw (z) to (d);
+                    \draw (x) to (z);
+                \end{tikzpicture}
+                \caption{An induced $H_4$ given that $N_X$ is not anticomplete to $N_Z$.}
+                \label{fig:chordal_anti_2}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
 
 \begin{lemma}
     \label{lem:neighborhoods_chordal_types}
     Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
     free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
-    $X$ and $Y$ be different proper subsets of $V$.
-    \begin{enumerate}[(i)]
-        \item The exact neighborhood $N_V$ has cardinality at most one.
-        \item If $X$ has cardinality two and $X\cap\l{a,b} \neq \varnothing \neq
-        X\cap\l{c,d}$, then $N_X = \varnothing$.
-        \item If $N_V \neq \varnothing$ and $X\cap\l{a,b} \neq
-        \varnothing \neq X\cap\l{c,d}$, then $N_X = \varnothing$.
-        \item If $N_V \neq \varnothing$ and $X$ is of size one, then $N_X$ is
-        stable.
-        \item If $N_V \neq \varnothing$ and both $X$ and $Y$ are of size one,
-        with $X\cap\l{a,b} \neq \varnothing \neq Y\cap\l{c,d}$, then at least
-        one of $N_X$ and $N_Y$ is empty.
-        \item If $X$ consists of the two vertices of an edge of the $2K_2$, then
-        $N_X$ is split.
-    \end{enumerate}
+    $X$ and $Y$ be different subsets of $Z$.
+    \begin{lemenum}
+        \item If $N_X$ is a 2-bag adjacent to both edges of the $2K_2$,
+            then $N_X$ is empty. \label{lem:chordal_types_2}
+        \item If $N_X$ is a bag adjacent to both edges of the $2K_2$, then $N_X$
+            is a clique. \label{lem:chordal_types_clique_bag}
+        \item The exact neighborhood $N_Z$ has cardinality at most one.
+            \label{lem:chordal_types_1}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then $N_X$
+            is split. \label{lem:chordal_types_6}
+        \item At most one bag is adjacent to both edges of the $2K_2$.
+            \label{lem:chordal_types_3}
+        \item If $N_X$ is a 3-bag and $N_Y$ is the complementary 1-bag, then at
+            least one of $N_X$ and $N_Y$ is empty. \label{lem:chordal_types_pending}
+    \end{lemenum}
 \end{lemma}
 
+\begin{proof}
+    \leavevmode\par
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose without loss of generality that $X=\l{a,c}$. If $x\in
+            N_X$, notice $\p{b,a,x,c,d}$ is an induced copy of $P_5$ (see
+            \Cref{fig:chordal_types_2}). It follows that $N_X$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z] (d) {};
+
+                    \draw (c) to (d);
+                    \draw (a) to (b);
+                    \draw (z) to (a);
+                    \draw (z) to (c);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that $N_X$ is nonempty.}
+                \label{fig:chordal_types_2}
+            \end{figure}
+        \item Suppose that $x$ and $y$ are nonadjacent vertices in $N_X$. By
+            (i), it follows that $N_X$ is a 3-bag or $X=Z$. Suppose without loss
+            of generality that $\l{a,b,c}\subseteq X$. Observe $\p{a,x,c,y,a}$
+            is an induced copy of $C_4$ (see
+            \Cref{fig:chordal_types_clique_bag}). Therefore, $N_X$ is a clique.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node[Label] (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+                    \node[left=0.75 of z] (x)  {};
+                    \node[right=0.75 of z] (y)  {};
+
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (y) to (b);
+                    \draw (x) to (a);
+                    \draw (x) to (c);
+                    \draw (y) to (a);
+                    \draw (y) to (c);
+                \end{tikzpicture}
+                \caption{An induced copy of $C_4$ given that $N_X$ is not a clique.}
+                \label{fig:chordal_types_clique_bag}
+            \end{figure}
+        \item Suppose $x$ and $y$ are vertices in $N_Z$. By (ii), $x$ and $y$
+            are adjacent. Notice that $\l{a,b,c,d,x,y}$ induces an $H_1$ (see
+            \Cref{fig:chordal_types_1}). Thus, $N_Z$ has cardinality at most
+            one.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node[Label] (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z] (d) {};
+                    \node[left=0.75 of z] (x)  {};
+                    \node[right=0.75 of z] (y)  {};
+
+                    \draw (c) to (d);
+                    \draw (a) to (b);
+                    \draw (x) to (b);
+                    \draw (y) to (b);
+                    \draw (x) to (d);
+                    \draw (y) to (d);
+                    \draw (x) to (a);
+                    \draw (x) to (c);
+                    \draw (y) to (a);
+                    \draw (y) to (c);
+                    \draw (x) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_1$ given that $N_Z$ has more than one vertex.}
+                \label{fig:chordal_types_1}
+            \end{figure}
+        \item Suppose without loss of generality that $X=\l{a,b}$. If $N_X$ is
+            not split, since $G$ is chordal, it follows that $G[N_X]$ contains
+            an induced $2K_2$. Then, adjacent vertices $a$ and $b$ are complete
+            to the copy of $2K_2$ in $N_X$, which contradicts (iii). Then, $N_X$
+            is split.
+        \item Let $N_X$ and $N_Y$ be nonempty different bags adjacent to both
+            edges of the $2K_2$. By (i), both $X$ and $Y$ have at least three
+            vertices in $Z$. Suppose without loss of generality that
+            $\l{a,b,c}\subseteq X$ and $b\in Y$. Let $x\in N_X$ and $y\in N_Y$.
+
+            If one of $X$ and $Y$ is equal to $Z$, suppose without loss of
+            generality that $X=Z$. Since $X\neq Y$, suppose without loss of
+            generality that $c\notin Y$. Since $N_Y$ is a 3-bag adajcent to both
+            edges of the $2K_2$, it follows that $Y=\l{a,b,d}$. Notice either
+            $\l{a,b,c,d,x,y}$ induces a copy of $H_2$, or $\p{a,x,d,y,a}$ is a
+            $C_4$, depending on whether $x$ is adjacent to $y$ or not,
+            respectively (see \Cref{fig:chordal_types_3_1}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z] (a) {};
+                        \node[above right=1cm and 0.75cm of z] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw (c) to (d);
+                        \draw (a) to (b);
+                        \draw (x) to (b);
+                        \draw (y) to (b);
+                        \draw (x) to (d);
+                        \draw (y) to (d);
+                        \draw (x) to (a);
+                        \draw (x) to (c);
+                        \draw (y) to (a);
+                        \draw (x) to (y);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z] (a) {};
+                        \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of z, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (y) to (b);
+                        \draw[lightgray] (x) to (c);
+                        \draw (x) to (d);
+                        \draw (y) to (d);
+                        \draw (x) to (a);
+                        \draw (y) to (a);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_4$ or $H_2$ given that both $N_X$ 
+                    and $N_Y$ are nonempty.}
+                \label{fig:chordal_types_3_1}
+            \end{figure}
+
+            If neither $X$ nor $Y$ is $Z$, then $X=\l{a,b,c}$. We claim that $y$
+            is adjacent to $x$ and $c$. Indeed, since $Y$ is adjacent to the
+            edge $cd$, $y$ is adjacent to at least one between $c$ and $d$. If
+            $y$ is adjacent to $d$, then $y$ must be adjacent to both $x$ and
+            $c$, otherwise, there is an induced copy of $C_4$ or $C_5$ (see
+            \Cref{fig:chordal_types_3_2}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \begin{scope}[xshift=-3cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of z] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (a);
+                        \draw (c) to (d);
+                        \draw (x) to (b);
+                        \draw (y) to (b);
+                        \draw (y) to (d);
+                        \draw (x) to (c);
+                    \end{scope}
+
+                    \begin{scope}[]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of z] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (y) to (d);
+                        \draw (x) to (b);
+                        \draw (y) to (b);
+                        \draw (x) to (c);
+                        \draw (y) to (c);
+                    \end{scope}
+
+                    \begin{scope}[xshift=3cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (y) to (b);
+                        \draw (y) to (d);
+                        \draw (c) to (d);
+                        \draw (x) to (c);
+                        \draw (y) to (x);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_4$ or $C_5$ given that $y$ is not
+                complete to $\l{x,c}$.}
+                \label{fig:chordal_types_3_2}
+            \end{figure}
+
+            This last argument also implies that if $y$ is adjacent to $c$, then
+            $y$ is adjacent to $x$. At any rate, since $y$ is adjacent to at
+            least one between $c$ and $d$, it follows that $y$ is adjacent to
+            both $x$ and $c$. Moreover, since $Y$ is different from $X$ and $Z$,
+            it follows that $Y=\l{b,c,d}$, so $y$ is adjacent to $d$. Thus,
+            $\l{a,b,c,d,x,y}$ induces an $H_3$ (see
+            \Cref{fig:chordal_type_3_3}). At last, we conclude that one of $N_X$
+            and $N_Y$ must be empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \node[Label] (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z] (d) {};
+                    \node[left=0.75 of z] (x)  {};
+                    \node[right=0.75 of z] (y)  {};
+
+                    \draw (a) to (b);
+                    \draw (x) to (a);
+                    \draw (x) to (b);
+                    \draw (y) to (b);
+                    \draw (y) to (d);
+                    \draw (c) to (d);
+                    \draw (x) to (c);
+                    \draw (y) to (x);
+                    \draw (y) to (c);
+                \end{tikzpicture}
+                \caption{An induced $H_3$ given that $N_X$ and $N_Y$ are both nonempty.}
+                \label{fig:chordal_type_3_3}
+            \end{figure}
+        
+        \item Suppose without loss of generality that $X=\l{a,b,c}$, so
+            $Y=\l{d}$. If $x\in N_X$ and $y\in N_Y$, then either $\p{x,c,d,y,x}$ is
+            a $C_4$, or $\p{a,x,c,d,y}$ is a $P_5$, depending on wheter $x$ is
+            adjacent to $y$ or not (see \Cref{fig:chordal_types_pending}). Hence,
+            one between $N_X$ and $N_Y$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (x) to (b);
+                        \draw (y) to (d);
+                        \draw (c) to (d);
+                        \draw (x) to (c);
+                        \draw (y) to (x);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node[Label] (z) {};
+                        \node[above left=1cm and 0.75cm of z] (a) {};
+                        \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of z] (c) {};
+                        \node[below right=1cm and 0.75cm of z] (d) {};
+                        \node[left=0.75 of z] (x)  {};
+                        \node[right=0.75 of z] (y)  {};
+    
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (x) to (b);
+                        \draw (x) to (a);
+                        \draw (y) to (d);
+                        \draw (c) to (d);
+                        \draw (x) to (c);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_4$ or $P_5$ given that both $N_X$
+                    and $N_Y$ are nonempty.}
+                \label{fig:chordal_types_pending}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
+
+Similar to the previous two lemmas, the next three give additional relations
+between the exact neighborhoods of the $2K_2$ provided that $N_Z$ is nonempty.
+In some cases, it will be useful to know properties regarding a subset of
+vertices in a bag that is complete to another bag. Thus, for sets $X$ and $Y$,
+we denote by $K(X,Y)$ the set of vertices in $X$ that are complete to $Y$. We
+proceed to state and prove the final three lemmas before the main theorem of the
+section.
+
 \begin{lemma}
-    \label{lem:neighborhoods_chordal_complete}
     Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
     free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
-    $X$ and $Y$ be different proper subsets of $V$.
-    \begin{enumerate}[(a)]
-        \item If $N_V\neq \varnothing$ and both $X$ and $Y$ consist of two
-        vertices, with empty intersection, then at least one of $N_X$ and $N_Y$
-        is complete to $N_V$.
-    \end{enumerate}
+    $X$ and $Y$ be different proper subsets of $Z$. Suppose that $N_Z\neq
+    \varnothing$ and $z\in N_Z$.
+    \begin{lemenum}
+        \item If both $N_X$ and $N_Y$ are 2-bags complete to different edges of
+            the $2K_2$, then $N_X$ is anticomplete to $N_Y$.
+            \label{lem:chordal_anti_3}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then $N_X$
+            is anticomplete to $K(N_\varnothing,N_Z)$.
+            \label{lem:chordal_anti_2_bag}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+            $N_\varnothing$ is anticomplete to $N_X \setminus K(N_X,N_Z)$.
+            \label{lem:chordal_anti_5}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, and $N_Y$
+            is a 1-bag, then $N_Y$ is anticomplete to $N_X \setminus
+            K(N_X,N_Z)$.
+            \label{lem:chordal_anti_2_bag_2}
+        \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to
+            $N_\varnothing$. \label{lem:chordal_anti_4}
+    \end{lemenum}
 \end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label= (\roman*)]
+        \item Suppose without loss of generality that $X=\l{a,b}$, so
+            $Y=\l{c,d}$. If $x\in N_X$ is adjacent to $y\in N_Y$, then $G$
+            contains an induced copy of $C_5$, $C_4$ or $H_2$, depending on
+            whether $x$ and $y$ are adjacent to $z$ or not (see
+            \Cref{fig:chordal_anti_3}). We conclude that $N_X$ is anticomplete
+            to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \begin{scope}[xshift=-3cm]
+                        \node (z) {};
+                        \node[above left=1 and 0.75 of z] (a) {};
+                        \node[above right=1 and 0.75 of z, lightgray] (b) {};
+                        \node[below left=1 and 0.75 of z] (c) {};
+                        \node[below right=1 and 0.75 of z, lightgray] (d) {};
+                        \node[above left=0.5 and 0.75 of z] (x) {};
+                        \node[below left=0.5 and 0.75 of z] (y) {};
+        
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (z) to (b);
+                        \draw[lightgray] (z) to (d);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (y) to (d);
+                        \draw (x) to (a);
+                        \draw (z) to (a);
+                        \draw (y) to (c);
+                        \draw (x) to (y);
+                        \draw (z) to (c);
+                    \end{scope}
+
+                    \begin{scope}
+                        \node (z) {};
+                        \node[above left=1 and 0.75 of z, lightgray] (a) {};
+                        \node[above right=1 and 0.75 of z, lightgray] (b) {};
+                        \node[below left=1 and 0.75 of z] (c) {};
+                        \node[below right=1 and 0.75 of z, lightgray] (d) {};
+                        \node[above left=0.5 and 0.75 of z] (x) {};
+                        \node[below left=0.5 and 0.75 of z] (y) {};
+
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (z) to (b);
+                        \draw[lightgray] (z) to (d);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (z) to (a);
+                        \draw[lightgray] (y) to (d);
+                        \draw (x) to (z);
+                        \draw (y) to (c);
+                        \draw (x) to (y);
+                        \draw (z) to (c);
+                    \end{scope}
+
+                    \begin{scope}[xshift=3cm]
+                        \node (z) {};
+                        \node[above left=1 and 0.75 of z] (a) {};
+                        \node[above right=1 and 0.75 of z] (b) {};
+                        \node[below left=1 and 0.75 of z, lightgray] (c) {};
+                        \node[below right=1 and 0.75 of z] (d) {};
+                        \node[above left=0.5 and 0.75 of z] (x) {};
+                        \node[below left=0.5 and 0.75 of z] (y) {};
+
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (y) to (c);
+                        \draw[lightgray] (z) to (c);
+                        \draw (a) to (b);
+                        \draw (z) to (b);
+                        \draw (z) to (d);
+                        \draw (x) to (b);
+                        \draw (x) to (a);
+                        \draw (z) to (a);
+                        \draw (y) to (d);
+                        \draw (y) to (z);
+                        \draw (x) to (z);
+                        \draw (x) to (y);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_5$ ($\p{a,z,c,y,x,a}$), $C_4$
+                ($\p{z,c,y,x,z}$) or $H_2$ (induced by $\l{a,b,d,x,y,z}$) given
+                that $N_X$ is not anticomplete to $N_Y$.}
+                \label{fig:chordal_anti_3}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in N_X$
+            is adjacent to a vertex $w\in K(N_{\varnothing},N_Z)$, then $G$
+            contains either an induced copy of $H_4$ or $C_4$, depending on
+            whether $x$ is adjacent to $z$ or not, respectively. (see
+            \Cref{fig:chordal_anti_2_bag}). Hence, $N_X$ is anticomplete to
+            $K(N_\varnothing,N_Z)$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v] (c) {};
+                        \node[below right=1cm and 0.75cm of v] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+                
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (w) to (b);
+                        \draw (v) to (d);
+                        \draw (v) to (c);
+                        \draw (v) to (a);
+                        \draw (c) to (d);
+                        \draw (v) to (x);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                        \draw (w) to (v);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+    
+                        \draw[lightgray] (v) to (c);
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (w) to (b);
+                        \draw (v) to (a);
+                        \draw (v) to (x);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced $H_4$ (induced by $\l{a,c,d,w,x,z}$) or
+                    $C_4$ ($\p{w,x,a,z,w}$) given that $N_X$ is not anticomplete
+                    to $K(N_\varnothing,N_Z)$.}
+                \label{fig:chordal_anti_2_bag}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a,b}$. Let $x\in N_X \setminus K(N_X,N_Z)$ and suppose without loss of
+        generality that $x$ is not adjacent to $z$. If $x$ is adjacent to $w\in
+        N_\varnothing$, then $G$ contains an induced copy of $C_4$ or $P_5$,
+        depending on whether $w$ is adjacent to $z$ or not (see
+        \Cref{fig:chordal_anti_5}). Therefore, $N_\varnothing$ is anticomplete
+        to $N_X \setminus K(N_X,N_Z)$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+    
+                        \draw[lightgray] (v) to (c);
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (w) to (b);
+                        \draw (v) to (a);
+                        \draw (v) to (x);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+    
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (w) to (b);
+                        \draw (v) to (c);
+                        \draw (v) to (a);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced $C_4$ ($\p{w,x,a,z,w}$) or $P_5$
+                    ($\p{w,x,a,z,c}$) given that $w$ is not adjacent to $v$.}
+                \label{fig:chordal_anti_5}
+            \end{figure}
+        
+        \item Suppose without loss of generality that $X=\l{a,b}$. Suppose $y\in
+            N_Y$ is adjacent to $x\in N_X \setminus K(N_X,N_Z)$ and suppose
+            without loss of generality that $x$ is not adjacent to $z$. By
+            \Cref{lem:chordal_anti_1}, $y$ is also not adjacent to $z$.
+        
+            On the one hand, if $N_Y$ is adjacent to the edge $ab$, suppose
+            without loss of generality that $Y=\l{b}$. Then, $\p{y,x,a,z,c}$ is
+            an induced copy of $P_5$ (see \Cref{fig:chordal_anti_2_bag_2_1}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (w) at (0,1.5) {};
+                    \node (x) [right=0.75 of w] {};
+            
+                    \draw[lightgray] (b) to (x);
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (w) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw (v) to (c);
+                    \draw (v) to (a);
+                    \draw (w) to (x);
+                    \draw (w) to (a);
+                \end{tikzpicture}
+                \caption{An induced $P_5$ given that $N_Y$ is not anticomplete
+                    to $N_X\setminus K(N_X,N_Z)$.}
+                \label{fig:chordal_anti_2_bag_2_1}
+            \end{figure}
+
+            On the other hand, if $N_Y$ is adjacent to the edge $cd$, suppose
+            without loss of generality that $Y=\l{d}$. Then, $\p{x,a,z,d,y,x}$
+            is an induced copy of $C_5$ (see \Cref{fig:chordal_anti_2_bag_2_2}).
+            Thus, $N_Y$ is anticomplete to $N_X \setminus K(N_X,N_Z)$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v] (d) {};
+                    \node (w) at (0,1.5) {};
+                    \node (x) [right=0.75 of v] {};
+            
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (w) to (b);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (c) to (d);
+                    \draw (d) to (x);
+                    \draw (v) to (d);
+                    \draw (v) to (a);
+                    \draw (w) to (x);
+                    \draw (w) to (a);
+                \end{tikzpicture}
+                \caption{An induced $C_5$ given that $N_Y$ is not anticomplete
+                    to $N_X\setminus K(N_X,N_Z)$.}
+                \label{fig:chordal_anti_2_bag_2_2}
+            \end{figure}
+        
+        \item Suppose without loss of generality that $X=\l{a}$. By
+            \Cref{lem:chordal_anti_1}, $x\in N_X$ is not adjacent to $z$. If
+            $w\in N_\varnothing$ is adjacent to $x$, then $G$ contains an
+            induced copy of $C_4$ or $P_5$, depending on whether $w$ is adjacent
+            to $z$ or not (see \Cref{fig:chordal_anti_4}). Hence, $N_X$ is
+            anticomplete to $N_\varnothing$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+    
+                        \draw[lightgray] (v) to (c);
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw (v) to (a);
+                        \draw (v) to (x);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (w) at (0,1.5) {};
+                        \node (x) [right=0.75 of b] {};
+                        \node[Label] at ($(0,0) - (x)$) {};
+    
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw (v) to (c);
+                        \draw (v) to (a);
+                        \draw (w) to (x);
+                        \draw (w) to (a);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced $C_4$ ($\p{w,x,a,z,w}$) or $P_5$
+                    ($\p{w,x,a,z,c}$) given that $N_X$ is not anticomplete to
+                    $N_\varnothing$.}
+                \label{fig:chordal_anti_4}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
+    free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
+    $X$ and $Y$ be different proper subsets of $Z$. Suppose that $N_Z\neq
+    \varnothing$ and $z\in N_z$.
+    \begin{lemenum}
+        \item If $N_X$ and $N_Y$ are 1-bags adjacent to different edges of the
+            $2K_2$, then at least one of $N_X$ and $N_Y$ is empty.
+            \label{lem:chordal_types_5}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+            $K(N_X,N_Z)$ is a clique. \label{lem:chordal_types_K_clique}
+        \item The set $K(N_\varnothing,N_Z)$ is a cluster.
+            \label{lem:chordal_types_K_cluster}
+        \item If $N_X$ is a 1-bag, then $N_X$ is stable.
+            \label{lem:chordal_types_4}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+            adjacent vertices in $N_\varnothing$ anticomplete to $N_Z$ are
+            anticomplete to $K$, the set of vertices in $N_X$ complete to $N_Z$.
+            \label{lem:chordal_types_trivial}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then at
+            least one of $N_{X} \setminus K(X,Z)$ and $N_\varnothing \setminus
+            K(\varnothing,Z)$ is empty. \label{lem:chordal_types_empty}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$ and $N_Y$ is
+            a 1-bag adjacent to the other edge of the $2K_2$, then at least one of
+            $N_{X} \setminus K(X,Z)$ and $N_Y$ is empty.
+            \label{lem:chordal_types_empty_2}
+    \end{lemenum}
+\end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{c}$.
+            If $x\in N_X$ and $y\in N_Y$, by \Cref{lem:chordal_anti_1}, we have that
+            $z$ is nonadjacent to both $x$ and $y$. Then, $G$ has an induced copy of
+            either $C_5$ or $P_5$, depending on whether $x$ is adjacent to $y$ or
+            not, respectively (see \Cref{fig:chordal_types_5}). Hence, one between
+            $N_X$ and $N_Y$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+                    on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node (z) {};
+                        \node[above left=1 and 0.75 of z] (a) {};
+                        \node[above right=1 and 0.75 of z, lightgray] (b) {};
+                        \node[below left=1 and 0.75 of z] (c) {};
+                        \node[below right=1 and 0.75 of z, lightgray] (d) {};
+                        \node[above left=0.5 and 0.75 of z] (x) {};
+                        \node[below left=0.5 and 0.75 of z] (y) {};
+        
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (z) to (b);
+                        \draw[lightgray] (z) to (d);
+                        \draw (x) to (a);
+                        \draw (z) to (a);
+                        \draw (y) to (c);
+                        \draw (x) to (y);
+                        \draw (z) to (c);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node (z) {};
+                        \node[above left=1 and 0.75 of z] (a) {};
+                        \node[above right=1 and 0.75 of z, lightgray] (b) {};
+                        \node[below left=1 and 0.75 of z] (c) {};
+                        \node[below right=1 and 0.75 of z, lightgray] (d) {};
+                        \node[above left=0.5 and 0.75 of z] (x) {};
+                        \node[below left=0.5 and 0.75 of z] (y) {};
+        
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (z) to (b);
+                        \draw[lightgray] (z) to (d);
+                        \draw (x) to (a);
+                        \draw (z) to (a);
+                        \draw (y) to (c);
+                        \draw (z) to (c);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced $C_5$ ($\p{x,a,z,c,y,x}$) or $P_5$
+                    ($\p{x,a,z,c,y}$) given that both $N_X$ and $N_Y$ are
+                    nonempty.}
+                \label{fig:chordal_types_5}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a,b}$. If there are
+            nonadjacent vertices $x$ and $y$ in $K(N_X,N_Z)$, notice
+            $\l{a,c,d,x,y,z}$ induces an $H_4$ (see
+            \Cref{fig:chordal_types_K_clique}). Therefore, $K(N_X,N_Z)$ is a
+            clique.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v] (c) {};
+                    \node[below right=1cm and 0.75cm of v] (d) {};
+                    \node[above=1.5cm of v] (x) {};
+                    \node[left=0.75cm of v] (y) {};
+
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (y) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw (x) to (a);
+                    \draw (y) to (a);
+                    \draw (c) to (d);
+                    \draw (y) to (v);
+                    \draw (x) to (v);
+                    \draw (v) to (a);
+                    \draw (v) to (c);
+                    \draw (v) to (d);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that $K(N_X,N_Z)$ is not
+                    a clique.}
+                \label{fig:chordal_types_K_clique}
+            \end{figure}
+
+        \item Suppose $K(N_\varnothing,N_Z)$ is not a cluster, so there is an
+            induced copy of $P_3$, $\p{w,x,y}$, with $w,x,y\in
+            K(N_\varnothing,N_Z)$. Then $\l{a,b,w,x,y,z}$ induces an $H_4$ (see
+            \Cref{fig:chordal_types_K_cluster}). It follows that
+            $K(N_\varnothing,N_Z)$ is a cluster.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (-30:1) {};
+                    \node (y) at (0:1) {};
+                    \node (z) at (30:1) {};
+                    \node[Label] at ($(0,0) - (y)$) {};
+
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw (a) to (b);
+                    \draw (v) to (b);
+                    \draw (v) to (a);
+                    \draw (v) to (x);
+                    \draw (v) to (y);
+                    \draw (v) to (z);
+                    \draw (x) to (y);
+                    \draw (z) to (y);
+                \end{tikzpicture}
+                \caption{An induced $H_4$ given that $K(N_\varnothing,N_Z)$ is not a
+                    cluster.}
+                \label{fig:chordal_types_K_cluster}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$. Let $x,x'\in
+            N_X$. By \Cref{lem:chordal_anti_1}, $z$ is nonadjacent to both $x$ and
+            $x'$. If $x$ and $x'$ are adjacent, then $\l{a,b,c,d,x,x',z}$ induces an
+            $H_6$ (see \Cref{fig:chordal_types_4}). We conclude that $N_X$ is
+            stable.
+            
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z] (b) {};
+                    \node[below left=1cm and 0.75cm of z] (c) {};
+                    \node[below right=1cm and 0.75cm of z] (d) {};
+                    \node[above=1cm of a] (x) {};
+                    \node[right=0.75cm of x] (x') {};
+
+                    \draw (z) to (c);
+                    \draw (z) to (d);
+                    \draw (c) to (d);
+                    \draw (a) to (b);
+                    \draw (z) to (b);
+                    \draw (z) to (a);
+                    \draw (a) to (x);
+                    \draw (a) to (x');
+                    \draw (x) to (x');
+                \end{tikzpicture}
+                \caption{An induced copy of $H_6$ given that $N_X$ is not stable.}
+                \label{fig:chordal_types_4}
+            \end{figure}
+
+        \item 
+
+    \end{enumerate}
+    % \begin{enumerate}[label=(\roman*)]
+    %     \item Indeed, since $N_{ab}$ is not complete to $z$, let $w\in
+    %     N_{ab}\setminus K$. If $V_{C - C_z}$ is nonempty, since $C$ is
+    %     connected, there are adjacent vertices $x\in V_{C - C_z}$ and $y\in
+    %     V_{C_z}$. By \Cref{lem:chordal_anti_5}, $x$ and $y$ are anticomplete to
+    %     $w$, so $\p{w,a,z,y,x}$ is a $P_5$ (see \todo{figura}). Thus,
+    %     $V_{C-C_z}$ is empty.
+
+    %     \item Finally, $N_{cd}\setminus K$ being
+    %     nonempty imply that both $N_a$ and $N_b$ are empty, due to either $P_5$ or
+    %     $C_5$ (see \Cref{fig:N_c_adjacent_to_N_cd_K}). \todo{modificar figura}
+
+    %     \begin{figure}[htb!]
+    %         \centering
+    %         \begin{tikzpicture}[every node/.style={vertex}, node
+    %             distance=1cm, on grid, edge]
+    %             \node (v) {};
+    %             \node[above left=1cm and 0.75cm of v] (a) {};
+    %             \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+    %             \node[below left=1cm and 0.75cm of v] (c) {};
+    %             \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+    %             \node (x) at (-1.25,1.5) {};
+    %             \node (y) at (-1.25,-1.5) {};
+    %             \node [Label] at ($(0,0) -(x)$) {};
+
+    %             \draw[lightgray] (a) to (b);
+    %             \draw[lightgray] (d) to (y);
+    %             \draw[lightgray] (v) to (d);
+    %             \draw[lightgray] (c) to (d);
+    %             \draw[lightgray] (v) to (b);
+    %             \draw (x) to (a);
+    %             \draw (v) to (a);
+    %             \draw (y) to (c);
+    %             \draw (x) to (y);
+    %             \draw (v) to (c);
+    %         \end{tikzpicture}
+    %         \caption{An induced $C_5$ given that $N_a$ is adjacent to a vertex in $N_{cd}\setminus K'$.}
+    %         \label{fig:N_c_adjacent_to_N_cd_K}
+    %     \end{figure}
+    % \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    \label{lem:neighborhoods_chordal_comp}
+    Let $G$ be a connected chordal $P_5$-free graph with and induced $2K_2$ and
+    free of the graphs depicted in \Cref{fig:chordal-p5-free-obstructions}. Let
+    $X$ and $Y$ be different proper subsets of $Z$. Suppose $N_Z\neq
+    \varnothing$.
+    \begin{lemenum}
+        \item If $N_X$ and $N_Y$ are 2-bags complete to different edges of the
+        $2K_2$, then at least one of $N_X$ and $N_Y$ is complete to $N_Z$.
+        \label{lem:chordal_comp_1}
+        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+        adjacent vertices in $N_X$ anticomplete to $N_Z$ are complete to $K$,
+        the set of vertices of $N_X$ complete to $N_Z$.
+        \label{lem:chordal_comp_2}
+    \end{lemenum}
+\end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
+        \item 
+        % \item If that was not the case, , such that at least one of them is not
+        %     adjacent to a vertex $w$ in $K$. On the one hand, if neither $x$ nor $y$ is
+        %     adjacent to $w$, then $\l{a,b,z,w,x,y}$ induces an $H_1$ (see
+        %     \Cref{fig:K_1_non_complete_to_K1}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (-0.5,1.5) {};
+                    \node (y) at (0.5,1.5) {};
+                    \node[left=0.75cm of v] (w) {};
+
+                    \draw (a) to (b);
+                    \draw (x) to (a);
+                    \draw (x) to (b);
+                    \draw (y) to (a);
+                    \draw (y) to (b);
+                    \draw[lightgray] (c) to (d);
+                    \draw (w) to (v);
+                    \draw (w) to (a);
+                    \draw (w) to (b);
+                    \draw (x) to (y);
+                    \draw (v) to (a);
+                    \draw (v) to (b);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (d);
+                \end{tikzpicture}
+                \caption{An induced $H_1$ given that $K_{ab}$ is not complete to $K$.}
+                \label{fig:K_1_non_complete_to_K1}
+            \end{figure}
+    
+        %     On the other hand, supposing without loss of generality that $y$ is adjacent
+        %     to $w$, then $\p{x,y,w,v,c}$ is a $P_5$ (see
+        %     \Cref{fig:K_1_non_complete_to_K2}).
+            
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (-0.5,1.5) {};
+                    \node (y) at (0.5,1.5) {};
+                    \node[left=0.75cm of v] (w) {};
+
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (x) to (a);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (y) to (a);
+                    \draw[lightgray] (y) to (b);
+                    \draw[lightgray] (w) to (a);
+                    \draw[lightgray] (w) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (v) to (a);
+                    \draw[lightgray] (v) to (b);
+                    \draw (y) to (w);
+                    \draw (w) to (v);
+                    \draw (x) to (y);
+                    \draw (v) to (c);
+                \end{tikzpicture}
+                \caption{An induced $P_5$ given that $K_{ab}$ is not complete to $K$.}
+                \label{fig:K_1_non_complete_to_K2}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
 
 \begin{theorem}
     \label{thm:monopolar_chordal}
@@ -1156,232 +2278,157 @@ graph is free of certain induced subgraphs.
     \Cref{prop:minimal_obs_chordal} that $G$ does not contain any of the
     mentioned graphs as an induced subgraph.
 
-    For simplicity, throughout the proof, sets $N_X$ when $X$ is of size one
-    will be called 1-bags. Similarly, sets $N_X$ when $X$ is of size two and
-    three will be called 2-bags and 3-bags, respectively. Suppose that $G$ does
-    not contain any of the graphs depicted in
+    Suppose that $G$ does not contain any of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. We proceed by considering the
     following cases:
 
-    \paragraph{Case 1: $N_V$ is nonempty.} By (i) of
-    \Cref{lem:neighborhoods_chordal_types}, $N_V$ has exactly one vertex, $v$.
-    Additionally, (iii) of the same lemma implies that no other bag is adjacent
-    to vertices of both edges of the $2K_2$. Also, by (v) of the same lemma,
-    suppose without loss of generality that $N_c = N_d = \varnothing$.
+    \paragraph{Case 1: $N_Z$ is nonempty.} By \Cref{lem:chordal_types_1}, $N_Z$
+    has exactly one vertex, $z$. Additionally, \Cref{lem:chordal_types_3}
+    implies that no other bag is adjacent to vertices of both edges of the
+    $2K_2$. Also, by \Cref{lem:chordal_types_5}, suppose without loss of
+    generality that $N_c = N_d = \varnothing$.
 
-    Let $K$ be the set of vertices of $N_{ab}$ that are complete to $N_V$. We
-    claim that $K$ is a clique. Indeed, if that was not the case, then there
-    would be nonadjacent vertices $x$ and $y$ in $K$, so $\l{a,c,d,v,x,y}$
-    induces an $H_4$ (see \Cref{fig:K_non_clique}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v] (d) {};
-            \node[above=1.5cm of v] (x) {};
-            \node[left=0.75cm of v] (y) {};
-
-            \draw (a) to (b);
-            \draw (x) to (a);
-            \draw[lightgray] (x) to (b);
-            \draw (y) to (a);
-            \draw[lightgray] (y) to (b);
-            \draw (c) to (d);
-            \draw (y) to (v);
-            \draw (x) to (v);
-            \draw (v) to (a);
-            \draw[lightgray] (v) to (b);
-            \draw (v) to (c);
-            \draw (v) to (d);
-        \end{tikzpicture}
-        \caption{An $H_4$ induced given that $K$ is not a clique.}
-        \label{fig:K_non_clique}
-    \end{figure}
-
-    Similarly, the set of vertices in $N_{cd}$ that are complete to $N_V$, $K'$,
-    is a clique. Furthermore, $K$ and $K'$ are anticomplete to each other by
-    (iii) of \Cref{lem:neighborhoods_chordal_anticomplete}. Then,
+    Let $K$ be the set of vertices of $N_{ab}$ that are complete to $N_Z$. By
+    \Cref{lem:chordal_types_K_clique}, $K$ is a clique. Similarly, the set of
+    vertices in $N_{cd}$ that are complete to $N_Z$, $K'$, is a clique.
+    Furthermore, $K$ and $K'$ are anticomplete to each other by
+    \Cref{lem:chordal_anti_3}. Then,
     \[
         K\cup \l{a,b} \cup K' \cup \l{c,d}
     \]
-    is a cluster. Consider the following subcases:
-
-    \paragraph{Case 1.1: $N_{ab}$ is not complete to $v$.} By (i) of
-    \Cref{lem:neighborhoods_chordal_complete}, $N_{cd}$ is complete to $v$, so in
-    fact, $N_{cd} = K'$. Notice $N_{ab} \setminus K$ is split by (vi) of
-    \Cref{lem:neighborhoods_chordal_types}, so let $(S_{ab},K_{ab})$ be a split
-    partition of it, where $K_{ab}$ is a maximal clique. We claim that $K_{ab}$
-    is complete to $K$. Indeed, if that was not the case, since $K_{ab}$ is
-    maximal, there are at least two vertices in it, $x$ and $y$, and at least
-    one of them is not adjacent to some vertex $w$ in $K$. On the one hand, if
-    neither $x$ nor $y$ is adjacent to $w$, then $\l{a,b,v,w,x,y}$ induces an
-    $H_1$ (see \Cref{fig:K_1_non_complete_to_K1}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-0.5,1.5) {};
-            \node (y) at (0.5,1.5) {};
-            \node[left=0.75cm of v] (w) {};
-
-            \draw (a) to (b);
-            \draw (x) to (a);
-            \draw (x) to (b);
-            \draw (y) to (a);
-            \draw (y) to (b);
-            \draw[lightgray] (c) to (d);
-            \draw (w) to (v);
-            \draw (w) to (a);
-            \draw (w) to (b);
-            \draw (x) to (y);
-            \draw (v) to (a);
-            \draw (v) to (b);
-            \draw[lightgray] (v) to (c);
-            \draw[lightgray] (v) to (d);
-        \end{tikzpicture}
-        \caption{An induced $H_1$ given that $K_{ab}$ is not complete to $K$.}
-        \label{fig:K_1_non_complete_to_K1}
-    \end{figure}
-    
-    On the other hand, supposing without loss of generality that $y$ is adjacent
-    to $w$, then $\p{x,y,w,v,c}$ is a $P_5$ (see
-    \Cref{fig:K_1_non_complete_to_K2}).
-    
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
-            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-0.5,1.5) {};
-            \node (y) at (0.5,1.5) {};
-            \node[left=0.75cm of v] (w) {};
-
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (x) to (a);
-            \draw[lightgray] (x) to (b);
-            \draw[lightgray] (y) to (a);
-            \draw[lightgray] (y) to (b);
-            \draw[lightgray] (w) to (a);
-            \draw[lightgray] (w) to (b);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw[lightgray] (v) to (a);
-            \draw[lightgray] (v) to (b);
-            \draw (y) to (w);
-            \draw (w) to (v);
-            \draw (x) to (y);
-            \draw (v) to (c);
-        \end{tikzpicture}
-        \caption{An induced $P_5$ given that $K_{ab}$ is not complete to $K$.}
-        \label{fig:K_1_non_complete_to_K2}
-    \end{figure}
-
-    Moreover, (iii) of \Cref{lem:neighborhoods_chordal_anticomplete} implies
-    that $K_{ab}$ is anticomplete to $K'$. Thus,
+    is a cluster. Now let $\mathcal{C}$ be the set of connected components in
+    $G[N_\varnothing]$. In particular, let $\mathcal{C}_z$ be the set of
+    connected components in $\mathcal{C}$ that are adjacent to $z$. For each
+    $C\in \mathcal{C}_z$, let $C_z$ be the graph induced by the vertices of $C$
+    that are adjacent to $z$. Notice \Cref{lem:chordal_types_K_cluster} implies
+    that $C_z$ is a cluster. Also, \Cref{lem:chordal_anti_2_bag} ensures that
+    $C_z$ is anticomplete to $K$ and $K'$, so
     \[
-        K \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K\cup \l{a,b} \cup K' 
+        \cup \l{c,d}
     \]
     is a cluster.
-
-    We claim that $N_{ab}\setminus K$ is anticomplete to both $N_a$ and $N_b$.
-    Since $N_a$ is anticomplete to $N_V$ by (i) of
-    \Cref{lem:neighborhoods_chordal_anticomplete}, if $x$ in $N_a$ is adjacent
-    to $y$ in $N_{ab}\setminus K$ then $\p{x,y,b,u,c}$ is a $P_5$ (see
-    \Cref{fig:N_a_adjacent_to_N_ab_K}). Analogously follows that $N_b$ is
-    anticomplete to $N_{ab}\setminus K$.
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-0.5,1.5) {};
-            \node (y) at (0.5,1.5) {};
-
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (x) to (a);
-            \draw[lightgray] (y) to (a);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw[lightgray] (v) to (a);
-            \draw (v) to (b);
-            \draw (y) to (b);
-            \draw (x) to (y);
-            \draw (v) to (c);
-        \end{tikzpicture}
-        \caption{An induced $P_5$ given that $N_a$ is adjacent to a vertex in $N_{ab}\setminus K$.}
-        \label{fig:N_a_adjacent_to_N_ab_K}
-    \end{figure}
-
-    We obtain that $S_{ab}$, which is a subset of $N_{ab} \setminus K$, is
-    anticomplete to $N_a$ and $N_b$. Observe that $N_a$ and $N_b$ are stable due
-    to (iv) of \Cref{lem:neighborhoods_chordal_types}, and anticomplete to each
-    other due to (ii) of \Cref{lem:neighborhoods_chordal_anticomplete}, so it
-    follows that
+    
+    Meanwhile, because of \Cref{lem:chordal_types_4}, we have that $N_a$ and
+    $N_b$ are stable, while \Cref{lem:chordal_anti_2} implies that they are
+    anticomplete to each other. Moreover, \Cref{lem:chordal_anti_1} ensures that
+    both $N_a$ and $N_b$ are anticomplete to $z$, so
     \[
-        S_{ab} \cup N_a \cup N_b \cup \l{v}
+        N_a \cup N_b \cup \l{z}
     \]
-    is stable.
+    is stable. Observe that components $C\in \mathcal{C}\setminus \mathcal{C}_z$
+    are anticomplete to $z$. Since $G$ is connected, $V_C$ must be adjacent to
+    the set $N_{ab} \cup N_{cd}$. Due to \Cref{lem:chordal_anti_5}, $V_C$ can
+    only be adjacent to either $K$ or $K'$. Nonetheless,
+    \Cref{lem:chordal_types_trivial} imply that $C$ is the trivial graph. In
+    addition to it, \Cref{lem:chordal_anti_4} implies that $V_C$ is anticomplete
+    to both $N_a$ and $N_b$, so
+    \[
+        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup N_a \cup 
+        N_b \cup \l{z}
+    \]
+    is stable. We still have to decide how to arrange the following sets:
+    \begin{itemize}
+        \item $N_{ab}\setminus K$,
+        \item $N_{cd}\setminus K'$, and
+        \item sets $V_{C-C_z}$ for $C \in \mathcal{C}_z$.
+    \end{itemize}
+    We proceed by taking subcases:
+
+    \paragraph{Case 1.1: $N_{ab}$ is not complete to $z$.} By
+    \Cref{lem:chordal_comp_1}, $N_{cd}$ is complete to $z$, so in fact, $N_{cd}
+    = K'$. Additionally, since $N_{ab}\setminus K$ is nonempty, it follows from
+    \Cref{lem:chordal_types_empty} that, for each $C\in \mathcal{C}_z$,
+    $V_{C-C_z}$ is empty.
     
-    Lastly, for $N_\varnothing$, let $\mathcal{C}$ be the set of connected
-    components of $G[N_\varnothing]$. Since $G$ is connected, each $C\in
-    \mathcal{C}$ is adjacent to at least one of the other bags. By (iv) of
-    \Cref{lem:neighborhoods_chordal_anticomplete}, $C$ can only be adjacent to
-    either $v$, vertices in $N_{ab}$ or vertices in $N_{cd}$.
+    By \Cref{lem:chordal_anti_5}, $N_{ab}\setminus K$ is anticomplete to $V_C$
+    for $C\in \mathcal{C}$. Furthermore, \Cref{lem:chordal_anti_2_bag_2} implies
+    that $N_{ab}\setminus K$ is anticomplete to both $N_a$ and $N_b$. Once more,
+    we proceed by taking the following subcases:
     
-    Let $C\in \mathcal{C}$ be anticomplete to $v$. Therefore, there is a vertex
-    $x\in N_{ab}\cup N_{cd}$ adjacent to a vertex $y$ of $C$. Notice $x$ must be
-    adjacent to $v$, otherwise, $\p{y,x,a,v,c}$ is a $P_5$ (see
-    \Cref{fig:x_adjacent_to_v}). It follows that the vertices of $N_{ab}$ to
-    which $C$ are adjacent lie in $K$, so $C$ is anticomplete to $S_{ab}$.
+    \paragraph{Case 1.1.1: $N_{ab}\setminus K$ is stable.} Aforementioned
+    arguments imply that
+    \[
+        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        \p{N_{ab}\setminus K} \cup N_a \cup N_b \cup \l{z}
+    \]
+    is stable, so
+    \[
+        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        \p{N_{ab}\setminus K} \cup N_a \cup N_b \cup \l{z} , 
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K\cup \l{a,b} \cup K' 
+        \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$.
 
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-0.5,1.5) {};
-            \node (y) at (0.5,1.5) {};
+    \paragraph{Case 1.1.2: $N_{ab}\setminus K$ is not stable.} Notice $N_{ab}
+    \setminus K$ is split by \Cref{lem:chordal_types_6}, so let
+    $(S_{ab},K_{ab})$ be a split partition of it, where $K_{ab}$ is a maximal
+    clique. As in the previous case, we already have that
+    \[
+        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup S_{ab} \cup
+        N_a \cup N_b \cup \l{z}
+    \]
+    is stable. Furthermore, since $N_{ab}\setminus K$ is not stable and $K_{ab}$
+    is maximal, it follows that $K_{ab}$ contains at least two vertices.
+    Therefore, by \Cref{lem:chordal_comp_2}, $K_{ab}$ is complete to $K$.
+    Additionally, \Cref{lem:chordal_anti_3} implies that $K_{ab}$ is
+    anticomplete to $K'$. Since we have already stated that $N_{ab}\setminus K$
+    is anticomplete to $V_C$ for $C\in \mathcal{C}$, we have that
+    \[
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup K_{ab} \cup 
+        \l{a,b} \cup K' \cup \l{c,d}
+    \]
+    is a cluster, so
+    \[
+        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        S_{ab} \cup N_a \cup N_b \cup \l{z} , 
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup K_{ab}\cup
+        \l{a,b} \cup K' \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$ (see
+    \Cref{fig:monopolar_partition_chordal_1}).
+    
+    % Lastly, for $N_\varnothing$, let $\mathcal{C}$ be the set of connected
+    % components of $G[N_\varnothing]$. Since $G$ is connected, each $C\in
+    % \mathcal{C}$ is adjacent to at least one of the other bags. By (iv) of
+    % \Cref{lem:neighborhoods_chordal_anti}, $C$ can only be adjacent to
+    % either $v$, vertices in $N_{ab}$ or vertices in $N_{cd}$.
+    
+    % Let $C\in \mathcal{C}$ be anticomplete to $v$. Therefore, there is a vertex
+    % $x\in N_{ab}\cup N_{cd}$ adjacent to a vertex $y$ of $C$. Notice $x$ must be
+    % adjacent to $v$, otherwise, $\p{y,x,a,v,c}$ is a $P_5$ (see
+    % \Cref{fig:x_adjacent_to_v}). It follows that the vertices of $N_{ab}$ to
+    % which $C$ are adjacent lie in $K$, so $C$ is anticomplete to $S_{ab}$.
 
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw[lightgray] (y) to (b);
-            \draw[lightgray] (v) to (b);
-            \draw (v) to (a);
-            \draw (y) to (a);
-            \draw (x) to (y);
-            \draw (v) to (c);
-        \end{tikzpicture}
-        \caption{An induced $P_5$ given that $x$ is not adjacent to $v$.}
-        \label{fig:x_adjacent_to_v}
-    \end{figure}
+    % \begin{figure}[htb!]
+    %     \centering
+    %     \begin{tikzpicture}[every node/.style={vertex}, node
+    %         distance=1cm, on grid, edge]
+    %         \node (v) {};
+    %         \node[above left=1cm and 0.75cm of v] (a) {};
+    %         \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+    %         \node[below left=1cm and 0.75cm of v] (c) {};
+    %         \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+    %         \node (x) at (-0.5,1.5) {};
+    %         \node (y) at (0.5,1.5) {};
 
-    For a vertex $z$ of $C$ adjacent to $y$, notice $z$ must be adjacent to $x$,
-    otherwise, $\p{z,y,x,v,c}$ is a $P_5$ (see \Cref{fig:z_adjacent_to_x}).
+    %         \draw[lightgray] (a) to (b);
+    %         \draw[lightgray] (v) to (d);
+    %         \draw[lightgray] (c) to (d);
+    %         \draw[lightgray] (y) to (b);
+    %         \draw[lightgray] (v) to (b);
+    %         \draw (v) to (a);
+    %         \draw (y) to (a);
+    %         \draw (x) to (y);
+    %         \draw (v) to (c);
+    %     \end{tikzpicture}
+    %     \caption{An induced $P_5$ given that $x$ is not adjacent to $v$.}
+    %     \label{fig:x_adjacent_to_v}
+    % \end{figure}
+
+    % For a vertex $z$ of $C$ adjacent to $y$, notice $z$ must be adjacent to $x$,
+    % otherwise, $\p{z,y,x,v,c}$ is a $P_5$ (see \Cref{fig:z_adjacent_to_x}).
 
     \begin{figure}[htb!]
         \centering
@@ -1413,10 +2460,10 @@ graph is free of certain induced subgraphs.
         \label{fig:z_adjacent_to_x}
     \end{figure}
 
-    Since $C$ is connected, it follows that $C$ is complete to $x$. Moreover, if
-    $C$ is not trivial, then the edge $yz$ of $C$ implies that
-    $\l{y,z,x,a,v,c,d}$ induces an $H_6$ (see \Cref{fig:C_non_trivial}). Hence,
-    $C$ is trivial.
+    % Since $C$ is connected, it follows that $C$ is complete to $x$. Moreover, if
+    % $C$ is not trivial, then the edge $yz$ of $C$ implies that
+    % $\l{y,z,x,a,v,c,d}$ induces an $H_6$ (see \Cref{fig:C_non_trivial}). Hence,
+    % $C$ is trivial.
 
     \begin{figure}[htb!]
         \centering
@@ -1448,138 +2495,36 @@ graph is free of certain induced subgraphs.
         \label{fig:C_non_trivial}
     \end{figure}
 
-    If $\mathcal{C}'$ is the set of connected components of $G[N_\varnothing]$
-    that are anticomplete to $v$, it follows that
-    \[
-        \bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
-        \cup \l{v}
-    \]
-    is a stable set.
+    % If $\mathcal{C}'$ is the set of connected components of $G[N_\varnothing]$
+    % that are anticomplete to $v$, it follows that
+    % \[
+    %     \bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
+    %     \cup \l{v}
+    % \]
+    % is a stable set.
 
-    Observe that each $C\in \mathcal{C} \setminus \mathcal{C'}$ is partitioned
-    by which of its vertices are adjacent to $v$ and which are not. Let $C_v$ be
-    the set of vertices of $C$ adjacent to $v$. Notice $C_v$ is $P_3$-free,
-    otherwise, a $P_3$ $\p{x,y,z}$ in $C_v$ implies that $\l{x,y,z,v,a,b}$
-    induces an $H_4$ (see \Cref{fig:C_v_cluster}).
+    % Thus, $C_v$ is anticomplete to both $K$ and $K_{ab}$. Analogously, $C_v$ is
+    % anticomplete to $K'$, so
+    % \[
+    %     \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K
+    %     \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}
+    % \]
+    % is a cluster. We claim that for each $C\in \mathcal{C}\setminus
+    % \mathcal{C}'$, the part of such a conencted component that is anticomplete
+    % to $v$, $C-C_v$, is empty. Indeed, suppose that there is a vertex $z$ in
+    % $C-C_v$, and let $x$ be a vertex in $C_v$ adjacent to $z$. Recall from
+    % \Cref{fig:x_adjacent_to_v} that the only vertices in $N_{ab}$ to which $z$
+    % can be adjacent to are in $K$. Because in this case $N_{ab}\setminus K$ is
+    % nonempty, there is a vertex $w$ in $N_{ab}\setminus K$ to which $z$ is not
+    % adjcent. Similarly, from \Cref{fig:w_adjacent_to_v} it follows that $w$ is
+    % not adjacent to $x$. Then, $\p{w,a,v,x,z}$ is a $P_5$. \todo{agregar figura}
 
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-30:1) {};
-            \node (y) at (0:1) {};
-            \node (z) at (30:1) {};
-            \node[Label] at ($(0,0) - (y)$) {};
-
-            \draw[lightgray] (v) to (c);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw (a) to (b);
-            \draw (v) to (b);
-            \draw (v) to (a);
-            \draw (v) to (x);
-            \draw (v) to (y);
-            \draw (v) to (z);
-            \draw (x) to (y);
-            \draw (z) to (y);
-        \end{tikzpicture}
-        \caption{An induced $H_4$ given that $C_v$ is not $P_3$-free.}
-        \label{fig:C_v_cluster}
-    \end{figure}
-    
-    It follows that $C_v$ is a cluster. Moreover, if a vertex $x$ in $C_v$ is
-    adjacent to a vertex $w$ in $N_{ab}$, then $w$ is adjacent to $v$,
-    otherwise, $\p{a,w,x,v,a}$ is a $C_4$ (see \Cref{fig:w_adjacent_to_v}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (w) at (0,1.5) {};
-            \node (x) [right=0.75 of b] {};
-            \node[Label] at ($(0,0) - (x)$) {};
-
-            \draw[lightgray] (v) to (c);
-            \draw[lightgray] (v) to (d);
-            \draw[lightgray] (c) to (d);
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (v) to (b);
-            \draw[lightgray] (w) to (b);
-            \draw (v) to (a);
-            \draw (v) to (x);
-            \draw (w) to (x);
-            \draw (w) to (a);
-        \end{tikzpicture}
-        \caption{An induced $C_4$ given that $w$ is not adjacent to $v$.}
-        \label{fig:w_adjacent_to_v}
-    \end{figure}
-
-    Nonetheless, if $x$ is adjacent to $w$, then $\l{a,w,x,v,c,d}$ induces an
-    $H_4$ (see \Cref{fig:w_nonadjacent_to_v}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v] (d) {};
-            \node (w) at (0,1.5) {};
-            \node (x) [right=0.75 of b] {};
-            \node[Label] at ($(0,0) - (x)$) {};
-
-            \draw[lightgray] (a) to (b);
-            \draw[lightgray] (v) to (b);
-            \draw[lightgray] (w) to (b);
-            \draw (v) to (d);
-            \draw (v) to (c);
-            \draw (v) to (a);
-            \draw (c) to (d);
-            \draw (v) to (x);
-            \draw (w) to (x);
-            \draw (w) to (a);
-            \draw (w) to (v);
-        \end{tikzpicture}
-        \caption{An induced $H_4$ given that $w$ is not adjacent to $v$.}
-        \label{fig:w_nonadjacent_to_v}
-    \end{figure}
-
-    Thus, $C_v$ is anticomplete to both $K$ and $K_{ab}$. Analogously, $C_v$ is
-    anticomplete to $K'$, so
-    \[
-        \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K
-        \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}
-    \]
-    is a cluster. We claim that for each $C\in \mathcal{C}\setminus
-    \mathcal{C}'$, the part of such a conencted component that is anticomplete
-    to $v$, $C-C_v$, is empty. Indeed, suppose that there is a vertex $z$ in
-    $C-C_v$, and let $x$ be a vertex in $C_v$ adjacent to $z$. Recall from
-    \Cref{fig:x_adjacent_to_v} that the only vertices in $N_{ab}$ to which $z$
-    can be adjacent to are in $K$. Because in this case $N_{ab}\setminus K$ is
-    nonempty, there is a vertex $w$ in $N_{ab}\setminus K$ to which $z$ is not
-    adjcent. Similarly, from \Cref{fig:w_adjacent_to_v} it follows that $w$ is
-    not adjacent to $x$. Then, $\p{w,a,v,x,z}$ is a $P_5$. \todo{agregar figura}
-
-    Hence,
-    \[
-        \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
-        \cup \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} 
-        \cup K \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}}
-    \]
-    is a monopolar partition of $G$ (see
-    \Cref{fig:monopolar_partition_chordal_1}).
+    % Hence,
+    % \[
+    %     \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{ab} \cup N_a \cup N_b 
+    %     \cup \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} 
+    %     \cup K \cup K_{ab} \cup \l{a,b} \cup K' \cup \l{c,d}}
+    % \]
     
     \begin{figure}[htb!]    
         \centering
@@ -1643,17 +2588,83 @@ graph is free of certain induced subgraphs.
         \label{fig:monopolar_partition_chordal_1}
     \end{figure}
 
-    \paragraph{Case 1.2: $N_{cd}$ is not complete to $v$.} Once more, due to (i)
-    of \Cref{lem:neighborhoods_chordal_complete}, $N_{ab}=K'$. Also, every claim
-    from the previous subcase regarding a relation between $N_\varnothing$ and
-    $N_{ab}$ still hold substituting $N_{ab}$ for $N_{cd}$.
+    \paragraph{Case 1.2: $N_{cd}$ is not complete to $z$.} Once more, due to
+    \Cref{lem:chordal_comp_1}, $N_{ab}=K'$. Additionally, $N_{cd}\setminus K$
+    being nonempty implies, by \Cref{lem:chordal_types_empty_2}, that both $N_a$
+    and $N_b$ are empty.
+    
+    Also, every claim from the previous subcase regarding $N_{ab}$ still hold in
+    this case for $N_{cd}$, since every lemma used works for any 2-bag complete
+    to the edge of a $2K_2$. Hence, if $N_{cd}\setminus K'$ is stable, then
+    \[
+        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        \p{N_{cd}\setminus K'} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z} V_{C_z} 
+        \cup K\cup \l{a,b} \cup K' \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K$ is not
+    stable, then
+    \[
+        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        S_{cd} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup
+        \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
+    \]
+    is a monopolar partition of $G$.
 
-    Additionally, $N_{cd}$ is also split by (vi) of
-    \Cref{lem:neighborhoods_chordal_types}, so let $(S_{cd},K_{cd})$ be a split
-    partition of $N_{cd}$ with $K_{cd}$ a maximal clique. As before, $K_{cd}$ is
-    complete to $K'$ and anticomplete to $K$. Finally, $N_{cd}\setminus K$ being
-    nonempty imply that both $N_a$ and $N_b$ are empty, due to either $P_5$ or
-    $C_5$ (see \Cref{fig:N_c_adjacent_to_N_cd_K}). \todo{modificar figura}
+    \paragraph{Case 1.3: Both $N_{ac}$ and $N_{cd}$ are complete to $z$.} It is
+    immediate that $N_{ac}=K$ and $N_{cd}=K'$, so we only need to check how to
+    split the sets $V_{C-C_z}$ for $C\in \mathcal{C}_z$.
+    
+    Let $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_z$ that
+    are trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
+    components of $C-C_z$ that are not trivial. Recall that, by
+    \Cref{lem:chordal_anti_4}, $V_C$ is anticomplete to both $N_a$ and $N_b$.
+    Thus,
+    \[
+        \bigcup_{C\in \mathcal{C} \setminus \mathcal{C}_z} V_C \cup 
+        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D} 
+        \cup N_a \cup N_b \cup \l{z}
+    \]
+    is stable. Let $D\in \mathcal{C}_{C,1}$. Since $C$ is connected, there is a
+    connected component of $C_z$, $D_z$, to which $D$ is adjacent. Let $x\in
+    V_{D}$ and $y\in V_{D_Z}$ be adjacent vertices. If there was a vertex $w\in
+    C_z$ not adjacent to $y$ and adjacent to $x$, then $\p{w,x,y,z,w}$ is a
+    $C_4$ (see \Cref{fig:more_than_one_component}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \node (v) {};
+            \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+            \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+            \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+            \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+            \node (x) at (30:1.25) {};
+            \node (w) at (-30:1.25) {};
+            \node (y) at ($(x) + (-30:1.25)$) {};
+            \node[Label] at ($(0,0) - (y)$) {};
+
+            \draw[lightgray] (a) to (b);
+            \draw[lightgray] (v) to (b);
+            \draw[lightgray] (v) to (c);
+            \draw[lightgray] (v) to (d);
+            \draw[lightgray] (c) to (d);
+            \draw[lightgray] (v) to (a);
+            \draw (v) to (w);
+            \draw (v) to (x);
+            \draw (y) to (x);
+            \draw (y) to (w);
+        \end{tikzpicture}
+        \caption{An induced $C_4$ given that $D$ is adjacent to more than one
+        component of $C_z$.}
+        \label{fig:more_than_one_component}
+    \end{figure}
+    
+    It follows that $D_z$ is the unique connected component of $C_z$ to which
+    $D$ is adjacent to. Furthermore, we claim that $D$ is complete to $D_z$.
+    Indeed, let $x$ be a vertex of $D$ adjacent to a vertex $y$ of $D_z$. If $w$
+    is a vertex of $D$ adjacent to $x$, then $w$ must be adjacent to $y$,
+    otherwise, $\p{w,x,y,z,a}$ is a $P_5$ (see \Cref{fig:z_nonadjacent_y}).
 
     \begin{figure}[htb!]
         \centering
@@ -1662,49 +2673,54 @@ graph is free of certain induced subgraphs.
             \node (v) {};
             \node[above left=1cm and 0.75cm of v] (a) {};
             \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
+            \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
             \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-            \node (x) at (-1.25,1.5) {};
-            \node (y) at (-1.25,-1.5) {};
-            \node [Label] at ($(0,0) -(x)$) {};
+            \node (y) at (0.75,0) {};
+            \node (x) at ($(y) + (30:0.75)$) {};
+            \node (w) at ($(y) + (-30:0.75)$) {};
+            \node[Label] at ($(0,0) - (w)$) {};
 
             \draw[lightgray] (a) to (b);
-            \draw[lightgray] (d) to (y);
+            \draw[lightgray] (v) to (b);
+            \draw[lightgray] (v) to (c);
             \draw[lightgray] (v) to (d);
             \draw[lightgray] (c) to (d);
-            \draw[lightgray] (v) to (b);
-            \draw (x) to (a);
             \draw (v) to (a);
-            \draw (y) to (c);
-            \draw (x) to (y);
-            \draw (v) to (c);
+            \draw (x) to (w);
+            \draw (y) to (v);
+            \draw (y) to (w);
         \end{tikzpicture}
-        \caption{An induced $C_5$ given that $N_a$ is adjacent to a vertex in $N_{cd}\setminus K'$.}
-        \label{fig:N_c_adjacent_to_N_cd_K}
+        \caption{An induced $H_6$ given that $w$ is adjacent to $y$.}
+        \label{fig:z_nonadjacent_y}
     \end{figure}
-    
-    Therefore,
-    \[
-        \p{\bigcup_{C\in\mathcal{C}'} V_C \cup S_{cd} \cup 
-        \l{v} , \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}'} V_{C_v} \cup K
-        \cup \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
-    \]
-    is a monopolar partition of $G$.
 
-    \paragraph{Case 1.3: Both $N_{ac}$ and $N_{cd}$ are complete to $v$.} Let
-    $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_v$ that are
-    trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
-    components of $C-C_v$ that are not trivial. Clearly,
-    \[
-        \bigcup_{C\in \mathcal{C}'} V_C \cup \bigcup_{C\in \mathcal{C}\setminus\mathcal{C}'} 
-        \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D} \cup N_a \cup N_b \cup \l{v}
-    \]
-    is stable. Furthermore, we claim that each connected component in
-    $\mathcal{C}_{C,1}$ is split. If that was not the case, there is a $2K_2$ in
-    $C-C_v$. Let $x$ and $x'$ be adjacent vertices of $C-C_v$ anticomplete to
-    adjacent vertices $y$ and $y'$ of $C-C_v$. If $w$ is a vertex of $C_v$, then
-    we have that $\l{x,x',y,y',w,v,a,b,c,d}$ induces an $H_5$ (see
-    \Cref{fig:C-C_v_split}).
+    Since $D$ is connected, it follows that $D$ is complete to $y$. Moreover, if
+    a vertex $y'$ of $D_z$ is adjacent to $y$, the aforementioned argument
+    implies that either $D$ is complete to $y'$ or is anticomplete to it.
+    Nonetheless, if the latter case happens, then $\l{w,x,y,y',z,c,d}$ induces
+    an $H_6$ (see \todo{figura}).
+
+    Therefore, $D$ is complete to $D_z$. Finally, we claim that $D$ is the
+    unique component in $\mathcal{C}_{C,1}$. If there was another component,
+    $D'$, the two previous claims imply that there is a unique component $D_z'$
+    of $C_z$ to which $D'$ is complete. Since $D'$ is nontrivial and connected,
+    there are adjacent vertices $x'$ and $w'$ of $D'$. Similarly, let $x$ and
+    $w$ be adjacent vertices of $D$. On the one hande, if $D_z$ happens to be
+    $D_z'$, then if $y$ is a vertex of $D_z$, it follows that
+    $\l{a,b,z,c,d,y,x,w,x',w'}$ induces an $H_5$ (see \todo{agregar figura}).
+
+    On the other hand, let $y$ be a vertex of $D_z$ and $y'$ be a vertex of
+    $D_z'$. Recall that $C_z$ is a cluter, so $y$ and $y'$ are nonadjacent. In
+    addition to it, since $D$ is anticomplete to all components in $C_z$ but
+    $D_z$, and $D'$ is anticomplete to all components in $C_z$ but $D_z'$, we
+    have that $x$ is anticomplete to $y'$ and $x'$ is anticomplete to $y$. Thus,
+    $\p{x,y,z,y',x'}$ is a $P_5$ (see \todo{figure}).
+
+    We conclude that $D$ is unique. Furthermore, we claim that $D$ is split. If
+    that was not the case, there is a $2K_2$ in $D$. Let $w$ and $x$ be adjacent
+    vertices of $D$ and anticomplete to adjacent vertices $w'$ and $x'$ of $D$.
+    If $y$ is a vertex of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$
+    induces an $H_5$ (see \Cref{fig:C-C_v_split}).
     
     \begin{figure}[htb!]
         \centering
@@ -1741,13 +2757,20 @@ graph is free of certain induced subgraphs.
         \label{fig:C-C_v_split}
     \end{figure}
 
-    This same argument also shows that the cardinality of $\mathcal{C}_{C,1}$ is
-    at most one. If it happens to be nonempty, we claim that $D$, its unique
-    component, is complete to $C_v$. Indeed, if that is not the case, let $x$ be
-    a vertex of $D$ nonadjacent to a vertex $y$ of $C_v$. Since $D$ is not
-    trivial, there is a vertex $w$ of $D$ adjacent to $x$. Notice $w$ is not
-    adjacent to $y$, otherwise, $\p{w,x,y,v,a}$ would be a $P_5$ (see
-    \Cref{fig:z_nonadjacent_y}).
+    Thus, $D$ is split, so let $(S_D,K_D)$ be a split partition of $V_D$ such
+    that $K_D$ is a maximal clique. Recall that $D$ is complete to $D_z$, so
+    $V_D \cup V_{D_z}$ is a clique. Moreover, since $D$ is anticomplete to all
+    other connected components of $C_z$, it follows that
+    \begin{align*}
+        \Bigg(& \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
+        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D \cup 
+        \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup 
+        N_b \cup \l{z}, \\ 
+        & \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup 
+        \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup 
+        K \cup \l{a,b} \cup K' \cup \l{c,d} \Bigg)
+    \end{align*}
+    is a monopolar partition of $G$ 
 
     \begin{figure}[htb!]
         \centering
@@ -1774,39 +2797,208 @@ graph is free of certain induced subgraphs.
             \draw (y) to (w);
         \end{tikzpicture}
         \caption{An induced $H_6$ given that $w$ is adjacent to $y$.}
-        \label{fig:z_nonadjacent_y}
+    \end{figure}
+    
+    % Finally, since $D$ is split, it can be partitioned into $S_D$ a stable set
+    % and $K_D$ a maximal clique, so $K_D \cup C_v$ is a clique recalling that
+    % $C_D$ is complete to $C_v$. We claim that $K_D$ is anticomplete to $K\cup
+    % K'$. Indeed, if that is not the case, then $K_D$ is not trivial (since it is
+    % maximal and $D$ is not trivial), so there are adjacent vertices $x$ and $y$
+    % in $K_D$, and at least one of them adjacent to a vertex $w$ in $K\cup K'$.
+    % Suppose without loss of generality that $w$ is in $K$ and $x$ is adjacent to
+    % $w$. As in \Cref{fig:z_adjacent_to_x}, $y$ must be adjacent to $w$,
+    % otherwise, $\p{y,x,w,v,c}$ is a $P_5$. Nonetheless, if $y$ is adjacent to
+    % $w$, then $\l{y,x,w,v,a,c,d}$ induces an $H_6$ as in
+    % \Cref{fig:C_non_trivial}. Then, 
+
+    \paragraph{Case 2: $N_Z$ is empty.} Right from the start, consider the
+    following subcases:
+
+    \paragraph{Case 2.1: At least one 3-bag is nonempty.} Suppose without loss
+    of generality that $N_{abc}$ is nonempty and let $x$ be a vertex in
+    $N_{abc}$. By \Cref{lem:chordal_types_pending}, we have that $N_d$ is empty.
+    Moreover, by \Cref{lem:chordal_types_3}, all other bags adjacent to both
+    edges of the $2K_2$ are empty. Therefore, the only bags that can be nonempty
+    are:
+    \[
+        N_a, N_b, N_c, N_{ab}, N_{cd} \text{ and } N_{\varnothing}
+    \]
+    
+    If $y\in N_c$ is adjacent to $x$, then $\l{a,b,c,y}$ induces a copy of
+    $2K_2$ and $x$ is complete to such a set, so one may proceed as in the
+    previous case (see \Cref{fig:3_bag_1}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+            on grid, edge]
+            \node (x) {};
+            \node[above left=1cm and 0.75cm of x] (a) {};
+            \node[above right=1cm and 0.75cm of x] (b) {};
+            \node[below left=1cm and 0.75cm of x] (c) {};
+            \node[below right=1cm and 0.75cm of x, lightgray] (d) {};
+            \node [left=0.75 of x] (y) {};
+
+            \draw[lightgray] (c) to (d);
+            \draw (x) to (c);
+            \draw (a) to (b);
+            \draw (x) to (a);
+            \draw (x) to (b);
+            \draw (x) to (y);
+            \draw (y) to (c);
+        \end{tikzpicture}
+        \caption{An induced copy of $2K_2$ with a vertex complete to it.}
+        \label{fig:3_bag_1}
     \end{figure}
 
-    Since $D$ is connected, it follows that $D$ is anticomplete to $C_v$,
-    contradicting that $C$ is connected. We obtain that $D$ is complete to
-    $C_v$. 
-    
-    Finally, since $D$ is split, it can be partitioned into $S_D$ a stable set
-    and $K_D$ a maximal clique, so $K_D \cup C_v$ is a clique recalling that
-    $C_D$ is complete to $C_v$. We claim that $K_D$ is anticomplete to $K\cup
-    K'$. Indeed, if that is not the case, then $K_D$ is not trivial (since it is
-    maximal and $D$ is not trivial), so there are adjacent vertices $x$ and $y$
-    in $K_D$, and at least one of them adjacent to a vertex $w$ in $K\cup K'$.
-    Suppose without loss of generality that $w$ is in $K$ and $x$ is adjacent to
-    $w$. As in \Cref{fig:z_adjacent_to_x}, $y$ must be adjacent to $w$,
-    otherwise, $\p{y,x,w,v,c}$ is a $P_5$. Nonetheless, if $y$ is adjacent to
-    $w$, then $\l{y,x,w,v,a,c,d}$ induces an $H_6$ as in
-    \Cref{fig:C_non_trivial}. Then, 
-    \begin{align*}
-        \Bigg(& \bigcup_{C\in \mathcal{C}'} V_C \cup \bigcup_{C\in \mathcal{C}
-        \setminus\mathcal{C}'} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup 
-        N_b \cup \l{v}, \\ 
-        & \bigcup_{C\in \mathcal{C}\setminus C'} \p{V_{C_v} \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup 
-        K \cup \l{a,b} \cup K' \cup \l{c,d} \Bigg)
-    \end{align*}
-    is a monopolar partition of $G$ 
+    Therefore, consider $N_c$ anticomplete to $N_{abc}$. Similarly, $N_{cd}$ is
+    anticomplete to $N_{abc}$. Meanwhile, we claim that $N_{a}$ is complete to
+    $N_{abc}$. Indeed, if $y$ in $N_a$ is not adjacent to $x$, then
+    $\p{y,a,x,c,d}$ is a $P_5$ (see \Cref{fig:3_bag_2}).
 
-    \paragraph{Case 2: $N_V=\varnothing$.}
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+            on grid, edge]
+            \node (x) {};
+            \node[above left=1cm and 0.75cm of x] (a) {};
+            \node[above right=1cm and 0.75cm of x, lightgray] (b) {};
+            \node[below left=1cm and 0.75cm of x] (c) {};
+            \node[below right=1cm and 0.75cm of x] (d) {};
+            \node [left=0.75 of x] (y) {};
 
-    \paragraph{Case 2.1: At least one $3$-bag is nonempty.}
-    \paragraph{Case 2.2: No $3$-bag is nonempty.}
+            \draw[lightgray] (a) to (b);
+            \draw[lightgray] (x) to (b);
+            \draw (c) to (d);
+            \draw (x) to (c);
+            \draw (x) to (a);
+            \draw (a) to (y);
+        \end{tikzpicture}
+        \caption{An induced $P_5$ given that $N_a$ is not complete to
+            $N_{abc}$.}
+        \label{fig:3_bag_2}
+    \end{figure}
+
+    It follows that $N_a$ is complete to $N_{abc}$. Similarly, we get that
+    $N_{ab}$ and $N_b$ is complete to $N_{abc}$. This in turn implies that any
+    bag (different from $N_{abc}$) adjacent to the edge $ab$ is anticomplete to
+    any bag adjacent to the edge $cd$ (also different from $N_{abc}$),
+    otherwise, there would be a $C_4$ (see \Cref{fig:3_bag_3}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+            on grid, edge]
+            \node (x) {};
+            \node[above left=1cm and 0.75cm of x, lightgray] (a) {};
+            \node[above right=1cm and 0.75cm of x, lightgray] (b) {};
+            \node[below left=1cm and 0.75cm of x] (c) {};
+            \node[below right=1cm and 0.75cm of x, lightgray] (d) {};
+            \node[right=0.75 of x] (y) {};
+            \node[below = 0.75 of x] (w) {};
+
+            \draw[lightgray] (a) to (b);
+            \draw[lightgray] (x) to (b);
+            \draw[lightgray] (c) to (d);
+            \draw[lightgray] (w) to (d);
+            \draw[lightgray] (b) to (y);
+            \draw[lightgray] (x) to (a);
+            \draw (x) to (c);
+            \draw (y) to (x);
+            \draw (w) to (c);
+            \draw (w) to (y);
+        \end{tikzpicture}
+        \caption{An induced copy of $C_4$ given that $N_{b}$ is not anticomplete
+        to $N_{cd}$.}
+        \label{fig:3_bag_3}
+    \end{figure}
+
+    Furthermore, for a vertex $y\in N_\varnothing$, if $y$ is adjacent to $w$ in
+    $N_{cd}$, either $\p{y,w,c,x,y}$ is a $C_4$, or $\p{y,w,c,x,a}$ is a $P_5$,
+    depending on whether $x$ is adjacent to $w$ or not, respectively (see
+    \Cref{fig:3_bag_4}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node distance=1cm,
+            on grid, edge]
+            \begin{scope}[xshift=-2cm]
+                \node (x) {};
+                \node[above left=1cm and 0.75cm of x, lightgray] (a) {};
+                \node[above right=1cm and 0.75cm of x, lightgray] (b) {};
+                \node[below left=1cm and 0.75cm of x] (c) {};
+                \node[below right=1cm and 0.75cm of x, lightgray] (d) {};
+                \node[right=0.75 of x] (y) {};
+                \node[below = 0.75 of x] (w) {};
+
+                \draw[lightgray] (a) to (b);
+                \draw[lightgray] (x) to (b);
+                \draw[lightgray] (c) to (d);
+                \draw[lightgray] (w) to (d);
+                \draw[lightgray] (x) to (a);
+                \draw (x) to (c);
+                \draw (y) to (x);
+                \draw (w) to (c);
+                \draw (w) to (y);
+            \end{scope}
+
+            \begin{scope}[xshift=2cm]
+                \node (x) {};
+                \node[above left=1cm and 0.75cm of x, lightgray] (a) {};
+                \node[above right=1cm and 0.75cm of x] (b) {};
+                \node[below left=1cm and 0.75cm of x] (c) {};
+                \node[below right=1cm and 0.75cm of x, lightgray] (d) {};
+                \node[right=0.75 of x] (y) {};
+                \node[below = 0.75 of x] (w) {};
+
+                \draw[lightgray] (a) to (b);
+                \draw[lightgray] (c) to (d);
+                \draw[lightgray] (w) to (d);
+                \draw[lightgray] (x) to (a);
+                \draw (x) to (b);
+                \draw (x) to (c);
+                \draw (w) to (c);
+                \draw (w) to (y);
+            \end{scope}
+        \end{tikzpicture}
+        \caption{An induced $C_4$ or $P_5$ given that $N_\varnothing$ is not
+            anticomplete to $N_{cd}$.}
+        \label{fig:3_bag_4}
+    \end{figure}
+
+    It follows that $N_\varnothing$ is anticomplete to $N_{cd}$, and similarly
+    follows that $N_\varnothing$ is anticomplete to $N_{c}$.
+
+    We claim that $N_\varnothing$ is complete to $N_{abc}$. Indeed, since $G$ is
+    connected, each connected component of $N_\varnothing$ is adjacent to one
+    other bag. By the last argument, each connected component of $N_\varnothing$
+    can only be adjacent to $N_{a}$, $N_{b}$, $N_{ab}$ or $N_{abc}$. If $y$ in
+    $N_\varnothing$ is adjacent to a vertex $w$ in $N_{ab}$ and is not adjacent
+    to $x$, then, since $w$ is adjacent to $x$, we have that $\p{y,w,x,c,d}$ is
+    a $P_5$ (see \todo{figure}).
+
+    Then, $x$ is adjacent to $y$. Moreover, if $y'$ in $N_\varnothing$ is
+    adjacent to $y$, then $y'$ must be adjacent to $x$ as well, otherwise,
+    $\p{y',y,x,c,d}$ is a $P_5$ (see \todo{figure}).
+
+    This same argument works for connected components of $N_\varnothing$ that
+    are adjacent to either $N_a$ or $N_b$. Therefore, $N_\varnothing$ is
+    complete to $x$ \todo{No necesariamente, igual las componentes son
+    triviales}.
+
+    \paragraph{Case 2.2: All 3-bags are empty.} In this case, no vertex of $G$
+    is adjacent to both edges of the $2K_2$. Since $G$ is connected and
+    $P_5$-free, it follows that there are adjacent vertices $x$ and $y$, such
+    that $x$ is adjacent to at least one between $a$ and $b$, and $y$ is
+    adjacent to at least one between $c$ and $d$. Suppose without loss of
+    generality that $x$ is adjacent to $a$ and $y$ is adjacent to $b$. Notice
+    $x$ is anticomplete to $\l{c,d}$ and $y$ is anticomplete to $\l{a,b}$ since
+    no 3-bag is nonempty. Then, if $x$ is nonadjacent to $b$, $\p{b,a,x,y,c}$ is
+    a $P_5$ (see \todo{figura}).
+
+    Observe $\l{a,b,y,c}$ induces a $2K_2$ with $x$ adjacent to $a$, $b$, and
+    $y$, so one can proceed as in the previous subcase.
+
 \end{proof}
 
 \section{\texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs with \texorpdfstring{$C_5$}{C5}}
@@ -2657,13 +3849,13 @@ graph is free of certain induced subgraphs.
 
 Throughout the following proofs we will always denote an induced copy of $C_5$
 in a graph $G$ by $C = \p{a,b,c,d,e,a}$ and the set $\l{a,b,c,d,e}$ will be
-denoted by $V$.
+denoted by $Z$.
 
 \begin{lemma}
     \label{lem:pre_neighborhoods_c5}
     Let $G$ be a $(P_5,\text{house})$-free graph with an induced $C_5$. Let $X$
-    be a proper subset of $V$.
-    \begin{enumerate}[(i)]
+    be a proper subset of $Z$.
+    \begin{enumerate}[label=(\roman*)]
         \item If $X$ is nonempty and consists of at most two adjacent vertices
             of $C$, then $N_X = \varnothing$.
         \item If $X$ has three non-consecutive vertices, then $N_X =
@@ -2675,7 +3867,7 @@ denoted by $V$.
 
 \begin{proof}
     \leavevmode \par
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=(\roman*)]
         \item Since $X$ is not empty, suppose without loss of generality that
             $a\in X$. Since $X$ does not contain nonadjacent vertices of $C$, it
             follows that $X$ has at most one additional vertex, either $b$ or
@@ -2683,7 +3875,7 @@ denoted by $V$.
             $X\subseteq \l{a,e}$. If $x\in N_X$, then $\p{x,a,b,c,d}$ is a
             $P_5$. Therefore, $N_X=\varnothing$.
 
-        \item Since $X$ is not $V$, suppose without loss of generality that $X$
+        \item Since $X$ is not $Z$, suppose without loss of generality that $X$
             has $a$, $c$, $d$, and possibly $e$, but $b\notin X$. If $x\in X$,
             then $\l{a,b,c,x,d}$ induces a house. Hence, $N_X = \varnothing$.
         
@@ -2701,7 +3893,7 @@ that can be nonempty are of three types: $X$ consists of three consecutive
 vertices of $C$, or $X$ consists of two non-consecutive vertices of $C$, or
 $X=V$.  Moreover, the third item in \Cref{lem:pre_neighborhoods_c5} implies that
 if $G$ is connected and $N_\varnothing$ is nonempty, then some vertex in
-$N_\varnothing$ must be adjacent to some vertex in $N_V$.
+$N_\varnothing$ must be adjacent to some vertex in $N_Z$.
 
 By recalling that the complement of a $5$-cycle is once again a $5$-cycle (see
 \Cref{fig:complement}), we observe that if $X \neq V$, then in $\overline{G}$
@@ -2756,8 +3948,8 @@ that the complement of $P_5$ is the house.
 \begin{lemma}
     \label{lem:neighborhoods_c5_complete}
     Let $G$ be a $\p{P_5,\text{house}}$-free graph with an induced $C_5$. Let
-    $X$ and $Y$ be different subsets of $V$.
-    \begin{enumerate}[(i)]
+    $X$ and $Y$ be different subsets of $Z$.
+    \begin{enumerate}[label=(\roman*)]
         \item If $X$ and $Y$ consist both of two non-consecutive vertices and
             their intersection is empty, then $N_X$ is complete to $N_Y$.
         \item If $X$ and $Y$ consist both of three consecutive vertices and they
@@ -2770,7 +3962,7 @@ that the complement of $P_5$ is the house.
 
 \begin{proof}
     \leavevmode \par
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a,c}$ and
             $Y=\l{b,d}$. If $x\in N_X$ is nonadjacent to $y\in N_Y$, then
             $\p{a,x,c,d,y}$ is a $P_5$. Then, $N_X$ is complete to $N_Y$ (see
@@ -2875,8 +4067,8 @@ that the complement of $P_5$ is the house.
 \begin{lemma}
     \label{lem:neighborhoods_c5_anti}
     Let $G$ be a $\p{P_5,\text{house}}$-free graph with an induced $C_5$. Let
-    $X$ and $Y$ be different subsets of $V$.
-    \begin{enumerate}[(i)]
+    $X$ and $Y$ be different subsets of $Z$.
+    \begin{enumerate}[label=(\roman*)]
         \item If $X$ and $Y$ consist both of three consecutive vertices and they
             intersect in just one vertex, then $N_X$ is anticomplete to $N_Y$.
         \item If $X$ and $Y$ consist both of two non-consecutive vertices and
@@ -2893,7 +4085,7 @@ that the complement of $P_5$ is the house.
     
 \begin{proof}
     \leavevmode\par
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=(\roman*)]
         \item Notice $X$ and $Y$ are such that $\overline{X}$ and
             $\overline{Y}$ are as in (i) of
             \Cref{lem:neighborhoods_c5_complete}. Then, since
@@ -3042,8 +4234,8 @@ that the complement of $P_5$ is the house.
     \label{lem:neighborhoods_c5_types}
     Let $G$ be a $\p{P_5,\text{house}}$-free graph with an induced $C_5$ and
     free of the graphs depicted in \Cref{fig:p5-house-obstruction-with-c5}. Let
-    $X$ and $Y$ be different subsets of $V$.
-    \begin{enumerate}[(i)]
+    $X$ and $Y$ be different subsets of $Z$.
+    \begin{enumerate}[label=(\roman*)]
         \item If $X$ consists of three consecutive vertices, then $N_X$ is a
             clique.
         \item If $X$ consists of two non-consecutive vertices, then $N_X$ is a
@@ -3059,7 +4251,7 @@ that the complement of $P_5$ is the house.
 
 \begin{proof}
     \leavevmode \par
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a,b,c}$. Let $x$ and
             $x'$ be nonadjacent vertices in $N_X$. Then, $\l{x,a,x',c,b}$ induces
             an $H_{11}$. Therefore, $N_X$ is a clique (see \Cref{fig:types_1}).
@@ -3238,7 +4430,7 @@ that the complement of $P_5$ is the house.
     Due to (i) and (ii) of \Cref{lem:pre_neighborhoods_c5}, the only exact
     neighborhoods of $C$ which can be nonempty are the neighborhoods of two
     non-consecutive vertices and the neighborhoods of three consecutive
-    vertices.   Since $G$ is $H_8$-free, $N_V$ is empty, but by (iii) in
+    vertices.   Since $G$ is $H_8$-free, $N_Z$ is empty, but by (iii) in
     \Cref{lem:pre_neighborhoods_c5} and the connectedness of $G$ we conclude
     that $N_\varnothing$ is also empty. Hence, the only possibly nonempty sets
     are
@@ -4181,8 +5373,8 @@ neighborhoods of $C$.
     \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
-    of $V$.
-    \begin{enumerate}[(i)]
+    of $Z$.
+    \begin{enumerate}[label=(\roman*)]
         \item If $X$ consists of two consecutive vertices, then
             $N_X=\varnothing$
         \item If $X=V$, then $N_X=\varnothing$.
@@ -4217,7 +5409,7 @@ neighborhoods of $C$.
 
 \begin{proof}
     \leavevmode \par
-    \begin{enumerate}[(i)]
+    \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in
             N_X$, then $\l{a,b,c,d,x}$ induces a house. Therefore, $N_X$ is
             empty.
