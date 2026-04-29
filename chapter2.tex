@@ -2750,8 +2750,8 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (y) to (x);
             \draw (y) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $C_4$ given that $D$ is adjacent to more than one
-        component of $C_z$.}
+        \caption{An induced copy of $C_4$ given that $D$ is adjacent to more
+        than one component of $C_z$.}
         \label{fig:more_than_one_component}
     \end{figure}
     
@@ -2785,7 +2785,8 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (y) to (v);
             \draw (y) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $P_5$ given that $w$ is not adjacent to $y$.}
+        \caption{An induced copy of $P_5$ given that $w$ is not adjacent to
+        $y$.}
         \label{fig:z_nonadjacent_y}
     \end{figure}
     
@@ -2824,7 +2825,8 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (y) to (z);
             \draw (z) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $H_6$ given that $D$ is anticomplete to $y'$.}
+        \caption{An induced copy of $H_6$ given that $D$ is anticomplete to
+        $y'$.}
         \label{fig:D_complete_y}
     \end{figure}
 
@@ -2952,8 +2954,8 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (y) to (y');
             \draw (v) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $H_5$ given that a component in $\mathcal{C}_{C,1}$
-        is not split.}
+        \caption{An induced copy of $H_5$ given that a component in
+        $\mathcal{C}_{C,1}$ is not split.}
         \label{fig:C-C_v_split}
     \end{figure}
 
@@ -2963,9 +2965,9 @@ is just one vertex in $N_Z$, namely $z$.
     other connected components of $C_z$, it follows that
     \begin{align*}
         \Bigg(& \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup 
-        N_b \cup \l{z}, \\ 
+        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D
+        \cup \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup  N_b \cup
+        \l{z}, \\ 
         & \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup 
         \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup 
         K \cup \l{a,b} \cup K' \cup \l{c,d} \Bigg)
@@ -3059,8 +3061,8 @@ is just one vertex in $N_Z$, namely $z$.
     of generality that $N_{abc}$ is nonempty and let $x$ be a vertex in
     $N_{abc}$. By \Cref{lem:chordal_types_pending}, we have that $N_d$ is empty.
     Moreover, by \Cref{lem:chordal_types_3}, all other bags adjacent to both
-    edges of the $2K_2$ are empty. Therefore, the only bags that can be nonempty
-    are:
+    edges of the $2K_2$ are empty. Therefore, the only other bags that can be
+    nonempty are:
     \[
         N_a, N_b, N_c, N_{ab}, N_{cd} \text{ and } N_{\varnothing}.
     \]
@@ -3119,7 +3121,8 @@ is just one vertex in $N_Z$, namely $z$.
             $N_{abc}$.}
         \label{fig:3_bag_2}
     \end{figure}
-
+    
+    \noindent
     It follows that $N_a$ is complete to $N_{abc}$. Similarly, we get that
     $N_{ab}$ and $N_b$ is complete to $N_{abc}$. This in turn implies that any
     bag (different from $N_{abc}$) adjacent to the edge $ab$ is anticomplete to
@@ -3216,7 +3219,7 @@ is just one vertex in $N_Z$, namely $z$.
     $N_\varnothing$ can only be adjacent to $N_{a}$, $N_{b}$, $N_{ab}$ or
     $N_{abc}$. If $y$ in $N_\varnothing$ is adjacent to a vertex $w$ in $N_{ab}$
     and $y$ is not adjacent to $x$, then, since $w$ is adjacent to $x$, we have
-    that $\p{y,w,x,c,d}$ is a $P_5$ (see \Cref{fig:3_bag_5}).
+    that $\p{y,w,x,c,d}$ is an induced copy of $P_5$ (see \Cref{fig:3_bag_5}).
 
     \begin{figure}[htb!]
         \centering
@@ -3248,8 +3251,8 @@ is just one vertex in $N_Z$, namely $z$.
     Hence, $x$ is adjacent to $y$. Since $x$ is arbitrary and $N_{abc}$ is
     complete to $N_{ab}$, it follows that $y$ is complete to $N_{abc}$.
     Moreover, if $y'$ in $N_\varnothing$ is adjacent to $y$, then $y'$ must be
-    adjacent to $x$ as well, otherwise, $\p{y',y,x,c,d}$ is a $P_5$ (see
-    \Cref{fig:3_bag_6}).
+    adjacent to $x$ as well, otherwise, $\p{y',y,x,c,d}$ is an induced copy of
+    $P_5$ (see \Cref{fig:3_bag_6}).
 
     \begin{figure}[htb!]
         \centering
@@ -3271,12 +3274,14 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (x) to (w);
             \draw (x) to (v);
         \end{tikzpicture}
-        \caption{An induced copy of $P_5$ given that $y'$ is not adjacent to $x$.}
+        \caption{An induced copy of $P_5$ given that $y'$ is not adjacent to 
+        $x$.}
         \label{fig:3_bag_6}
     \end{figure}
 
+    \noindent
     Therefore, the connected component of $y$ in $G[N_\varnothing]$ is complete
-    to $N_{abc}$. This same argument works for connected components of
+    to $N_{abc}$. The same argument works for connected components of
     $N_\varnothing$ that are adjacent to either $N_a$ or $N_b$. Thus,
     $N_\varnothing$ is complete to $N_{abc}$.
 
@@ -3320,9 +3325,8 @@ is just one vertex in $N_Z$, namely $z$.
 
     Also notice that we can consider both $G[N(x)\setminus\l{c}]$ and
     $G[N(c)\setminus\l{x}]$ to be split, otherwise, one of them contains an
-    induced copy of $2K_2$, say $G[N(x)\setminus\l{c}]$, and such a copy of
-    $2K_2$ along with $x$ would reduce this case to Case 1. We take the
-    following subcases:
+    induced copy of $2K_2$ and, such a copy of $2K_2$ along with $x$ or $c$
+    would reduce this case to Case 1. We take the following subcases:
 
     \paragraph{Case 2.1.1: $G[N(c)\setminus \l{x}]$ is a cluster.} Since
     $G[N(x)\setminus\l{c}]$ is split, let $(S_x,K_x)$ be a split partition of
@@ -3459,7 +3463,7 @@ is just one vertex in $N_Z$, namely $z$.
     are $v$ and $v'$ nonadajcent vertices in $N_{ab}$. Recall that $v$ and $v'$
     are adjacent to $x$. Thus, $\p{v,a,v'}$ is an induced copy of $P_3$ in
     $G[N(x)\setminus\l{c}]$, once more contradicting that such a graph is a
-    cluster. $N_{ab}$ is a clique.
+    cluster. Thus, $N_{ab}$ is a clique.
 
     Similarly, observe that $N_\varnothing$ is anticomplete to $N_{ab}$,
     otherwise a vertex $v'\in N_\varnothing$ adjacent to a vertex $v\in N_{ab}$
@@ -3505,9 +3509,10 @@ is just one vertex in $N_Z$, namely $z$.
 
     Therefore,
     \[
-        \p{S_c \cup \l{x} , K_c\cup\l{c} \cup N_{ab}\cup\l{a,b} \cup N_\varnothing}
+        \p{S_c \cup \l{x} , K_c\cup\l{c} \cup N_{ab}\cup\l{a,b} \cup
+        N_\varnothing}
     \]
-    is a monopoalar partition of $G$ (see
+    is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_chordal_5}).
 
     \begin{figure}[htb!]
