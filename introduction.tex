@@ -52,4 +52,33 @@
 \section{Polarity}
 \label{sec:polarity-defs}
 
+\section{Monopolarity}
+\label{cap:mono}
+
+\section{Previous results}
+\label{sec:previous}
+
+\begin{proposition}
+    Let $G$ and $H$ be graphs.   If $G$ and $H$ are monopolar, then $G+H$ is
+    monopolar.
+\end{proposition}
+\begin{proof}
+    Let $(A_1, B_1)$ and $(A_2, B_2)$ be the monopolar partitions of $G$ and
+    $H$, respectively.   Since $A_1$ and $A_2$ are independent, we have that
+    $A_1 \cup A_2$ is also independent.   Analogously, $G[B_1]$ and $G[B_2]$ are
+    clusters, so their union is also a cluster.   Hence, $(A_1 \cup A_2, B_1
+    \cup B_2)$ is a monopolar partition of $G+H$.
+    
+\end{proof}
+
+\begin{corollary}
+    A graph is monopolar if and only if each of its connected components is
+    monopolar.
+\end{corollary}
+
+\begin{corollary}
+    Every minimal obstruction for monopolarity is a connected graph.
+\end{corollary}
+
+
 %TODO: Polarity definitions and basic results (NP-completness, etc.)
