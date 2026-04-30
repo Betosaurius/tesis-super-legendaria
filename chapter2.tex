@@ -1584,6 +1584,8 @@ is just one vertex in $N_Z$, namely $z$.
             \label{lem:chordal_anti_2_bag_2}
         \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to
             $N_\varnothing$. \label{lem:chordal_anti_4}
+        \item The set $N_\varnothing\setminus N(z)$ is anticomplete to at least
+            one between $N_{ab}$ and $N_{cd}$. \label{lem:chordal_anti_6}
     \end{lemenum}
 \end{lemma}
 
@@ -1923,6 +1925,129 @@ is just one vertex in $N_Z$, namely $z$.
                     ($\p{w,x,a,z,c}$) given that $N_X$ is not anticomplete to
                     $N_\varnothing$.}
                 \label{fig:chordal_anti_4}
+            \end{figure}
+
+        \item Suppose $w$ is a vertex in $N_\varnothing\setminus N(z)$ adjacent
+            to $x\in N_{ab}$ and $y\in N_{cd}$. By \Cref{lem:chordal_anti_5},
+            both $x$ and $y$ are adjacent to $z$. Also, by
+            \Cref{lem:chordal_anti_3}, $x$ is not adjacent to $y$. Then,
+            $\p{a,x,w,y,c}$ is an induced copy of $P_5$ (see
+            \Cref{fig:chordal_anti_6_1}). Therefore, $w$ must be anticomplete to
+            either $N_{ab}$ or $N_{cd}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node[lightgray] (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (0,1.5) {};
+                    \node (y) at (0,-1.5) {};
+                    \node (w) [right=0.75 of v] {};
+            
+                    \draw[lightgray] (b) to (x);
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (a);
+                    \draw[lightgray] (y) to (d);
+                    \draw[lightgray] (y) to (v);
+                    \draw[lightgray] (x) to (v);
+                    \draw (w) to (x);
+                    \draw (x) to (a);
+                    \draw (y) to (c);
+                    \draw (y) to (w);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that a vertex in
+                    $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
+                    and $N_{cd}$.}
+                \label{fig:chordal_anti_6_1}
+            \end{figure}
+
+            This implies that, if $N_\varnothing\setminus N(z)$ is adjacent to
+            both $N_{ab}$ and $N_{cd}$, then there are vertices $w,w'\in
+            N_\varnothing\setminus N(z)$, $x\in N_{ab}$ and $y\in N_{cd}$ such
+            that $w$ is adjacent to $x$ and not adjacent to $y$, while $w'$ is
+            adjacent to $y$ and not adjacent to $x$. Recall that $x$ and $y$ are
+            adjacent to $z$ and nonadjacent to each other. Then,
+            $\l{w,w',x,y,z}$ induces either a copy of $C_5$ or $P_5$, depending
+            on whether $w$ and $w'$ are adjacent or not, respectively (see
+            \Cref{fig:chordal_anti_6_2}). Hence, $N_\varnothing\setminus N(z)$
+            is anticomplete to at least one between $N_{ab}$ and $N_{cd}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (x) at (0,1.5) {};
+                        \node (y) at (0,-1.5) {};
+                        \node (w) [right=1.5 of x] {};
+                        \node (w') [right=1.5 of y] {};
+                        \node [Label] [left=1.5 of x] {};
+                
+                        \draw[lightgray] (b) to (x);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (v) to (c);
+                        \draw[lightgray] (v) to (a);
+                        \draw[lightgray] (y) to (d);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (y) to (c);
+                        \draw (y) to (v);
+                        \draw (x) to (v);
+                        \draw (w) to (x);
+                        \draw (y) to (w');
+                        \draw (w) to (w');
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \node (v) {};
+                        \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                        \node (x) at (0,1.5) {};
+                        \node (y) at (0,-1.5) {};
+                        \node (w) [right=1.5 of x] {};
+                        \node (w') [right=1.5 of y] {};
+                        \node [Label] [left=1.5 of x] {};
+                
+                        \draw[lightgray] (b) to (x);
+                        \draw[lightgray] (a) to (b);
+                        \draw[lightgray] (v) to (b);
+                        \draw[lightgray] (x) to (b);
+                        \draw[lightgray] (v) to (d);
+                        \draw[lightgray] (c) to (d);
+                        \draw[lightgray] (v) to (c);
+                        \draw[lightgray] (v) to (a);
+                        \draw[lightgray] (y) to (d);
+                        \draw[lightgray] (x) to (a);
+                        \draw[lightgray] (y) to (c);
+                        \draw (y) to (v);
+                        \draw (x) to (v);
+                        \draw (w) to (x);
+                        \draw (y) to (w');
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_5$ or $P_5$ given that
+                    $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
+                    and $N_{cd}$.}
+                \label{fig:chordal_anti_6_2}
             \end{figure}
     \end{enumerate}
 \end{proof}
@@ -3627,6 +3752,156 @@ is just one vertex in $N_Z$, namely $z$.
     At last, we conclude that $G$ is monopolar.
 
 \end{proof}
+
+\section{Structure of monopolar chordal \texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs}
+\label{sec:structure_chordal}
+
+Even though \Cref{thm:monopolar_chordal} characterizes the class of monopolar
+chordal $(P_5,\text{house})$-free graphs, it does not give a precise description
+of how such graphs look like. For instance, \Cref{fig:variant_chordal_1} shows
+the graph in \Cref{fig:monopolar_partition_chordal_3} with an additional vertex
+adjacent to $N_{ab}$. Such graph is still chordal and monopolar, but it contains
+an induced copy of $P_5$. Moreover, the algorithm obtained from the proof of
+\Cref{thm:monopolar_chordal} would produce the monopolar partition shown in
+\Cref{fig:variant_chordal_1}, but it may not be able to detect the induced copy
+of $P_5$ if it received such a graph as input.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}[every node/.style={vertex}, node
+        distance=1cm, on grid, edge]
+        \node (v) {};
+        \node[above left=1cm and 0.75cm of v,lightgray] (a) {};
+        \node[above right=1cm and 0.75cm of v,lightgray] (b) {};
+        \node[below left=1cm and 0.75cm of v,lightgray] (c) {};
+        \node[below right=1cm and 0.75cm of v,lightgray] (d) {};
+        \node[lightgray] (cd) at (0,-1.5) {};
+        \node (ab1) at (0,1.5) {};
+        \node (n) [right=0.75 of ab1] {};
+        \node[lightgray] (v1) at ($(v) - (1,0)$) {};
+        \node[lightgray] (v2) at ($(v1) - (30:0.75)$) {};
+        \node[lightgray] (v3) at ($(v1) - (-30:0.75)$) {};
+
+        \begin{scope}[xshift=2cm, yshift=-0.5cm, rotate=15]
+            \foreach \i in {1,...,4}
+                \node[lightgray] (\i)  at ({(360/5)*\i + 90}:0.75){};
+            \node (0)  at ({90}:0.75){};
+            
+            \foreach \i in {0,...,4}{
+                \foreach \j in {1,...,4}{
+                    \draw[lightgray] let \n1={int(mod(\i+\j,5))} in (\i) to (\n1);
+                }
+            }
+
+            \node[lightgray] (23) at (0,-1) {};
+
+            \draw[lightgray] (23) to (0);
+            \draw[lightgray] (23) to (4);
+            \draw[lightgray] (23) to (1);
+            \draw[lightgray] (23) to (3);
+        \end{scope}
+
+        \path let \p1=(1) in node[lightgray] (1') at (\x1, 0.75) {};
+        \path let \p1=(0) in node (0') at (\x1, 0.75) {};
+        \path let \p1=(4) in node[lightgray] (4') at (\x1, 0.75) {};
+        \node [Label] at ($(0,0) - (4)$) {};
+
+        \draw[lightgray] (a) to (b);
+        \draw[lightgray] (v) to (a);
+        \draw[lightgray] (v) to (b);
+        \draw[lightgray] (v) to (c);
+        \draw[lightgray] (v) to (d);
+        \draw[lightgray] (c) to (d);
+        \draw[lightgray] (c) to (cd);
+        \draw[lightgray] (d) to (cd);
+        \draw[lightgray] (v) to (cd);
+        \draw[lightgray] (a) to (ab1);
+        \draw[lightgray] (b) to (ab1);
+        \draw[lightgray] (v) to (v1);
+        \draw[lightgray] (v) to (v2);
+        \draw[lightgray] (v) to (v3);
+        \draw[lightgray] (v1) to (v2);
+        \draw[lightgray] (v1) to (v3);
+        \draw[lightgray] (v2) to (v3);
+        \draw[lightgray] (v) to (1);
+        \draw[lightgray] (v) to (4);
+        \draw[lightgray] (1) to (1');
+        \draw[lightgray] (1) to (0');
+        \draw[lightgray] (0) to (4');
+        \draw[lightgray] (4) to (4');
+        \draw (v) to (0);
+        \draw (0) to (0');
+        \draw (v) to (ab1);
+        \draw (n) to (ab1);
+        
+        \begin{scope}[on background layer, scale=1.5]
+            \draw[fill=red!20, draw=none] \convexpath{c,d,cd}{3.5pt};
+            \draw[fill=red!20, draw=none] \convexpath{v1,v2,v3}{3.5pt};
+            \draw[fill=blue!20, draw=none] \convexpath{1',0',4'}{3.5pt};
+            \draw[fill=red!20, draw=none] \convexpath{ab1, b, a}{3.5pt};
+            \draw[fill=red!20, draw=none] \convexpath{0,4,3,2,1}{3.5pt};
+            \node[fit= (v), inner sep=0.5pt, draw=none, fill=blue!20] {};
+            \node[fit= (n), inner sep=0.5pt, draw=none, fill=blue!20] {};
+            \node[fit= (23), inner sep=0.5pt, draw=none, fill=blue!20] {};
+        \end{scope}
+    \end{tikzpicture}
+    \caption{A monopolar partition of $G$ with an induced copy of $P_5$.}
+    \label{fig:variant_chordal_1}
+\end{figure}
+
+This phenomenon happens beacause the exact neighborhoods of the induced copy of
+the $2K_2$ have enough \textit{nice} properties so that they bypass every check
+for $P_5$ in the algorithm. In particular, the induced copy of $P_5$ in
+\Cref{fig:variant_chordal_1} arises from both $\mathcal{C}\setminus
+\mathcal{C}_z$ and $\mathcal{C}_{C,1}$ being nonempty for a $C\in\mathcal{C}_z$.
+Notice that this relies heavily on the copy of $2K_2$ that the algorithm decide
+to work on, since another choice for it could make the procedure detect a $P_5$.
+
+In order to avoid the ``nondeterministic'' aspect of our algorithm, we would
+like to recognize, even after finding a monopolar partition, if the graph is
+$P_5$-free. Therefore, this section will be devoted to provide additional checks
+for the algorithm so that it can always return an induced copy of $P_5$ in case
+$G$ has one.
+
+Observe that there could be a similar problem if, instead of $P_5$, $G$ had an
+induced copy of the house, which in turn would imply that the original graph was
+not chordal. However, we can circumvent this issue by checking, in linear time,
+if the input graph is chordal. If that was not the case, then we can return an
+induced cycle of length at least 4. If such a cycle has length at least 6, then
+we can extract an induced copy of $P_5$ from it. Otherwise, if the cycle has
+length 4 or 5, then the algorithm starts to calculate the exact neighborhoods of
+such a cycle, as we will see in the next chapters. Nonetheless, even though the
+algorithm can skip it, the additional properties we are about to present do
+requiere to account for the presence of cycles, since without it, the the
+complete structure of chordal monopolar $(P_5,\text{house})$-free graphs would
+not be complete.
+
+Before any results, recall that finding a monopolar partition of a graph is, in
+general, a hard problem. For that reason, if the algorithm has already found a
+monopolar partition, we would like to return also such a partition, even when
+the graph is not $P_5$-free. Thus, the output of the algorithm will be either
+\begin{enumerate}[label=(\roman*)]
+    \item a monopolar partition whenever $G$ is a monopolar chordal
+        $(P_5,\text{house})$-free graph, or
+    \item an induced copy of $P_5$, possibly along with a monopolar partition,
+    when $G$ is a monopolar chordal graph with an induced copy of $P_5$, or
+    \item an induced minimal obstruction of monopolarity when $G$ is chordal but
+    not monopolar.
+\end{enumerate}
+
+
+
+\paragraph{Case 1.1: $\mathcal{C}\setminus \mathcal{C}_z$ is nonempty.}
+    Observe that all components in $\mathcal{C}\setminus \mathcal{C}_z$ are
+    anticomplete to $z$. Additionally, \Cref{lem:chordal_anti_4} implies that
+    those components are anticomplete to both $N_a$ and $N_b$.
+
+    Also, \Cref{lem:chordal_anti_6} implies that all components in
+    $\mathcal{C}\setminus \mathcal{C}_z$ are anticomplete to at least one of
+    $N_{ab}$ or $N_{cd}$.  Consider the following subcases:
+
+    \paragraph{Case 1.1.1: $N_\varnothing\setminus N(z)$ is anticomplete to
+    $N_{cd}$.}
 
 \section{\texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs with \texorpdfstring{$C_5$}{C5}}
 \label{sec:c5}
@@ -6588,4 +6863,5 @@ without loss of generality that $N_{abc}$.
     $N_\varnothing$ explained in the previous subcase still give monopolar
     partitions just by swapping the stable set with the set inducing the
     cluster.
+
 \end{proof}
