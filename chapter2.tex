@@ -1559,8 +1559,6 @@ is just one vertex in $N_Z$, namely $z$.
             \label{lem:chordal_anti_2_bag_2}
         \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to
             $N_\varnothing$. \label{lem:chordal_anti_4}
-        \item The set $N_\varnothing\setminus N(z)$ is anticomplete to at least
-            one between $N_{ab}$ and $N_{cd}$. \label{lem:chordal_anti_6}
     \end{lemenum}
 \end{lemma}
 
@@ -1900,129 +1898,6 @@ is just one vertex in $N_Z$, namely $z$.
                     ($\p{w,x,a,z,c}$) given that $N_X$ is not anticomplete to
                     $N_\varnothing$.}
                 \label{fig:chordal_anti_4}
-            \end{figure}
-
-        \item Suppose $w$ is a vertex in $N_\varnothing\setminus N(z)$ adjacent
-            to $x\in N_{ab}$ and $y\in N_{cd}$. By \Cref{lem:chordal_anti_5},
-            both $x$ and $y$ are adjacent to $z$. Also, by
-            \Cref{lem:chordal_anti_3}, $x$ is not adjacent to $y$. Then,
-            $\p{a,x,w,y,c}$ is an induced copy of $P_5$ (see
-            \Cref{fig:chordal_anti_6_1}). Therefore, $w$ must be anticomplete to
-            either $N_{ab}$ or $N_{cd}$.
-
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \node[lightgray] (v) {};
-                    \node[above left=1cm and 0.75cm of v] (a) {};
-                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                    \node[below left=1cm and 0.75cm of v] (c) {};
-                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                    \node (x) at (0,1.5) {};
-                    \node (y) at (0,-1.5) {};
-                    \node (w) [right=0.75 of v] {};
-            
-                    \draw[lightgray] (b) to (x);
-                    \draw[lightgray] (a) to (b);
-                    \draw[lightgray] (v) to (b);
-                    \draw[lightgray] (x) to (b);
-                    \draw[lightgray] (v) to (d);
-                    \draw[lightgray] (c) to (d);
-                    \draw[lightgray] (v) to (c);
-                    \draw[lightgray] (v) to (a);
-                    \draw[lightgray] (y) to (d);
-                    \draw[lightgray] (y) to (v);
-                    \draw[lightgray] (x) to (v);
-                    \draw (w) to (x);
-                    \draw (x) to (a);
-                    \draw (y) to (c);
-                    \draw (y) to (w);
-                \end{tikzpicture}
-                \caption{An induced copy of $P_5$ given that a vertex in
-                    $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
-                    and $N_{cd}$.}
-                \label{fig:chordal_anti_6_1}
-            \end{figure}
-
-            This implies that, if $N_\varnothing\setminus N(z)$ is adjacent to
-            both $N_{ab}$ and $N_{cd}$, then there are vertices $w,w'\in
-            N_\varnothing\setminus N(z)$, $x\in N_{ab}$ and $y\in N_{cd}$ such
-            that $w$ is adjacent to $x$ and not adjacent to $y$, while $w'$ is
-            adjacent to $y$ and not adjacent to $x$. Recall that $x$ and $y$ are
-            adjacent to $z$ and nonadjacent to each other. Then,
-            $\l{w,w',x,y,z}$ induces either a copy of $C_5$ or $P_5$, depending
-            on whether $w$ and $w'$ are adjacent or not, respectively (see
-            \Cref{fig:chordal_anti_6_2}). Hence, $N_\varnothing\setminus N(z)$
-            is anticomplete to at least one between $N_{ab}$ and $N_{cd}$.
-
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \begin{scope}[xshift=-2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                        \node (x) at (0,1.5) {};
-                        \node (y) at (0,-1.5) {};
-                        \node (w) [right=1.5 of x] {};
-                        \node (w') [right=1.5 of y] {};
-                        \node [Label] [left=1.5 of x] {};
-                
-                        \draw[lightgray] (b) to (x);
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw[lightgray] (x) to (b);
-                        \draw[lightgray] (v) to (d);
-                        \draw[lightgray] (c) to (d);
-                        \draw[lightgray] (v) to (c);
-                        \draw[lightgray] (v) to (a);
-                        \draw[lightgray] (y) to (d);
-                        \draw[lightgray] (x) to (a);
-                        \draw[lightgray] (y) to (c);
-                        \draw (y) to (v);
-                        \draw (x) to (v);
-                        \draw (w) to (x);
-                        \draw (y) to (w');
-                        \draw (w) to (w');
-                    \end{scope}
-
-                    \begin{scope}[xshift=2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                        \node (x) at (0,1.5) {};
-                        \node (y) at (0,-1.5) {};
-                        \node (w) [right=1.5 of x] {};
-                        \node (w') [right=1.5 of y] {};
-                        \node [Label] [left=1.5 of x] {};
-                
-                        \draw[lightgray] (b) to (x);
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw[lightgray] (x) to (b);
-                        \draw[lightgray] (v) to (d);
-                        \draw[lightgray] (c) to (d);
-                        \draw[lightgray] (v) to (c);
-                        \draw[lightgray] (v) to (a);
-                        \draw[lightgray] (y) to (d);
-                        \draw[lightgray] (x) to (a);
-                        \draw[lightgray] (y) to (c);
-                        \draw (y) to (v);
-                        \draw (x) to (v);
-                        \draw (w) to (x);
-                        \draw (y) to (w');
-                    \end{scope}
-                \end{tikzpicture}
-                \caption{An induced copy of $C_5$ or $P_5$ given that
-                    $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
-                    and $N_{cd}$.}
-                \label{fig:chordal_anti_6_2}
             \end{figure}
     \end{enumerate}
 \end{proof}
@@ -3863,6 +3738,141 @@ the graph is not $P_5$-free. Thus, the output of the algorithm will be either
     \item an induced copy of either a $P_5$ or a minimal obstruction of
         monopolarity when $G$ is chordal but not monopolar.
 \end{enumerate}
+
+The next lemmas give us the properties we are looking for.
+
+\begin{lemma}
+    Let $G$ be a monopolar chordal graph with an induced copy of $2K_2$ with
+    vertex set $Z=\l{a,b,c,d}$ and edge set $\l{ab,cd}$. The following holds:
+    \begin{enumerate}[label=(\roman*)]
+        \item The set $N_\varnothing\setminus N(z)$ is anticomplete to at least
+            one of $N_{ab}$ and $N_{cd}$\label{lem:chordal_anti_6}
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    \item Suppose $w$ is a vertex in $N_\varnothing\setminus N(z)$ adjacent to
+        $x\in N_{ab}$ and $y\in N_{cd}$. By \Cref{lem:chordal_anti_5}, both $x$
+        and $y$ are adjacent to $z$. Also, by \Cref{lem:chordal_anti_3}, $x$ is
+        not adjacent to $y$. Then, $\p{a,x,w,y,c}$ is an induced copy of $P_5$
+        (see \Cref{fig:chordal_anti_6_1}). Therefore, $w$ must be anticomplete
+        to either $N_{ab}$ or $N_{cd}$.
+
+        \begin{figure}[htb!]
+            \centering
+            \begin{tikzpicture}[every node/.style={vertex}, node
+                distance=1cm, on grid, edge]
+                \node[lightgray] (v) {};
+                \node[above left=1cm and 0.75cm of v] (a) {};
+                \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                \node[below left=1cm and 0.75cm of v] (c) {};
+                \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                \node (x) at (0,1.5) {};
+                \node (y) at (0,-1.5) {};
+                \node (w) [right=0.75 of v] {};
+        
+                \draw[lightgray] (b) to (x);
+                \draw[lightgray] (a) to (b);
+                \draw[lightgray] (v) to (b);
+                \draw[lightgray] (x) to (b);
+                \draw[lightgray] (v) to (d);
+                \draw[lightgray] (c) to (d);
+                \draw[lightgray] (v) to (c);
+                \draw[lightgray] (v) to (a);
+                \draw[lightgray] (y) to (d);
+                \draw[lightgray] (y) to (v);
+                \draw[lightgray] (x) to (v);
+                \draw (w) to (x);
+                \draw (x) to (a);
+                \draw (y) to (c);
+                \draw (y) to (w);
+            \end{tikzpicture}
+            \caption{An induced copy of $P_5$ given that a vertex in
+                $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
+                and $N_{cd}$.}
+            \label{fig:chordal_anti_6_1}
+        \end{figure}
+
+        This implies that, if $N_\varnothing\setminus N(z)$ is adjacent to both
+        $N_{ab}$ and $N_{cd}$, then there are vertices $w,w'\in
+        N_\varnothing\setminus N(z)$, $x\in N_{ab}$ and $y\in N_{cd}$ such that
+        $w$ is adjacent to $x$ and not adjacent to $y$, while $w'$ is adjacent
+        to $y$ and not adjacent to $x$. Recall that $x$ and $y$ are adjacent to
+        $z$ and nonadjacent to each other. Then, $\l{w,w',x,y,z}$ induces either
+        a copy of $C_5$ or $P_5$, depending on whether $w$ and $w'$ are adjacent
+        or not, respectively (see \Cref{fig:chordal_anti_6_2}). Hence,
+        $N_\varnothing\setminus N(z)$ is anticomplete to at least one between
+        $N_{ab}$ and $N_{cd}$.
+
+        \begin{figure}[htb!]
+            \centering
+            \begin{tikzpicture}[every node/.style={vertex}, node
+                distance=1cm, on grid, edge]
+                \begin{scope}[xshift=-2cm]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (0,1.5) {};
+                    \node (y) at (0,-1.5) {};
+                    \node (w) [right=1.5 of x] {};
+                    \node (w') [right=1.5 of y] {};
+                    \node [Label] [left=1.5 of x] {};
+            
+                    \draw[lightgray] (b) to (x);
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (a);
+                    \draw[lightgray] (y) to (d);
+                    \draw[lightgray] (x) to (a);
+                    \draw[lightgray] (y) to (c);
+                    \draw (y) to (v);
+                    \draw (x) to (v);
+                    \draw (w) to (x);
+                    \draw (y) to (w');
+                    \draw (w) to (w');
+                \end{scope}
+
+                \begin{scope}[xshift=2cm]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (0,1.5) {};
+                    \node (y) at (0,-1.5) {};
+                    \node (w) [right=1.5 of x] {};
+                    \node (w') [right=1.5 of y] {};
+                    \node [Label] [left=1.5 of x] {};
+            
+                    \draw[lightgray] (b) to (x);
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (a);
+                    \draw[lightgray] (y) to (d);
+                    \draw[lightgray] (x) to (a);
+                    \draw[lightgray] (y) to (c);
+                    \draw (y) to (v);
+                    \draw (x) to (v);
+                    \draw (w) to (x);
+                    \draw (y) to (w');
+                \end{scope}
+            \end{tikzpicture}
+            \caption{An induced copy of $C_5$ or $P_5$ given that
+                $N_\varnothing\setminus N(z)$ is adjacent to both $N_{ab}$
+                and $N_{cd}$.}
+            \label{fig:chordal_anti_6_2}
+        \end{figure}
+\end{proof}
 
 
 \paragraph{Case 1.1: $\mathcal{C}\setminus \mathcal{C}_z$ is nonempty.}
