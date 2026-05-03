@@ -3743,10 +3743,23 @@ The next lemmas give us the properties we are looking for.
 
 \begin{lemma}
     Let $G$ be a monopolar chordal graph with an induced copy of $2K_2$ with
-    vertex set $Z=\l{a,b,c,d}$ and edge set $\l{ab,cd}$. The following holds:
+    vertex set $Z=\l{a,b,c,d}$ and edge set $\l{ab,cd}$. Suppose $N_Z$ is
+    nonempty and let $z\in N_Z$. Suppose without loss of generality that $N_{c}$
+    and $N_{d}$ are empty. The following holds:
     \begin{enumerate}[label=(\roman*)]
         \item The set $N_\varnothing\setminus N(z)$ is anticomplete to at least
-            one of $N_{ab}$ and $N_{cd}$\label{lem:chordal_anti_6}
+            one of $N_{ab}$ and $N_{cd}$.
+        \item At most one $C\in\mathcal{C}_z$ is such that $V_{C-C_z}$ is
+            nonempty.
+        \item If $N_a\cup N_b$ is adjacent to $N_{ab}$, then $N_{cd}$ is
+            complete to $z$.
+        \item At least one of $N_a\cup N_b$ and $\bigcup_{C\in\mathcal{C}_z}
+            V_{C-C_z}$ is empty.
+        \item For $C\in\mathcal{C}_z$ each $C_z$ is a complete graph.
+        \item Non-isolated vertices of $N_{ab}\setminus N(z)$ are complete to
+            $K\cup K_{ab}$.
+        \item If $N_\varnothing\setminus N(z)$ is adjacent to $N_{ab}$, then
+            $N_{cd}$ is complete to $z$.
     \end{enumerate}
 \end{lemma}
 
