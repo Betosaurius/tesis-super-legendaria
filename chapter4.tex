@@ -1,5 +1,4 @@
-\chapter{\texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs without
-\texorpdfstring{$C_5$}{C5}}
+\chapter{\texorpdfstring{$(P_5,\text{house},C_5)$}{(P5,house,C5)}-free graphs}
 \label{cap:no_c5}
 
 \section{Characterization of monopolarity}
@@ -250,7 +249,7 @@ $(P_5,\text{house})$-free.
 \begin{lemma}
     \label{lem:pre_neighborhoods_no_c5}
     Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with an induced
-    copy of $C_4$. Let $X$ be a subset of $Z$.
+    copy of $C_4$ having $Z$ as vertex set. Let $X$ be a subset of $Z$.
     \begin{lemenum}
         \item If $N_X$ is a 2-bag adjacent to consecutive vertices in $Z$, then
             $N_X$ is empty. \label{lem:type_1}
@@ -321,8 +320,8 @@ other the claims are vacuously true.
 
 \begin{lemma}
     Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
+    copy of $C_4$ having vertex set $Z$ and free of the graphs depicted in
+    Figures \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
     of $Z$.
@@ -500,8 +499,8 @@ other the claims are vacuously true.
 \begin{lemma}
     \label{lem:comp_1}
     Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
+    copy of $C_4$ having $Z$ as vertex set and free of the graphs depicted in
+    Figures \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
     of $Z$. If $N_X$ is a three bag and $N_Y$ is a 2-bag adjacent to the middle
@@ -543,8 +542,8 @@ other the claims are vacuously true.
 
 \begin{lemma}
     Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
+    copy of $C_4$ having $Z$ as vertex set and free of the graphs depicted in
+    Figures \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
     of $Z$.
@@ -553,8 +552,8 @@ other the claims are vacuously true.
             \label{lem:type_3}
         \item If $N_X$ is a 2-bag, then $G[N_X]$ is a cluster.
             \label{lem:type_4}
-        \item If $N_X$ and $N_Y$ are 3-bags such that $|X\cap Y|=2$, then one
-            between $N_X$ and $N_Y$ is empty. \label{lem:type_5}
+        \item If $N_X$ and $N_Y$ are 3-bags with adjacent middle vertices, then
+            one between $N_X$ and $N_Y$ is empty. \label{lem:type_5}
         \item If both $N_X$ and $N_Y$ are one bags adjacent to non-consecutive
             vertices in $Z$, then one between $N_X$ and $N_Y$ is empty.
             \label{lem:type_6}
@@ -579,8 +578,8 @@ other the claims are vacuously true.
 \begin{proof}
     \leavevmode \par
     \begin{enumerate}[label=(\roman*)]
-        \item Follows directly from \Cref{lem:c5_type_1}.
-        \item Follows directly from \Cref{lem:c5_type_2}.
+        \item The proof is the same as the one for \Cref{lem:c5_type_1}.
+        \item The proof is the same as the one for \Cref{lem:c5_type_2}.
         \item Suppose without loss of generality that $X=\l{a,b,c}$ and
             $Y=\l{b,c,d}$. On the one hand, if $x\in N_X$ is adjacent to $y\in
             N_Y$, then $\l{a,b,c,d,x,y}$ induces a copy of $H_{13}$ (see
