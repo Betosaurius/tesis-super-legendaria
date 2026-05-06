@@ -5,8 +5,16 @@
 \section{Characterization of monopolarity}
 \label{sec:no_c5_characterization}
 
-There is a single additional minimal obstruction to monopolarity for $C_5$-free
-graphs.
+Thus far, \textsc{Monopolarity} has been solved for those
+$\p{P_5,\text{house}}$-free graphs that are either chordal or have an induced
+copy of $C_5$. If a graph in this family is neither chordal nor it has an
+induced copy of $C_5$, it follows that it must have an induced copy of $C_4$.
+Thus, all graphs considered in this section, unless otherwise stated, are
+assumed to have an induced copy of $C_4$, which will be denoted by
+$C=\p{a,b,c,d,a}$, and $Z=\l{a,b,c,d}$.
+
+It turns out that there is a single additional minimal obstruction to
+monopolarity for $C_5$-free graphs.
 
 \begin{figure}[ht]
     \centering
@@ -234,206 +242,1071 @@ graphs.
 
 \end{proof}
 
-Thus far, \textsc{Monopolarity} has been solved for those
-$\p{P_5,\text{house}}$-free graphs that are either chordal or have an induced
-copy of $C_5$. If a graph in this family is neither chordal nor it has an
-induced copy of $C_5$, it follows that it must have an induced copy of $C_4$.
-Thus, all graphs considered in this section, unless otherwise stated, are
-assumed to have an induced copy of $C_4$, which will be denoted by
-$C=\p{a,b,c,d,a}$, and $Z=\l{a,b,c,d}$. We start by proving the following lemmas
-regarding the structure of the exact neighborhoods of $C$.
+Since all graphs in the current family have an induced $C_4$, we will analyze
+the exact neighborhoods of an induced copy of $C_4$. The next lemma
+straightforwardly tells us that some bags must be empty for the graph to be
+$(P_5,\text{house})$-free.
 
 \begin{lemma}
-    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
-    \ref{fig:p5-house-obstruction-with-c5} and
-    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
-    of $Z$.
+    \label{lem:pre_neighborhoods_no_c5}
+    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with an induced
+    copy of $C_4$. Let $X$ be a subset of $Z$.
     \begin{lemenum}
-        \item If $X$ consists of three vertices and $Y$ intersects it at
-            non-consecutive vertices, then $N_X$ is anticomplete to $N_Y$.
-            \label{lem:anti_1}
-        \item If $X$ consists of two non-consecutive vertices and $Y$ consist of
-            one vertex in $X$, then $N_X$ is anticomplete to $N_Y$.
-            \label{lem:anti_2}
-        \item If $X$ consists of three vertices and $Y$ consists of a vertex
-            different from the middle vertex of $X$, then $N_X$ is anticomplete
-            to $N_Y$. \label{lem:anti_3}
-        \item If $X$ consists of one vertex and $Y$ consists of at most one
-            vertex, consecutive to the one in $X$, then $N_X$ is anticomplete to
-            $N_Y$. \label{lem:anti_4}
-    \end{lemenum} 
-\end{lemma}
-
-\begin{proof}
-    \leavevmode \par
-    \begin{enumerate}[label=(\roman*)]
-        \item Follows directly from \Cref{lem:c5_anticomp_4}.
-        \item Suppose without loss of generality that $X=\l{a,c}$ and $Y=\l{c}$.
-            If $x\in N_X$ is adjacent to $y\in N_Y$, then $\l{a,b,c,x,y}$
-            induces a copy of the house. It follows that $N_X$ is anticomplete
-            to $N_Y$.
-        \item Suppose without loss of generality that $X=\l{a,b,c}$. If
-            $Y=\l{a}$ or $Y=\l{c}$, as in the previous example, $x\in N_X$
-            adjacent to $y\in N_Y$ implies that $\l{a,c,d,x,y}$ induces a copy
-            of the house. If $Y=\l{d}$, then $x\in N_X$ adjacent to $y\in N_Y$
-            implies that $\l{b,c,d,x,y}$ induces a copy of the house. Then,
-            $N_{X}$ is anticomplete to $N_Y$.
-        \item Suppose without loss of generality that $Y\subseteq\l{a}$ and
-            $X=\l{b}$. If $x\in N_X$ is adjacent to $y\in N_Y$, then
-            $\p{y,x,b,c,d}$ is a $P_5$. Therefore, $N_X$ is anticomplete to
-            $N_Y$.
-    \end{enumerate}
-\end{proof}
-
-\begin{lemma}
-    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
-    \ref{fig:p5-house-obstruction-with-c5} and
-    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
-    of $Z$.
-    \begin{lemenum}
-        \item If $X$ consists of three vertices and $Y$ consists of two
-            non-consecutive vertices, one of them being the middle vertex of
-            $X$, then $N_X$ is complete to $N_Y$. \label{lem:comp_1}
-    \end{lemenum} 
-\end{lemma}
-
-\begin{proof}
-    \leavevmode \par
-    \begin{enumerate}[label=(\roman*)]
-        \item Suppose without loss of generality that $X=\l{a,b,c}$ and
-            $Y=\l{b,d}$. If $x\in N_X$ is not adjacent to $y\in N_Y$, then
-            $\l{a,b,d,y,x}$ induces a copy of the house. Hence, $N_X$ is
-            complete to $N_Y$.
-    \end{enumerate}
-\end{proof}
-
-\begin{lemma}
-    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
-    copy of $C_4$ and free of the graphs depicted in Figures
-    \ref{fig:chordal-p5-free-obstructions},
-    \ref{fig:p5-house-obstruction-with-c5} and
-    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
-    of $Z$.
-    \begin{lemenum}
-        \item If $N_X$ consists of two consecutive vertices, then $N_X$ is
-            empty. \label{lem:type_1}
-        \item If $X=Z$, then $N_X$ is empty. \label{lem:type_2}
-        \item If $X$ consists of three vertices, then $N_X$ is a clique.
-            \label{lem:type_3}
-        \item If $X$ consists of two non-consecutive vertices, then $G[N_X]$ is
-            a cluster. \label{lem:type_4}
-        \item Let $X$ and $Y$ consist of three vertices such that they intersect
-            in two. Then, one between $N_X$ and $N_Y$ is empty.
-            \label{lem:type_5}
-        \item If $X$ consists of one vertex and $Y$ consists of one vertex
-            non-consecutive to the one in $X$, then one between $N_X$ and $N_Y$
-            is empty. \label{lem:type_6}
-        \item If $X$ consists of one vertex, then $G[N_X]$ is either a cluster
-            or split. \label{lem:type_7}
-        \item Every connected component of $G[N_\varnothing]$ is homogeneous to
-            vertices in $N_X$ with $X$ nonempty. Moreover, each connected
-            component is anticomplete to all $N_X$ but one. \label{lem:type_8}
+        \item If $N_X$ is a 2-bag adjacent to consecutive vertices in $Z$, then
+            $N_X$ is empty. \label{lem:type_1}
+        \item The set $N(x)$ is $C_4$-free for every $x\in V$. In particular,
+            $N_Z=\varnothing$. \label{lem:type_2}
     \end{lemenum}
 \end{lemma}
 
 \begin{proof}
     \leavevmode \par
     \begin{enumerate}[label=(\roman*)]
-        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in
-            N_X$, then $\l{a,b,c,d,x}$ induces a copy of the house. Therefore,
-            $N_X$ is empty.
-        \item If $x\in N_X$, then $\l{a,b,c,d,x}$ induces a copy of $H_{11}$.
-            Thus, $N_X$ is empty.
+        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in N_X$,
+            then the set $\l{a,b,c,d,x}$ induces a copy of the house (see
+            \Cref{fig:type_1}). Therefore, $N_X$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \foreach \i in {0,...,3}{
+                        \draw let \n1={int(mod(\i+1,4))} in (\i) to (\n1);
+                    }
+
+                    \node (r) at (0,1.5){};
+                    \draw (r) to (0);
+                    \draw (r) to (1);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $N_X$ is nonempty.}
+                \label{fig:type_1}
+            \end{figure}
+        \item If $x\in V$ is such that its neighborhood has an induced copy of
+            $C_4$, then such a copy, along with $x$, induces a copy of $H_{11}$
+            (see \Cref{fig:type_2}). Thus, $N(x)$ is $C_4$-free, and
+            consequently, $N_Z=\varnothing$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \foreach \i in {0,...,3}{
+                        \draw let \n1={int(mod(\i+1,4))} in (\i) to (\n1);
+                    }
+
+                    \node (r){};
+                    \draw (r) to (0);
+                    \draw (r) to (1);
+                    \draw (r) to (2);
+                    \draw (r) to (3);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{11}$ given that $N(x)$ is not
+                    $C_4$-free.}
+                \label{fig:type_2}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
+
+From \Cref{lem:pre_neighborhoods_no_c5} follows that there is only one type of
+2-bag that can be nonempty. Additionally, is clear that there is only one type
+of 3-bag and only one type of 1-bag. Thus, for the following lemmas, we prove
+the claims only for the bags that have a chance to be nonempty, since for all
+other the claims are vacuously true.
+
+\begin{lemma}
+    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
+    copy of $C_4$ and free of the graphs depicted in Figures
+    \ref{fig:chordal-p5-free-obstructions},
+    \ref{fig:p5-house-obstruction-with-c5} and
+    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
+    of $Z$.
+    \begin{lemenum}
+        \item If $N_X$ is a 3-bag and $N_Y$ is a bag such that $|X\cap Y|=2$ and
+            $Y$ does not contain the middle vertex of $X$, then $N_X$ is
+            anticomplete to $N_Y$. \label{lem:anti_1}
+        \item If $N_X$ is a 2-bag and $N_Y$ is a 1-bag such that $|X\cap Y|=1$,
+            then $N_X$ is anticomplete to $N_Y$. \label{lem:anti_2}
+        \item If $N_X$ is a 3-bag and $N_Y$ is a 1-bag nonadjacent to the middle
+            vertex of $X$, then $N_X$ is anticomplete to $N_Y$.
+            \label{lem:anti_3}
+        \item If $N_X$ and $N_Y$ are 1-bags adjacent to consecutive vertices in
+            $Z$, then $N_X$ is anticomplete to $N_Y$. \label{lem:anti_4}
+        \item If $N_X$ is a 1-bag, then $N_\varnothing$ is anticomplete to
+            $N_X$. \label{lem:anti_5}
+    \end{lemenum} 
+\end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose without loss of generality that $X=\l{a,b,c}$, so
+            $Y\subseteq \l{a,c,d}$ and $a,c\in Y$. If $x\in N_X$ is adjacent to
+            $y\in N_Y$, then $\l{a,b,c,x,y}$ induces a copy of $H_{11}$ (see
+            \Cref{fig:anti_1}). Then, $N_X$ is anticomplete to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (3) at (-45:1){};
+                    \node (b') at (135:0.5) {};
+                    \node (d') {};
+
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (3) to (2);
+                    \draw[lightgray] (d') to (3);
+                    \draw (b') to (0);
+                    \draw (b') to (1);
+                    \draw (b') to (2);
+                    \draw (d') to (0);
+                    \draw (d') to (2);
+                    \draw (b') to (d');
+                    \draw (0) to (1);
+                    \draw (1) to (2);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{11}$ given that $N_X$ is
+                    adjacent to $N_Y$.}
+                \label{fig:anti_1}
+            \end{figure}
+        \item Suppose without loss of generality that $X=\l{a,c}$ and $Y=\l{c}$.
+            If $x\in N_X$ is adjacent to $y\in N_Y$, then $\l{a,c,d,x,y}$
+            induces a copy of the house (see \Cref{fig:anti_2}). It follows that
+            $N_X$ is anticomplete to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (y) at (-0.5,0){};
+                    \node (x) {};
+                    \node[lightgray] (1) at (135:1){};
+
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (1) to (2);
+                    \draw (3) to (0);
+                    \draw (3) to (2);
+                    \draw (x) to (0);
+                    \draw (x) to (2);
+                    \draw (y) to (2);
+                    \draw (y) to (x);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $N_X$ is
+                    adjacent to $N_Y$.}
+                \label{fig:anti_2}
+            \end{figure}
+        \item Suppose without loss of generality that $X=\l{a,b,c}$. If
+            $Y=\l{a}$ or $Y=\l{c}$, as in the previous item, $x\in N_X$ adjacent
+            to $y\in N_Y$ implies that $\l{a,c,d,x,y}$ induces a copy of the
+            house. If $Y=\l{d}$, then $x\in N_X$ adjacent to $y\in N_Y$ implies
+            that $\l{b,c,d,x,y}$ induces a copy of the house see
+            (\Cref{fig:anti_3}). Then, $N_{X}$ is anticomplete to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {1,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (0) at (45:1){};
+                    \node (x) {};
+                    \node (y) at (0.5,0) {};
+
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (x) to (0);
+                    \draw (3) to (2);
+                    \draw (y) to (3);
+                    \draw (1) to (2);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (x) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $N_X$ is
+                    adjacent to $N_Y$.}
+                \label{fig:anti_3}
+            \end{figure}
+        \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{b}$ If
+            $x\in N_X$ is adjacent to $y\in N_Y$, then $\p{x,y,b,c,d}$ is an
+            induced copy of $P_5$ (see \Cref{fig:anti_4}). Therefore, $N_X$ is
+            anticomplete to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {1,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (y) [above=0.5 of 1] {};
+                    \node (x) [above=0.5 of 0] {};
+                    \node[lightgray] (0) at (45:1){};
+
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (x) to (0);
+                    \draw (1) to (2);
+                    \draw (3) to (2);
+                    \draw (y) to (1);
+                    \draw (y) to (x);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that $N_X$ is adjacent
+                    to $N_Y$.}
+                \label{fig:anti_4}
+            \end{figure}
+        
+        \item Suppose without loss of generality that $X=\l{a}$. If $w\in
+            N_\varnothing$ is adjacent to $x\in N_X$, then $\p{w,x,a,b,c}$ is an
+            induced copy of $P_5$ (see \Cref{fig:anti_5}). Hence,
+            $N_\varnothing$ is anticomplete to $N_X$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (w) [above=0.5 of 1] {};
+                    \node (x) [above=0.5 of 0] {};
+                    \node[lightgray] (3) at (-45:1){};
+
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (3) to (2);
+                    \draw (x) to (0);
+                    \draw (0) to (1);
+                    \draw (1) to (2);
+                    \draw (w) to (x);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that $N_X$ is adjacent
+                    to $N_Y$.}
+                \label{fig:anti_5}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
+
+\begin{lemma}
+    \label{lem:comp_1}
+    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
+    copy of $C_4$ and free of the graphs depicted in Figures
+    \ref{fig:chordal-p5-free-obstructions},
+    \ref{fig:p5-house-obstruction-with-c5} and
+    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
+    of $Z$. If $N_X$ is a three bag and $N_Y$ is a 2-bag adjacent to the middle
+    vertex of $X$, then $N_X$ is complete to $N_Y$.
+\end{lemma}
+
+\begin{proof}
+    Suppose without loss of generality that $X=\l{a,b,c}$ and $Y=\l{b,d}$. If
+    $x\in N_X$ is not adjacent to $y\in N_Y$, then $\l{a,b,d,x,y}$ induces a
+    copy of the house (see \Cref{fig:comp_1}). Hence, $N_X$ is complete to
+    $N_Y$.
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \foreach \i in {0,1,3}
+                \node (\i)  at ({(360/4)*\i + 45}:1){};
+            
+            \node[lightgray] (2) at (225:1){};
+            \node (x) at (135:0.5) {};
+            \node (y) at (225:0.5){};
+
+            \draw[lightgray] (3) to (2);
+            \draw[lightgray] (x) to (2);
+            \draw[lightgray] (1) to (2);
+            \draw (y) to (3);
+            \draw (x) to (0);
+            \draw (3) to (0);
+            \draw (x) to (1);
+            \draw (y) to (1);
+            \draw (0) to (1);
+        \end{tikzpicture}
+        \caption{An induced copy of the house given that $N_X$ is not complete
+            to $N_Y$.}
+        \label{fig:comp_1}
+    \end{figure}
+\end{proof}
+
+\begin{lemma}
+    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with and induced
+    copy of $C_4$ and free of the graphs depicted in Figures
+    \ref{fig:chordal-p5-free-obstructions},
+    \ref{fig:p5-house-obstruction-with-c5} and
+    \ref{fig:p5-house-obstruction-no-c5}. Let $X$ and $Y$ be different subsets
+    of $Z$.
+    \begin{lemenum}
+        \item If $N_X$ is a 3-bag, then $N_X$ is a clique.
+            \label{lem:type_3}
+        \item If $N_X$ is a 2-bag, then $G[N_X]$ is a cluster.
+            \label{lem:type_4}
+        \item If $N_X$ and $N_Y$ are 3-bags such that $|X\cap Y|=2$, then one
+            between $N_X$ and $N_Y$ is empty. \label{lem:type_5}
+        \item If both $N_X$ and $N_Y$ are one bags adjacent to non-consecutive
+            vertices in $Z$, then one between $N_X$ and $N_Y$ is empty.
+            \label{lem:type_6}
+        \item If $N_X$ is a 1-bag, then $G[N_X]$ is either a cluster or split.
+            \label{lem:type_7}
+        \item Every connected component of $G[N_\varnothing]$ is homogeneous to
+            $N_X$ with $X$ nonempty. Moreover, each connected component is
+            anticomplete to all bags but one. \label{lem:type_8}
+        \item Let $N_X$ and $N_Y$ be 3-bags, and let $N_W$ be a 2-bag such that
+            $W$ does no contain the middle vertices of $X$ and $Y$. Then,
+            $N_\varnothing$ is adjacent to at most one of $N_X$, $N_Y$ and
+            $N_W$. \label{lem:type_9}
+        \item If $N_X$ is a 3-bag, then non-isolated vertices in $N_\varnothing$
+            are anticomplete to $N_X$. \label{lem:type_10}
+        \item If $N_X$ is a 3-bag and $N_Y$ is the 1-bag adjacent to the middle
+            vertex of $X$, then non-isolated vertices in $N_Y$ are complete to
+            $N_X$.
+            \label{lem:type_11}
+    \end{lemenum}
+\end{lemma}
+
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
         \item Follows directly from \Cref{lem:c5_type_1}.
         \item Follows directly from \Cref{lem:c5_type_2}.
         \item Suppose without loss of generality that $X=\l{a,b,c}$ and
             $Y=\l{b,c,d}$. On the one hand, if $x\in N_X$ is adjacent to $y\in
-            N_Y$, then $\l{a,b,c,d,x,y}$ induces a copy of $H_{13}$. On the
-            other hand, if $x$ is not adjacent to $y$, then $\l{a,c,d,x,y}$
-            induces a copy of the house. Therefore, one between $N_X$ and $N_Y$
-            is empty.
-        \item Suppose without loss of generality that $X=\l{a}$, so $Y=\l{c}$.
-            If $x\in N_X$ is adjacent to $y\in N_Y$, then $\p{x,a,b,c,y,x}$ is a
-            $C_5$. On the contrary, $x$ not adjacent to $y$ implies that
-            $\p{x,a,b,c,y}$ is a $P_5$. Thus, one between $N_X$ and $N_Y$ is
+            N_Y$, then $\l{a,b,c,d,x,y}$ induces a copy of $H_{13}$ (see
+            \Cref{fig:type_5_1}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \foreach \i in {0,...,3}{
+                        \draw let \n1={int(mod(\i+1,4))} in (\i) to (\n1);
+                    }
+
+                    \node (x) at (135:0.5){};
+                    \node (y) at (225:0.5){};
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (y) to (1);
+                    \draw (y) to (2);
+                    \draw (y) to (3);
+                    \draw (x) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{13}$ given that $N_X$ and $N_Y$
+                    are nonempty.}
+                \label{fig:type_5_1}
+            \end{figure}
+            
+            On the other hand, if $x$ is not adjacent to $y$, then
+            $\l{a,c,d,x,y}$ induces a copy of the house (see
+            \Cref{fig:type_5_2}). Therefore, one between $N_X$ and $N_Y$ is
             empty.
 
-        \item Suppose without loss of generality that $X=\l{a}$. Since $G[N_X]$
-            is not a cluster, let $x$, $y$ and $z$ be vertices in $N_{X}$ that
-            induce a $P_3$, $(x,y,z)$. Since $G$ is $C_5$-free and
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (1) at (135:1) {};
+                    
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (2) to (1);
+                    \draw (2) to (3);
+                    \draw (0) to (3);
+
+                    \node (x) at (135:0.5){};
+                    \node (y) at (225:0.5){};
+
+                    \draw[lightgray] (y) to (1);
+                    \draw[lightgray] (x) to (1);
+                    \draw (x) to (0);
+                    \draw (x) to (2);
+                    \draw (y) to (2);
+                    \draw (y) to (3);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $N_X$ and $N_Y$
+                    are nonempty.}
+                \label{fig:type_5_2}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$, so $Y=\l{c}$.
+            If there are vertices $x\in N_X$ and $y\in N_Y$, then
+            $\l{a,b,c,x,y}$ induces a copy of either $C_5$ or $P_5$, depending
+            on whether $x$ is adjacent to $y$ or not, respectively (see
+            \Cref{fig:type_6}). Thus, one between $N_X$ and $N_Y$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \foreach \i in {0,...,2}
+                            \node (\i)  at ({(360/4)*\i + 45}:1){};
+                        \node[lightgray] (3) at (-45:1) {};
+                        
+                        \draw[lightgray] (2) to (3);
+                        \draw[lightgray] (0) to (3);
+                        \draw (0) to (1);
+                        \draw (2) to (1);
+
+                        \node (x) at (45:0.5){};
+                        \node (y) at (225:0.5){};
+                        \draw (x) to (0);
+                        \draw (y) to (2);
+                        \draw (x) to (y);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \foreach \i in {0,...,2}
+                            \node (\i)  at ({(360/4)*\i + 45}:1){};
+                        \node[lightgray] (3) at (-45:1) {};
+                        
+                        \draw[lightgray] (2) to (3);
+                        \draw[lightgray] (0) to (3);
+                        \draw (0) to (1);
+                        \draw (2) to (1);
+
+                        \node (x) at (45:0.5){};
+                        \node (y) at (225:0.5){};
+                        \draw (x) to (0);
+                        \draw (y) to (2);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $C_5$ or $P_5$ given that $N_X$ and
+                    $N_Y$ are nonempty.}
+                \label{fig:type_6}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$, and suppose
+            that $G[N_X]$ is neither a cluster nor split. Let $(x,y,z)$ be an
+            induced copy of $P_3$ in $N_X$. Since $G$ is $C_5$-free and
             $H_{11}$-free, it follows that $N_X$ is $(C_4,C_5)$-free.
             Nonetheless, $G[N_X]$ is not split, so there is an induced copy of
+            $2K_2$ in $N_X$.
+            
+            Let $u$ and $v$ be adjacent vertices in $N_X$ different from $x$,
+            $y$ and $z$. If $\l{u,v}$ is anticomplete to $\l{x,y,z}$, then
+            $\l{c,u,v,x,y,z}$ induces a copy of $H_4$ (see \Cref{fig:type_7_1}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {1,...,3}
+                            \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                        \node (0) at (45:1) {};
+                    
+                    \foreach \i in {0,...,3}
+                        \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                        (\n1);
+                    
+                    \node (x) at ($(0) + (165:0.75)$){};
+                    \node (y) at ($(0) + (135:1)$){};
+                    \node (z) at ($(0) + (105:0.75)$){};
+                    \node (u) at ($(0) + (-75:0.75)$){};
+                    \node (v) at ($(0) + (-15:0.75)$){};
+                    \path let \p1=(v) in node[Label] at (-\x1, 0) {};
+
+                    \draw (x) to (y);
+                    \draw (z) to (y);
+                    \draw (u) to (v);
+                    \draw (0) to (x);
+                    \draw (0) to (y);
+                    \draw (0) to (z);
+                    \draw (0) to (u);
+                    \draw (0) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that $\l{u,v}$ is
+                anticomplete to $\l{x,y,z}$.}
+                \label{fig:type_7_1}
+            \end{figure}
+
+            \noindent
+            Suppose $\l{u,v}$ is anticomplete to $y$. By the previous argument,
+            suppose without loss of generality that $u$ is adjacent to $x$.
+            Notice $u$ is nonadjacent to $z$, otherwise, $\p{u,x,y,z,u}$ is a
+            $C_4$ in $N_X$, contradicting that such a set was $C_4$-free. By the
+            same reason, $v$ cannot be adjacent to both $x$ and $z$. Then, $G$
+            contains either an induced copy of $H_{2}$, $P_5$ or $C_5$,
+            depending on whether $v$ is adjacent to some vertex between $x$ or
+            $z$. (see \Cref{fig:type_7_2}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-3cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (x) at ($(0) + (105:0.75)$){};
+                        \node (y) at ($(x) + (45:0.75)$){};
+                        \node (v) at ($(0) + (-15:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (y) -- node (z) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw (x) to (y);
+                        \draw (z) to (y);
+                        \draw (u) to (v);
+                        \draw (0) to (x);
+                        \draw (0) to (y);
+                        \draw (0) to (z);
+                        \draw (0) to (u);
+                        \draw (0) to (v);
+                        \draw (z) to (u);
+                        \draw (v) to (z);
+                    \end{scope}
+
+                    \begin{scope}[xshift=0cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node[lightgray] (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (x) at ($(0) + (105:0.75)$){};
+                        \node (y) at ($(x) + (45:0.75)$){};
+                        \node (v) at ($(0) + (-15:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (y) -- node (z) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw[lightgray] (0) to (x);
+                        \draw[lightgray] (0) to (y);
+                        \draw[lightgray] (0) to (z);
+                        \draw[lightgray] (0) to (u);
+                        \draw[lightgray] (0) to (v);
+                        \draw (x) to (y);
+                        \draw (z) to (y);
+                        \draw (u) to (v);
+                        \draw (z) to (u);
+                    \end{scope}
+
+                    \begin{scope}[xshift=3cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node[lightgray] (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (x) at ($(0) + (105:0.75)$){};
+                        \node (y) at ($(x) + (45:0.75)$){};
+                        \node (v) at ($(0) + (-15:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (y) -- node (z) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw[lightgray] (0) to (x);
+                        \draw[lightgray] (0) to (y);
+                        \draw[lightgray] (0) to (z);
+                        \draw[lightgray] (0) to (u);
+                        \draw[lightgray] (0) to (v);
+                        \draw (x) to (y);
+                        \draw (z) to (y);
+                        \draw (u) to (v);
+                        \draw (z) to (u);
+                        \draw (v) to (x);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $H_2$ (induced by
+                    $\l{x,y,z,u,v,a}$), $P_5$ ($\p{v,u,x,y,z}$) and $C_5$
+                    ($\p{v,u,x,y,z,u}$) given that $\l{u,v}$ is anticomplete to
+                    $y$.}
+                \label{fig:type_7_2}
+            \end{figure}
+
+            \noindent
+            This implies that at least one vertex of each edge of $G[N_X]$
+            (disjoint from $\p{x,y,z}$) is adjacent to $y$. Additionally, an
+            edge with $y$ as an endpoint cannot be part of an induced copy of
             $2K_2$ in $N_X$. 
             
-            Now, for $u$ and $v$ adjacent vertices in $N_X$ different from $x$,
-            $y$ and $z$, due to $H_4$, they cannot be anticomplete to the set
-            $\l{x,y,z}$. Suppose without loss of generality that they are
-            anticomplete to $\l{y,z}$ and $u$ is adjacent to $x$. Then,
-            $\l{x,y,z,u,v,a}$ induces a copy of $H_{2}$ if $v$ is adjacent to
-            $x$, while $\l{v,u,x,y,z}$ induces a copy of $P_5$ if $v$ is
-            nonadjacent to $x$. Hence, $\l{u,v}$ is not anticomplete to
-            $\l{y,z}$. Moreover, suppose $\l{u,v}$ is anticomplete to $y$. If
-            $u$ is adjacent to $z$, then $\l{u,x,y,z,a}$ induces a copy of
-            $H_{11}$. On the contrary, $y$ is adjacent to $z$, so
-            $\p{u,x,y,z,v,u}$ is a $C_5$. This implies that at least one vertex
-            of each $K_2$ (disjoint from $\p{x,y,z}$) is adjacent to $y$.
-            Additionlly, an edge with $y$ as an endpoint cannot be part of a
-            $2K_2$ in $N_X$. 
-            
-            Thus, let $u$ and $v$ be adjacent vertices of $N_X$, and suppose
-            without loss of generality that $u$ is adjacent to $y$. Similarly,
-            let $u'$ and $v'$ be adjacent vertices in $N_X$ such that $u'$ is
-            adjacent to $y$, and $\l{u',v'}$ is anticomplete to $\l{u,v}$. If
-            neither $v$ nor $v'$ are adajcent to $y$, then $\p{v,u,y,u',v'}$ is
-            a $P_5$. If both $v$ and $v'$ are adjacent to $y$, then
-            $\l{u,v,y,a,u',v'}$ induces a copy of $H_1$. Finally, if just one of
-            $v$ and $v'$ is adjacent to $y$, then $\l{u,v,y,a,u',v'}$ induces a
-            copy of $H_2$. It follows that $G[N_X]$ cannot be neither a cluster
-            nor split.
+            Thus, suppose without loss of generality that $\l{u,u',v,v'}$
+            induces is a set of vertices in $N_X$ inducing a copy of $2K_2$ with
+            edge set $\l{uv,u'v'}$. By the aforementioned argument, these four
+            vertices are different from $y$ and at least one of each edge is
+            adjacent to $y$, suppose without loss of generality that $u$ and
+            $u'$ are adjacent to $y$. Then, $G$ contains an induced copy of
+            $P_5$, $H_1$ or $H_2$, depending on which vertices between $v$ and
+            $v'$ are adjacent to $y$ (see \Cref{fig:type_7_3}). It follows that
+            $G[N_X]$ cannot be neither a cluster nor split.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, 
+                    node distance=1cm, on grid, edge]
+
+                    \begin{scope}[xshift=-3cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node[lightgray] (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (v') at ($(0) + (135:0.75)$){};
+                        \node (u') at ($(v') + (45:0.75)$){};
+                        \node (v) at ($(0) + (-45:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (u') -- node (y) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw[lightgray] (0) to (v');
+                        \draw[lightgray] (0) to (u');
+                        \draw[lightgray] (0) to (y);
+                        \draw[lightgray] (0) to (u);
+                        \draw[lightgray] (0) to (v);
+                        \draw (v') to (u');
+                        \draw (y) to (u');
+                        \draw (u) to (v);
+                        \draw (y) to (u);
+                    \end{scope}
+
+                    \begin{scope}[xshift=0cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (v') at ($(0) + (135:0.75)$){};
+                        \node (u') at ($(v') + (45:0.75)$){};
+                        \node (v) at ($(0) + (-45:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (u') -- node (y) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw (v') to (u');
+                        \draw (y) to (u');
+                        \draw (u) to (v);
+                        \draw (0) to (v');
+                        \draw (0) to (u');
+                        \draw (0) to (y);
+                        \draw (0) to (u);
+                        \draw (0) to (v);
+                        \draw (y) to (u);
+                        \draw (v) to (y);
+                        \draw (v') to (y);
+                    \end{scope}
+
+                    \begin{scope}[xshift=3cm]
+                        \foreach \i in {1,...,3}
+                                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                            \node (0) at (45:1) {};
+                        
+                        \foreach \i in {0,...,3}
+                            \draw[lightgray] let \n1={int(mod(\i+1,4))} in (\i) to
+                            (\n1);
+                        
+                        \node (v') at ($(0) + (135:0.75)$){};
+                        \node (u') at ($(v') + (45:0.75)$){};
+                        \node (v) at ($(0) + (-45:0.75)$){};
+                        \node (u) at ($(v) + (45:0.75)$){};
+                        \path (u') -- node (y) {} (u);
+                        \path let \p1=(u) in node[Label] at (-\x1, 0) {};
+    
+                        \draw (0) to (v');
+                        \draw (0) to (u');
+                        \draw (0) to (y);
+                        \draw (0) to (u);
+                        \draw (0) to (v);
+                        \draw (v') to (u');
+                        \draw (y) to (u');
+                        \draw (u) to (v);
+                        \draw (y) to (u);
+                        \draw (v) to (y);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ ($\p{v,u,y,u',v'}$), $H_1$
+                    (induced by $\l{a,u,u',v,v',y}$) and $H_2$ (induced by
+                    $\l{a,u,u',v,v',y}$) given that $G[N_X]$ is neither a
+                    cluster nor split.}
+                \label{fig:type_7_3}
+            \end{figure}
 
         \item Since $G$ is connected, each connected component of
-            $G[N_\varnothing]$ is not anticomplete to at least one exact
-            neighborhood of $C$, $N_X$. Due to
-            \Cref{lem:type_1,lem:type_2,lem:anti_4}, $X$ consists of either two
-            consecutive vertices or three vertices. At any rate, vertices in
-            $N_X$ are nonadajcent to at least one vertex of $C$, say $a$, and
-            one between $b$ and $c$ is in $X$, say $b$. If adjacent vertices $u$
-            and $v$ in $N_{\varnothing}$ are such that $v$ is adjacent to $x\in
-            N_X$ and $u$ is nonadjacent to $x$, then $\p{u,v,x,b,a}$ is a $P_5$.
-            Thus, every $K_2$ in $N_{\varnothing}$ is either complete or
-            anticomplete to each vertex in an $N_X$. This shows that each
-            component of $G[N_{\varnothing}]$ is homogeneous to vertices in
-            $N_X$ for any $X$.
+            $G[N_\varnothing]$ is adjacent to at least one bag, say $N_X$. Due
+            to \Cref{lem:type_1,lem:type_2,lem:anti_5}, $N_X$ is either a 2-bag
+            or a 3-bag. At any rate, vertices in $N_X$ are nonadajcent to at
+            least one vertex in $Z$, say $a$, so $b,d\in X$. If adjacent
+            vertices $u$ and $v$ in $N_{\varnothing}$ are such that $v$ is
+            adjacent to $x\in N_X$ and $u$ is nonadjacent to $x$, then
+            $\p{u,v,x,b,a}$ is a $P_5$ (see \Cref{fig:type_8_1}). Thus, every
+            pair of adjacent vertices in $N_{\varnothing}$ is either complete or
+            anticomplete to each vertex in $N_X$. This shows that each component
+            of $G[N_{\varnothing}]$ is homogeneous to vertices in $N_X$ for any
+            $X$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (1) at (135:1) {};
+                    \node[lightgray] (2) at (225:1) {};
+                    
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (2) to (1);
+                    \draw[lightgray] (2) to (3);
+                    \draw (0) to (3);
+
+                    \node (x) at (225:0.5){};
+                    \node (v) {};
+                    \node (u) at (0,0.5) {};
+
+                    \draw[lightgray] (x) to (1);
+                    \draw[lightgray] (x) to (2);
+                    \draw (x) to (3);
+                    \draw (v) to (x);
+                    \draw (u) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that a component of
+                    $G[N_{\varnothing}]$ are not homogeneous to $N_X$.}
+                \label{fig:type_8_1}
+            \end{figure}
 
             Now suppose that $u\in N_{\varnothing}$ is adjacent to $b'\in
             N_{abc}$ and let $C_u$ be the connected component of $u$ in
             $G[N_\varnothing]$. Since $N_{abc}$ is nonempty, by
-            \Cref{lem:type_7}, the only bags to which $N_\varnothing$ can be not
-            anticomplete are $N_{acd}$, $N_{ac}$ and $N_{bd}$. On the one hand,
-            if $C_u$ is not anticomplete to $N_{acd}$, then it must be that $u$
-            is adjacent to a vertex $d'\in N_{acd}$. Thus, since $b'$ is
-            nonadjacent to $d'$ due to \Cref{lem:anti_1}, $\l{a,b,b',d',u}$
-            induces a copy of the house. Then, $C_u$ is anticomplete to
-            $N_{acd}$. By the same reason, $C_u$ is anticomplete to $N_{ac}$. On
-            the other hand, if $C_u$ is not anticomplete to $N_{bd}$, then there
-            is an $x\in N_{bd}$ such that $u$ is adjacent to $x$. Since $x$ is
+            \Cref{lem:type_7}, the only bags to which $C_u$ can be adjacent are
+            $N_{acd}$, $N_{ac}$ and $N_{bd}$. On the one hand, if $C_u$ is
+            adjacent to $N_{acd}$, then, since $C_u$ is homogeneous to
+            $N_{acd}$, it must be that $u$ is adjacent to a vertex $d'\in
+            N_{acd}$. Thus, since $b'$ is nonadjacent to $d'$ due to
+            \Cref{lem:anti_1}, it follows that $\l{a,b,b',d',u}$ induces a copy
+            of the house (see \Cref{fig:type_8_2}). Then, $C_u$ is anticomplete
+            to $N_{acd}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (3) at (315:1){};
+                    \node (x) at (135:0.5) {};
+                    \node (y) at (315:0.5){};
+                    \node (w) {};
+
+                    \draw[lightgray] (3) to (2);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (y) to (3);
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (y) to (2);
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (y) to (0);
+                    \draw (0) to (1);
+                    \draw (w) to (x);
+                    \draw (w) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $C_u$ is
+                    adjacent to $N_{acd}$.}
+                \label{fig:type_8_2}
+            \end{figure}
+
+            \noindent
+            By the same reason, $C_u$ is anticomplete to $N_{ac}$. On the other
+            hand, if $C_u$ is not anticomplete to $N_{bd}$, then there is an
+            $x\in N_{bd}$ such that $u$ is adjacent to $x$. Since $x$ is
             adjacent to $b'$ due to \Cref{lem:comp_1}, it follows that
-            $\l{u,b',x,c,d}$ is a house. Then, $C_u$ is anticomplete to
-            $N_{bd}$. This shows that a connected component in $N_{\varnothing}$
-            not anticomplete to a $3$-bag is anticomplete to all other bags.
+            $\l{u,b',x,c,d}$ is a house (see \Cref{fig:type_8_3}). Then, $C_u$
+            is anticomplete to $N_{bd}$. This shows that a connected component
+            in $N_{\varnothing}$ not anticomplete to a $3$-bag is anticomplete
+            to all other bags.
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (1) at (135:1){};
+                    \node (x) at (135:0.5) {};
+                    \node (y) at (225:0.5){};
+                    \node (w) {};
+
+                    \draw[lightgray] (3) to (2);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (x) to (1);
+                    \draw[lightgray] (y) to (1);
+                    \draw[lightgray] (0) to (1);
+                    \draw (3) to (0);
+                    \draw (x) to (0);
+                    \draw (y) to (3);
+                    \draw (x) to (y);
+                    \draw (w) to (x);
+                    \draw (w) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of the house given that $C_u$ is
+                    adjacent to $N_{bd}$.}
+                \label{fig:type_8_3}
+            \end{figure}
 
             Finally, if $u\in N_{\varnothing}$ is adjacent to $x\in N_{ac}$ and
-            $C_u$ is not anticomplete to $N_{bd}$, then $u$ must be adjacent to
-            $y\in N_{bd}$. Thus, $\l{u,x,d,c,y}$ induces a copy of either a
-            $C_5$ or the house, depending on whether $x$ and $y$ are adjacent or
-            not. This shoes that a connected component in $N_{\varnothing}$ not
+            $C_u$ is adjacent to $N_{bd}$, then, since $C_u$ is homogeneous to
+            $N_{bd}$, $u$ must be adjacent to $y\in N_{bd}$. Thus,
+            $\l{u,x,d,c,y}$ induces a copy of either the house or $C_5$,
+            depending on whether $x$ and $y$ are adjacent or not, respectively
+            (see \Cref{fig:type_8_4}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \foreach \i in {2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                        \node[lightgray] (0) at (45:1){};
+                        \node[lightgray] (1) at (135:1){};
+                        \node (w) {};
+                        \node (x) at (-160:0.5) {};
+                        \node (y) at (-20:0.5){};
+
+                        \draw[lightgray] (1) to (2);
+                        \draw[lightgray] (y) to (1);
+                        \draw[lightgray] (0) to (1);
+                        \draw[lightgray] (x) to (0);
+                        \draw[lightgray] (3) to (0);
+                        \draw (x) to (2);
+                        \draw (3) to (2);
+                        \draw (y) to (3);
+                        \draw (x) to (y);
+                        \draw (w) to (x);
+                        \draw (w) to (y);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \foreach \i in {2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                        \node[lightgray] (0) at (45:1){};
+                        \node[lightgray] (1) at (135:1){};
+                        \node (w) {};
+                        \node (x) at (-160:0.5) {};
+                        \node (y) at (-20:0.5){};
+
+                        \draw[lightgray] (1) to (2);
+                        \draw[lightgray] (y) to (1);
+                        \draw[lightgray] (0) to (1);
+                        \draw[lightgray] (x) to (0);
+                        \draw[lightgray] (3) to (0);
+                        \draw (x) to (2);
+                        \draw (3) to (2);
+                        \draw (y) to (3);
+                        \draw (w) to (x);
+                        \draw (w) to (y);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of the house or $C_5$ given that $C_u$
+                    is adjacent to $N_{bd}$.}
+                \label{fig:type_8_4}
+            \end{figure}
+
+            This shows that a connected component in $N_{\varnothing}$ not
             anticomplete to a $2$-bag is anticomplete to all other bags. Thus,
             each connected component of $G[N_{\varnothing}]$ is anticomplete to
             all bags but one.
+
+        \item By \Cref{lem:type_5}, the only way for the three bags to be
+            nonempty is if, without loss of generality, $X=\l{a,b,c}$,
+            $Y=\l{a,c,d}$ and $W=\l{a,c}$. Suppose $N_\varnothing$ is adjacent
+            to more than one of these bags. By \Cref{lem:type_8}, there are
+            nonadjacent vertices $u$ and $v$ in $N_\varnothing$ such that they
+            are adjacent to just one bag between $N_{abc}$, $N_{acd}$ and
+            $N_{ac}$, the bags they are adjacent to are different. 
+            
+            Suppose $u$ is adjacent to $N_{abc}$ and $v$ is adjacent to
+            $N_{ac}$. By \Cref{lem:anti_1}, $N_{abc}$ is anticomplete to
+            $N_{ac}$. Hence, if $x\in N_{abc}$ and $w\in N_{ac}$ are such that
+            $u$ is adjacent to $x$ and $v$ is adjacent to $w$, then
+            $\p{u,x,a,w,v}$ is an induced copy of $P_5$ (see \Cref{fig:type_9}).
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (1) at (135:1){};
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (3) at (315:1){};
+                    \node (x) at (135:0.5) {};
+                    \node (y) at (315:0.5) {};
+                    \path let \p1=(x) in node (u) at (0.25, \y1) {};
+                    \path let \p1=(y) in node (w) at (-0.25, \y1) {};
+
+                    \draw[lightgray] (3) to (2);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (y) to (2);
+                    \draw[lightgray] (x) to (1);
+                    \draw[lightgray] (0) to (1);
+                    \draw (x) to (0);
+                    \draw (y) to (0);
+                    \draw (u) to (x);
+                    \draw (w) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that $N_\varnothing$ is
+                    adjacent to both $N_{abc}$ and $N_{ac}$.}
+                \label{fig:type_9}
+            \end{figure}
+            It follows that $N_\varnothing$ is not adjacent to both $N_{abc}$
+            and $N_{ac}$. Since \Cref{lem:anti_1} ensures that $N_{abc}$,
+            $N_{acd}$ and $N_{ac}$ are anticomplete to each other, the
+            aforementioned arguments works for any pair of these three bags,
+            noting the $P_5$ that arises does not use the fact that the bags are
+            adjacent or nonadjacent to $a$ and $c$. Thus, $N_\varnothing$ is
+            adjacent to at most one between $N_{abc}$, $N_{acd}$ and $N_{ac}$.
+
+        \item Suppose without loss of generality that $X=\l{a,b,c}$. Let $u$ and
+            $v$ be adjacent vertices in $N_\varnothing$. If $\l{u,v}$ is
+            adjacent to $N_X$, then there is and $x\in N_X$ such that, by
+            \Cref{lem:type_8}, is adjacent to both $u$ and $v$, Then,
+            $\l{a,b,c,x,u,v}$ induces an $H_4$ (see \Cref{fig:type_10}). Thus,
+            non-isolated vertices in $N_\varnothing$ are anticomplete to
+            $N_{X}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (3) at (-45:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+
+                    \node (x) at (135:0.5){};
+                    \node (u) at (45:0.25){};
+                    \node (v) at (225:0.25){};
+
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (u) to (v);
+                    \draw (x) to (v);
+                    \draw (x) to (u);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that non-isolated
+                    vertices in $N_\varnothing$ are adjacent to $N_X$.}
+                \label{fig:type_10}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a,b,c}$, so
+            $Y=\l{b}$. Let $u$ and $v$ be adjacent vertices in $N_Y$. If there
+            exists $x\in N_X$ such that both $u$ and $v$ are not adajcent to it,
+            then $\l{a,b,c,u,v,x}$ induces a copy of $H_4$ (see
+            \Cref{fig:type_11}).
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (3) at (-45:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+
+                    \node (x) at (135:0.5){};
+                    \node (u) at ($(1) + (90:0.5)$) {};
+                    \node (v) at ($(1) + (180:0.5)$) {};
+                    \node [Label] at ($(0,0) - (v)$) {};
+
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (u) to (v);
+                    \draw (1) to (v);
+                    \draw (1) to (u);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that and edge of
+                    $G[N_Y]$ is not adjacent to a vertex in $N_X$.}
+                \label{fig:type_11}
+            \end{figure}
+
+            Meanwhile, if there is a vertex $x$ such that only one between $u$
+            and $v$ is adjacent to it, say $v$, then $\p{u,v,x,a,d}$ is an
+            induced copy of $P_5$. We conclude that non-isolated vertices in
+            $N_Y$ are complete to $N_X$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (1) at (135:1) {};
+                    \node[lightgray] (2) at (225:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (2) to (1);
+                    \draw (0) to (3);
+
+                    \node (x) at (135:0.5){};
+                    \node (u) at ($(1) + (90:0.5)$) {};
+                    \node (v) at ($(1) + (180:0.5)$) {};
+                    \node [Label] at ($(0,0) - (v)$) {};
+
+                    \draw[lightgray] (1) to (u);
+                    \draw[lightgray] (x) to (1);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (v) to (1);
+                    \draw (x) to (0);
+                    \draw (u) to (v);
+                    \draw (u) to (x);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that non-isolated
+                    vertices in $N_Y$ are not complete to $N_X$.}
+                \label{fig:type_11_2}
+            \end{figure}
     \end{enumerate}
 \end{proof}
 
@@ -449,15 +1322,368 @@ without loss of generality that $N_{abc}$.
     \ref{fig:p5-house-obstruction-no-c5}. Suppose that $N_{abc}$ is nonempty and
     let $b'\in N_{abc}$.
     \begin{lemenum}
-        \item The set $N_{bd}$ is stable.
-        \item The sets $G[N_a]$ and $G[N_c]$ are cluster.
+        \item The set $N_{bd}$ is stable. \label{lem:type_3bag_1}
+        \item The graphs $G[N_a]$ and $G[N_c]$ are clusters.
+            \label{lem:type_3bag_2}
+        \item Let $E_{bd}$ be the set of vertices in $N_\varnothing$ adjacent to
+            $N_{bd}$. The graph $G[E_{bd}]$ is a cluster.
+            \label{lem:type_3bag_3}
+        \item Let $E_{ac}$ be the set of vertices in $N_\varnothing$ adjacent to
+            $N_{ac}$. The connected components of $G[E_{ac}]$ are split.
+            Moreover, each nontrivial connected component of $G[E_{ac}]$ is
+            adjacent to a single connected component of $G[N_{ac}]$.
+            \label{lem:type_3bag_4}
+        \item The graph $G[N_d]$ is split. \label{lem:type_3bag_5}
+        \item Non-isolated vertices in $K(N_b,N_{abc})$ are anticomplete to
+            $N_{ac}$. \label{lem:type_3bag_6}
     \end{lemenum} 
 \end{lemma}
 
+\begin{proof}
+    \leavevmode \par
+    \begin{enumerate}[label=(\roman*)]
+        \item If $x$ and $x'$ are adjacent vertices in $N_{bd}$, by
+            \Cref{lem:comp_1}, $x$ and $x'$ are adjacent to $b'$, so
+            $\l{b,b',x,x',c,d}$ induces a copy of $H_{13}$ (see
+            \Cref{fig:type_3bag_1}). Therefore $N_{bd}$ is stable.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                    \node[lightgray] (2) at (225:1){};
+                    \node (x) at (135:0.5) {};
+                    \node (y) at (-135:0.5){};
+                    \node (z) at (45:0.5){};
+
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (3) to (2);
+                    \draw (y) to (3);
+                    \draw (1) to (y);
+                    \draw (y) to (x);
+                    \draw (z) to (3);
+                    \draw (1) to (z);
+                    \draw (z) to (x);
+                    \draw (z) to (y);
+                    \draw (x) to (1);
+                    \draw (0) to (1);
+                    \draw (x) to (0);
+                    \draw (3) to (0);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{13}$ given that $N_{bd}$ is not
+                    stable.}
+                \label{fig:type_3bag_1}
+            \end{figure}
+
+        \item If $N_a$ has vertices $x$, $x'$ and $x''$ that induce a $P_3$,
+            then, by \Cref{lem:anti_3}, these three vertices are nonadjacent to
+            $b'$, so $\l{x,x',x'',a,b,b'}$ induces a copy of $H_4$. (see
+            \Cref{fig:type_3bag_2}) Hence, $G[N_a]$ is a cluster. Analogously,
+            $G[N_c]$ is a cluster.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (3) at (315:1){};
+                    \node (x) at (135:0.5) {};
+                    \node (u) at ($(0) + (30:0.5)$) {};
+                    \node (v) at ($(0) + (90:0.5)$) {};
+                    \node (w) at ($(0) + (150:0.5)$) {};
+
+                    \draw[lightgray] (3) to (2);
+                    \draw[lightgray] (x) to (2);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (3) to (0);
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (0) to (1);
+                    \draw (u) to (0);
+                    \draw (v) to (0);
+                    \draw (w) to (0);
+                    \draw (u) to (v);
+                    \draw (w) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that $G[N_a]$ is not a
+                    cluster.}
+                \label{fig:type_3bag_2}
+            \end{figure}
+        
+        \item Suppose $\p{u,v,w}$ is an induced copy of $P_3$ in $E_{bd}$. By
+            \Cref{lem:type_8}, there is a vertex $x\in N_{bd}$ such that it is
+            complete to $\l{u,v,w}$. Moreover, \Cref{lem:comp_1} implies that
+            $x$ is adjacent to $b'$, while \Cref{lem:type_8} implies that $b'$
+            is anticomplete to $\l{u,v,w}$. Thus, $\l{a,b',u,v,w,x}$ induces a
+            copy of $H_4$ (see \Cref{fig:type_3bag_3}). It follows that
+            $G[E_{bd}]$ is a cluster.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (3) at (-45:1) {};
+                    \node[lightgray] (0) at (45:1) {};
+                    \node[lightgray] (2) at (225:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (2) to (1);
+
+                    \node (b') at (135:0.5) {};
+                    \node (x) at (225:0.5) {};
+                    \node (v) at ($(x) + (25:0.8)$) {};
+                    \node (u) at ($(x) + (55:0.8)$) {};
+                    \node (w) at ($(x) + (-5:0.8)$) {};
+
+                    \draw[lightgray] (b') to (0);
+                    \draw[lightgray] (b') to (2);
+                    \draw[lightgray] (x) to (3);
+                    \draw (x) to (1);
+                    \draw (b') to (1);
+                    \draw (u) to (v);
+                    \draw (w) to (v);
+                    \draw (x) to (v);
+                    \draw (x) to (u);
+                    \draw (x) to (w);
+                    \draw (x) to (b');
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that $G[E_{bd}]$ is not
+                    a cluster}
+                \label{fig:type_3bag_3}
+            \end{figure}
+        
+        \item Suppose $C$ is a connected component of $G[E_{ac}]$ that is not
+            split. Since $C$ is adjacent to $N_{ac}$, by \Cref{lem:type_8},
+            there is a vertex $x\in N_{ac}$ such that $x$ is complete to $C$.
+            Then, given that $G$ is $C_5$-free and $H_{11}$-free, we have that
+            $C$ is $(C_4,C_5)$-free. Nonetheless, $C$ is not split, so it
+            contains an induced copy of $2K_2$, which together with the set
+            $\l{a,b,b',c,x}$ induces a copy of $H_{14}$ (see
+            \Cref{fig:type_3bag_4}), recalling that $b'$ is not adjacent to $x$
+            by \Cref{lem:anti_1}. It follows that each connected component of
+            $G[E_{ac}]$ is split.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (3) at (-45:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+
+                    \node (x) at (135:0.5){};
+                    \node (y) at (135:0.2){};
+                    \node (w1) at ($(y) + (-105:0.6)$) {};
+                    \node (w2) at ($(y) + (-60:0.6)$) {};
+                    \node (w3) at ($(y) + (-30:0.6)$) {};
+                    \node (w4) at ($(y) + (15:0.6)$) {};
+
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (y) to (0);
+                    \draw (y) to (2);
+                    \draw (y) to (w1);
+                    \draw (y) to (w2);
+                    \draw (y) to (w3);
+                    \draw (y) to (w4);
+                    \draw (w1) to (w2);
+                    \draw (w3) to (w4);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{14}$ given that a connected
+                    component of $G[E_{ac}]$ is not split.}
+                \label{fig:type_3bag_4}
+            \end{figure}
+
+            Furthermore, suppose that $C$ is nontrivial and adjacent to $x$ and
+            $y$ nonadjacent vertices in $N_{ac}$. Let $u$ and $v$ be adjacent
+            vertices of $C$. By \Cref{lem:type_8}, both $u$ and $v$ are adjacent
+            to $x$ and $y$. Additionally, \Cref{lem:anti_1} implies that $b'$ is
+            nonadjcent to both $x$ and $y$. Thus, $\l{a,b,b',c,u,v,x,y}$ induces
+            a copy of $H_{12}$ (see \Cref{fig:type_3bag_4_2}). We conclude that
+            $C$ is adjacent to a single connected component of $G[N_{ac}]$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    \node[lightgray] (3) at (-45:1) {};
+                    
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+
+                    \node (x) at (135:0.5){};
+                    \node (y2) at (135:0.2){};
+                    \node (y1) at ($(y2) + (315:0.9)$){};
+                    \path (y1) -- node[Label] (y) {} (y2);
+                    \node (u) at ($(y) + (45:0.25)$) {};
+                    \node (v) at ($(y) + (225:0.25)$) {};
+
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (y1) to (0);
+                    \draw (y1) to (2);
+                    \draw (y2) to (0);
+                    \draw (y2) to (2);
+                    \draw (u) to (v);
+                    \draw (y1) to (u);
+                    \draw (y1) to (v);
+                    \draw (y2) to (u);
+                    \draw (y2) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{12}$ given that a nontrivial
+                    connected component of $G[E_{ac}]$ is adjacent to more than
+                    one connected component of $G[N_{ac}]$.}
+                \label{fig:type_3bag_4_2}
+            \end{figure}
+        
+        \item Since $G$ is $C_5$-free and $H_{11}$-free, and by
+            \Cref{lem:type_2}, we have that $N_d$ is $(C_4,C_5)$-free. Moreover,
+            if $N_d$ contains an induced copy of $2K_2$, then such a copy, along
+            with the set $\l{a,b,b',c,d}$, induces a copy of $H_{14}$, recalling
+            that $b'$ is not adjacent to $N_{d}$ by \Cref{lem:anti_3} (see
+            \Cref{fig:type_3bag_5}). It follows that $G[N_d]$ is split.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \foreach \i in {0,...,3}{
+                        \draw let \n1={int(mod(\i+1,4))} in (\i) to (\n1);
+                    }
+
+                    \node (x) at (135:0.5){};
+                    \node (d1) at ($(3) + (0:0.75)$) {};
+                    \node (d2) at ($(3) + (60:0.75)$) {};
+                    \node (d3) at ($(3) + (-90:0.75)$) {};
+                    \node (d4) at ($(3) + (-150:0.75)$) {};
+                    \node [Label] at ($(0,0) - (d1)$) {};
+
+                    \draw (x) to (0);
+                    \draw (x) to (1);
+                    \draw (x) to (2);
+                    \draw (3) to (d1);
+                    \draw (3) to (d2);
+                    \draw (3) to (d3);
+                    \draw (3) to (d4);
+                    \draw (d1) to (d2);
+                    \draw (d3) to (d4);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{14}$ given that $N_d$ is not
+                    split.}
+                \label{fig:type_3bag_5}
+            \end{figure}
+        
+        \item Let $u$ and $v$ be adjacent vertices in $K(N_b,N_{abc})$. Suppose
+            $x\in N_{ac}$ is adjacent to at least one between $u$ and $v$. By
+            \Cref{lem:anti_1}, $x$ is not adjacent to $b'$. Then $G$ contains
+            either an induced copy of $H_{13}$ or the house, depending on
+            whether both $u$ and $v$ are adjacent to $x$, or just one of them is
+            adjacent to $x$ (see \Cref{fig:type_3bag_6}). Therefore,
+            non-isolated vertices in $K(N_b,N_{abc})$ are anticomplete to
+            $N_{ac}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                        \node[lightgray] (2) at (225:1){};
+                        \node[lightgray] (3) at (315:1){};
+                        \node (3') at (315:0.5){};
+                        \node (x) at (135:0.5) {};
+                        \node (y) at (-135:0.5){};
+                        \node (z) at (45:0.5){};
+
+                        \draw[lightgray] (1) to (2);
+                        \draw[lightgray] (x) to (2);
+                        \draw[lightgray] (3') to (2);
+                        \draw[lightgray] (3) to (2);
+                        \draw[lightgray] (y) to (3);
+                        \draw[lightgray] (3) to (0);
+                        \draw[lightgray] (z) to (3);
+                        \draw (y) to (3');
+                        \draw (1) to (y);
+                        \draw (y) to (x);
+                        \draw (z) to (3');
+                        \draw (1) to (z);
+                        \draw (z) to (x);
+                        \draw (z) to (y);
+                        \draw (x) to (1);
+                        \draw (0) to (1);
+                        \draw (x) to (0);
+                        \draw (3') to (0);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \foreach \i in {1,...,3}
+                        \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                        \node (0) at (45:1){};
+                        \node (3') at (315:0.5){};
+                        \node (x) at (135:0.5) {};
+                        \node (y) at (-135:0.5){};
+                        \node (z) at (45:0.5){};
+
+                        \draw[lightgray] (1) to (2);
+                        \draw[lightgray] (x) to (2);
+                        \draw[lightgray] (3') to (2);
+                        \draw[lightgray] (3) to (2);
+                        \draw[lightgray] (y) to (3);
+                        \draw[lightgray] (3) to (0);
+                        \draw[lightgray] (z) to (3);
+                        \draw[lightgray] (1) to (y);
+                        \draw[lightgray] (1) to (z);
+                        \draw[lightgray] (x) to (1);
+                        \draw[lightgray] (0) to (1);
+                        \draw (y) to (3');
+                        \draw (y) to (x);
+                        \draw (z) to (x);
+                        \draw (z) to (y);
+                        \draw (x) to (0);
+                        \draw (3') to (0);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{13}$ (induced by
+                    $\l{a,b,b',u,v,x}$) and the house (induced by
+                    $\l{a,b',u,v,x}$) given that non-isolated vertices in
+                    $K(N_b,N_{abc})$ are not anticomplete to $N_{ac}$.}
+                \label{fig:type_3bag_6}
+            \end{figure}
+    \end{enumerate}
+\end{proof}
+
 \begin{theorem}
-    A $(P_5,\text{house},C_5)$-free graph $G$ with an induced copy of $C_4$ is
-    monopolar if and only if it does not contain any of graphs depicted in
-    Figures \ref{fig:chordal-p5-free-obstructions},
+    A connected $(P_5,\text{house},C_5)$-free graph $G$ with an induced copy of
+    $C_4$ is monopolar if and only if it does not contain any of graphs depicted
+    in Figures \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}, as an induced subgraph.
 \end{theorem}
@@ -478,176 +1704,133 @@ without loss of generality that $N_{abc}$.
     \paragraph{Case 1: At least one 3-bag is nonempty.} Suppose without loss of
     generality that $N_{abc}$ is nonempty and let $b'\in N_{abc}$. By
     \Cref{lem:type_5}, both $N_{bcd}$ and $N_{abd}$ are empty, so the only other
-    possibly nonempty 3-bag is $N_{acd}$. Additionally, \Cref{lem:anti_1}
-    ensures that $N_{abc}$ is anticomplete to $N_{acd}$.
+    possibly nonempty 3-bag is $N_{acd}$. Furthermore, by \Cref{lem:type_6},
+    suppose without loss of generality that $N_c$ is empty. Additionally,
+    \Cref{lem:anti_1} ensures that $N_{abc}$ is anticomplete to $N_{acd}$, while
+    \Cref{lem:type_3} implies that both sets are cliques. Therefore,
+    \[
+        N_{abc} \cup N_{acd} \cup \l{b,d}
+    \]
+    is a 2-cluster. Moreover, \Cref{lem:type_3bag_2} implies that $G[N_a]$ is a
+    cluster, and \Cref{lem:anti_3} ensures that $N_a$ is anticomplete to both
+    $N_{abc}$ and $N_{acd}$, so
+    \[
+        N_{abc}\cup N_{acd} \cup \l{b,d} \cup N_a
+    \]
+    is a cluster.
 
-    If $x$ and $x'$ are adjacent vertices in $N_{bd}$, by \Cref{lem:comp_1}, $x$
-    and $x'$ are adjacent to $b'$, so $\l{b,b',x,x',c,d}$ induces a copy of
-    $H_{13}$. Therefore $N_{bd}$ is stable.
-
-    By \Cref{lem:type_6}, suppose without loss of generality that $N_c$ is
-    empty. If $N_a$ has vertices $x$, $x'$ and $x''$ that induce a $P_3$, then,
-    by \Cref{lem:anti_3}, these three vertices are nonadjacent to $b'$, so
-    $\l{x,x',x'',a,b,b'}$ induces a copy of $H_4$. Hence, $G[N_a]$ is a cluster.
-
-    On the one hand, by \Cref{lem:anti_2}, $N_{ac}$ is anticomplete to $N_a$,
-    while \Cref{lem:type_4} implies that $G[N_{ac}]$ is a cluster. On the other
-    hand, $N_{abc}$ and $N_{acd}$ are cliques by \Cref{lem:type_3}, and these
-    are anticomplete to $N_a$ and $N_{ac}$ by \Cref{lem:anti_3,lem:anti_1},
-    respectively. Then, up to this point,
+    On the one hand, from \Cref{lem:type_3bag_1}, we have that $N_{bd}$ is
+    stable, and from \Cref{lem:comp_1}, we have that $N_{bd}$ is complete to
+    both $N_{abc}$ and $N_{acd}$. On the other hand, by \Cref{lem:anti_2},
+    $N_{ac}$ is anticomplete to $N_a$, while \Cref{lem:type_4} implies that
+    $G[N_{ac}]$ is a cluster. Also, $N_{abc}$ and $N_{acd}$ are anticomplete to
+    $N_{ac}$ by \Cref{lem:anti_1}. Then, up to this point,
     \[
         \p{N_{bd} \cup \l{a,c} , N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
         \cup \l{b,d}}
     \]
     is a partial monopolar partition of $G$.
 
-    Once more, \Cref{lem:type_6} ensures that one between $N_{b}$ and $N_d$ is
-    empty. We proceed by taking subcases:
-    
-    \paragraph{Case 1.1: Both $N_b$ and $N_d$ are empty.} Notice the
-    aforementioned partition works in this case, with left to decide how to
-    partition $N_{\varnothing}$. By \Cref{lem:type_8}, all connected components
-    of $G[N_\varnothing]$ are anticomplete to all but one bag. Let $S'$ be the
-    set of vertices of $G[N_{\varnothing}]$ that are in trivial components and
-    are anticomplete to $N_{bd}$. Clearly $S'$ is stable and anticomplete to
-    $N_{bd}$, so
+    For $N_\varnothing$, let $E_{bd}$ be the set of vertices in
+    $N_{\varnothing}$ that are adjacent to $N_{bd}$. By \Cref{lem:type_3bag_3},
+    $E_{bd}$ induces a cluster, while \Cref{lem:type_8} implies that such a set
+    is anticomplete to all other bags. Therefore,
     \[
-        \p{N_{bd} \cup \l{a,c} \cup S', N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
-        \cup \l{b,d}}
+        N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
+        \cup \l{b,d} \cup E_{bd}
     \]
-    is a partial monopolar partition of $G$. Now let $C_u$ be the connected
-    component of $u$ in $G[N_\varnothing\setminus S']$. Suppose $C_u$ is not
-    anticomplete to a $3$-bag, and suppose without loss of generality that $C_u$
-    is not anticomplete to $N_{abc}$. Let $u$ and $v$ be adjacent vertices of
-    $C_u$. By \Cref{lem:type_8}, $C_u$ is homogeneous to $N_{abc}$, so both $u$
-    and $v$ are adjacent to some $x$ in $N_{abc}$. Then, $\l{a,b,x,c,u,v}$
-    induces a copy of $H_{4}$. This implies that all connected components in
-    $G[N_\varnothing\setminus S']$, which are nontrivial, are anticomplete to
-    all $3$-bags. Hence, vertices in $N_\varnothing \setminus S'$ are in
-    connected components that are anticomplete to one $2$-bag and not
-    anticomplete to the remaining $2$-bag.
-    
-    Suppose without loss of generality that $C_u$ is not anticomplete to
-    $N_{ac}$. Let $u$ and $v$ be adjacent vertices of $C_u$. Since $C_u$ is
-    homogeneous to $N_{ac}$, there exists a vertex $x$ in $N_{ac}$ such that $u$
-    and $v$ are adjacent to $x$. If $y$ is a vertex in $N_{ac}$ adjacent to $x$,
-    then, due to \Cref{lem:type_8}, either both $u$ and $v$ are adjacent to it,
-    or none is adjacent to it. If the latter case happens, then
-    $\l{a,c,x,y,u,v}$ induces a copy of $H_4$. Thus, both $u$ and $v$ are
-    adjacent to $y$. It follows that $C_u$ is complete to the connected
-    component of $x$ in $G[N_{ac}]$, $C_x$. Furthermore, if vertices in $C_u$
-    are complete to another connected component of $G[N_{ac}]$, say the
-    component of $x'\in N_{ac}$, then $\l{u,v,x,x',a,c,b,b'}$ induces a copy of
-    $H_{12}$. Therefore, $C_u$ is anticomplete to all connected components of
-    $G[N_{ac}]$ but one, to which is complete. Moreover, if $C_w$ is another
-    connected of $G[N_\varnothing \setminus S']$ that is complete to $C_x$,
-    then, since $C_w$ are nontrivial, it follows that there is $w$ and $w'$ in
-    $C_w$ adjacent. Thus, $\l{a,b,b',c,x,u,v,w,w'}$ induces a copy of $H_{14}$.
-    This implies that each component in $G[N_\varnothing \setminus S']$ not
-    anticomplete to $N_{ac}$ is associated to a unique component in $G[N_{ac}]$,
-    and this association is unique and such that the components are complete to
-    each other. Notice each component $C_u$ in $G[N_\varnothing \setminus S']$
-    is $C_5$-free since $G$ is, is $C_4$-free since $G$ is $H_{11}$-free, and is
-    $2K_2$-free since $G$ is $H_{14}$-free. Then, each $C_u$ has a split
-    partition into a stable set $S_u$ and a clique $K_u$. The clique, along with
-    the connected component of $N_{ac}$ to which is complete, forms a clique,
-    since $G[N_{ac}]$ is a cluster due to \Cref{lem:type_4}. Meanwhile, the
-    stables $S_u$ are anticomplete to $N_{bd}$ since they were not anticomplete
-    to $N_{ac}$.
+    is a cluster. For vertices in $N_\varnothing\setminus E_{bd}$, by
+    \Cref{lem:type_9}, they are adjacent to just one bag between $N_{abc}$,
+    $N_{acd}$ and $N_{ac}$. Consider the following subcases:
 
-    Finally, let $u$, $v$ and $w$ be in the same component of $G[N_\varnothing
-    \setminus S']$ such that they are adjacent to vertex $x\in N_{bd}$ and they
-    induce a $P_3$. Then, $\l{u,v,w,x,b,b'}$ induces a copy of $H_{4}$. Thus,
-    all connected components of $G[N_\varnothing \setminus S']$ that are not
-    anticomplete to $N_{bd}$ are clusters, and anticomplete to all other bags.
-    At last, let $R$ be a subset of $N_\varnothing \setminus S'$ with one vertex
-    per each connected component of $G[N_\varnothing \setminus S']$ that is not
-    anticomplete to $N_{ac}$. Let $K'$ be the subset of $N_\varnothing\setminus
-    S'$ that remains after removing all vertices of components $C_u$ with $u\in
-    R$. It follows that
+    \paragraph{Case 1.1: $N_\varnothing\setminus E_{bd}$ is adjacent to
+    $N_{ac}$.} Let $S$ be the set of vertices in trivial components of
+    $G[N_\varnothing\setminus E_{bd}]$. Clearly,
     \[
-        \p{N_{bd} \cup \l{a,c} \cup S' \cup \bigcup_{u\in R} S_u, N_{abc} \cup 
-        N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup \bigcup_{u\in R} K_u
-        \cup K'}
+        N_{bd} \cup \l{a,c} \cup S
     \]
-    is a monopolar partition of $G$. Notice this analysis on how to partition
-    $N_\varnothing$ is independent of whether $N_b$ and $N_d$ are empty or not
-    (even though we used the fact that $N_{abc}$ is nonempty). Thus, this
-    partition for $N_{\varnothing}$ will be used throughout all subcases of case
-    1.
+    is a stable set. Meanwhile, let $\mathcal{C}$ be the set of connected
+    components of $G[N_\varnothing\setminus E_{bd}\setminus S]$. All such
+    components are nontrivial. Let $C\in \mathcal{C}$. By
+    \Cref{lem:type_3bag_4}, $C$ is split and there is a unique connected
+    component of $G[N_{ac}]$, $C'$,to which $C$ is adjacent to. Recall that
+    $G[N_{ac}]$ is a cluster, so $C'$ is a clique. Then, if $(S_C,K_C)$ is a
+    split partition of $C$, we have that $K_C\cup C'$ is a clique anticomplete
+    to all other connected components of $G[N_{ac}]$. Thus,
+    \[
+        N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
+        \cup \l{b,d} \cup E_{bd} \cup \bigcup_{C\in \mathcal{C}} K_C
+    \]
+    is a cluster, while
+    \[
+         N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in \mathcal{C}} S_C
+    \]
+    is a stable set.
     
-    \paragraph{Case 1.2: $N_d$ is nonempty and $N_{acd}$ is empty.} Notice
-    $G[N_d]$ is $C_5$-free since $G$ is, $C_4$-free due to $H_{11}$, and
-    $2K_2$-free due to $H_{14}$. Then $G[N_d]$ is split, so there is a partition
-    $(S,K)$ with $S$ stable and $K$ a clique, with the property that $S$ is
-    maximal. By \Cref{lem:anti_2}, $N_d$ is anticomplete to $N_{bd}$, while
-    \Cref{lem:anti_3} implies that $N_d$ is anticomplete to $N_{abc}$. Finally,
-    suppose $K$ is not anticomplete to $N_{ac}$. Then, there exists $v\in K$ and
-    $u\in N_d$ adjacent vertices and $v$ adjacent to $w\in N_{ac}$ (the
-    existance of $u$ is due to the maximality of $S$). If $u$ is not adjacent to
-    $w$, $\l{u,v,w,c,d}$ induces a copy of the house. If $u$ is not adjacent to
-    $w$, then $\l{a,b,c,d,b',u,v,w}$ induces a copy of $H_{12}$. Then, it must
-    be that $K$ is anticomplete to $N_{ac}$, so
-    \[
-        \p{N_{bd} \cup S \cup \l{a,c} \cup S' \cup \bigcup_{u\in R} S_u, N_{abc} 
-        \cup K \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup \bigcup_{u\in R} K_u \cup K'}
-    \]
-    is a monopolar partition of $G$.
+    Finally, \Cref{lem:type_6} ensures that one between $N_{b}$ and $N_{d}$ is
+    empty. Take the following subcases:
 
-    \paragraph{Case 1.3: $N_b$ is nonempty.} Observe first that the case for
-    $N_d$ and $N_{acd}$ nonempty is analogous to the case where $N_b$ is
-    nonempty, since we have already supposed that $N_{abc}$ is nonempty. Let $E$
-    be the subset of vertices in $N_b$ that are complete to $N_{abc}$, and let
-    $D= N_b \setminus E$. Suppose $u$ and $v$ are adjacent vertices in $D$.
-    Since $G$ is $H_{4}$-free, it cannot be that none of $u$ and $v$ are
-    adjacent to each vertex in $N_{abc}$. Nonetheless, since $u$ and $v$ are in
-    $D$, it follows that there is a $u'$ in $N_{abc}$ that is adjacent to $u$
-    and nonadjacent to $v$. Similarly, there is a $v'$ in $N_{abc}$ that is
-    adjacent to $v$ and nonadjacent to $u$. Since $N_{abc}$ is a clique, it
-    follows that $u'$ is adjacent to $v'$. Then, $\l{b,u,u',v,v'}$ induces a
-    copy of $H_{11}$. Therefore, $D$ is stable. Additionally, if $u\in E$ is
-    adjacent to $v\in D$, letting $v'$ to be a vertex in $N_{abc}$ that is
-    nonadjacent to $v$ leads to $\p{v,u,v',c,d}$ being a $P_5$. Then, $E$ is
-    anticomplete to $D$. Also, due to \Cref{lem:anti_2}, $D$ is anticomplete to
-    $N_{bd}$, so
+    \paragraph{Case 1.1.1: $N_d$ is empty.} Due to \Cref{lem:anti_2}, $N_b$ is
+    anticomplete to $N_{bd}$. Let $K(N_b,N_{abc})$ be the subset of vertices in
+    $N_b$ that are complete to $N_{abc}$, and let $D = N_b \setminus
+    K(N_b,N_{abc})$. By \Cref{lem:type_11}, $D$ is stable, so
     \[
-        \p{N_{bd} \cup \l{a,c} \cup D, N_{abc} \cup N_{acd} \cup N_{ac} \cup N_a 
-        \cup \l{b,d}}
+        N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C \cup D
     \]
-    is a partial monopolar partition of $G$. Let $F$ be the set of vertices in
-    $E$ that are not anticomplete to $N_{ac}$, and let $I=E\setminus F$. Suppose
-    $u$ and $v$ in $F$ are adjacent. Since they are in $E$, both are adjacent to
-    $b'\in N_{abc}$. Since $u$ is in $F$, there is a $u'$ in $N_{ac}$ that is
-    adjacent to $u$. Similarly, there is a $v'$ in $N_{ac}$ that is adjacent to
-    $v$. If $u'=v'$, then $\l{b,b',u,v,u',c}$ induces a copy of $H_{13}$. Then,
-    suppose $u'\neq v'$ and $u$ is nonadjacent to $v'$, as well as $v$ is
-    nonadjacent to $u'$. Then, if $u'$ is nonadjacent to $v'$,
-    $\p{a,u',u,v,v',a}$ is a $C_5$. Otherwise, $u'$ is adjacent to $v'$, so
-    $\l{a,u',u,v,v'}$ induces a copy of the house. It follows that $F$ is
-    stable. Furthermore,  if $u\in F$ is adjacent to $v\in I$, letting $u'$ be a
-    vertex in $N_{ac}$ adjacent to $u$, we get that $\p{v,u,u',c,d}$ is a $P_5$.
-    Therefore, $F$ is anticomplete to $I$. Since $E$ was anticomplete to $D$,
-    $F$ is anticomplete to $D$, so
+    is a stable set. Additionally, \Cref{lem:type_11} implies that
+    $K(N_b,N_{abc})$ is anticomplete to $D$.
+    
+    Let $F$ be the set of vertices in $K(N_b,N_{abc})$ that are adjacent to the
+    set $N_{ac}$. By \Cref{lem:type_3bag_6}, $F$ is stable, and the same lemma
+    implies that $F$ is anticomplete to $K(N_b,N_{abc})\setminus F$. Since
+    $K(N_b,N_{abc})$ is anticomplete to $D$, $F$ is anticomplete to $D$, so
     \[
-        \p{N_{bd} \cup \l{a,c} \cup D \cup F, N_{abc} \cup N_{acd} \cup N_{ac} 
-        \cup N_a \cup \l{b,d}}
+        N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C \cup D 
+        \cup F
     \]
-    is a partial monopolar partition of $G$. Finally, notice that $G[I]$ is
-    split since $G$ is $C_5$-free, $I$ is $C_4$-free due to $H_{11}$, and is
-    $2K_2$-free due to $H_{1}$. Then, there is a partition of $I$ into $S$ a
-    stable set and $K$ a clique. Since $E$ is anticomplete to $D$ and $I$ is
-    anticomplete to $F$, it follows that $S$ is anticomplete to both $D$ and
-    $F$. Meanwhile, $K$ is anticomplete to $N_{abc}$, $N_{ac}$ and anticomplete
-    to $N_a$ and $N_{cda}$ due to \Cref{lem:anti_4,lem:anti_3}, respectively. It
-    follows that
+    is a stable set. Finally, notice that $G[K(N_b,N_{abc})\setminus F]$ is
+    split since $G$ is $C_5$-free, is $C_4$-free due to \Cref{lem:type_2}, and
+    is $2K_2$-free due to $H_{1}$ \todo{figure or lemma}. Then, there is a
+    partition of $K(N_b,N_{abc})\setminus F$ into $S_b$ a stable set and $K_b$ a
+    clique. Since $K(N_b,N_{abc})$ is anticomplete to $D$ and
+    $K(N_b,N_{abc})\setminus F$ is anticomplete to $F$, it follows that $S_b$ is
+    anticomplete to both $D$ and $F$. Meanwhile, we alreadt know that $K_b$ is
+    anticomplete to $N_{abc}$ and $N_{ac}$, and it is anticomplete to $N_a$ and
+    $N_{cda}$ due to \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
     \begin{align*}
         \bigg( 
-            & N_{bd} \cup \l{a,c} \cup D \cup F \cup S \cup S' \cup 
-            \bigcup_{u\in R} S_u , \\ 
-            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_a \cup \l{b,d} \cup K 
-            \cup \bigcup_{u\in R} K_u \cup K' \bigg)
+            & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C \cup D 
+            \cup F \cup S_b , \\
+            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup E_{bd} 
+            \cup \bigcup_{C\in \mathcal{C}} K_C \cup K_b \bigg)
     \end{align*}
     is a monopolar partition of $G$.
+
+    \paragraph{Case 1.1.2: $N_b$ is empty.} Notice that we can suppose that
+    $N_{acd}$ is empty, for if not, then we proceed as in the previous subcase.
+    By \Cref{lem:type_3bag_5}, $G[N_d]$ is split, so there is a split partition
+    $(S_d,K_d)$ with $S_d$ a maximal stable set. By \Cref{lem:anti_2}, $N_d$ is
+    anticomplete to $N_{bd}$, while \Cref{lem:anti_3} implies that $N_d$ is
+    anticomplete to $N_{abc}$. \todo{figure or lemma} Finally, suppose $K$ is
+    not anticomplete to $N_{ac}$. Then, there exists $v\in K$ and $u\in N_d$
+    adjacent vertices and $v$ adjacent to $w\in N_{ac}$ (the existance of $u$ is
+    due to the maximality of $S$). If $u$ is not adjacent to $w$,
+    $\l{u,v,w,c,d}$ induces a copy of the house. If $u$ is not adjacent to $w$,
+    then $\l{a,b,c,d,b',u,v,w}$ induces a copy of $H_{12}$. Then, it must be
+    that $K$ is anticomplete to $N_{ac}$, so
+   \begin{align*}
+        \bigg( 
+            & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C 
+            \cup S_d , \\
+            & N_{abc} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup E_{bd} 
+            \cup \bigcup_{C\in \mathcal{C}} K_C \cup K_d \bigg)
+    \end{align*}
+    is a monopolar partition of $G$.
+
+    \paragraph{Case 1.2: $N_\varnothing\setminus E_{bd}$ is adjacent to
+    $N_{abc}\cup N_{acd}$.} Suppose without loss of generality that
+    $N_\varnothing \setminus E_{bd}$ is adjacent to $N_{abc}$ so it is
+    anticomplete to $N_{acd}$.
 
     \paragraph{Case 2: All $3$-bags are nonempty.} Suppose $u$ and $v$ are
     adjacent vertices in $N_{ac}$. Then, $\p{a,u,c,d,a}$ is a $4$-cycle with a
