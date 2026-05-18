@@ -572,6 +572,12 @@ other the claims are vacuously true.
             vertex of $X$, then non-isolated vertices in $N_Y$ are complete to
             $N_X$.
             \label{lem:type_11}
+        \item If $N_X$ and $N_Y$ are 1-bags adjacent to consecutive vertices in
+            $Z$, then at least one between $G[N_X]$ and $G[N_Y]$ is a cluster.
+            \label{lem:type_12}
+        \item If $N_X$ and $N_Y$ are 1-bags adjacent to consecutive vertices in
+            $Z$, then at least one between $G[N_X]$ and $G[N_Y]$ is split.
+            \label{lem:type_13}
     \end{lemenum}
 \end{lemma}
 
@@ -1306,6 +1312,99 @@ other the claims are vacuously true.
                     vertices in $N_Y$ are not complete to $N_X$.}
                 \label{fig:type_11_2}
             \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{b}$.
+            Recall that $N_X$ is anticomplete to $N_Y$ by \Cref{lem:anti_4}. If
+            none between $G[N_X]$ and $G[N_Y]$ is a cluster, then each contains
+            an induced copy of $P_3$ that, along with $\l{a,b}$, induces a copy
+            of $H_7$ (see \Cref{fig:type_12}). It follows that at least one
+            between $G[N_X]$ and $G[N_Y]$ is a cluster.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (a2) at ($(0) + (45:0.75)$)  {};
+                    \node (a1) at ($(0) + (90:0.75)$)  {};
+                    \node (a3) at ($(0) + (0:0.75)$)  {};
+                    \node (b2) at ($(1) + (135:0.75)$)  {};
+                    \node (b1) at ($(1) + (90:0.75)$)  {};
+                    \node (b3) at ($(1) + (180:0.75)$)  {};
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (3) at (-45:1){};
+
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (3) to (2);
+                    \draw (a2) to (0);
+                    \draw (a3) to (0);
+                    \draw (a1) to (0);
+                    \draw (b2) to (1);
+                    \draw (b1) to (1);
+                    \draw (b3) to (1);
+                    \draw (0) to (1);
+                    \draw (a1) to (a2);
+                    \draw (a3) to (a2);
+                    \draw (b1) to (b2);
+                    \draw (b3) to (b2);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_7$ given that none of $G[N_X]$
+                    and $G[N_Y]$ is a cluster.}
+                \label{fig:type_12}
+            \end{figure}
+        
+        \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{b}$.
+            Recall that $N_X$ is anticomplete to $N_Y$ by \Cref{lem:anti_4}. If
+            none between $G[N_X]$ and $G[N_Y]$ is split, then each contains an
+            induced copy of either $2K_2$, $C_4$ or $C_5$. By \Cref{lem:type_2},
+            both $N_X$ and $N_Y$ are $C_4$-free, and they are $C_5$-free since
+            $G$ is. Then, $N_X$ and $N_Y$ contain each a different induced copy
+            of $2K_2$ that, along with $\l{a,b}$, induces a copy of $H_{5}$ (see
+            \Cref{fig:type_13}). It follows that at least one between $G[N_a]$
+            and $G[N_b]$ is split.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (c) at ($(1) + (105:0.75)$) {};
+                    \node (d) at ($(1) + (165:0.75)$) {};
+                    \node (e) at ($(1) + (-105:0.75)$) {};
+                    \node (f) at ($(1) + (-165:0.75)$) {};
+                    \node (g) at ($(0) + (285:0.75)$)  {};
+                    \node (h) at ($(0) + (345:0.75)$)  {};
+                    \node (i) at ($(0) + (75:0.75)$) {};
+                    \node (j) at ($(0) + (15:0.75)$) {};
+                    \node[lightgray] (2) at (225:1){};
+                    \node[lightgray] (3) at (-45:1){};
+
+                    \draw[lightgray] (3) to (0);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (3) to (2);
+                    \draw (g) to (0);
+                    \draw (h) to (0);
+                    \draw (i) to (0);
+                    \draw (j) to (0);
+                    \draw (c) to (1);
+                    \draw (d) to (1);
+                    \draw (e) to (1);
+                    \draw (f) to (1);
+                    \draw (0) to (1);
+                    \draw (c) to (d);
+                    \draw (e) to (f);
+                    \draw (g) to (h);
+                    \draw (i) to (j);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_5$ given that none of $G[N_X]$
+                    and $G[N_Y]$ is split.}
+                \label{fig:type_13}
+            \end{figure}
     \end{enumerate}
 \end{proof}
 
@@ -1329,12 +1428,16 @@ without loss of generality that $N_{abc}$.
             \label{lem:type_3bag_3}
         \item Let $E_{ac}$ be the set of vertices in $N_\varnothing$ adjacent to
             $N_{ac}$. The connected components of $G[E_{ac}]$ are split.
-            Moreover, each nontrivial connected component of $G[E_{ac}]$ is
-            adjacent to a single connected component of $G[N_{ac}]$.
+            Moreover, there is a one-to-one correspondence (given by adjacency)
+            between the nontrivial connected components of $G[E_{ac}]$ and the
+            connected components of $G[N_{ac}]$.
             \label{lem:type_3bag_4}
         \item The graph $G[N_d]$ is split. \label{lem:type_3bag_5}
+        \item The graph $G[K(N_b,N_{abc})]$ is split. \label{lem:type_3bag_51}
         \item Non-isolated vertices in $K(N_b,N_{abc})$ are anticomplete to
             $N_{ac}$. \label{lem:type_3bag_6}
+        \item Non-isolated vertices in $N_d$ are anticomplete to $N_{ac}$.
+        \label{lem:type_3bag_7}
     \end{lemenum} 
 \end{lemma}
 
@@ -1471,7 +1574,9 @@ without loss of generality that $N_{abc}$.
             $\l{a,b,b',c,x}$ induces a copy of $H_{14}$ (see
             \Cref{fig:type_3bag_4}), recalling that $b'$ is not adjacent to $x$
             by \Cref{lem:anti_1}. It follows that each connected component of
-            $G[E_{ac}]$ is split.
+            $G[E_{ac}]$ is split. The same argument shows that each connected
+            component of $G[N_{ac}]$ is adjacent to at most one non-trivial
+            connected component of $G[E_{ac}]$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1557,11 +1662,11 @@ without loss of generality that $N_{abc}$.
                 \label{fig:type_3bag_4_2}
             \end{figure}
         
-        \item Since $G$ is $C_5$-free and $H_{11}$-free, and by
-            \Cref{lem:type_2}, we have that $N_d$ is $(C_4,C_5)$-free. Moreover,
-            if $N_d$ contains an induced copy of $2K_2$, then such a copy, along
-            with the set $\l{a,b,b',c,d}$, induces a copy of $H_{14}$, recalling
-            that $b'$ is not adjacent to $N_{d}$ by \Cref{lem:anti_3} (see
+        \item Since $G$ is $C_5$-free and $H_{11}$-free, by \Cref{lem:type_2},
+            we have that $N_d$ is $(C_4,C_5)$-free. Moreover, if $N_d$ contains
+            an induced copy of $2K_2$, then such a copy, along with the set
+            $\l{a,b,b',c,d}$, induces a copy of $H_{14}$, recalling that $b'$ is
+            not adjacent to $N_{d}$ by \Cref{lem:anti_3} (see
             \Cref{fig:type_3bag_5}). It follows that $G[N_d]$ is split.
 
             \begin{figure}[htb!]
@@ -1596,8 +1701,56 @@ without loss of generality that $N_{abc}$.
                     split.}
                 \label{fig:type_3bag_5}
             \end{figure}
+
+        \item Since $G$ is $C_5$-free and $H_{11}$-free, by \Cref{lem:type_2},
+            we have that $K(N_b,N_{abc})$ is $(C_4,C_5)$-free. If
+            $K(N_b,N_{abc})$ contains an induced copy of $2K_2$, then such a
+            copy along with $b$ and $b'$ induces a copy of $H_1$ (see
+            \Cref{fig:type_3bag_51}). It follows that $K(N_b,N_{abc})$ is split.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+
+                    \node[lightgray] (0)  at ({(360/4)*0 + 45}:1){};
+                    \node[lightgray] (2)  at ({(360/4)*2 + 45}:1){};
+                    \node[lightgray] (3)  at ({(360/4)*3 + 45}:1){};
+                    
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (1) to (2);
+                    \draw[lightgray] (2) to (3);
+                    \draw[lightgray] (0) to (3);
+
+                    \node (x) at (135:0.5){};
+                    \node (d1) at ($(1) - (0:0.75)$) {};
+                    \node (d2) at ($(1) - (60:0.75)$) {};
+                    \node (d3) at ($(1) - (-90:0.75)$) {};
+                    \node (d4) at ($(1) - (-150:0.75)$) {};
+                    \node [Label] at ($(0,0) - (d1)$) {};
+
+                    \draw[lightgray] (x) to (0);
+                    \draw (x) to (1);
+                    \draw[lightgray] (x) to (2);
+                    \draw (d1) to (d2);
+                    \draw (d3) to (d4);
+                    \draw (x) to (d1);
+                    \draw (x) to (d2);
+                    \draw (x) to (d3);
+                    \draw (x) to (d4);
+                    \draw (1) to (d1);
+                    \draw (1) to (d2);
+                    \draw (1) to (d3);
+                    \draw (1) to (d4);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_{1}$ given that $K(N_b,N_{abc})$
+                    is not split.}
+                \label{fig:type_3bag_51}
+            \end{figure}
         
-        \item Let $u$ and $v$ be adjacent vertices in $K(N_b,N_{abc})$. Suppose
+        \item Let $u$ and $v$ be adjacent vertices in $K(N_b, N_{abc})$. Suppose
             $x\in N_{ac}$ is adjacent to at least one between $u$ and $v$. By
             \Cref{lem:anti_1}, $x$ is not adjacent to $b'$. Then $G$ contains
             either an induced copy of $H_{13}$ or the house, depending on
@@ -1676,6 +1829,79 @@ without loss of generality that $N_{abc}$.
                     $K(N_b,N_{abc})$ are not anticomplete to $N_{ac}$.}
                 \label{fig:type_3bag_6}
             \end{figure}
+
+        \item Let $u$ and $v$ be adjacent vertices in $N_d$. If $\l{u,v}$ is not
+            anticomplete to $x\in N_{ac}$, then $G$ contain an induced copy of
+            either the house or $H_{12}$, depending on which vertices in
+            $\l{u,v}$ are adjacent to $x$ (see \Cref{fig:type_3bag_7}). It
+            follows that non-isolated vertices in $N_d$ are anticomplete to
+            $N_{ac}$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \begin{scope}[xshift=-2cm]
+                        \foreach \i in {0,1}
+                        \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                        \node (2) at (225:1){};
+                        \node (3) at (315:1){};
+                        \node (3') {};
+                        \node[lightgray] (x) at (135:0.5) {};
+                        \path (3') -- node[Label] (a) {} (3);
+                        \node (y) at ($(a) + (45:0.25)$){};
+                        \node (z) at ($(a) + (-135:0.25)$){};
+
+                        \draw[lightgray] (1) to (2);
+                        \draw[lightgray] (x) to (2);
+                        \draw[lightgray] (3) to (0);
+                        \draw[lightgray] (x) to (1);
+                        \draw[lightgray] (0) to (1);
+                        \draw[lightgray] (x) to (0);
+                        \draw[lightgray] (3') to (0);
+                        \draw (3') to (2);
+                        \draw (3) to (2);
+                        \draw (y) to (3);
+                        \draw (z) to (3);
+                        \draw (y) to (3');
+                        \draw (z) to (y);
+                    \end{scope}
+
+                    \begin{scope}[xshift=2cm]
+                        \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                        \node (2) at (225:1){};
+                        \node (3) at (315:1){};
+                        \node (3') {};
+                        \node (x) at (135:0.5) {};
+                        \path (3') -- node[Label] (a) {} (3);
+                        \node (y) at ($(a) + (45:0.25)$){};
+                        \node (z) at ($(a) + (-135:0.25)$){};
+
+                        \draw (1) to (2);
+                        \draw (x) to (2);
+                        \draw (3') to (2);
+                        \draw (3) to (2);
+                        \draw (y) to (3);
+                        \draw (3) to (0);
+                        \draw (z) to (3);
+                        \draw (y) to (3');
+                        \draw (z) to (3');
+                        \draw (z) to (y);
+                        \draw (x) to (1);
+                        \draw (0) to (1);
+                        \draw (x) to (0);
+                        \draw (3') to (0);
+                    \end{scope}
+                \end{tikzpicture}
+                \caption{An induced copy of the house (induced by
+                $\l{c,d,u,v,x}$) and $H_{12}$ (induced by
+                $\l{a,b,b',c,d,u,v,x}$) given that non-isolated vertices in
+                $N_d$ are adjacent to $N_{ac}$.}
+                \label{fig:type_3bag_7}
+            \end{figure}
     \end{enumerate}
 \end{proof}
 
@@ -1740,7 +1966,9 @@ without loss of generality that $N_{abc}$.
     \]
     is a cluster. For vertices in $N_\varnothing\setminus E_{bd}$, by
     \Cref{lem:type_9}, they are adjacent to just one bag between $N_{abc}$,
-    $N_{acd}$ and $N_{ac}$. Consider the following subcases:
+    $N_{acd}$ and $N_{ac}$, and \Cref{lem:type_8} implies that
+    $N_\varnothing\setminus E_{bd}$ is anticomplete to $E_{bd}$. Consider the
+    following subcases:
 
     \paragraph{Case 1.1: $N_\varnothing\setminus E_{bd}$ is adjacent to
     $N_{ac}$.} Let $S$ be the set of vertices in trivial components of
@@ -1752,17 +1980,18 @@ without loss of generality that $N_{abc}$.
     components of $G[N_\varnothing\setminus E_{bd}\setminus S]$. All such
     components are nontrivial. Let $C\in \mathcal{C}$. By
     \Cref{lem:type_3bag_4}, $C$ is split and there is a unique connected
-    component of $G[N_{ac}]$, $C'$,to which $C$ is adjacent to. Recall that
-    $G[N_{ac}]$ is a cluster, so $C'$ is a clique. Then, if $(S_C,K_C)$ is a
-    split partition of $C$, we have that $K_C\cup C'$ is a clique anticomplete
-    to all other connected components of $G[N_{ac}]$. Thus,
+    component of $G[N_{ac}]$, $C'$, to which $C$ is adjacent, and the same item
+    ensures that $C'$ is anticomplete to any other $D\in \mathcal{C}$. Recall
+    that $G[N_{ac}]$ is a cluster, so $C'$ is a clique. Then, if $(S_C,K_C)$ is
+    a split partition of $C$, we have that $K_C\cup C'$ is a clique anticomplete
+    to all other connected components of $G[N_{ac}]$ and $G[E_{ac}]$. Thus,
     \[
         N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
         \cup \l{b,d} \cup E_{bd} \cup \bigcup_{C\in \mathcal{C}} K_C
     \]
     is a cluster, while
     \[
-         N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in \mathcal{C}} S_C
+        N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in \mathcal{C}} S_C
     \]
     is a stable set.
     
@@ -1788,14 +2017,13 @@ without loss of generality that $N_{abc}$.
         \cup F
     \]
     is a stable set. Finally, notice that $G[K(N_b,N_{abc})\setminus F]$ is
-    split since $G$ is $C_5$-free, is $C_4$-free due to \Cref{lem:type_2}, and
-    is $2K_2$-free due to $H_{1}$ \todo{figure or lemma}. Then, there is a
-    partition of $K(N_b,N_{abc})\setminus F$ into $S_b$ a stable set and $K_b$ a
-    clique. Since $K(N_b,N_{abc})$ is anticomplete to $D$ and
-    $K(N_b,N_{abc})\setminus F$ is anticomplete to $F$, it follows that $S_b$ is
-    anticomplete to both $D$ and $F$. Meanwhile, we alreadt know that $K_b$ is
-    anticomplete to $N_{abc}$ and $N_{ac}$, and it is anticomplete to $N_a$ and
-    $N_{cda}$ due to \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
+    split by \Cref{lem:type_3bag_51}. Then, there is a partition of
+    $K(N_b,N_{abc})\setminus F$ into $S_b$ a stable set and $K_b$ a clique.
+    Since $K(N_b,N_{abc})$ is anticomplete to $D$ and $K(N_b,N_{abc})\setminus
+    F$ is anticomplete to $F$, it follows that $S_b$ is anticomplete to both $D$
+    and $F$. Meanwhile, we already know that $K_b$ is anticomplete to $N_{abc}$
+    and $N_{ac}$, and it is anticomplete to $N_a$ and $N_{acd}$ due to
+    \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
     \begin{align*}
         \bigg( 
             & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C \cup D 
@@ -1810,13 +2038,8 @@ without loss of generality that $N_{abc}$.
     By \Cref{lem:type_3bag_5}, $G[N_d]$ is split, so there is a split partition
     $(S_d,K_d)$ with $S_d$ a maximal stable set. By \Cref{lem:anti_2}, $N_d$ is
     anticomplete to $N_{bd}$, while \Cref{lem:anti_3} implies that $N_d$ is
-    anticomplete to $N_{abc}$. \todo{figure or lemma} Finally, suppose $K$ is
-    not anticomplete to $N_{ac}$. Then, there exists $v\in K$ and $u\in N_d$
-    adjacent vertices and $v$ adjacent to $w\in N_{ac}$ (the existance of $u$ is
-    due to the maximality of $S$). If $u$ is not adjacent to $w$,
-    $\l{u,v,w,c,d}$ induces a copy of the house. If $u$ is not adjacent to $w$,
-    then $\l{a,b,c,d,b',u,v,w}$ induces a copy of $H_{12}$. Then, it must be
-    that $K$ is anticomplete to $N_{ac}$, so
+    anticomplete to $N_{abc}$. Finally, from \Cref{lem:type_3bag_7} and the
+    maximality of $S_d$, we have that $K_d$ is anticomplete to $N_{ac}$, so
    \begin{align*}
         \bigg( 
             & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C 
@@ -1829,25 +2052,98 @@ without loss of generality that $N_{abc}$.
     \paragraph{Case 1.2: $N_\varnothing\setminus E_{bd}$ is adjacent to
     $N_{abc}\cup N_{acd}$.} Suppose without loss of generality that
     $N_\varnothing \setminus E_{bd}$ is adjacent to $N_{abc}$ so it is
-    anticomplete to $N_{acd}$.
+    anticomplete to $N_{acd}$. By \Cref{lem:type_10}, $N_\varnothing\setminus
+    E_{bd}$ is stable, so
+    \[
+        N_{bd} \cup \l{a,c} \cup N_\varnothing\setminus E_{bd}
+    \]
+    is stable. 
+    
+    We claim that $N_d$ is empty. Indeed, let $w\in N_\varnothing\setminus
+    E_{bd}$ be adjacent to $x\in N_{abc}$. Recall that $N_d$ is anticomplete to
+    $N_{abc}$ and $N_\varnothing$ by \Cref{lem:anti_3,lem:anti_5}, respectively.
+    Then, if $d'\in N_d$, we have that $\p{w,x,a,d,d'}$ is an induced copy of
+    $P_5$ (see \Cref{fig:Nd_empty}).
 
-    \paragraph{Case 2: All $3$-bags are nonempty.} Suppose $u$ and $v$ are
-    adjacent vertices in $N_{ac}$. Then, $\p{a,u,c,d,a}$ is a $4$-cycle with a
-    nonempty $3$-bag, since $v\in N_{auc}$, so one could proceed as in the
-    previous case. Thus, consider that $N_{ac}$ is stable. Similarly, consider
-    $N_{bd}$ is stable. As in the previous case, by \Cref{lem:type_6}, suppose
-    without loss of generality that both $N_{c}$ and $N_{d}$ are empty.
+    \begin{figure}[htb!]
+        \centering
+            \begin{tikzpicture}[every node/.style={vertex}, node
+                distance=1cm, on grid, edge]
+                \foreach \i in {0,3}
+                    \node (\i)  at ({(360/4)*\i + 45}:1){};
+                
+                \node[lightgray] (2) at (225:1){};
+                \node[lightgray] (1) at (135:1){};
+                \node (x) at (135:0.5) {};
+                \node (y) at (225:0.5) {};
+                \node (d') at (315:0.5) {};
 
-    Recall that $N_a$ is anticomplete to $N_b$ by \Cref{lem:anti_4}. Suppose
-    $x$, $y$ and $z$ in $N_a$ induce a $P_3$. Similarly, suppose, $x'$, $y'$ and
-    $z'$ in $N_b$ induce a $P_3$. Then. $\l{a,x,y,z,b,x',y',z'}$ induces a copy
-    of $H_{7}$. This implies that at most one between $G[N_a]$ and $G[N_b]$ is
-    not a cluster. Suppose without loss of generality that $G[N_b]$ is a
-    cluster. Similarly, if $\l{u,v,w,x}$ induces a copy of $2K_2$ in $N_a$ and
-    $\l{u',v',w',x'}$ induces a copy of $2K_2$ in $N_b$, then
-    $\l{a,u,v,w,x,b,u',v',w',x'}$ induces a copy of $H_{5}$. Since $N_a$ and
-    $N_b$ are $(C_4,C_5)$-free, it follows that at most one between $G[N_a]$ and
-    $G[N_b]$ is not split. Consider the following subcases:
+                \draw[lightgray] (3) to (2);
+                \draw[lightgray] (x) to (2);
+                \draw[lightgray] (1) to (2);
+                \draw[lightgray] (x) to (1);
+                \draw[lightgray] (0) to (1);
+                \draw (3) to (0);
+                \draw (x) to (0);
+                \draw (x) to (y);
+                \draw (d') to (3);
+            \end{tikzpicture}
+        \caption{An induced copy of $P_5$ given that $N_d$ is nonempty.}
+        \label{fig:Nd_empty}
+    \end{figure}
+
+    Additionally, the analysis for $N_b$ in Case 1.1.1 did not depend on which
+    set $N_\varnothing \setminus E_{bd}$ was adjacent to. Since
+    \Cref{lem:anti_5} ensures that $N_\varnothing$ is anticomplete to $N_b$, we
+    have that
+    \begin{align*}
+        \bigg( 
+            & N_{bd} \cup \l{a,c} \cup N_\varnothing\setminus E_{bd} \cup D 
+            \cup F \cup S_b , \\
+            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup E_{bd} 
+            \cup K_b \bigg)
+    \end{align*}
+    is a monopolar partition of $G$.
+
+    \paragraph{Case 2: All 3-bags are empty.} Suppose $u$ and $v$ are adjacent
+    vertices in $N_{ac}$. Then, $\p{a,u,c,d,a}$ is a $4$-cycle with a nonempty
+    $3$-bag, since $v\in N_{acu}$, so one could proceed as in the previous case
+    (see \Cref{fig:3_bags_empty}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node (y) at (-45:0.5){};
+                    \node (x) {};
+                    \node[lightgray] (1) at (135:1){};
+
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (1) to (2);
+                    \draw (3) to (0);
+                    \draw (3) to (2);
+                    \draw (x) to (0);
+                    \draw (x) to (2);
+                    \draw (y) to (0);
+                    \draw (y) to (2);
+                    \draw (y) to (2);
+                    \draw (y) to (x);
+        \end{tikzpicture}
+        \caption{A nonempty 3-bag given that $N_{ac}$ is not stable.}
+        \label{fig:3_bags_empty}
+    \end{figure}
+    
+    \noindent
+    Thus, consider that $N_{ac}$ is stable. Similarly, consider $N_{bd}$ to be
+    stable. As in the previous case, by \Cref{lem:type_6}, suppose without loss
+    of generality that both $N_{c}$ and $N_{d}$ are empty.
+
+    By \Cref{lem:type_12}, at least one between $G[N_a]$ and $G[N_b]$ is a
+    cluster; suppose without loss of generality that $G[N_b]$ is a cluster.
+    Consider the following subcases: \todo{here}
 
     \paragraph{Case 2.1: $G[N_a]$ is split.} Let $(S,K)$ be a partition of $N_a$
     with $S$ a stable set and $K$ a maximal clique. By \Cref{lem:anti_2}, $N_a$
@@ -1923,9 +2219,10 @@ without loss of generality that $N_{abc}$.
     \]
     is a monopolar partition of $G$.
 
-    \paragraph{Case 2.2: $G[N_a]$ is not split.} Then $G[N_b]$ is split. In
-    particular, due to \Cref{lem:type_7}, it must be that $G[N_a]$ is a cluster.
-    Then, $N_a$ and $N_b$ are swapped as in the previous case, so
+    \paragraph{Case 2.2: $G[N_a]$ is not split.} Then, by \Cref{lem:type_13},
+    $G[N_b]$ is split. In particular, due to \Cref{lem:type_7}, it must be that
+    $G[N_a]$ is a cluster. Then, $N_a$ and $N_b$ are swapped as in the previous
+    case, so
     \[
         \p{N_{bd} \cup N_b \cup \l{a,c} \cup S , N_{ac} \cup \l{b,d} \cup K}
     \]
