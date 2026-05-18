@@ -554,14 +554,15 @@ other the claims are vacuously true.
             \label{lem:type_4}
         \item If $N_X$ and $N_Y$ are 3-bags with adjacent middle vertices, then
             one between $N_X$ and $N_Y$ is empty. \label{lem:type_5}
-        \item If both $N_X$ and $N_Y$ are one bags adjacent to non-consecutive
+        \item If both $N_X$ and $N_Y$ are 1-bags adjacent to non-consecutive
             vertices in $Z$, then one between $N_X$ and $N_Y$ is empty.
             \label{lem:type_6}
         \item If $N_X$ is a 1-bag, then $G[N_X]$ is either a cluster or split.
             \label{lem:type_7}
-        \item Every connected component of $G[N_\varnothing]$ is homogeneous to
-            $N_X$ with $X$ nonempty. Moreover, each connected component is
-            anticomplete to all bags but one. \label{lem:type_8}
+        \item For any nonempty $X$, every connected component of
+            $G[N_\varnothing]$ is homogeneous to $N_X$. Moreover, each connected
+            component of $G[N_\varnothing]$ is anticomplete to all bags but one.
+            \label{lem:type_8}
         \item Let $N_X$ and $N_Y$ be 3-bags, and let $N_W$ be a 2-bag such that
             $W$ does no contain the middle vertices of $X$ and $Y$. Then,
             $N_\varnothing$ is adjacent to at most one of $N_X$, $N_Y$ and
@@ -708,7 +709,7 @@ other the claims are vacuously true.
             
             Let $u$ and $v$ be adjacent vertices in $N_X$ different from $x$,
             $y$ and $z$. If $\l{u,v}$ is anticomplete to $\l{x,y,z}$, then
-            $\l{c,u,v,x,y,z}$ induces a copy of $H_4$ (see \Cref{fig:type_7_1}).
+            $\l{a,u,v,x,y,z}$ induces a copy of $H_4$ (see \Cref{fig:type_7_1}).
 
             \begin{figure}[htb!]
                 \centering
@@ -747,7 +748,7 @@ other the claims are vacuously true.
             Suppose $\l{u,v}$ is anticomplete to $y$. By the previous argument,
             suppose without loss of generality that $u$ is adjacent to $x$.
             Notice $u$ is nonadjacent to $z$, otherwise, $\p{u,x,y,z,u}$ is a
-            $C_4$ in $N_X$, contradicting that such a set was $C_4$-free. By the
+            $C_4$ in $N_X$, contradicting that such a set is $C_4$-free. By the
             same reason, $v$ cannot be adjacent to both $x$ and $z$. Then, $G$
             contains either an induced copy of $H_{2}$, $P_5$ or $C_5$,
             depending on whether $v$ is adjacent to some vertex between $x$ or
@@ -853,9 +854,9 @@ other the claims are vacuously true.
             edge with $y$ as an endpoint cannot be part of an induced copy of
             $2K_2$ in $N_X$. 
             
-            Thus, suppose without loss of generality that $\l{u,u',v,v'}$
-            induces is a set of vertices in $N_X$ inducing a copy of $2K_2$ with
-            edge set $\l{uv,u'v'}$. By the aforementioned argument, these four
+            Thus, suppose without loss of generality that $\l{u,u',v,v'}$ is a
+            set of vertices in $N_X$ inducing a copy of $2K_2$ in $G$ with edge
+            set $\l{uv,u'v'}$. By the aforementioned argument, these four
             vertices are different from $y$ and at least one of each edge is
             adjacent to $y$, suppose without loss of generality that $u$ and
             $u'$ are adjacent to $y$. Then, $G$ contains an induced copy of
@@ -1005,7 +1006,7 @@ other the claims are vacuously true.
             Now suppose that $u\in N_{\varnothing}$ is adjacent to $b'\in
             N_{abc}$ and let $C_u$ be the connected component of $u$ in
             $G[N_\varnothing]$. Since $N_{abc}$ is nonempty, by
-            \Cref{lem:type_7}, the only bags to which $C_u$ can be adjacent are
+            \Cref{lem:type_5}, the only bags to which $C_u$ can be adjacent are
             $N_{acd}$, $N_{ac}$ and $N_{bd}$. On the one hand, if $C_u$ is
             adjacent to $N_{acd}$, then, since $C_u$ is homogeneous to
             $N_{acd}$, it must be that $u$ is adjacent to a vertex $d'\in
@@ -1086,9 +1087,9 @@ other the claims are vacuously true.
             \end{figure}
 
             Finally, if $u\in N_{\varnothing}$ is adjacent to $x\in N_{ac}$ and
-            $C_u$ is adjacent to $N_{bd}$, then, since $C_u$ is homogeneous to
-            $N_{bd}$, $u$ must be adjacent to $y\in N_{bd}$. Thus,
-            $\l{u,x,d,c,y}$ induces a copy of either the house or $C_5$,
+            $C_u$ is not anticomplete to $N_{bd}$, then, since $C_u$ is
+            homogeneous to $N_{bd}$, $u$ must be adjacent to $y\in N_{bd}$.
+            Thus, $\l{u,x,d,c,y}$ induces a copy of either the house or $C_5$,
             depending on whether $x$ and $y$ are adjacent or not, respectively
             (see \Cref{fig:type_8_4}).
 
