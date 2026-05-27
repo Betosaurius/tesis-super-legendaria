@@ -1161,7 +1161,7 @@ other the claims are vacuously true.
             to more than one of these bags. By \Cref{lem:type_8}, there are
             nonadjacent vertices $u$ and $v$ in $N_\varnothing$ such that they
             are adjacent to just one bag between $N_{abc}$, $N_{acd}$ and
-            $N_{ac}$, the bags they are adjacent to are different. 
+            $N_{ac}$---the bags they are adjacent to are different. 
             
             Suppose $u$ is adjacent to $N_{abc}$ and $v$ is adjacent to
             $N_{ac}$. By \Cref{lem:anti_1}, $N_{abc}$ is anticomplete to
@@ -1209,9 +1209,9 @@ other the claims are vacuously true.
 
         \item Suppose without loss of generality that $X=\l{a,b,c}$. Let $u$ and
             $v$ be adjacent vertices in $N_\varnothing$. If $\l{u,v}$ is
-            adjacent to $N_X$, then there is and $x\in N_X$ such that, by
-            \Cref{lem:type_8}, is adjacent to both $u$ and $v$, Then,
-            $\l{a,b,c,x,u,v}$ induces an $H_4$ (see \Cref{fig:type_10}). Thus,
+            adjacent to $N_X$, then there is an $x\in N_X$ such that, by
+            \Cref{lem:type_8}, is adjacent to both $u$ and $v$. Thus,
+            $\l{a,b,c,x,u,v}$ induces an $H_4$ (see \Cref{fig:type_10}). Hence,
             non-isolated vertices in $N_\varnothing$ are anticomplete to
             $N_{X}$.
 
@@ -1459,8 +1459,7 @@ without loss of generality that $N_{abc}$.
     copy of $C_4$ and free of the graphs depicted in Figures
     \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
-    \ref{fig:p5-house-obstruction-no-c5}. Suppose that $N_{abc}$ is nonempty and
-    let $b'\in N_{abc}$.
+    \ref{fig:p5-house-obstruction-no-c5}. Let $b'$ be a vertex in $N_{abc}$.
     \begin{lemenum}
         \item The set $N_{bd}$ is stable. \label{lem:type_3bag_1}
         \item The graphs $G[N_a]$ and $G[N_c]$ are clusters.
@@ -1470,9 +1469,9 @@ without loss of generality that $N_{abc}$.
             \label{lem:type_3bag_3}
         \item Let $E_{ac}$ be the set of vertices in $N_\varnothing$ adjacent to
             $N_{ac}$. The connected components of $G[E_{ac}]$ are split.
-            Moreover, there is a one-to-one correspondence (given by adjacency)
-            between the nontrivial connected components of $G[E_{ac}]$ and the
-            connected components of $G[N_{ac}]$.
+            Moreover, there is an injective function (given by adjacency) from
+            the nontrivial connected components of $G[E_{ac}]$ to the connected
+            components of $G[N_{ac}]$.
             \label{lem:type_3bag_4}
         \item The graph $G[N_d]$ is split. \label{lem:type_3bag_5}
         \item The graph $G[K(N_b,N_{abc})]$ is split. \label{lem:type_3bag_51}
@@ -1820,9 +1819,7 @@ without loss of generality that $N_{abc}$.
                         \draw[lightgray] (x) to (2);
                         \draw[lightgray] (3') to (2);
                         \draw[lightgray] (3) to (2);
-                        \draw[lightgray] (y) to (3);
                         \draw[lightgray] (3) to (0);
-                        \draw[lightgray] (z) to (3);
                         \draw (y) to (3');
                         \draw (1) to (y);
                         \draw (y) to (x);
@@ -1850,9 +1847,7 @@ without loss of generality that $N_{abc}$.
                         \draw[lightgray] (x) to (2);
                         \draw[lightgray] (3') to (2);
                         \draw[lightgray] (3) to (2);
-                        \draw[lightgray] (y) to (3);
                         \draw[lightgray] (3) to (0);
-                        \draw[lightgray] (z) to (3);
                         \draw[lightgray] (1) to (y);
                         \draw[lightgray] (1) to (z);
                         \draw[lightgray] (x) to (1);
@@ -2019,14 +2014,17 @@ without loss of generality that $N_{abc}$.
         N_{bd} \cup \l{a,c} \cup S
     \]
     is a stable set. Meanwhile, let $\mathcal{C}$ be the set of connected
-    components of $G[N_\varnothing\setminus E_{bd}\setminus S]$. All such
+    components of $G[N_\varnothing\setminus (E_{bd} \cup S)]$. All such
     components are nontrivial. Let $C\in \mathcal{C}$. By
     \Cref{lem:type_3bag_4}, $C$ is split and there is a unique connected
     component of $G[N_{ac}]$, $C'$, to which $C$ is adjacent, and the same item
     ensures that $C'$ is anticomplete to any other $D\in \mathcal{C}$. Recall
-    that $G[N_{ac}]$ is a cluster, so $C'$ is a clique. Then, if $(S_C,K_C)$ is
-    a split partition of $C$, we have that $K_C\cup C'$ is a clique anticomplete
-    to all other connected components of $G[N_{ac}]$ and $G[E_{ac}]$. Thus,
+    that $G[N_{ac}]$ is a cluster, so $C'$ is a complete graph. Then, if
+    $(S_C,K_C)$ is a split partition of $C$, we have that $K_C\cup V_{C'}$ is a
+    clique
+    %TODO: Ver que es un clan.
+    anticomplete to all other connected components of $G[N_{ac}]$ and
+    $G[E_{ac}]$. Thus,
     \[
         N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
         \cup \l{b,d} \cup E_{bd} \cup \bigcup_{C\in \mathcal{C}} K_C
