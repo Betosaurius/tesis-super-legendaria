@@ -579,6 +579,9 @@ other the claims are vacuously true.
         \item If $N_X$ and $N_Y$ are 1-bags adjacent to consecutive vertices in
             $Z$, then at least one between $G[N_X]$ and $G[N_Y]$ is split.
             \label{lem:type_13}
+        \item If $N_X$ is a 1-bag and $N_Y$ is a 2-bag with $X\cap Y
+            =\varnothing$, then non-isolated vertices in $N_X$ are homogeneous
+            to $N_Y$. \label{lem:type_14}
     \end{lemenum}
 \end{lemma}
 
@@ -702,8 +705,8 @@ other the claims are vacuously true.
 
         \item Suppose without loss of generality that $X=\l{a}$, and suppose
             that $G[N_X]$ is neither a cluster nor split. Let $(x,y,z)$ be an
-            induced copy of $P_3$ in $N_X$. Since $G$ is $C_5$-free and
-            $H_{11}$-free, it follows that $N_X$ is $(C_4,C_5)$-free.
+            induced copy of $P_3$ in $N_X$. Since $G$ is $C_5$-free and by
+            \Cref{lem:type_2}, we have that $N_X$ is $(C_4,C_5)$-free.
             Nonetheless, $G[N_X]$ is not split, so there is an induced copy of
             $2K_2$ in $N_X$.
             
@@ -1007,8 +1010,8 @@ other the claims are vacuously true.
             N_{abc}$ and let $C_u$ be the connected component of $u$ in
             $G[N_\varnothing]$. Since $N_{abc}$ is nonempty, by
             \Cref{lem:type_5}, the only bags to which $C_u$ can be adjacent are
-            $N_{acd}$, $N_{ac}$ and $N_{bd}$. On the one hand, if $C_u$ is
-            adjacent to $N_{acd}$, then, since $C_u$ is homogeneous to
+            $N_{acd}$, $N_{ac}$ and $N_{bd}$. On the one hand, if $C_u$ is not
+            anticomplete to $N_{acd}$, then, since $C_u$ is homogeneous to
             $N_{acd}$, it must be that $u$ is adjacent to a vertex $d'\in
             N_{acd}$. Thus, since $b'$ is nonadjacent to $d'$ due to
             \Cref{lem:anti_1}, it follows that $\l{a,b,b',d',u}$ induces a copy
@@ -1048,13 +1051,13 @@ other the claims are vacuously true.
 
             \noindent
             By the same reason, $C_u$ is anticomplete to $N_{ac}$. On the other
-            hand, if $C_u$ is not anticomplete to $N_{bd}$, then there is an
-            $x\in N_{bd}$ such that $u$ is adjacent to $x$. Since $x$ is
-            adjacent to $b'$ due to \Cref{lem:comp_1}, it follows that
-            $\l{u,b',x,c,d}$ is a house (see \Cref{fig:type_8_3}). Then, $C_u$
-            is anticomplete to $N_{bd}$. This shows that a connected component
-            in $N_{\varnothing}$ not anticomplete to a $3$-bag is anticomplete
-            to all other bags.
+            hand, if $C_u$ is not anticomplete to $N_{bd}$, then, since $C_u$ is
+            homogeneous to $N_{bd}$, there is an $x\in N_{bd}$ such that $u$ is
+            adjacent to $x$. Since $x$ is adjacent to $b'$ due to
+            \Cref{lem:comp_1}, it follows that $\l{u,b',x,c,d}$ is a house (see
+            \Cref{fig:type_8_3}). Then, $C_u$ is anticomplete to $N_{bd}$. This
+            shows that a connected component in $N_{\varnothing}$ not
+            anticomplete to a $3$-bag is anticomplete to all other bags.
             \begin{figure}[htb!]
                 \centering
                 \begin{tikzpicture}[every node/.style={vertex}, node
@@ -1152,7 +1155,7 @@ other the claims are vacuously true.
             each connected component of $G[N_{\varnothing}]$ is anticomplete to
             all bags but one.
 
-        \item By \Cref{lem:type_5}, the only way for the three bags to be
+        \item By \Cref{lem:type_5}, the only way for the threee bags to be
             nonempty is if, without loss of generality, $X=\l{a,b,c}$,
             $Y=\l{a,c,d}$ and $W=\l{a,c}$. Suppose $N_\varnothing$ is adjacent
             to more than one of these bags. By \Cref{lem:type_8}, there are
@@ -1405,6 +1408,44 @@ other the claims are vacuously true.
                 \caption{An induced copy of $H_5$ given that none of $G[N_X]$
                     and $G[N_Y]$ is split.}
                 \label{fig:type_13}
+            \end{figure}
+
+        \item Suppose without loss of generality that $X=\l{a}$, so $Y=\l{b,d}$.
+            If there are adjacent vertices $u$ and $v$ in $N_X$ such that $v$ is
+            adjacent to $w\in N_Y$ and $u$ is nonadajacent to $w$, then
+            $\p{u,v,w,d,c}$ is an induced copy of $P_5$ (see
+            \Cref{fig:type_14}). Therefore, non-isolated vertices in $N_X$ are
+            homogeneous to $N_Y$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {2,3}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (1) at (135:1) {};
+                    \node[lightgray] (0) at (45:1) {};
+                    
+                    \draw[lightgray] (0) to (1);
+                    \draw[lightgray] (2) to (1);
+                    \draw[lightgray] (0) to (3);
+                    \draw (2) to (3);
+
+                    \node (x) {};
+                    \node (v) at (0.5,0) {};
+                    \node (u) at (0,0.5) {};
+
+                    \draw[lightgray] (x) to (1);
+                    \draw[lightgray] (u) to (0);
+                    \draw[lightgray] (v) to (0);
+                    \draw (x) to (3);
+                    \draw (v) to (x);
+                    \draw (u) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that non-isolated
+                vertices in $N_X$ are not homogeneous to $N_Y$.}
+                \label{fig:type_14}
             \end{figure}
     \end{enumerate}
 \end{proof}
@@ -2140,96 +2181,390 @@ without loss of generality that $N_{abc}$.
     \noindent
     Thus, consider that $N_{ac}$ is stable. Similarly, consider $N_{bd}$ to be
     stable. As in the previous case, by \Cref{lem:type_6}, suppose without loss
-    of generality that both $N_{c}$ and $N_{d}$ are empty.
+    of generality that both $N_{c}$ and $N_{d}$ are empty. We proceed by taking
+    cases:
 
-    By \Cref{lem:type_12}, at least one between $G[N_a]$ and $G[N_b]$ is a
-    cluster; suppose without loss of generality that $G[N_b]$ is a cluster.
-    Consider the following subcases: \todo{here}
+    \paragraph{Case 2.1: $N_\varnothing$ is empty.} By \Cref{lem:type_12}, at
+    least one between $G[N_a]$ and $G[N_b]$ is a cluster; suppose without loss
+    of generality that $G[N_b]$ is a cluster. Consider the following subcases:
 
-    \paragraph{Case 2.1: $G[N_a]$ is split.} Let $(S,K)$ be a partition of $N_a$
-    with $S$ a stable set and $K$ a maximal clique. By \Cref{lem:anti_2}, $N_a$
-    is anticomplete to $N_{ac}$ and $N_b$ is anticomplete to $N_{bd}$. Then, $S$
-    is anticomplete to $N_{ac}$. If $K$ is nonempty, due to its maximality, it
-    has at least two vertices, $u$ and $v$. If just one of them is adjacent to
-    $w\in N_{bd}$, say $u$, then $\l{u,v,a,b,w}$ induce a house. On the
-    contrary, if both $u$ and $v$ are adjacent to $w$, then $\p{a,b,w,u,a}$ is a
-    $4$-cycle with a nonempty $3$-bag, since $v\in N_{avw}$. Thus, it follows
-    that $K$ is anticomplete to $N_{bd}$. At any rate,
+    \paragraph{Case 2.1.1: $G[N_a]$ is split.} Let $(S,K)$ be a partition of
+    $G[N_a]$ with $S$ a stable set and $K$ a maximal clique. By
+    \Cref{lem:anti_2}, $N_a$ is anticomplete to $N_{ac}$ and $N_b$ is
+    anticomplete to $N_{bd}$. Then, $S$ is anticomplete to $N_{ac}$, so
+    \[
+        N_{ac} \cup \l{b,d} \cup S
+    \]
+    is stable. We claim that $K$ is anticomplete to $N_{bd}$. Indeed, either $K$
+    is empty, so the claim is trivial, or $K$ is nonempty. If the later happens,
+    due to its maximality, it has at least two vertices, $u$ and $v$, which are
+    adjacent since $K$ is a clique. By \Cref{lem:type_14}, such vertices are
+    either anticomplete or complete to each vertex in $N_{bd}$. If both $u$ and
+    $v$ are adjacent to $w\in N_{bd}$, then $\p{a,b,w,v,a}$ is a $4$-cycle with
+    a nonempty $3$-bag, since $u\in N_{avw}$ (see \Cref{fig:3_bags_empty_2}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \foreach \i in {0,1}
+                        \node (\i)  at ({(360/4)*\i + 45}:1){};
+                    
+                    \node[lightgray] (2) at (225:1) {};
+                    \node[lightgray] (3) at (-45:1) {};
+                    
+                    \draw[lightgray] (2) to (1);
+                    \draw[lightgray] (0) to (3);
+                    \draw[lightgray] (2) to (3);
+                    \draw (0) to (1);
+
+                    \node (x) {};
+                    \node (v) at (0.5,0) {};
+                    \node (u) at (0,0.5) {};
+
+                    \draw[lightgray] (x) to (3);
+                    \draw (x) to (1);
+                    \draw (u) to (0);
+                    \draw (v) to (0);
+                    \draw (v) to (x);
+                    \draw (u) to (v);
+                    \draw (u) to (x);
+                \end{tikzpicture}
+        \caption{An induced copy of $C_4$ with a nonempty 3-bag given that $K$
+            is not anticomplete to $N_{bd}$.}
+        \label{fig:3_bags_empty_2}
+    \end{figure}
+
+    \noindent
+    Thus, it follows that $K$ is anticomplete to $N_{bd}$. Moreover, $K$ is
+    anticomplete to $N_b$ by \Cref{lem:anti_4}, so
+    \[
+        N_{bd} \cup N_b \cup \l{a,c} \cup K
+    \]
+    is a cluster, and
     \[
         \p{N_{ac} \cup \l{b,d} \cup S, N_{bd} \cup N_b \cup \l{a,c} \cup K}
     \]
-    is a partial monopolar partition of $G$, with $N_\varnothing$ still to be
-    assessed. If $N_{\varnothing}$ is empty, then we are done. If not, by
-    \Cref{lem:type_8}, each connected component of $N_\varnothing$ is not
-    anticomplete to one, and only one, between $N_{ac}$ and $N_{bd}$. Suppose
-    without loss of generality that $N_{\varnothing}$ is not anticomplete to
-    $N_{ac}$, and let $D$ be the set of vertices in $N_\varnothing$ that are not
-    anticomplete to $N_{ac}$. Let $u$ and $v$ be vertices in $N_{ac}$. Suppose
-    there are nonadjacent vertices $u'$ and $v'$ in $D$ such that $u$ is
-    adjacent to $u'$ and nonadjacent to $v'$, and $v$ is adjacent to $v'$ and
-    nonadjacent to $u'$. Then, since $N_{ac}$ is stable, $\p{u,u',b,v,v'}$ is a
-    $P_5$. This implies that the vertices in $N_{ac}$ are ordered by the
-    connected components to which they are adjacent.
+    is a monopolar partition of $G$.
+
+    \paragraph{Case 2.1.2: $G[N_a]$ is not split.} It follows from
+    \Cref{lem:type_7} that $G[N_a]$ is a cluster, and from \Cref{lem:type_13} we
+    have that $G[N_b]$ is split. Then, analogous to the previous case, if
+    $(S,K)$ is a partition of $G[N_b]$ with $S$ a stable set and $K$ a maximal
+    clique, we get
+    \[
+        \p{N_{bd} \cup \l{a,c} \cup S, N_{ac} \cup N_a \cup \l{b,d} \cup K}
+    \]
+
+    \paragraph{Case 2.2: $N_\varnothing$ is nonempty} Let $E_{ac}$ be the set of
+    vertices in $N_\varnothing$ that are not anticomplete to $N_{ac}$.
+    Similarly, let $E_{bd}$ be the set of vertices in $N_\varnothing$ that are
+    not anticomplete to $N_{bd}$. Since all 3-bags are empty, and due to
+    \Cref{lem:anti_5}, we have that $N_\varnothing = E_{ac} \cup E_{bd}$.
+    Moreover, \Cref{lem:type_8} implies that $E_{ac}$ and $E_{bd}$ partition
+    $N_{\varnothing}$, with $E_{ac}$ anticomplete to $E_{bd}$. Additionally,
+    suppose without loss of generality that $E_{ac}\neq \varnothing$.
+
+    We claim that there is a vertex $x\in N_{ac}$ complete to $E_{ac}$, and such
+    a vertex is unique if $E_{ac}$ is not stable. Indeed, suppose that there are
+    vertices $x$ and $y$ in $N_{ac}$ such that $N(x)\cap E_{ac}$ and $N(y) \cap
+    E_{ac}$ are incomparable. Then, there are vertices $x'$ and $y'$ in $E_{ac}$
+    such that $x$ is adjacent to $x'$ and not adjacent to $y'$, while $y$ is
+    adjacent to $y'$ and not adjacent to $x'$. Recall that $x$ is not adjacent
+    to $y$ since $N_{ac}$ is stable. Therefore, $\l{c,x,x',y,y'}$ induces either
+    a $C_5$ or a $P_5$, depending on whether $x'$ is adjacent to $y'$ or not,
+    respectively (see \Cref{fig:3_bags_empty_3}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+            \begin{scope}[xshift=-2cm]
+                \foreach \i in {0,1,3}
+                    \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+            
+                \node (y) at (-45:0.5) {};
+                \node (x) at (135:0.5) {};
+                \path let \p1=(y), \p2=(x) in node (y') at (\x1,\y2) {};
+                \path let \p1=(x), \p2=(y) in node (x') at (\x1,\y2) {};
+                \node (2) at (225:1){};
+
+                \draw[lightgray] (0) to (1);
+                \draw[lightgray] (1) to (2);
+                \draw[lightgray] (3) to (0);
+                \draw[lightgray] (3) to (2);
+                \draw[lightgray] (x) to (0);
+                \draw[lightgray] (y) to (0);
+                \draw (x) to (2);
+                \draw (x) to (x');
+                \draw (y) to (2);
+                \draw (y) to (y');
+                \draw (x') to (y');
+            \end{scope}
+
+            \begin{scope}[xshift=2cm]
+                \foreach \i in {0,1,3}
+                    \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+            
+                \node (y) at (-45:0.5) {};
+                \node (x) at (135:0.5) {};
+                \path let \p1=(y), \p2=(x) in node (y') at (\x1,\y2) {};
+                \path let \p1=(x), \p2=(y) in node (x') at (\x1,\y2) {};
+                \node (2) at (225:1){};
+
+                \draw[lightgray] (0) to (1);
+                \draw[lightgray] (1) to (2);
+                \draw[lightgray] (3) to (0);
+                \draw[lightgray] (3) to (2);
+                \draw[lightgray] (x) to (0);
+                \draw[lightgray] (y) to (0);
+                \draw (x) to (2);
+                \draw (x) to (x');
+                \draw (y) to (2);
+                \draw (y) to (y');
+            \end{scope}
+        \end{tikzpicture}
+        \caption{An induced copy of $C_5$ or $P_5$ given that no vertex in
+            $N_{ac}$ is adjacent to all connected components of $E_{ac}$.}
+        \label{fig:3_bags_empty_3}
+    \end{figure}
+
+    \noindent
+    Hence, there is a vertex, $x$, that is adjacent to all connected components
+    of $G[E_{ac}]$. Then, by \Cref{lem:type_8}, $x$ is complete to $E_{ac}$.
+    Moreover, if $u$ and $v$ are adjacent vertices in $E_{ac}$, and there is a
+    vertex $y$ in $N_{ac}$ adjacent to both $u$ and $v$, then $\p{c,x,u,y,c}$ is
+    an induced copy of $C_4$ with a nonempty 3-bag, since $v\in N_{uxy}$ (see
+    \Cref{fig:3_bags_empty_4}).
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+            \foreach \i in {0,1,3}
+                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+        
+            \node (y) at (-45:0.5) {};
+            \node (x) at (135:0.5) {};
+            \path let \p1=(y), \p2=(x) in node (y') at (\x1,\y2) {};
+            \path let \p1=(x), \p2=(y) in node (x') at (\x1,\y2) {};
+            \node (2) at (225:1){};
+
+            \draw[lightgray] (0) to (1);
+            \draw[lightgray] (1) to (2);
+            \draw[lightgray] (3) to (0);
+            \draw[lightgray] (3) to (2);
+            \draw[lightgray] (x) to (0);
+            \draw[lightgray] (y) to (0);
+            \draw (x) to (2);
+            \draw (x) to (x');
+            \draw (y) to (2);
+            \draw (y) to (y');
+            \draw (x') to (y');
+            \draw (x') to (y);
+            \draw (y') to (x);
+        \end{tikzpicture}
+        \caption{An induced copy of $C_4$ with a nonempty 3-bag given that $x$
+            is not unique.}
+        \label{fig:3_bags_empty_4}
+    \end{figure}
+
+    \noindent
+    We conclude that $x$ is unique. 
     
-    Let $x$ be the vertex in $N_{ac}$ that is adjacent to all connected
-    components of $D$. Notice that $x$ is complete to all such components, so
-    $x$ is complete to $D$. Observe that $\p{a,b,c,x,a}$ is a $C_4$ with the set
-    $D$ complete to $x$ and anticomplete to all other vertices of the $C_4$.
-    Then, by \Cref{lem:type_7}, $G[D]$ is either a cluster or split. Let $u$ be
-    in $D$. If $v$ and $w$ are adjacent vertices in $N_b$, then $x$ is adjacent
-    to both, otherwise, $\p{u,x,c,b,v}$ or $\p{u,x,c,b,w}$ are a $P_5$. Then,
-    $\p{a,b,v,x,a}$ is a $C_4$ with a nonempty 3-bag, since $w\in N_{bvx}$.
-    Thus, $N_b$ is stable. Consider the following subcases:
+    We also claim that $N_b$ is stable. Take $u\in E_{ac}$, and let $v$ and $w$
+    be adjacent vertices in $N_b$. Notice, by \Cref{lem:anti_5}, that $u$ is not
+    adjacent to neither $v$ nor $w$. Moreover, $x$ is adjacent to both $v$ and
+    $w$, otherwise, $\p{u,x,c,b,v}$ or $\p{u,x,c,b,w}$ induces a copy of $P_5$
+    (see \Cref{fig:3_bags_empty_5}). 
 
-    \paragraph{Case 2.1.1: $E = N_\varnothing\setminus D$ is empty.} Then $D =
-    N_\varnothing$. If $G[D]$ is a cluster, then
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \foreach \i in {1,...,2}
+                \node (\i)  at ({(360/4)*\i + 45}:1){};
+            
+            \node[lightgray] (0) at (45:1){};
+            \node[lightgray] (3) at (-45:1){};
+            \node[lightgray] (b') at ($(135:0.25) + (45:0.25)$) {};
+            \node (b'') at ($(135:0.25) + (225:0.25)$) {};
+            \node (d') at (-45:0.5){};
+            \path let \p1=(d'), \p2=(b') in node (u) at (\x1,\y2) {};
+
+            \draw[lightgray] (3) to (0);
+            \draw[lightgray] (3) to (2);
+            \draw[lightgray] (b') to (1);
+            \draw[lightgray] (b') to (d');
+            \draw[lightgray] (b'') to (b');
+            \draw[lightgray] (0) to (1);
+            \draw[lightgray] (d') to (0);
+            \draw (b'') to (1);
+            \draw (d') to (2);
+            \draw (1) to (2);
+            \draw (u) to (d');
+        \end{tikzpicture}
+        \caption{An induced copy of $P_5$ given that $x$ is not adjacent to at
+            least one between $v$ and $w$.}
+        \label{fig:3_bags_empty_5}
+    \end{figure}
+    
+    \noindent
+    Then, $\p{a,b,v,x,a}$ is a $C_4$ with a nonempty 3-bag, since $w\in N_{bvx}$
+    (see \Cref{fig:3_bags_empty_6}). 
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \foreach \i in {0,...,1}
+                \node (\i)  at ({(360/4)*\i + 45}:1){};
+            
+            \node[lightgray] (3) at (-45:1){};
+            \node[lightgray] (2) at (225:1){};
+            \node (b') at ($(135:0.25) + (45:0.25)$) {};
+            \node (b'') at ($(135:0.25) + (225:0.25)$) {};
+            \node (d') at (-45:0.5){};
+
+            \draw[lightgray] (3) to (0);
+            \draw[lightgray] (3) to (2);
+            \draw[lightgray] (d') to (2);
+            \draw[lightgray] (1) to (2);
+            \draw (b') to (1);
+            \draw (b'') to (1);
+            \draw (d') to (0);
+            \draw (b') to (d');
+            \draw (b'') to (d');
+            \draw (b'') to (b');
+            \draw (0) to (1);
+        \end{tikzpicture}
+        \caption{A nonempty 3-bag given that $N_b$ is not stable.}
+        \label{fig:3_bags_empty_6}
+    \end{figure}
+    
+    \noindent
+    Thus, $N_b$ is stable.
+
+    Observe that $\p{a,b,c,x,a}$ is an induced copy of $C_4$ with the set
+    $E_{ac}$ complete to $x$ and anticomplete to $\l{a,b,c}$. Then, by
+    \Cref{lem:type_7}, $G[E_{ac}]$ is either a cluster or split. Consider the
+    following cases:
+
+    \paragraph{Case 2.2.1: $G[E_{ac}]$ is not a cluster.} Then $G[E_{ac}]$ is
+    split, so let $(S,K)$ be a split partition of $E_{ac}$ with $K$ a maximal
+    clique. Additionally since $\p{a,b,c,x,a}$ is an induced copy of $C_4$ and,
+    by \Cref{lem:anti_5}, $N_{a}$ is anticomplete to $E_{ac}$, it follows from
+    \Cref{lem:type_12} that $G[N_a]$ is a cluster. If $K$ is empty, then it is
+    obvious that
     \[
-        \p{N_{ac} \cup \l{b,d} \cup S, N_{bd} \cup N_b \cup \l{a,c} \cup K \cup D}
+        N_{ac} \cup N_a \cup \l{b,d} \cup K
     \]
-    is a monopolar partition of $G$. On the contrary, if $G[D]$ is not a
-    cluster, then it is split. Additionally, due to $H_{7}$, $G[N_a]$ is a
-    cluster. Let $(S',K')$ be a partition of $D$ with $S'$ a stable set and $K'$
-    a maximal clique. If $K'$ is not trivial, then $x$ is the only vertex in
-    $N_{ac}$ that is not anticomplete to $K'$, otherwise, one would get a $C_4$
-    with a nonempty $3$-bag. Therefore,
+    is a cluster. If $K$ is nonempty, we claim that $K$ is anticomplete to
+    $N_{ac}\setminus x$. Indeed, if that is not the case, by the maximality of
+    $K$, it is nontrivial. By the unicity of $x$, it follows that
+    $N_{ac}\setminus \l{x}$ is anticomplete to $K$. At any rate, it follows that
     \[
-        \p{N_{bd} \cup N_b \cup \l{a,c} \cup S' , N_{ac} \cup N_a \cup \l{b,d} 
-        \cup K'}
+        N_{ac} \cup N_a \cup \l{b,d} \cup K
+    \]
+    is a cluster.
+
+    Meanwhile, since $S\subseteq E_{ac}$ and \Cref{lem:anti_5} implies that
+    $N_{b}$ is anticomplete $E_{ac}$, we have that
+    \[
+        N_{bd} \cup N_b \cup \l{a,c} \cup S
+    \]
+    is a stable set. For $E_{bd}$, if it happens to be nonempty, then as before
+    with $N_{ac}$, there is a $x'\in N_{bd}$ complete to $E_{bd}$. We claim that
+    $x$ is adjacent to $x'$. If $u$ is a vertex in $E_{ac}$, then $x'$ is not
+    adjacent to $u$, but $x$ is adjacent to $u$. Therefore, $\p{u,x,c,d,x'}$ is
+    an induced copy of $P_5$ (see \Cref{fig:3_bags_empty_7}). It follows that
+    $x$ is adjacent to $x'$.
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+            \foreach \i in {0,1}
+                \node[lightgray] (\i)  at ({(360/4)*\i + 45}:1){};
+    
+            \node (2) at (-135:1){};
+            \node (3) at (-45:1){};
+            \node (3') at (315:0.5){};
+            \node (y) at (-135:0.5){};
+            \node[above=0.75 of 3'] (u) {};
+
+            \draw[lightgray] (1) to (2);
+            \draw[lightgray] (3) to (0);
+            \draw[lightgray] (1) to (y);
+            \draw[lightgray] (0) to (1);
+            \draw[lightgray] (3') to (0);
+            \draw (3') to (2);
+            \draw (3) to (2);
+            \draw (y) to (3);
+            \draw (3') to (u);
+        \end{tikzpicture}
+        \caption{An induced copy of $P_5$ given that $x$ is not adjacent to $x'$.}
+        \label{fig:3_bags_empty_7}
+    \end{figure}
+
+    Notice that $\p{x,c,d,x',x}$ is an induced copy of $C_4$ with $E_{ac}$
+    anticomplete to $\l{c,d,x'}$ and complete to $x$, $E_{bd}$ anticomplete to
+    $\l{c,d,x}$ and complete to $x'$, and $E_{ac}$ anticomplete to $E_{bd}$.
+    Then, by \Cref{lem:type_12}, at least one between $G[E_{ac}]$ and
+    $G[E_{bd}]$ is a cluster. Since $G[E_{ac}]$ is not a cluster by hypothesis,
+    we have that $G[E_{bd}]$ is a cluster anticomplete to $N_a$, $N_{ac}$ and
+    $E_{ac}$, so
+    \[
+        \p{N_{bd} \cup N_b \cup \l{a,c} \cup S , N_{ac} \cup N_a \cup \l{b,d} 
+        \cup K \cup E_{bd}}
     \]
     is a monopolar partition of $G$.
 
-    \paragraph{Case 2.1.2: $E$ is nonempty.} Similar to the case with $D$, there
-    is a vertex $y\in N_{bd}$ complete to $E$, $N_a$ is stable, and $G[E]$ is
-    either a cluster or split. Moreover, due to $P_5$, $x$ is adjacent to $y$.
-    Then, due to $H_{7}$ at most one between $G[D]$ and $G[E]$ is not a cluster.
-    Similarly, due to $H_{5}$, at most one between $G[D]$ and $G[E]$ is not
-    split. Suppose without loss of generality that $G[D]$ is split.
+    \paragraph{Case 2.2.2: $G[E_{ac}]$ is a cluster.} We can consider
+    $G[E_{bd}]$ to be a cluster as well, since one could proceed as in the
+    previous case if $G[E_{bd}]$ is not a cluster. Additionally, if $G[E_{ac}]$
+    happens to be split, then once again we can proceed as in the previous case,
+    so consider $G[E_{ac}]$ to be not split.
 
-    If $G[E]$ is a cluster, then, as in the last partition, let $(S',K')$ be a
-    split partition of $G[D]$ with $K'$ a maximal clique. Hence,
+    Similar to the argument that at least one of $G[E_{ac}]$ and $G[E_{bd}]$ is
+    a cluster, by \Cref{lem:type_13} we have that $G[E_{bd}]$ is split. As in
+    the beginning of the previous case, $\p{a,b,c,x,a}$ is an induced copy of
+    $C_4$, with $E_{ac}$ anticomplete to $\l{a,b,c}\cup N_{a}$ and complete to
+    $x$. Then, by \Cref{lem:type_13}, it follows that $G[N_a]$ is split. Let
+    $(S,K)$ be a split partition of $N_a$.
+
+    It is clear that
     \[
-        \p{N_{bd} \cup N_b \cup \l{a,c} \cup S' , N_{ac} \cup N_a \cup \l{b,d} 
-        \cup K' \cup E}
+        N_{ac} \cup \l{b,d} \cup S
     \]
-    is a monopolar partition of $G$. On the contrary, if $G[E]$ is not a
-    cluster, then $G[D]$ is a cluster and $G[E]$ is split. Then, if $(S',K')$ is
-    a split partition of $E$ with $K'$ a maximal clique, it follows that
+    is stable. Meanwhile, since $N_b$ is stable, it induces a cluster, so
     \[
-        \p{N_{ac} \cup N_a \cup \l{b,d} \cup S' , N_{bd} \cup N_b \cup \l{a,c} 
-        \cup K' \cup D}
+        N_{bd} \cup N_b \cup \l{a,c} \cup K \cup E_{ac}
+    \]
+    is a cluster, noting that $K\cup \l{a}$ is a clique. If $E_{bd}$ is empty,
+    then we are done and
+    \[
+        \p{N_{ac} \cup \l{b,d} \cup S , N_{bd} \cup N_b \cup \l{a,c} \cup K 
+        \cup E_{ac}}
+    \]
+    is a monopolar partition of $G$. If $E_{bd}$ is nonempty, since it induces a
+    graph that is both split and a cluster, then it consists of a disjoint union
+    of a clique and a stable set. Let $(S',K')$ be a split partition of
+    $G[E_{bd}]$ such that $S'$ is anticomplete to $K'$, with $K'$ maximal. As in
+    the previous case, recall that, if $K'$ is nonempty, then it is complete to
+    a unique $x'\in N_{bd}$ and it is anticomplete to $N_{bd}\setminus \l{x'}$.
+    It follows that
+    \[
+        N_{ac} \cup \l{b,d} \cup S \cup S'
+    \]
+    is a stable set, while
+    \[
+        N_{bd} \cup N_b \cup \l{a,c} \cup K \cup E_{ac} \cup K'
+    \]
+    is a cluster, so
+    \[
+        \p{N_{ac} \cup \l{b,d} \cup S \cup S' , N_{bd} \cup N_b \cup \l{a,c} \cup K
+        \cup E_{ac} \cup K'}
     \]
     is a monopolar partition of $G$.
-
-    \paragraph{Case 2.2: $G[N_a]$ is not split.} Then, by \Cref{lem:type_13},
-    $G[N_b]$ is split. In particular, due to \Cref{lem:type_7}, it must be that
-    $G[N_a]$ is a cluster. Then, $N_a$ and $N_b$ are swapped as in the previous
-    case, so
-    \[
-        \p{N_{bd} \cup N_b \cup \l{a,c} \cup S , N_{ac} \cup \l{b,d} \cup K}
-    \]
-    is a partial monopolar partition of $G$, with $(S,K)$ a split partition of
-    $N_b$ with $S$ a stable set and $K$ a maximal clique. All cases of
-    $N_\varnothing$ explained in the previous subcase still give monopolar
-    partitions just by swapping the stable set with the set inducing the
-    cluster.
 \end{proof}
