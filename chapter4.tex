@@ -2061,15 +2061,15 @@ without loss of generality that $N_{abc}$.
     $K(N_b,N_{abc})\setminus F$ into $S_b$ a stable set and $K_b$ a clique.
     Since $K(N_b,N_{abc})$ is anticomplete to $D$ and $K(N_b,N_{abc})\setminus
     F$ is anticomplete to $F$, it follows that $S_b$ is anticomplete to both $D$
-    and $F$. Meanwhile, we already know that $K_b$ is anticomplete to $N_{abc}$
-    and $N_{ac}$, and it is anticomplete to $N_a$ and $N_{acd}$ due to
-    \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
+    and $F$. Meanwhile, we already know that $K_b$ is complete to $N_{abc}$,
+    anticomplete to $N_{ac}$, and it is anticomplete to $N_{acd}$ and $N_a$ due
+    to \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
     \begin{align*}
         \bigg( 
-            & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C \cup D 
-            \cup F \cup S_b , \\
-            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup E_{bd} 
-            \cup \bigcup_{C\in \mathcal{C}} K_C \cup K_b \bigg)
+            & N_{bd} \cup \l{a,c} \cup S \cup \bigcup_{C\in\mathcal{C}} S_C
+            \cup D \cup F \cup S_b , \\
+            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup
+            E_{bd} \cup \bigcup_{C\in \mathcal{C}} K_C \cup K_b \bigg)
     \end{align*}
     is a monopolar partition of $G$.
 
@@ -2095,7 +2095,7 @@ without loss of generality that $N_{abc}$.
     anticomplete to $N_{acd}$. By \Cref{lem:type_10}, $N_\varnothing\setminus
     E_{bd}$ is stable, so
     \[
-        N_{bd} \cup \l{a,c} \cup N_\varnothing\setminus E_{bd}
+        N_{bd} \cup \l{a,c} \cup (N_\varnothing\setminus E_{bd})
     \]
     is stable. 
     
@@ -2138,10 +2138,10 @@ without loss of generality that $N_{abc}$.
     have that
     \begin{align*}
         \bigg( 
-            & N_{bd} \cup \l{a,c} \cup N_\varnothing\setminus E_{bd} \cup D 
+            & N_{bd} \cup \l{a,c} \cup (N_\varnothing\setminus E_{bd}) \cup D
             \cup F \cup S_b , \\
-            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d} \cup E_{bd} 
-            \cup K_b \bigg)
+            & N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} \cup \l{b,d}
+            \cup E_{bd} \cup K_b \bigg)
     \end{align*}
     is a monopolar partition of $G$.
 
@@ -2187,7 +2187,7 @@ without loss of generality that $N_{abc}$.
     of generality that $G[N_b]$ is a cluster. Consider the following subcases:
 
     \paragraph{Case 2.1.1: $G[N_a]$ is split.} Let $(S,K)$ be a partition of
-    $G[N_a]$ with $S$ a stable set and $K$ a maximal clique. By
+    $G[N_a]$ with $S$ a stable set and $K$ a maximal nontrivial clique. By
     \Cref{lem:anti_2}, $N_a$ is anticomplete to $N_{ac}$ and $N_b$ is
     anticomplete to $N_{bd}$. Then, $S$ is anticomplete to $N_{ac}$, so
     \[
@@ -2195,11 +2195,12 @@ without loss of generality that $N_{abc}$.
     \]
     is stable. We claim that $K$ is anticomplete to $N_{bd}$. Indeed, either $K$
     is empty, so the claim is trivial, or $K$ is nonempty. If the later happens,
-    due to its maximality, it has at least two vertices, $u$ and $v$, which are
-    adjacent since $K$ is a clique. By \Cref{lem:type_14}, such vertices are
-    either anticomplete or complete to each vertex in $N_{bd}$. If both $u$ and
-    $v$ are adjacent to $w\in N_{bd}$, then $\p{a,b,w,v,a}$ is a $4$-cycle with
-    a nonempty $3$-bag, since $u\in N_{avw}$ (see \Cref{fig:3_bags_empty_2}).
+    due to its maximality and because it is not trivial, it has at least two
+    vertices, $u$ and $v$, which are adjacent since $K$ is a clique. By
+    \Cref{lem:type_14}, such vertices are either anticomplete or complete to
+    each vertex in $N_{bd}$. If both $u$ and $v$ are adjacent to $w\in N_{bd}$,
+    then $\p{a,b,w,v,a}$ is a $4$-cycle with a nonempty $3$-bag, since $u\in
+    N_{avw}$ (see \Cref{fig:3_bags_empty_2}).
 
     \begin{figure}[htb!]
         \centering
@@ -2249,7 +2250,7 @@ without loss of generality that $N_{abc}$.
     \Cref{lem:type_7} that $G[N_a]$ is a cluster, and from \Cref{lem:type_13} we
     have that $G[N_b]$ is split. Then, analogous to the previous case, if
     $(S,K)$ is a partition of $G[N_b]$ with $S$ a stable set and $K$ a maximal
-    clique, we get
+    nontrivial clique, we get
     \[
         \p{N_{bd} \cup \l{a,c} \cup S, N_{ac} \cup N_a \cup \l{b,d} \cup K}
     \]
@@ -2450,17 +2451,17 @@ without loss of generality that $N_{abc}$.
 
     \paragraph{Case 2.2.1: $G[E_{ac}]$ is not a cluster.} Then $G[E_{ac}]$ is
     split, so let $(S,K)$ be a split partition of $E_{ac}$ with $K$ a maximal
-    clique. Additionally since $\p{a,b,c,x,a}$ is an induced copy of $C_4$ and,
-    by \Cref{lem:anti_5}, $N_{a}$ is anticomplete to $E_{ac}$, it follows from
-    \Cref{lem:type_12} that $G[N_a]$ is a cluster. If $K$ is empty, then it is
-    obvious that
+    nontrivial clique. Additionally since $\p{a,b,c,x,a}$ is an induced copy of
+    $C_4$ and, by \Cref{lem:anti_5}, $N_{a}$ is anticomplete to $E_{ac}$, it
+    follows from \Cref{lem:type_12} that $G[N_a]$ is a cluster. If $K$ is empty,
+    then it is obvious that
     \[
         N_{ac} \cup N_a \cup \l{b,d} \cup K
     \]
     is a cluster. If $K$ is nonempty, we claim that $K$ is anticomplete to
-    $N_{ac}\setminus x$. Indeed, if that is not the case, by the maximality of
-    $K$, it is nontrivial. By the unicity of $x$, it follows that
-    $N_{ac}\setminus \l{x}$ is anticomplete to $K$. At any rate, it follows that
+    $N_{ac}\setminus \{x\}$.  Since $K$ is nontrivial, it must be the case that
+    $x$ is unique, so it follows that $N_{ac}\setminus \l{x}$ is anticomplete to
+    $K$. At any rate, it follows that
     \[
         N_{ac} \cup N_a \cup \l{b,d} \cup K
     \]
@@ -2529,7 +2530,9 @@ without loss of generality that $N_{abc}$.
     the beginning of the previous case, $\p{a,b,c,x,a}$ is an induced copy of
     $C_4$, with $E_{ac}$ anticomplete to $\l{a,b,c}\cup N_{a}$ and complete to
     $x$. Then, by \Cref{lem:type_13}, it follows that $G[N_a]$ is split. Let
-    $(S,K)$ be a split partition of $N_a$.
+    $(S,K)$ be a split partition of $N_a$ where $K$ is a maximal nontrivial
+    clique.
+    %TODO: Decir algo de K y N_{bd}
 
     It is clear that
     \[
@@ -2561,8 +2564,8 @@ without loss of generality that $N_{abc}$.
     \]
     is a cluster, so
     \[
-        \p{N_{ac} \cup \l{b,d} \cup S \cup S' , N_{bd} \cup N_b \cup \l{a,c} \cup K
-        \cup E_{ac} \cup K'}
+        \p{N_{ac} \cup \l{b,d} \cup S \cup S' , N_{bd} \cup N_b \cup \l{a,c}
+        \cup K \cup E_{ac} \cup K'}
     \]
     is a monopolar partition of $G$.
 \end{proof}
