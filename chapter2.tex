@@ -1,8 +1,58 @@
 \chapter{Chordal \texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs}
 \label{cap:chordal}
 
+Hoping to ease the introduction of the techniques we will use throughout the
+chapters, we start our study by looking at chordal graphs, which tend to be
+well-behaved when one is working with partitions. Since we consider those
+chordal graphs which are $(P_5,\text{house})$-free, notice that asking the graph
+to be $\text{house}$-free is redundant once we know it is chordal. Thus, we will
+not mention the abscense of the house in any of the results for the present
+chapter.
+
+Before we get into the problem, we should note that the case about to be
+analyzed has already been solved in \cite{chordal}. In there, authors present a
+polynomial-time algorithm that decides if a chordal graph (not necessarily
+$P_5$-free) is polar. Such an algorithm depends on a linear-time subroutine that
+decides monopolarity, and finds a monopolar partition if one exists.
+Nonetheless, while authors mention that the subroutine could be modified so that
+it outputs a no-certificate as a proof of non-membership if the graph is not
+monopolar, they do not specify if this additional procedure can be done in
+linear time. Thereby, we commit to develop a full linear-time certyfing
+algorithm for chordal $P_5$-free graphs.
+
 \section{Characterization of monopolarity}
 \label{sec:chordal_characterization}
+
+We begin with the following auxiliary lemma that will help us prove that some
+graphs are indeed monopolar obstructions.
+
+\begin{lemma}
+    \label{lem:monopolar_diamond}
+    Let $G$ be a graph with an induced copy of the diamond. Then,
+    any monopolar partition of $G$ must be such that the chord of the diamond is
+    in $B$.
+\end{lemma}
+
+\begin{proof}
+    Let $\p{a,b,c,d,a}$ be an induced copy of $C_4$ in $G$ such that $a$ is
+    adjacent to $c$ and $b$ is not adjacent to $d$. Suppose $G$ is monopolar and
+    $(A,B)$ is a monopolar partition of $G$. If $a\in A$, it follows from $A$
+    being stable that $\p{b,c,d}$ is an induced copy of $P_3$ in $B$, which
+    contradicts that $G[B]$ is a cluster. Thus, $a\in B$, and similarly follows
+    that $c\in B$.
+
+\end{proof}
+
+Up next we show the list of minimal obstructions for monopolarity in chordal
+$P_5$-free graphs. Do notice that in \cite{juraj}, Stacho proposes a grammar
+that generates all minimal monopolar obstructions for chordal graphs, with the
+caveat that there is an infinite number of them. By using the rules of the
+grammar, one could exhaustively prove that the graphs in
+\Cref{fig:chordal-p5-free-obstructions} are the only $P_5$-free graphs derived.
+However, for completeness, we proceed to show that these indeed are minimal
+obstructions. Then, we will use them not only to deduce that this is the
+complete list, but to extract the linear-time certyfing algorithm we are looking
+for.
 
 \begin{figure}[htb!]
     \centering
@@ -190,26 +240,6 @@
     \label{fig:chordal-p5-free-obstructions}
 \end{figure}
 
-We begin with the following auxiliary lemma that will help us prove that the
-graphs in \Cref{fig:chordal-p5-free-obstructions} are indeed monopolar
-obstructions.
-
-\begin{lemma}
-    \label{lem:monopolar_diamond}
-    Let $G$ be a graph and suppose it has an induced copy of the diamond. Then,
-    any monopolar partition of $G$ must be such that the chord of the diamond is
-    in $B$.
-\end{lemma}
-
-\begin{proof}
-    Let $\p{a,b,c,d,a}$ be a $C_4$ in $G$ such that $a$ is adjacent to $c$ and
-    $b$ is not adjacent to $d$. Suppose $G$ is monopolar and $(A,B)$ is a
-    monopolar partition of $G$. If $a\in A$, it follows from $A$ being stable
-    that $\p{b,c,d}$ is a $P_3$ in $B$, which contradicts that $G[B]$ is a
-    cluster. Thus, $a\in B$, and similarly follows that $c\in B$.
-
-\end{proof}
-
 \begin{proposition}
     \label{prop:minimal_obs_chordal}
     The graphs depicted in \Cref{fig:chordal-p5-free-obstructions} are minimal
@@ -312,10 +342,10 @@ obstructions.
     \end{figure}
 
     Suppose $H_2$ is monopolar and consider a similar labelling to the one given
-    to $H_1$. Notice $cd$ and $cf$ are chord edges of different diamonds in
-    $H_2$ so, by \Cref{lem:monopolar_diamond}, these vertices are in $B$. Then,
-    for $B$ to be $P_3$-free, both $a$ and $b$ must be in $A$, contradicting
-    that $A$ is stable. Hence, $H_2$ is not monopolar, and in
+    to $H_1$. Notice $cd$ and $cf$ are chord edges of induced copies of diamonds
+    in $H_2$ so, by \Cref{lem:monopolar_diamond}, these vertices are in $B$.
+    Then, for $B$ to be $P_3$-free, both $a$ and $b$ must be in $A$,
+    contradicting that $A$ is stable. Hence, $H_2$ is not monopolar, and in
     \Cref{fig:minimal_h2} the monopolar partitions of $H_2-v$ are shown.
 
     \begin{figure}[htb!]
@@ -451,11 +481,11 @@ obstructions.
     \end{figure}
 
     Suppose $H_3$ is monopolar and consider a similar labelling to the one given
-    to $H_1$. Notice $ad$ and $cf$ are chord edges of different diamonds in
-    $H_3$ so, by \Cref{lem:monopolar_diamond}, these vertices are in $B$. Then,
-    $\p{a,c,f}$ is a $P_3$ in $B$, contradicting that $G[B]$ is a cluster. Thus,
-    $H_3$ is not monopolar, and in \Cref{fig:minimal_h3} the monopolar
-    partitions of $H_3 - v$ are shown.
+    to $H_1$. Notice $ad$ and $cf$ are chord edges of induced copies of diamonds
+    in $H_3$ so, by \Cref{lem:monopolar_diamond}, these vertices are in $B$.
+    Then, $\p{a,c,f}$ is an induced copy of $P_3$ in $B$, contradicting that
+    $G[B]$ is a cluster. Thus, $H_3$ is not monopolar, and in
+    \Cref{fig:minimal_h3} the monopolar partitions of $H_3 - v$ are shown.
 
     \begin{figure}[htb!]
         \centering
@@ -565,7 +595,7 @@ obstructions.
     Notice $ad$ is a chord edge of a diamond in $H_4$. Since $e$ and $f$ are not
     adjacent to $a$, it follows that both must be in $A$ so $B$ is $P_3$-free,
     contracting that $A$ is stable. Therefore, $H_4$ is not monopolar, and in
-    \Cref{fig:minimal_h4} are shown the monopolar partitions of $H_4 - v$.
+    \Cref{fig:minimal_h4} the monopolar partitions of $H_4 - v$ are shown.
 
         \begin{figure}[htb!]
         \centering
@@ -938,9 +968,9 @@ obstructions.
         \caption{A labelling of $H_7$.}
         \label{fig:labelling_h7}
     \end{figure}
-    Notice $ad$ and $bg$ are chord edges of different diamond in $H_7$. Then, by
-    \Cref{lem:monopolar_diamond}, those vertices are contained in $B$, so
-    $\p{d,a,b}$ is a $P_3$ in $B$, contradicting that $G[B]$ is a cluster.
+    Notice $ad$ and $bg$ are chord edges of induced copies of diamonds in $H_7$.
+    Then, by \Cref{lem:monopolar_diamond}, those vertices are contained in $B$,
+    so $\p{d,a,b}$ is a $P_3$ in $B$, contradicting that $G[B]$ is a cluster.
     Hence, $H_7$ is not monopolar, and in \Cref{fig:minimal_h7} the monopolar
     partitions of $H_7 - v$ are shown.
 
@@ -1045,16 +1075,18 @@ obstructions.
     \end{figure}
 \end{proof}
 
-Recall that split graphs are those whose vertex set can be partitioned into a
-stable set and a clique. In particular, split graphs are monopolar. Since split
-graphs are exactly the $\l{2K_2, C_4, C_5}$-free graphs, it follows that a
-chordal graph is split if and only if it is $2K_2$-free. In
-\cite{heggernesNJC14,hellDAM141}, linear-time certifying algorithms for
-recognizing split graphs are shown. Thus, given a chordal graph, one can run
-such an algorithm to decide whether the graph is split, which in turn implies
-the graph is monopolar, or get a $2K_2$ as a certificate of non-membership.
-Therefore, to solve \textsc{Monopolarity} in chordal graphs, it suffices to
-solve it for those graphs that contain an induced copy of $2K_2$. 
+Having indentified the minimal obstructions, we devote ourselves to proving that
+these are all minimal obstructions. For that purpose we turn to split graphs
+which are those whose vertex set can be partitioned into a stable set and a
+clique. In particular, split graphs are monopolar. Since split graphs are
+exactly the $\l{2K_2, C_4, C_5}$-free graphs, it follows that a chordal graph is
+split if and only if it is $2K_2$-free. In \cite{heggernesNJC14,hellDAM141},
+linear-time certifying algorithms for recognizing split graphs are shown. Thus,
+given a chordal graph, one can run such an algorithm to decide whether the graph
+is split, which in turn implies the graph is monopolar, or get a $2K_2$ as a
+certificate of non-membership. Therefore, to solve \textsc{Monopolarity} in
+chordal graphs, it suffices to solve it for those graphs that contain an induced
+copy of $2K_2$. 
 
 Throughout the rest of this section, we assume that the graphs have an induced
 copy of $2K_2$, whose vertex set is denoted by $Z=\l{a,b,c,d}$ and it is such
@@ -1063,8 +1095,8 @@ asserts there are two types of $P_5$-free graphs with an induced copy of $2K_2$.
 
 \begin{lemma}
     \label{lem:chordal_connectedness}
-    Let $G$ be a $P_5$-free graph with an induced copy of a $2K_2$, $G[Z]$. One
-    of the following must be true:
+    Let $G$ be a $P_5$-free graph with an induced copy of a $2K_2$ having vertex
+    set $Z$. One of the following must be true:
     \begin{enumerate}[label=(\roman*)]
         \item There is a vertex adjacent to both edges of $G[Z]$.
         \item There are adjacent vertices $x$ and $y$ with $x$ complete to the
@@ -1078,7 +1110,7 @@ asserts there are two types of $P_5$-free graphs with an induced copy of $2K_2$.
     minimum length, $P$, whose initial vertex is in $\l{a,b}$, its final vertex
     is in $\l{c,d}$, and all middle vertices are not in $Z$. Since (i) is not
     true, such a path has at least 4 vertices. Moreover, if it has at least $5$
-    vertices, it follows that $P$ contains an copy of $P_5$, which is induced
+    vertices, it follows that $P$ contains a copy of $P_5$, which is induced
     since $P$ is of minimum length.
 
     Therefore, suppose without loss of generality that there are adjacent
@@ -1115,8 +1147,8 @@ asserts there are two types of $P_5$-free graphs with an induced copy of $2K_2$.
 \end{proof}
 
 The next lemmas describe the structure of the exact neighborhoods of subsets of
-$Z$ given that a graph is free of the minimal obstructions given in
-\Cref{fig:chordal-p5-free-obstructions}. For simplicity, throughout the chapter,
+$Z$ given that a graph is free of the minimal obstructions shown in
+\Cref{fig:chordal-p5-free-obstructions}. For simplicity throughout the chapter,
 exact neighborhoods $N_X$ when $X$ is of size one will be called 1-bags.
 Similarly, sets $N_X$ when $X$ is of size two and three will be called 2-bags
 and 3-bags, respectively.
@@ -1124,12 +1156,12 @@ and 3-bags, respectively.
 \begin{lemma}
     \label{lem:neighborhoods_chordal_anti}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ and free of the graphs depicted in
+    $2K_2$ having $Z$ as vertex set and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
     subsets of $Z$.
     \begin{lemenum}
-        \item If $N_X$ and $N_Y$ are 1-bags adjacent to the same edge of the
-            $2K_2$, then $N_X$ is anticomplete to $N_Y$.
+        \item If $N_X$ and $N_Y$ are 1-bags complete to vertices within an edge
+            of $G[Z]$, then $N_X$ is anticomplete to $N_Y$.
             \label{lem:chordal_anti_2}
         \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to $N_Z$.
             \label{lem:chordal_anti_1}
@@ -1141,7 +1173,7 @@ and 3-bags, respectively.
     \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{b}$.
             If $x\in N_X$ is adjacent to $y\in N_Y$, then $\p{a,b,y,x,a}$
-            induces a copy of $C_4$ (see \cref{fig:chordal_anti_1}). Therefore,
+            induces a copy of $C_4$ (see \Cref{fig:chordal_anti_1}). Therefore,
             $N_X$ is anticomplete to $N_Y$.
 
             \begin{figure}[htb!]
@@ -1197,25 +1229,28 @@ and 3-bags, respectively.
     \end{enumerate}
 \end{proof}
 
+The upcoming lemma deals with the structure within exact neighborhoods.
+
 \begin{lemma}
     \label{lem:neighborhoods_chordal_types}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ and free of the graphs depicted in
+    $2K_2$ with $Z$ as vertex set and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different
     subsets of $Z$.
     \begin{lemenum}
-        \item If $N_X$ is a 2-bag adjacent to both edges of the $2K_2$,
+        \item If $N_X$ is a 2-bag complete to vertices in both edges of $G[Z]$,
             then $N_X$ is empty. \label{lem:chordal_types_2}
-        \item If $N_X$ is a bag adjacent to both edges of the $2K_2$, then $N_X$
-            is a clique. \label{lem:chordal_types_clique_bag}
+        \item If $N_X$ is a bag complete to vertices in both edges of $G[Z]$,
+            then $N_X$ is a clique. \label{lem:chordal_types_clique_bag}
         \item The exact neighborhood $N_Z$ has cardinality at most one.
             \label{lem:chordal_types_1}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
-            $G[N_X]$ is split. \label{lem:chordal_types_6}
-        \item At most one bag is adjacent to both edges of the $2K_2$.
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $G[N_X]$
+            is split. \label{lem:chordal_types_6}
+        \item At most one bag is complete to vertices in both edges of $G[Z]$.
             \label{lem:chordal_types_3}
         \item If $N_X$ is a 3-bag and $N_Y$ is the complementary 1-bag, then at
-            least one of $N_X$ and $N_Y$ is empty. \label{lem:chordal_types_pending}
+            least one of $N_X$ and $N_Y$ is empty.
+            \label{lem:chordal_types_pending}
     \end{lemenum}
 \end{lemma}
 
@@ -1309,20 +1344,21 @@ and 3-bags, respectively.
         \item Suppose without loss of generality that $X=\l{a,b}$. If $G[N_X]$
             is not split, since $G$ is chordal, it follows that $G[N_X]$
             contains an induced copy of $2K_2$. Then, adjacent vertices $a$ and
-            $b$ are complete to the copy of $2K_2$ in $N_X$, which contradicts
-            (iii). Hence, $G[N_X]$ is split.
-        \item Let $N_X$ and $N_Y$ be nonempty different bags adjacent to both
-            edges of the $2K_2$. By (i), both $X$ and $Y$ have at least three
-            vertices in $Z$. Suppose without loss of generality that
+            $b$ are complete to the induced copy of $2K_2$ in $N_X$, which
+            contradicts (iii). Hence, $G[N_X]$ is split.
+        \item Let $N_X$ and $N_Y$ be nonempty different bags complete to
+            vertices in both edges of $G[Z]$. By (i), both $X$ and $Y$ have at
+            least three vertices in $Z$. Suppose without loss of generality that
             $\l{a,b,c}\subseteq X$ and $b\in Y$. Let $x\in N_X$ and $y\in N_Y$.
 
             If one of $X$ and $Y$ is equal to $Z$, suppose without loss of
             generality that $X=Z$. Since $X\neq Y$, suppose without loss of
-            generality that $c\notin Y$. Since $N_Y$ is a 3-bag adajcent to both
-            edges of the $2K_2$, it follows that $Y=\l{a,b,d}$. Notice either
-            $\l{a,b,c,d,x,y}$ induces a copy of $H_2$, or $\p{a,x,d,y,a}$ is a
-            $C_4$, depending on whether $x$ is adjacent to $y$ or not,
-            respectively (see \Cref{fig:chordal_types_3_1}).
+            generality that $c\notin Y$. Since $N_Y$ is a 3-bag complete to
+            vertices in both edges of $G[Z]$, it follows that $Y=\l{a,b,d}$.
+            Notice either $\l{a,b,c,d,x,y}$ induces a copy of $H_2$, or
+            $\p{a,x,d,y,a}$ is an induced copy of $C_4$, depending on whether
+            $x$ is adjacent to $y$ or not, respectively (see
+            \Cref{fig:chordal_types_3_1}).
 
             \begin{figure}[htb!]
                 \centering
@@ -1375,11 +1411,11 @@ and 3-bags, respectively.
             \end{figure}
 
             If neither $X$ nor $Y$ is $Z$, then $X=\l{a,b,c}$. We claim that $y$
-            is adjacent to $x$ and $c$. Indeed, since $Y$ is adjacent to the
-            edge $cd$, $y$ is adjacent to at least one between $c$ and $d$. If
-            $y$ is adjacent to $d$, then $y$ must be adjacent to both $x$ and
-            $c$, otherwise, there is an induced copy of $C_4$ or $C_5$ (see
-            \Cref{fig:chordal_types_3_2}).
+            is adjacent to $x$ and $c$. Indeed, since $N_Y$ is complete to
+            either $c$ or $d$, $y$ is adjacent to at least one between $c$ and
+            $d$. If $y$ is adjacent to $d$, then $y$ must be adjacent to both
+            $x$ and $c$, otherwise, there is an induced copy of $C_4$ or $C_5$
+            (see \Cref{fig:chordal_types_3_2}).
 
             \begin{figure}[htb!]
                 \centering
@@ -1477,7 +1513,7 @@ and 3-bags, respectively.
                     \draw (y) to (x);
                     \draw (y) to (c);
                 \end{tikzpicture}
-                \caption{An induced copy of $H_3$ given that $N_X$ and $N_Y$ are both nonempty.}
+                \caption{An induced copy of $H_3$ given that both $N_X$ and $N_Y$ are nonempty.}
                 \label{fig:chordal_type_3_3}
             \end{figure}
         
@@ -1537,25 +1573,26 @@ As we will see, the proof of the main theorem will require us to check the case
 when $N_Z$ is nonempty. In order to facilitate its proof, the next three lemmas
 provide additional relations between the exact neighborhoods given that $N_Z$ is
 nonempty. If that is the case, notice that, by \Cref{lem:chordal_types_1}, there
-is just one vertex in $N_Z$, namely $z$.
+is just one vertex in $N_Z$, namely $z$. This first result state relations of
+anticompleteness.
 
 \begin{lemma}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ and free of the graphs depicted in
+    $2K_2$ with vertex set $Z$ and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
     subsets of $Z$. Suppose that $N_Z=\l{z}$.
     \begin{lemenum}
         \item If both $N_X$ and $N_Y$ are 2-bags complete to different edges of
-            the $2K_2$, then $N_X$ is anticomplete to $N_Y$.
+            $G[Z]$, then $N_X$ is anticomplete to $N_Y$.
             \label{lem:chordal_anti_3}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then $N_X$
-            is anticomplete to $N_\varnothing \cap N(z)$.
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $N_X$ is
+            anticomplete to $N_\varnothing \cap N(z)$.
             \label{lem:chordal_anti_2_bag}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then
             $N_\varnothing$ is anticomplete to $N_X \setminus N(z)$.
             \label{lem:chordal_anti_5}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, and $N_Y$
-            is a 1-bag, then $N_Y$ is anticomplete to $N_X \setminus N(z)$.
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, and $N_Y$ is a
+            1-bag, then $N_Y$ is anticomplete to $N_X \setminus N(z)$.
             \label{lem:chordal_anti_2_bag_2}
         \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to
             $N_\varnothing$. \label{lem:chordal_anti_4}
@@ -1777,9 +1814,10 @@ is just one vertex in $N_Z$, namely $z$.
             N_Y$ is adjacent to $x\in N_X \setminus N(z)$. By
             \Cref{lem:chordal_anti_1}, $y$ is not adjacent to $z$.
         
-            On the one hand, if $N_Y$ is adjacent to the edge $ab$, suppose
-            without loss of generality that $Y=\l{b}$. Then, $\p{y,x,a,z,c}$ is
-            an induced copy of $P_5$ (see \Cref{fig:chordal_anti_2_bag_2_1}).
+            On the one hand, if $N_Y$ is complete to a vertex in edge $ab$,
+            suppose without loss of generality that $Y=\l{b}$, then
+            $\p{y,x,a,z,c}$ is an induced copy of $P_5$ (see
+            \Cref{fig:chordal_anti_2_bag_2_1}).
 
             \begin{figure}[htb!]
                 \centering
@@ -1809,10 +1847,11 @@ is just one vertex in $N_Z$, namely $z$.
                 \label{fig:chordal_anti_2_bag_2_1}
             \end{figure}
 
-            On the other hand, if $N_Y$ is adjacent to the edge $cd$, suppose
-            without loss of generality that $Y=\l{d}$. Then, $\p{x,a,z,d,y,x}$
-            is an induced copy of $C_5$ (see \Cref{fig:chordal_anti_2_bag_2_2}).
-            Thus, $N_Y$ is anticomplete to $N_X \setminus N(z)$.
+            On the other hand, if $N_Y$ is complete to a vertex in edge $cd$,
+            suppose without loss of generality that $Y=\l{d}$, then
+            $\p{x,a,z,d,y,x}$ is an induced copy of $C_5$ (see
+            \Cref{fig:chordal_anti_2_bag_2_2}). Thus, $N_Y$ is anticomplete to
+            $N_X \setminus N(z)$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1844,7 +1883,7 @@ is just one vertex in $N_Z$, namely $z$.
         
         \item Suppose without loss of generality that $X=\l{a}$. By
             \Cref{lem:chordal_anti_1}, $x\in N_X$ is not adjacent to $z$. If
-            $w\in N_\varnothing$ is adjacent to $x$, then $G$ contains an
+            $w\in N_\varnothing$ is adjacent to $x$, then $G$ contains either an
             induced copy of $C_4$ or $P_5$, depending on whether $w$ is adjacent
             to $z$ or not, respectively (see \Cref{fig:chordal_anti_4}). Hence,
             $N_X$ is anticomplete to $N_\varnothing$.
@@ -1902,28 +1941,30 @@ is just one vertex in $N_Z$, namely $z$.
     \end{enumerate}
 \end{proof}
 
+Now we give a lemma for structure within bags.
+
 \begin{lemma}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ and free of the graphs depicted in
+    $2K_2$ with $Z$ as vertex set and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
     subsets of $Z$. Suppose that $N_Z=\l{z}$.
     \begin{lemenum}
-        \item If $N_X$ and $N_Y$ are 1-bags adjacent to different edges of the
-            $2K_2$, then at least one of $N_X$ and $N_Y$ is empty.
+        \item If $N_X$ and $N_Y$ are 1-bags complete to vertices in edges of
+            $G[Z]$, then at least one of $N_X$ and $N_Y$ is empty.
             \label{lem:chordal_types_5}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
-            $N_X \cap N(z)$ is a clique. \label{lem:chordal_types_K_clique}
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $N_X \cap
+            N(z)$ is a clique. \label{lem:chordal_types_K_clique}
         \item The set $G[N_\varnothing \cap N(z)]$ is a cluster.
             \label{lem:chordal_types_K_cluster}
         \item If $N_X$ is a 1-bag, then $N_X$ is stable.
             \label{lem:chordal_types_4}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then
             non-isolated vertices of $G[N_\varnothing \setminus N(z)]$ are
             anticomplete to $N_X \cap N(z)$.
             \label{lem:chordal_types_trivial}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$ and $N_Y$ is
-            a 1-bag adjacent to the other edge of the $2K_2$, then at least one
-            of $N_{X} \setminus N(z)$ and $N_Y$ is empty.
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$ and $N_Y$ is a
+            1-bag complete to a vertex in the other edge of $G[Z]$, then at
+            least one of $N_{X} \setminus N(z)$ and $N_Y$ is empty.
             \label{lem:chordal_types_empty}
     \end{lemenum}
 \end{lemma}
@@ -1932,11 +1973,12 @@ is just one vertex in $N_Z$, namely $z$.
     \leavevmode \par
     \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a}$ and $Y=\l{c}$.
-            If $x\in N_X$ and $y\in N_Y$, by \Cref{lem:chordal_anti_1}, we have that
-            $z$ is nonadjacent to both $x$ and $y$. Then, $G$ has an induced copy of
-            either $C_5$ or $P_5$, depending on whether $x$ is adjacent to $y$ or
-            not, respectively (see \Cref{fig:chordal_types_5}). Hence, one between
-            $N_X$ and $N_Y$ is empty.
+            Let $x\in N_X$ and $y\in N_Y$. By \Cref{lem:chordal_anti_1}, we have
+            that $z$ is nonadjacent to both $x$ and $y$. Then, $G$ has an
+            induced copy of either $C_5$ or $P_5$, depending on whether $x$ is
+            adjacent to $y$ or not, respectively (see
+            \Cref{fig:chordal_types_5}). Hence, one between $N_X$ and $N_Y$ is
+            empty.
 
             \begin{figure}[htb!]
                 \centering
@@ -2075,8 +2117,9 @@ is just one vertex in $N_Z$, namely $z$.
                     \node[above right=1cm and 0.75cm of z] (b) {};
                     \node[below left=1cm and 0.75cm of z] (c) {};
                     \node[below right=1cm and 0.75cm of z] (d) {};
-                    \node[above=1cm of a] (x) {};
-                    \node[right=0.75cm of x] (x') {};
+                    \node (x) at ($(a) + (60:0.75)$) {};
+                    \node (x') at ($(a) + (120:0.75)$) {};
+                    \path let \p1=(x') in node[Label] at (-\x1,0) {};
 
                     \draw (z) to (c);
                     \draw (z) to (d);
@@ -2161,7 +2204,7 @@ is just one vertex in $N_Z$, namely $z$.
             \end{figure}
 
         \item Suppose without loss of generality that $X=\l{a,b}$ and $Y=\l{c}$.
-            Let $x\in N_x\setminus N(z)$ and $y\in N_Y$. By
+            Let $x\in N_X\setminus N(z)$ and $y\in N_Y$. By
             \Cref{lem:chordal_anti_4}, $y$ is not adajcent to $z$. Then, $G$
             contains either an induced copy of $C_5$ or $P_5$ depending on
             whether $x$ is adjacent to $y$ or not, respectively (see
@@ -2222,17 +2265,19 @@ is just one vertex in $N_Z$, namely $z$.
     \end{enumerate}
 \end{proof}
 
+Finally, we present a lemma for relations of completeness.
+
 \begin{lemma}
     \label{lem:neighborhoods_chordal_comp}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ and free of the graphs depicted in
+    $2K_2$ with vertex set $Z$ and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
     subsets of $Z$. Suppose that $N_Z=\l{z}$.
     \begin{lemenum}
-        \item If $N_X$ and $N_Y$ are 2-bags complete to different edges of the
-            $2K_2$, then at least one of $N_X$ and $N_Y$ is complete to $z$.
+        \item If $N_X$ and $N_Y$ are 2-bags complete to different edges of
+            $G[Z]$, then at least one of $N_X$ and $N_Y$ is complete to $z$.
             \label{lem:chordal_comp_1}
-        \item If $N_X$ is a 2-bag complete to an edge of the $2K_2$, then
+        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then
             non-isolated vertices of $G[N_X\setminus N(z)]$ are complete to
             $N_X\cap N(z)$. \label{lem:chordal_comp_2}
     \end{lemenum}
@@ -2271,19 +2316,19 @@ is just one vertex in $N_Z$, namely $z$.
                     \draw (y) to (c);
                     \draw (z) to (c);
                 \end{tikzpicture}
-                \caption{An induced copy of $P_5$ given that both $N_X$ and
-                    $N_Y$ are not complete to $z$.}
+                \caption{An induced copy of $P_5$ given that none of $N_X$ and
+                    $N_Y$ is complete to $z$.}
                 \label{fig:chordal_comp_1}
             \end{figure}
 
         \item Suppose without loss of generality that $X=\l{a,b}$. Let $x$ be a
             non-isolated vertex of $G[N_X\setminus N(z)]$. Then, there exists a
             vertex $x'$ of $G[N_X\setminus N(z)]$ that is adjacent to $x$. If
-            $w\in N_X\cap N(z)$ is not adjacent to both $x$ and $x'$, then $G$
-            contains an induced copy of $P_5$ or $H_1$, depending on whether one
-            or none of $x$ and $x'$ are adjacent to $w$ (see
-            \Cref{fig:chordal_comp_2}). Thus, non-isolated vertices of
-            $G[N_X\setminus N(z)]$ are complete to $N_X\cap N(z)$.
+            $w\in N_X\cap N(z)$ is not complete $\l{x,x'}$, then $G$ contains an
+            induced copy of $P_5$ or $H_1$, depending on whether one or none of
+            $x$ and $x'$ is adjacent to $w$ (see \Cref{fig:chordal_comp_2}).
+            Thus, non-isolated vertices of $G[N_X\setminus N(z)]$ are complete
+            to $N_X\cap N(z)$.
 
             \begin{figure}[htb!]
                 \centering
@@ -2351,15 +2396,17 @@ is just one vertex in $N_Z$, namely $z$.
     \end{enumerate}
 \end{proof}
 
+Now we are ready to prove the main theorem.
+
 \begin{theorem}
     \label{thm:monopolar_chordal}
-    A connected chordal $(P_5,\text{house})$-free graph $G$ with an induced copy
-    of $2K_2$ is monopolar if and only if it does not contain any of the graphs
-    depicted in \Cref{fig:chordal-p5-free-obstructions} as an induced subgraph.
+    A connected chordal $P_5$-free graph $G$ with an induced copy of $2K_2$ with
+    vertex set $Z$ is monopolar if and only if it does not contain any of the
+    graphs depicted in \Cref{fig:chordal-p5-free-obstructions} as an induced
+    subgraph.
 \end{theorem}
 
 \begin{proof}
-    Recall that $Z$ is the vertex set of the initial induced copy of $2K_2$.
     Since monopolarity is hereditary, it follows from
     \Cref{prop:minimal_obs_chordal} that $G$ does not contain any of the
     mentioned graphs as an induced subgraph.
@@ -2370,28 +2417,28 @@ is just one vertex in $N_Z$, namely $z$.
 
     \paragraph{Case 1: $N_Z$ is nonempty.} By \Cref{lem:chordal_types_1}, $N_Z$
     has exactly one vertex, namely $z$. Additionally, \Cref{lem:chordal_types_3}
-    implies that no other bag is adjacent to vertices of both edges of the
-    $2K_2$. Also, by \Cref{lem:chordal_types_5}, suppose without loss of
-    generality that both $N_c$ and $N_d$ are empty.
+    implies that no other bag is complete to vertices in both edges of $G[Z]$.
+    Also, by \Cref{lem:chordal_types_5}, suppose without loss of generality that
+    both $N_c$ and $N_d$ are empty.
 
-    Let $K$ be the set of vertices of $N_{ab}$ that are complete to $N_Z$. By
-    \Cref{lem:chordal_types_K_clique}, $K$ is a clique. Similarly, the set of
-    vertices in $N_{cd}$ that are complete to $N_Z$, $K'$, is a clique.
-    Furthermore, $K$ and $K'$ are anticomplete to each other by
+    Let $K_{ab}$ be the set of vertices of $N_{ab}$ that are complete to $N_Z$.
+    By \Cref{lem:chordal_types_K_clique}, $K_{ab}$ is a clique. Similarly, the
+    set of vertices in $N_{cd}$ that are complete to $N_Z$, $K_{cd}$, is a
+    clique. Furthermore, $K_{ab}$ and $K_{cd}$ are anticomplete to each other by
     \Cref{lem:chordal_anti_3}. Then,
     \[
-        K\cup \l{a,b} \cup K' \cup \l{c,d}
+        K_{ab}\cup K_{cd} \cup Z
     \]
     induces a $2$-cluster. Now let $\mathcal{C}$ be the set of connected
     components in $G[N_\varnothing]$. In particular, let $\mathcal{C}_z$ be the
-    set of connected components in $\mathcal{C}$ that are adjacent to $z$. For
-    each $C\in \mathcal{C}_z$, let $C_z$ be the graph induced by the vertices of
-    $C$ that are adjacent to $z$. Notice \Cref{lem:chordal_types_K_cluster}
-    implies that $C_z$ is a cluster. Also, \Cref{lem:chordal_anti_2_bag} ensures
-    that $C_z$ is anticomplete to $K$ and $K'$, so
+    set of connected components in $\mathcal{C}$ that are not anticomplete to
+    $z$. For each $C\in \mathcal{C}_z$, let $C_z$ be the graph induced by the
+    vertices of $C$ that are adjacent to $z$. Notice
+    \Cref{lem:chordal_types_K_cluster} implies that $C_z$ is a cluster. Also,
+    \Cref{lem:chordal_anti_2_bag} ensures that $C_z$ is anticomplete to $K_{ab}$
+    and $K_{cd}$, so
     \[
-        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K\cup \l{a,b} \cup K' 
-        \cup \l{c,d}
+        K_{ab} \cup K_{cd} \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z
     \]
     induces a cluster.
     
@@ -2407,31 +2454,31 @@ is just one vertex in $N_Z$, namely $z$.
     \Cref{lem:chordal_anti_4} implies that $V_C$ is anticomplete to both $N_a$
     and $N_b$.  Since $G$ is connected, $V_C$ must be adjacent to the set
     $N_{ab} \cup N_{cd}$. Due to \Cref{lem:chordal_anti_5}, $V_C$ can only be
-    adjacent to either $K$ or $K'$. Nonetheless,
+    adjacent to either $K_{ab}$ or $K_{cd}$. Nonetheless,
     \Cref{lem:chordal_types_trivial} implies that $C$ is the trivial graph, so
     \[
-        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup N_a \cup 
-        N_b \cup \l{z}
+        N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C 
+        \cup \l{z}
     \]
     is stable. We still have to decide how to arrange the following sets:
     \begin{itemize}
-        \item $N_{ab}\setminus K$,
-        \item $N_{cd}\setminus K'$, and
+        \item $N_{ab}\setminus K_{ab}$,
+        \item $N_{cd}\setminus K_{cd}$, and
         \item sets $V_{C-C_z}$ for $C \in \mathcal{C}_z$.
     \end{itemize}
     We proceed by taking subcases:
 
     \paragraph{Case 1.1: $N_{ab}$ is not complete to $z$.} By
     \Cref{lem:chordal_comp_1}, $N_{cd}$ is complete to $z$, so in fact, $N_{cd}
-    = K'$. 
+    = K_{cd}$. 
     
     We claim that, for each $C\in \mathcal{C}_z$, $V_{C-C_z}$ is empty. Indeed,
-    since $N_{ab}\setminus K$ is nonempty, let $x\in N_{ab}\setminus K$. If
-    $V_{C - C_z}$ is nonempty, since $C$ is connected, there are adjacent
-    vertices $w\in V_{C - C_z}$ and $w'\in V_{C_z}$. By
+    since $N_{ab}\setminus K_{ab}$ is nonempty, let $x\in N_{ab}\setminus
+    K_{ab}$. If $V_{C - C_z}$ is nonempty, since $C$ is connected, there are
+    adjacent vertices $w\in V_{C - C_z}$ and $w'\in V_{C_z}$. By
     \Cref{lem:chordal_anti_5}, $x$ and $y$ are anticomplete to $w$, so
-    $\p{w,w',z,a,x}$ is a $P_5$ (see \Cref{fig:empty_component}). Thus,
-    $V_{C-C_z}$ is empty.
+    $\p{w,w',z,a,x}$ is an induced copy of $P_5$ (see
+    \Cref{fig:empty_component}). Thus, $V_{C-C_z}$ is empty.
 
     \begin{figure}[htb!]
         \centering
@@ -2461,28 +2508,27 @@ is just one vertex in $N_Z$, namely $z$.
         \label{fig:empty_component}
     \end{figure}
     
-    By \Cref{lem:chordal_anti_5}, $N_{ab}\setminus K$ is anticomplete to $V_C$
-    for $C\in \mathcal{C}$. Furthermore, \Cref{lem:chordal_anti_2_bag_2} implies
-    that $N_{ab}\setminus K$ is anticomplete to both $N_a$ and $N_b$. Once more,
-    we proceed by taking the following subcases:
+    By \Cref{lem:chordal_anti_5}, $N_{ab}\setminus K_{ab}$ is anticomplete to
+    $V_C$ for $C\in \mathcal{C}$. Furthermore, \Cref{lem:chordal_anti_2_bag_2}
+    implies that $N_{ab}\setminus K_{ab}$ is anticomplete to both $N_a$ and
+    $N_b$. Once more, we proceed by taking the following subcases:
     
-    \paragraph{Case 1.1.1: $N_{ab}\setminus K$ is stable.} Aforementioned
+    \paragraph{Case 1.1.1: $N_{ab}\setminus K_{ab}$ is stable.} Aforementioned
     arguments imply that
-    \[
-        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \p{N_{ab}\setminus K} \cup N_a \cup N_b \cup \l{z}
+    \[ 
+        \p{N_{ab}\setminus K_{ab}} \cup N_a \cup N_b \bigcup_{C\in\mathcal{C}
+        \setminus \mathcal{C}_z} V_C \cup \l{z}
     \]
     is stable, so
     \[
-        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \p{N_{ab}\setminus K} \cup N_a \cup N_b \cup \l{z} , 
-        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K\cup \l{a,b} \cup K' 
-        \cup \l{c,d}}
+        \p{\p{N_{ab}\setminus K_{ab}} \cup N_a \cup N_b \bigcup_{C\in\mathcal{C}
+        \setminus \mathcal{C}_z} V_C \cup \l{z} , 
+        K_{ab} \cup K_{cd} \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}
     \]
     is a monopolar partition of $G$  (see
     \Cref{fig:monopolar_partition_chordal_1}).
 
-    \begin{figure}[htb!]    
+    \begin{figure}[htb!]
         \centering
         \begin{tikzpicture}[every node/.style={vertex}, node
             distance=1cm, on grid, edge]
@@ -2546,30 +2592,30 @@ is just one vertex in $N_Z$, namely $z$.
         \label{fig:monopolar_partition_chordal_1}
     \end{figure}
 
-    \paragraph{Case 1.1.2: $N_{ab}\setminus K$ is not stable.} Notice $G[N_{ab}
-    \setminus K]$ is split by \Cref{lem:chordal_types_6}, so let
-    $(S_{ab},K_{ab})$ be a split partition of it, where $K_{ab}$ is a maximal
+    \paragraph{Case 1.1.2: $N_{ab}\setminus K_{ab}$ is not stable.} Observe that
+    $G[N_{ab} \setminus K_{ab}]$ is split by \Cref{lem:chordal_types_6}, so let
+    $(S'_{ab},K'_{ab})$ be a split partition of it, where $K'_{ab}$ is a maximal
     clique. As in the previous subcase, we already have that
     \[
-        \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup S_{ab} \cup
-        N_a \cup N_b \cup \l{z}
+        S'_{ab} \cup N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}\setminus 
+        \mathcal{C}_z} V_C \cup  \l{z}
     \]
-    is stable. Furthermore, since $N_{ab}\setminus K$ is not stable and $K_{ab}$
-    is maximal, it follows that $K_{ab}$ contains at least two vertices.
-    Therefore, by \Cref{lem:chordal_comp_2}, $K_{ab}$ is complete to $K$.
-    Additionally, \Cref{lem:chordal_anti_3} implies that $K_{ab}$ is
-    anticomplete to $K'$. Since we have already stated that $N_{ab}\setminus K$
-    is anticomplete to $V_C$ for $C\in \mathcal{C}$, we have that
+    is stable. Furthermore, since $N_{ab}\setminus K_{ab}$ is not stable and
+    $K'_{ab}$ is maximal, it follows that $K'_{ab}$ contains at least two
+    vertices. Therefore, by \Cref{lem:chordal_comp_2}, $K'_{ab}$ is complete to
+    $K_{ab}$. Additionally, \Cref{lem:chordal_anti_3} implies that $K'_{ab}$ is
+    anticomplete to $K_{cd}$. Since we have already stated that $N_{ab}\setminus
+    K_{ab}$ is anticomplete to $V_C$ for $C\in \mathcal{C}$, we have that
     \[
-        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup K_{ab} \cup 
-        \l{a,b} \cup K' \cup \l{c,d}
+        K_{ab} \cup K'_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} 
+        V_{C_z} \cup Z
     \]
     induces a cluster, so
     \[
-        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        S_{ab} \cup N_a \cup N_b \cup \l{z} , 
-        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup K_{ab}\cup
-        \l{a,b} \cup K' \cup \l{c,d}}
+        \p{S'_{ab} \cup N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}\setminus 
+        \mathcal{C}_z} V_C \cup  \l{z} , 
+        K_{ab} \cup K'_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} 
+        V_{C_z} \cup Z}
     \]
     is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_chordal_2}).
@@ -2655,34 +2701,33 @@ is just one vertex in $N_Z$, namely $z$.
     \end{figure}
 
     \paragraph{Case 1.2: $N_{cd}$ is not complete to $z$.} Once more, due to
-    \Cref{lem:chordal_comp_1}, $N_{ab}=K$. Additionally, $N_{cd}\setminus K'$
-    being nonempty implies, by \Cref{lem:chordal_types_empty}, that both $N_a$
-    and $N_b$ are empty. Furthermore, as in the previous case, we still have
-    that $N_{cd}\setminus K$ being nonempty implies that, for each $C\in
+    \Cref{lem:chordal_comp_1}, $N_{ab}=K_{ab}$. Additionally, $N_{cd}\setminus
+    K_{cd}$ being nonempty implies, by \Cref{lem:chordal_types_empty}, that both
+    $N_a$ and $N_b$ are empty. Furthermore, as in the previous case, we still
+    have that $N_{cd}\setminus K_{cd}$ being nonempty implies that, for each $C\in
     \mathcal{C}_z$, $V_{C-C_z}$ is empty.
     
     Also, every claim from the previous subcase regarding $N_{ab}$ still hold in
     this case for $N_{cd}$, since every lemma used works for any 2-bag complete
-    to an edge of an induced copy of $2K_2$. Hence, if $N_{cd}\setminus K'$ is
-    stable, then
+    to an edge of $G[Z]$. Hence, if $N_{cd}\setminus K_{cd}$ is stable, then
     \[
-        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \p{N_{cd}\setminus K'} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z}
-        V_{C_z} \cup K\cup \l{a,b} \cup K' \cup \l{c,d}}
+        \p{\p{N_{cd}\setminus K_{cd}} \cup \bigcup_{C\in\mathcal{C}\setminus 
+        \mathcal{C}_z} V_C \cup \l{z} , K_{ab} \cup K_{cd} \cup \bigcup_{C\in 
+        \mathcal{C}_z} V_{C_z} \cup Z}
     \]
-    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K'$ is not
-    stable, then we use its split partition $(S_{cd},K_{cd})$ with $K_{cd}$ a
+    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K_{cd}$ is not
+    stable, then we use its split partition $(S'_{cd},K'_{cd})$ with $K'_{cd}$ a
     maximal clique, to obtain that
     \[
-        \p{\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        S_{cd} \cup \l{z} , \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K \cup
-        \l{a,b} \cup K' \cup K_{cd} \cup \l{c,d}}
+        \p{S_{cd} \cup \bigcup_{C\in\mathcal{C}\setminus 
+        \mathcal{C}_z} V_C \cup \l{z} , K_{ab} \cup K_{cd} \cup K'_{cd} \cup 
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}
     \]
     is a monopolar partition of $G$.
 
     \paragraph{Case 1.3: Both $N_{ab}$ and $N_{cd}$ are complete to $z$.} It is
-    immediate that $N_{ab}=K$ and $N_{cd}=K'$, so we only need to check how to
-    partition the sets $V_{C-C_z}$ for each $C\in \mathcal{C}_z$.
+    immediate that $N_{ab}=K_{ab}$ and $N_{cd}=K_{cd}$, so we only need to
+    check how to partition the sets $V_{C-C_z}$ for each $C\in \mathcal{C}_z$.
     
     Let $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_z$ that
     are trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
@@ -2690,15 +2735,16 @@ is just one vertex in $N_Z$, namely $z$.
     \Cref{lem:chordal_anti_4}, $V_C$ is anticomplete to both $N_a$ and $N_b$.
     Thus,
     \[
-        \bigcup_{C\in \mathcal{C} \setminus \mathcal{C}_z} V_C \cup 
-        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D} 
-        \cup N_a \cup N_b \cup \l{z}
+        N_a \cup N_b \cup \bigcup_{C\in \mathcal{C} \setminus \mathcal{C}_z} 
+        V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}}
+        V_D} \cup \l{z}
     \]
     is stable. Let $D\in \mathcal{C}_{C,1}$. Since $C$ is connected, there is a
-    connected component of $C_z$, $D_z$, to which $D$ is adjacent. Let $x\in
-    V_{D}$ and $y\in V_{D_z}$ be adjacent vertices. If there is a vertex $w\in
-    V_{C_z}$ not adjacent to $y$ and adjacent to $x$, then $\p{w,x,y,z,w}$ is a
-    $C_4$ (see \Cref{fig:more_than_one_component}).
+    connected component of $C_z$, $D_z$, to which $D$ is not anticomplete to.
+    Let $x\in V_{D}$ and $y\in V_{D_z}$ be adjacent vertices. If there is a
+    vertex $w\in V_{C_z}$ not adjacent to $y$ and adjacent to $x$, then
+    $\p{w,x,y,z,w}$ is an induced copy of $C_4$ (see
+    \Cref{fig:more_than_one_component}).
 
     \begin{figure}[htb!]
         \centering
@@ -2725,17 +2771,17 @@ is just one vertex in $N_Z$, namely $z$.
             \draw (y) to (x);
             \draw (y) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $C_4$ given that $D$ is adjacent to more
-        than one component of $C_z$.}
+        \caption{An induced copy of $C_4$ given that $D$ is not anticomplete to
+        more than one component of $C_z$.}
         \label{fig:more_than_one_component}
     \end{figure}
     
     It follows that $D_z$ is the unique connected component of $C_z$ to which
-    $D$ is adjacent to. Furthermore, we claim that $D$ is complete to $D_z$.
-    Indeed, let $x$ be a vertex of $D$ adjacent to a vertex $y$ of $D_z$. Since
-    $D$ is nontrivial, there is a vertex $w$ of $D$ adjacent to $x$. Notice that
-    $w$ must be adjacent to $y$, otherwise, $\p{w,x,y,z,a}$ is a $P_5$ (see
-    \Cref{fig:z_nonadjacent_y}).
+    $D$ is not anticomplete to. Furthermore, we claim that $D$ is complete to
+    $D_z$. Indeed, let $x$ be a vertex of $D$ adjacent to a vertex $y$ of $D_z$.
+    Since $D$ is nontrivial, there is a vertex $w$ of $D$ adjacent to $x$.
+    Notice that $w$ must be adjacent to $y$, otherwise, $\p{w,x,y,z,a}$ is an
+    induced copy of $P_5$ (see \Cref{fig:z_nonadjacent_y}).
     \begin{figure}[htb!]
         \centering
         \begin{tikzpicture}[every node/.style={vertex}, node
@@ -2894,10 +2940,10 @@ is just one vertex in $N_Z$, namely $z$.
     \end{figure}
 
     Furthermore, we claim that $G[D]$ is split. If that was not the case, there
-    is a $2K_2$ in $D$. Let $w$ and $x$ be adjacent vertices of $D$ and
-    anticomplete to adjacent vertices $w'$ and $x'$ of $D$. If $y$ is a vertex
-    of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$ induces a copy of
-    $H_5$ (see \Cref{fig:C-C_v_split}).
+    is an induced copy of $2K_2$ in $D$. Let $w$ and $x$ be adjacent vertices of
+    $D$ and anticomplete to adjacent vertices $w'$ and $x'$ of $D$. If $y$ is a
+    vertex of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$ induces a
+    copy of $H_5$ (see \Cref{fig:C-C_v_split}).
     
     \begin{figure}[htb!]
         \centering
@@ -2939,13 +2985,12 @@ is just one vertex in $N_Z$, namely $z$.
     $K_D \cup V_{D_z}$ is a clique. Moreover, since $D$ is anticomplete to all
     other connected components of $C_z$, it follows that
     \begin{align*}
-        \Bigg(& \bigcup_{C\in \mathcal{C}\setminus \mathcal{C}_z} V_C \cup 
-        \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}} V_D
-        \cup \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup N_a \cup  N_b \cup
+        \Bigg(& N_a \cup  N_b \cup \bigcup_{C\in \mathcal{C}\setminus 
+        \mathcal{C}_z} V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in 
+        \mathcal{C}_{C,0}} V_D \cup \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup 
         \l{z}, \\ 
-        & \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup 
-        K \cup \l{a,b} \cup K' \cup \l{c,d} \Bigg)
+        K_{ab} \cup K_{cd} \cup & \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup 
+        \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup Z \Bigg)
     \end{align*}
     is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_chordal_3})
@@ -3036,7 +3081,7 @@ is just one vertex in $N_Z$, namely $z$.
     of generality that $N_{abc}$ is nonempty and let $x$ be a vertex in
     $N_{abc}$. By \Cref{lem:chordal_types_pending}, we have that $N_d$ is empty.
     Moreover, by \Cref{lem:chordal_types_3}, all other bags adjacent to both
-    edges of the $2K_2$ are empty. Therefore, the only other bags that can be
+    edges of $G[Z]$ are empty. Therefore, the only other bags that can be
     nonempty are:
     \[
         N_a, N_b, N_c, N_{ab}, N_{cd} \text{ and } N_{\varnothing}.
@@ -3072,7 +3117,7 @@ is just one vertex in $N_Z$, namely $z$.
     Therefore, consider $N_c$ anticomplete to $N_{abc}$. Similarly, $N_{cd}$ is
     anticomplete to $N_{abc}$. Meanwhile, we claim that $N_{a}$ is complete to
     $N_{abc}$. Indeed, if $y\in N_a$ is not adjacent to $x$, then
-    $\p{y,a,x,c,d}$ is a $P_5$ (see \Cref{fig:3_bag_2}).
+    $\p{y,a,x,c,d}$ is an induced copy of $P_5$ (see \Cref{fig:3_bag_2}).
 
     \begin{figure}[htb!]
         \centering
@@ -3099,10 +3144,10 @@ is just one vertex in $N_Z$, namely $z$.
     
     \noindent
     It follows that $N_a$ is complete to $N_{abc}$. Similarly, we get that
-    $N_{ab}$ and $N_b$ is complete to $N_{abc}$. This in turn implies that any
-    bag (different from $N_{abc}$) adjacent to the edge $ab$ is anticomplete to
-    any bag adjacent to the edge $cd$ (also different from $N_{abc}$),
-    otherwise, there would be a $C_4$ (see \Cref{fig:3_bag_3}).
+    $N_{ab}$ and $N_b$ are complete to $N_{abc}$. This in turn implies that any
+    bag (different from $N_{abc}$) not anticomplete to the edge $ab$ is
+    anticomplete to any bag not anticomplete to the edge $cd$ (also different
+    from $N_{abc}$), otherwise, there would be a $C_4$ (see \Cref{fig:3_bag_3}).
 
     \begin{figure}[htb!]
         \centering
@@ -3135,7 +3180,9 @@ is just one vertex in $N_Z$, namely $z$.
     Furthermore, for a vertex $y\in N_\varnothing$, if $y$ is adjacent to $w$ in
     $N_{cd}$, either $\p{y,w,c,x,y}$ is a $C_4$, or $\p{y,w,c,x,a}$ is a $P_5$,
     depending on whether $x$ is adjacent to $w$ or not, respectively (see
-    \Cref{fig:3_bag_4}).
+    \Cref{fig:3_bag_4}). It follows that $N_\varnothing$ is anticomplete to
+    $N_{cd}$, and similarly follows that $N_\varnothing$ is anticomplete to
+    $N_{c}$.
 
     \begin{figure}[htb!]
         \centering
@@ -3185,16 +3232,14 @@ is just one vertex in $N_Z$, namely $z$.
         \label{fig:3_bag_4}
     \end{figure}
 
-    It follows that $N_\varnothing$ is anticomplete to $N_{cd}$, and similarly
-    follows that $N_\varnothing$ is anticomplete to $N_{c}$.
-
     We claim that $N_\varnothing$ is complete to $N_{abc}$. Indeed, since $G$ is
-    connected, each connected component of $N_\varnothing$ is adjacent to
-    another bag. By the last argument, each connected component of
-    $N_\varnothing$ can only be adjacent to $N_{a}$, $N_{b}$, $N_{ab}$ or
-    $N_{abc}$. If $y$ in $N_\varnothing$ is adjacent to a vertex $w$ in $N_{ab}$
-    and $y$ is not adjacent to $x$, then, since $w$ is adjacent to $x$, we have
-    that $\p{y,w,x,c,d}$ is an induced copy of $P_5$ (see \Cref{fig:3_bag_5}).
+    connected, each connected component of $N_\varnothing$ is not anticomplete
+    to another bag. By the last argument, each connected component of
+    $N_\varnothing$ can only be not anticomplete to $N_{a}$, $N_{b}$, $N_{ab}$
+    or $N_{abc}$. If $y$ in $N_\varnothing$ is adjacent to a vertex $w$ in
+    $N_{ab}$ and $y$ is not adjacent to $x$, then, since $w$ is adjacent to $x$,
+    we have that $\p{y,w,x,c,d}$ is an induced copy of $P_5$ (see
+    \Cref{fig:3_bag_5}).
 
     \begin{figure}[htb!]
         \centering
@@ -3257,7 +3302,7 @@ is just one vertex in $N_Z$, namely $z$.
     \noindent
     Therefore, the connected component of $y$ in $G[N_\varnothing]$ is complete
     to $N_{abc}$. The same argument works for connected components of
-    $N_\varnothing$ that are adjacent to either $N_a$ or $N_b$. Thus,
+    $N_\varnothing$ that are not anticomplete to either $N_a$ or $N_b$. Thus,
     $N_\varnothing$ is complete to $N_{abc}$.
 
     By \Cref{lem:chordal_types_clique_bag}, $N_{abc}$ is a clique. Thus, we have
@@ -3300,7 +3345,7 @@ is just one vertex in $N_Z$, namely $z$.
 
     Also notice that we can consider both $G[N(x)\setminus\l{c}]$ and
     $G[N(c)\setminus\l{x}]$ to be split, otherwise, one of them contains an
-    induced copy of $2K_2$ and, such a copy of $2K_2$ along with $x$ or $c$
+    induced copy of $2K_2$, and such a copy of $2K_2$ along with $x$ or $c$
     would reduce this case to Case 1. We take the following subcases:
 
     \paragraph{Case 2.1.1: $G[N(c)\setminus \l{x}]$ is a cluster.} Since
