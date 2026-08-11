@@ -1,24 +1,24 @@
 \chapter{Chordal \texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs}
 \label{cap:chordal}
 
-Hoping to ease the introduction of the techniques we will use throughout the
+In the hope to ease the introduction of the techniques we use throughout the
 chapters, we start our study by looking at chordal graphs, which tend to be
-well-behaved when one is working with partitions. Since we consider those
-chordal graphs which are $(P_5,\text{house})$-free, notice that asking the graph
-to be $\text{house}$-free is redundant once we know it is chordal. Thus, we will
-not mention the abscense of the house in any of the results for the present
-chapter.
+well-behaved when one is working with partitions. Since we consider the chordal
+graphs which are $(P_5,\text{house})$-free, asking the graph to be
+$\text{house}$-free is redundant once we know it is chordal. Thus, we will not
+mention the abscense of the house in any of the results for the present chapter.
 
 Before we get into the problem, we should note that the case about to be
-analyzed has already been solved in \cite{chordal}. In there, authors present a
-polynomial-time algorithm that decides if a chordal graph (not necessarily
-$P_5$-free) is polar. Such an algorithm depends on a linear-time subroutine that
-decides monopolarity, and finds a monopolar partition if one exists.
-Nonetheless, while authors mention that the subroutine could be modified so that
-it outputs a no-certificate as a proof of non-membership if the graph is not
-monopolar, they do not specify if this additional procedure can be done in
-linear time. Thereby, we commit to develop a full linear-time certyfing
-algorithm for chordal $P_5$-free graphs.
+analyzed has already been solved in \cite{chordal}. In there, the authors
+present a polynomial-time algorithm that decides if a chordal graph (not
+necessarily $P_5$-free) is polar. Such an algorithm depends on a linear-time
+subroutine that decides monopolarity, and finds a monopolar partition if one
+exists. Nonetheless, while authors mention that the subroutine could be modified
+so that it outputs a no-certificate as a proof of non-membership if the graph is
+not monopolar, they do not specify if this additional procedure can be done in
+linear time nor whether additional data structures are needed. Thereby, we
+commit to develop a full linear-time certyfing algorithm for chordal $P_5$-free
+graphs.
 
 \section{Characterization of monopolarity}
 \label{sec:chordal_characterization}
@@ -28,9 +28,9 @@ graphs are indeed monopolar obstructions.
 
 \begin{lemma}
     \label{lem:monopolar_diamond}
-    Let $G$ be a graph with an induced copy of the diamond. Then,
-    any monopolar partition of $G$ must be such that the chord of the diamond is
-    in $B$.
+    Let $G$ be a graph with an induced copy of the diamond. Then, any monopolar
+    partition $(A,B)$ of $G$ must be such that the chord of the diamond is in
+    $B$.
 \end{lemma}
 
 \begin{proof}
@@ -1089,9 +1089,9 @@ chordal graphs, it suffices to solve it for those graphs that contain an induced
 copy of $2K_2$. 
 
 Throughout the rest of this section, we assume that the graphs have an induced
-copy of $2K_2$, whose vertex set is denoted by $Z=\l{a,b,c,d}$ and it is such
-that $ab$ and $cd$ are the disjoint edges of the $2K_2$. The following lemma
-asserts there are two types of $P_5$-free graphs with an induced copy of $2K_2$.
+copy of $2K_2$, whose vertex set is $Z=\l{a,b,c,d}$ and it is such that $ab$ and
+$cd$ are the disjoint edges of the $2K_2$. The following lemma asserts there are
+two types of $P_5$-free graphs with an induced copy of $2K_2$.
 
 \begin{lemma}
     \label{lem:chordal_connectedness}
@@ -1569,8 +1569,8 @@ The upcoming lemma deals with the structure within exact neighborhoods.
     \end{enumerate}
 \end{proof}
 
-As we will see, the proof of the main theorem will require us to check the case
-when $N_Z$ is nonempty. In order to facilitate its proof, the next three lemmas
+As we will see, the proof of the main theorem requires to check the case when
+$N_Z$ is nonempty. In order to facilitate its proof, the next three lemmas
 provide additional relations between the exact neighborhoods given that $N_Z$ is
 nonempty. If that is the case, notice that, by \Cref{lem:chordal_types_1}, there
 is just one vertex in $N_Z$, namely $z$. This first result state relations of
@@ -3752,11 +3752,11 @@ for $P_5$ in the algorithm. In particular, the induced copy of $P_5$ in
 Notice that this relies heavily on the copy of $2K_2$ that the algorithm decides
 to work on, since another choice for it could make the procedure detect a $P_5$.
 
-In order to avoid the ``nondeterministic'' aspect of our algorithm, we would
+In order to avoid this ``nondeterministic'' aspect of our algorithm, we would
 like to recognize, even after finding a monopolar partition, if the graph is
-$P_5$-free. Therefore, this section will be devoted to provide additional checks
-for the algorithm so that it can always return an induced copy of $P_5$ in case
-$G$ has one (when $G$ is chordal).
+$P_5$-free. Therefore, this section is devoted to provide additional checks for
+the algorithm so that it can always return an induced copy of $P_5$ in case $G$
+has one (when $G$ is chordal).
 
 Observe that there could be a similar problem if, instead of $P_5$, $G$ had an
 induced copy of the house, which in turn would imply that the original graph was
@@ -3767,8 +3767,8 @@ we can extract an induced copy of $P_5$ from it. Otherwise, if the cycle has
 length 4 or 5, then the algorithm starts to calculate the exact neighborhoods of
 such a cycle, as we will see in the next chapters. Although the algorithm can
 skip it, the additional properties we are about to present do requiere to
-account for the presence of cycles, since without it, the the complete structure
-of chordal monopolar $P_5$-free graphs would not be complete.
+account for the presence of cycles, since without it, the complete structure of
+chordal monopolar $P_5$-free graphs would not be complete.
 
 Before any results, recall that finding a monopolar partition of a graph is, in
 general, a hard problem. For that reason, if the algorithm has already found a
@@ -4027,7 +4027,7 @@ the graph $G$ is monopolar, we can use the fact that we have already provided
 monopolar partitions, of which at least one is admisible for $G$. Hence, we will
 follow the construction of the monopolar partitions given in the proof of
 \Cref{thm:monopolar_chordal}, proceeding by cases to determine how sets interact
-with each other and sorting out the cases that would arise an induced copy of
+with each other and sorting out the cases that would yield an induced copy of
 either $P_5$, $C_4$ or $C_5$. We refer to the proof of that theorem for the
 names given to the sets.
 

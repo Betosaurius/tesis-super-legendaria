@@ -1,18 +1,21 @@
 \chapter{\texorpdfstring{$(P_5,\text{house})$}{(P5,house)}-free graphs with \texorpdfstring{$C_5$}{C5}}
 \label{cap:c5}
 
-\section{Characterization of monopolarity}
-\label{sec:c5_characterization}
-
 Having solved the case for chordal graphs, now we turn our attention to
 non-chordal graphs --- such graphs contain an induced copy of a cycle of length
 at least 4. Since we only consider $P_5$-free graphs, we know that each induced
 cycle has length at most 5. We devote this chapter to the family of graphs with
-an induced copy of $C_5$. Note that, for all graphs in the present chapter with
-an induced copy of $C_5$, the labelling of the vertices of the 5-cycle is
-determined by the drawings shown. Thus, vertices of a 5-cycle are labeled from
-$a$ to $e$, starting with the rightmost vertex and following a counter-clockwise
-order (see \Cref{fig:labels_c5}).
+an induced copy of $C_5$.
+
+
+\section{Characterization of monopolarity}
+\label{sec:c5_characterization}
+
+Note that, for all graphs in the present chapter with an induced copy of $C_5$,
+the labelling of the vertices of the 5-cycle is determined by the drawing shown
+below. Thus, vertices of a 5-cycle are labeled from $a$ to $e$, starting with
+the rightmost vertex and following a counter-clockwise order (see
+\Cref{fig:labels_c5}).
 
 \begin{figure}[htb!]
         \centering
@@ -36,7 +39,7 @@ it finds an induced copy of $C_5$, then it executes the processes described in
 the following section. Otherwise, if it detects an induced copy of $C_4$, then
 it proceeds to execute the instructions that will be described in the next
 chapter. If at any point of such instructions the algorithm finds an induced
-copy of $C_5$ (that, by chance, did not detect the algorithm that verifies
+copy of $C_5$ (that, by chance, was not detected by the algorithm that verifies
 chordality), then it switches to do the procedures of the present chapter.
 
 We start our analysis with a useful observation.
@@ -898,12 +901,12 @@ new minimal monopolar obstructions.
     \end{figure}
 \end{proof}
 
-We will prove that graphs $H_1$ all the way to $H_{13}$ characterize
-monopolarity for the family of $(P_5,\text{house})$-free graphs with an induced
-copy of $C_5$. To do so, we prove a series of lemmas describing the exact
-neighborhoods of a 5-cycle. Throughout the following proofs we will always
-denote an induced copy of $C_5$ in a graph $G$ by $C = \p{a,b,c,d,e,a}$ and the
-set $\l{a,b,c,d,e}$ will be denoted by $Z$.
+We now prove that graphs $H_1$ all the way to $H_{13}$ characterize monopolarity
+for the family of $(P_5,\text{house})$-free graphs with an induced copy of
+$C_5$. To do so, we prove a series of lemmas describing the exact neighborhoods
+of a 5-cycle. Throughout the following proofs we always denote an induced copy
+of $C_5$ in a graph $G$ by $C = \p{a,b,c,d,e,a}$ and the set $\l{a,b,c,d,e}$ is
+denoted by $Z$.
 
 \begin{lemma}
     \label{lem:pre_neighborhoods_c5}
@@ -1028,7 +1031,7 @@ given $X\subseteq Z$, the exact neighborhoods $N_X$ when $X$ is of size 1 will
 be called 1-bags. Similarly, $N_X$ is a 2-bag or 3-bag when $X$ is of size 2 or
 3, respectively. Moreover, \Cref{lem:pre_neighborhoods_c5} implies that,
 essentially, there is only one type of bag for any of the sizes, for example,
-the only type of 2-bag that can be nonempty are those that are adjacent to two
+the only type of 2-bag that can be nonempty is that consisting of two
 nonadjacent vertices of $C$. By that reason, in the following lemmas we only
 take into account the bags that can be nonempty, since all others will satisfy
 the conclusion of each item vacuously. In particular, notice that any nonempty
@@ -1371,7 +1374,7 @@ The following result states relations of anticompleteness.
     \end{enumerate}
 \end{proof}
 
-The final lemma addresses the structure of these exact neighborhoods, already
+The final lemma addresses the structure of exact neighborhoods, already
 considering that $G$ does not contain the aforementioned minimal obstructions.
 
 \begin{lemma}
