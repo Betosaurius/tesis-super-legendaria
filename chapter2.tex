@@ -1238,8 +1238,8 @@ The upcoming lemma deals with the structure within exact neighborhoods.
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different
     subsets of $Z$.
     \begin{lemenum}
-        \item If $N_X$ is a 2-bag complete to vertices in both edges of $G[Z]$,
-            then $N_X$ is empty. \label{lem:chordal_types_2}
+        \item If $N_X$ is a 2-bag anticomplete to no edge of $G[Z]$, then $N_X$
+            is empty. \label{lem:chordal_types_2}
         \item If $N_X$ is a bag complete to vertices in both edges of $G[Z]$,
             then $N_X$ is a clique. \label{lem:chordal_types_clique_bag}
         \item The exact neighborhood $N_Z$ has cardinality at most one.
@@ -1578,36 +1578,37 @@ anticompleteness.
 
 \begin{lemma}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ with vertex set $Z$ and free of the graphs depicted in
-    \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
-    subsets of $Z$. Suppose that $N_Z=\l{z}$.
+    $2K_2$ having $Z$ as vertex set and free of the graphs depicted in
+    \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different
+    nonempty proper subsets of $Z$. Suppose that $N_Z=\l{z}$.
     \begin{lemenum}
-        \item If both $N_X$ and $N_Y$ are 2-bags complete to different edges of
-            $G[Z]$, then $N_X$ is anticomplete to $N_Y$.
+        \item If $N_X$ and $N_Y$ are bags anticomplete to different edges
+            of $G[Z]$, then $N_X$ is anticomplete to $N_Y$.
             \label{lem:chordal_anti_3}
+        \item If $N_X$ is a bag anticomplete to an edge of $G[Z]$, then
+            $N_\varnothing$ is anticomplete to $N_X \setminus N(z)$. In
+            particular, 1-bags are anticomplete to $N_\varnothing$.
+            \label{lem:chordal_anti_5}
         \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $N_X$ is
             anticomplete to $N_\varnothing \cap N(z)$.
             \label{lem:chordal_anti_2_bag}
-        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then
-            $N_\varnothing$ is anticomplete to $N_X \setminus N(z)$.
-            \label{lem:chordal_anti_5}
         \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, and $N_Y$ is a
             1-bag, then $N_Y$ is anticomplete to $N_X \setminus N(z)$.
             \label{lem:chordal_anti_2_bag_2}
-        \item If $N_X$ is a 1-bag, then $N_X$ is anticomplete to
-            $N_\varnothing$. \label{lem:chordal_anti_4}
     \end{lemenum}
 \end{lemma}
 
 \begin{proof}
     \leavevmode \par
     \begin{enumerate}[label= (\roman*)]
-        \item Suppose without loss of generality that $X=\l{a,b}$, so
-            $Y=\l{c,d}$. If $x\in N_X$ is adjacent to $y\in N_Y$, then $G$
-            contains an induced copy of $C_5$, $C_4$ or $H_2$, depending on
-            whether $x$ and $y$ are adjacent to $z$ or not (see
-            \Cref{fig:chordal_anti_3}). We conclude that $N_X$ is anticomplete
-            to $N_Y$.
+        \item Suppose without loss of generality that $a\in X$ and $N_X$ is
+            anticomplete to $cd$. Then, $N_Y$ is anticomplete to $ab$, and
+            suppose without loss of generality that $c\in N_Y$. If $x\in N_X$ is
+            adjacent to $y\in N_Y$, then $G$ contains an induced copy of $C_5$,
+            $C_4$ or $H_2$, depending on whether $x$ and $y$ are adjacent to $z$
+            or not (see \Cref{fig:chordal_anti_3}). Notice this argument also
+            applies if $N_X$ and/or $N_Y$ are 1-bags. We conclude that $N_X$ is
+            anticomplete to $N_Y$. 
 
             \begin{figure}[htb!]
                 \centering
@@ -1688,74 +1689,16 @@ anticompleteness.
                 \label{fig:chordal_anti_3}
             \end{figure}
 
-        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in N_X$
-            is adjacent to a vertex $w\in N_\varnothing \cap N(z)$, then $G$
-            contains either an induced copy of $H_4$ or $C_4$, depending on
-            whether $x$ is adjacent to $z$ or not, respectively (see
-            \Cref{fig:chordal_anti_2_bag}). Hence, $N_X$ is anticomplete to
-            $N_\varnothing \cap N(z)$.
-
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \begin{scope}[xshift=-2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v] (c) {};
-                        \node[below right=1cm and 0.75cm of v] (d) {};
-                        \node (w) at (0,1.5) {};
-                        \node (x) [right=0.75 of b] {};
-                        \node[Label] at ($(0,0) - (x)$) {};
-                
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw[lightgray] (w) to (b);
-                        \draw (v) to (d);
-                        \draw (v) to (c);
-                        \draw (v) to (a);
-                        \draw (c) to (d);
-                        \draw (v) to (x);
-                        \draw (w) to (x);
-                        \draw (w) to (a);
-                        \draw (w) to (v);
-                    \end{scope}
-
-                    \begin{scope}[xshift=2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                        \node (w) at (0,1.5) {};
-                        \node (x) [right=0.75 of b] {};
-                        \node[Label] at ($(0,0) - (x)$) {};
-    
-                        \draw[lightgray] (v) to (c);
-                        \draw[lightgray] (v) to (d);
-                        \draw[lightgray] (c) to (d);
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw[lightgray] (w) to (b);
-                        \draw (v) to (a);
-                        \draw (v) to (x);
-                        \draw (w) to (x);
-                        \draw (w) to (a);
-                    \end{scope}
-                \end{tikzpicture}
-                \caption{An induced copy of $H_4$ (induced by $\l{a,c,d,w,x,z}$)
-                    or $C_4$ ($\p{w,x,a,z,w}$) given that $N_X$ is not
-                    anticomplete to $N_\varnothing \cap N(z)$.}
-                \label{fig:chordal_anti_2_bag}
-            \end{figure}
-
-        \item Suppose without loss of generality that $X=\l{a,b}$. Let $x\in N_X
-            \setminus N(z)$. If $x$ is adjacent to $w\in N_\varnothing$, then
-            $G$ contains an induced copy of $C_4$ or $P_5$, depending on whether
-            $w$ is adjacent to $z$ or not, respectively (see
-            \Cref{fig:chordal_anti_5}). Therefore, $N_\varnothing$ is
-            anticomplete to $N_X \setminus N(z)$.
+        \item Suppose without loss of generality that $N_X$ is anticomplete to
+            $cd$ and $a\in X$. Let $x\in N_X \setminus N(z)$. If $x$ is adjacent
+            to $w\in N_\varnothing$, then $G$ contains an induced copy of $C_4$
+            or $P_5$, depending on whether $w$ is adjacent to $z$ or not,
+            respectively (see \Cref{fig:chordal_anti_5}). Therefore,
+            $N_\varnothing$ is anticomplete to $N_X \setminus N(z)$. Notices
+            this happens even if $b\notin X$. Furthermore,
+            \Cref{lem:chordal_anti_1} implies that, if $N_X$ is a 1-bag, then
+            $N_X = N_X \setminus N(z)$, so these are anticomplete to
+            $N_\varnothing$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1809,15 +1752,54 @@ anticompleteness.
                     anticomplete to $N_X \setminus N(z)$.}
                 \label{fig:chordal_anti_5}
             \end{figure}
+
         
-        \item Suppose without loss of generality that $X=\l{a,b}$. Suppose $y\in
-            N_Y$ is adjacent to $x\in N_X \setminus N(z)$. By
-            \Cref{lem:chordal_anti_1}, $y$ is not adjacent to $z$.
+        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in N_X$
+            is adjacent to a vertex $w\in N_\varnothing \cap N(z)$, then $x$ is
+            adjacent to $z$ by \Cref{lem:chordal_anti_5}. Hence,
+            $\l{a,c,d,w,x,z}$ induces a copy of $H_4$ (see
+            \Cref{fig:chordal_anti_2_bag}). It follows that $N_X$ is
+            anticomplete to $N_\varnothing \cap N(z)$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v] (c) {};
+                    \node[below right=1cm and 0.75cm of v] (d) {};
+                    \node (w) at (0,1.5) {};
+                    \node (x) [right=0.75 of b] {};
+                    \node[Label] at ($(0,0) - (x)$) {};
+            
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (w) to (b);
+                    \draw (v) to (d);
+                    \draw (v) to (c);
+                    \draw (v) to (a);
+                    \draw (c) to (d);
+                    \draw (v) to (x);
+                    \draw (w) to (x);
+                    \draw (w) to (a);
+                    \draw (w) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $H_4$ given that $N_X$ is not
+                    anticomplete to $N_\varnothing \cap N(z)$.}
+                \label{fig:chordal_anti_2_bag}
+            \end{figure}
         
-            On the one hand, if $N_Y$ is complete to a vertex in edge $ab$,
-            suppose without loss of generality that $Y=\l{b}$, then
-            $\p{y,x,a,z,c}$ is an induced copy of $P_5$ (see
-            \Cref{fig:chordal_anti_2_bag_2_1}).
+        \item Suppose without loss of generality that $X=\l{a,b}$. If $N_Y$ is
+            anticomplete to edge $ab$, then from \Cref{lem:chordal_anti_3} we
+            have that $N_X$ is anticomplete to $N_Y$, in particular, $N_X
+            \setminus N(z)$ is anticomplete to $N_Y$. Therefore, suppose without
+            loss of generality that $Y=\l{b}$. Suppose $y\in N_Y$ is adjacent to
+            $x\in N_X \setminus N(z)$. By \Cref{lem:chordal_anti_1}, $y$ is not
+            adjacent to $z$. Then $\p{y,x,a,z,c}$ is an induced copy of $P_5$
+            (see \Cref{fig:chordal_anti_2_bag_2_1}). It follows that $N_Y$ is
+            anticomplete to $N_X \setminus N(z)$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1845,98 +1827,6 @@ anticompleteness.
                 \caption{An induced copy of $P_5$ given that $N_Y$ is not
                     anticomplete to $N_X\setminus N(z)$.}
                 \label{fig:chordal_anti_2_bag_2_1}
-            \end{figure}
-
-            On the other hand, if $N_Y$ is complete to a vertex in edge $cd$,
-            suppose without loss of generality that $Y=\l{d}$, then
-            $\p{x,a,z,d,y,x}$ is an induced copy of $C_5$ (see
-            \Cref{fig:chordal_anti_2_bag_2_2}). Thus, $N_Y$ is anticomplete to
-            $N_X \setminus N(z)$.
-
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \node (v) {};
-                    \node[above left=1cm and 0.75cm of v] (a) {};
-                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-                    \node[below right=1cm and 0.75cm of v] (d) {};
-                    \node (w) at (0,1.5) {};
-                    \node (x) [right=0.75 of v] {};
-            
-                    \draw[lightgray] (a) to (b);
-                    \draw[lightgray] (v) to (b);
-                    \draw[lightgray] (w) to (b);
-                    \draw[lightgray] (v) to (c);
-                    \draw[lightgray] (c) to (d);
-                    \draw (d) to (x);
-                    \draw (v) to (d);
-                    \draw (v) to (a);
-                    \draw (w) to (x);
-                    \draw (w) to (a);
-                \end{tikzpicture}
-                \caption{An induced copy of $C_5$ given that $N_Y$ is not
-                    anticomplete to $N_X\setminus N(z)$.}
-                \label{fig:chordal_anti_2_bag_2_2}
-            \end{figure}
-        
-        \item Suppose without loss of generality that $X=\l{a}$. By
-            \Cref{lem:chordal_anti_1}, $x\in N_X$ is not adjacent to $z$. If
-            $w\in N_\varnothing$ is adjacent to $x$, then $G$ contains either an
-            induced copy of $C_4$ or $P_5$, depending on whether $w$ is adjacent
-            to $z$ or not, respectively (see \Cref{fig:chordal_anti_4}). Hence,
-            $N_X$ is anticomplete to $N_\varnothing$.
-
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \begin{scope}[xshift=-2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
-                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                        \node (w) at (0,1.5) {};
-                        \node (x) [right=0.75 of b] {};
-                        \node[Label] at ($(0,0) - (x)$) {};
-    
-                        \draw[lightgray] (v) to (c);
-                        \draw[lightgray] (v) to (d);
-                        \draw[lightgray] (c) to (d);
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw (v) to (a);
-                        \draw (v) to (x);
-                        \draw (w) to (x);
-                        \draw (w) to (a);
-                    \end{scope}
-
-                    \begin{scope}[xshift=2cm]
-                        \node (v) {};
-                        \node[above left=1cm and 0.75cm of v] (a) {};
-                        \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                        \node[below left=1cm and 0.75cm of v] (c) {};
-                        \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                        \node (w) at (0,1.5) {};
-                        \node (x) [right=0.75 of b] {};
-                        \node[Label] at ($(0,0) - (x)$) {};
-    
-                        \draw[lightgray] (v) to (d);
-                        \draw[lightgray] (c) to (d);
-                        \draw[lightgray] (a) to (b);
-                        \draw[lightgray] (v) to (b);
-                        \draw (v) to (c);
-                        \draw (v) to (a);
-                        \draw (w) to (x);
-                        \draw (w) to (a);
-                    \end{scope}
-                \end{tikzpicture}
-                \caption{An induced copy of $C_4$ ($\p{w,x,a,z,w}$) or $P_5$
-                    ($\p{w,x,a,z,c}$) given that $N_X$ is not anticomplete to
-                    $N_\varnothing$.}
-                \label{fig:chordal_anti_4}
             \end{figure}
     \end{enumerate}
 \end{proof}
@@ -2205,7 +2095,7 @@ Now we give a lemma for structure within bags.
 
         \item Suppose without loss of generality that $X=\l{a,b}$ and $Y=\l{c}$.
             Let $x\in N_X\setminus N(z)$ and $y\in N_Y$. By
-            \Cref{lem:chordal_anti_4}, $y$ is not adajcent to $z$. Then, $G$
+            \Cref{lem:chordal_anti_1}, $y$ is not adajcent to $z$. Then, $G$
             contains either an induced copy of $C_5$ or $P_5$ depending on
             whether $x$ is adjacent to $y$ or not, respectively (see
             \Cref{fig:chordal_types_empty}). Therefore, one between
@@ -2451,7 +2341,7 @@ Now we are ready to prove the main theorem.
     \]
     is stable. Observe that each component $C\in \mathcal{C}\setminus
     \mathcal{C}_z$ is anticomplete to $z$. Additionally,
-    \Cref{lem:chordal_anti_4} implies that $V_C$ is anticomplete to both $N_a$
+    \Cref{lem:chordal_anti_5} implies that $V_C$ is anticomplete to both $N_a$
     and $N_b$.  Since $G$ is connected, $V_C$ must be not anticomplete to
     $N_{ab} \cup N_{cd}$. Due to \Cref{lem:chordal_anti_5}, $V_C$ can only be
     not anticomplete to either $K_{ab}$ or $K_{cd}$. Nonetheless,
@@ -2732,7 +2622,7 @@ Now we are ready to prove the main theorem.
     Let $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_z$ that
     are trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
     components of $C-C_z$ that are not trivial. Recall that, by
-    \Cref{lem:chordal_anti_4}, $V_C$ is anticomplete to both $N_a$ and $N_b$.
+    \Cref{lem:chordal_anti_5}, $V_C$ is anticomplete to both $N_a$ and $N_b$.
     Thus,
     \[
         N_a \cup N_b \cup \bigcup_{C\in \mathcal{C} \setminus \mathcal{C}_z} 
@@ -3791,37 +3681,36 @@ The next lemmas give us the properties we are looking for.
     vertex set $Z=\l{a,b,c,d}$ and edge set $\l{ab,cd}$. Suppose $N_Z$ is
     nonempty and let $z\in N_Z$. Suppose without loss of generality that $N_{c}$
     and $N_{d}$ are empty. The following holds:
-    \begin{enumerate}[label=(\roman*)]
+    \begin{lemenum}
+        \item The set $N_\varnothing$ is anticomplete to at least one of
+            $N_{ab}$ and $N_{cd}$. \label{lem:additional_2}
+        \item At least one of $E_{ab}\cup E_{cd}$ and
+            $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ is empty.
+            \label{lem:additional_3}
         \item Let $N_X$ be a bag anticomplete to edge $e$ of $G[Z]$ and let
             $N_Y$ be the bag complete to edge $e$. If $N_X\setminus N(z)$ is
-            nonempty then, for any $C\in \mathcal{C}\setminus \mathcal{C}_z$,
-            $V_C$ is anticomplete $N_Y$.
-        \item The set $N_\varnothing\setminus N(z)$ is anticomplete to at least
-            one of $N_{ab}$ and $N_{cd}$.
-        \item At most one $C\in\mathcal{C}_z$ is such that $V_{C-C_z}$ is
-            nonempty.
+            nonempty, then $N_\varnothing$ is anticomplete to $N_Y$. In
+            particular, at least one of $N_a\cup N_b$ and $E_{cd}$ is empty.
+            \label{lem:additional_4}
         \item At least one of $N_a\cup N_b$ and $\bigcup_{C\in\mathcal{C}_z}
-            V_{C-C_z}$ is empty.
-        \item If $N_a\cup N_b$ is not anticomplete to $N_{ab}$, then $N_{cd}$ is
-            complete to $z$.
+            V_{C-C_z}$ is empty. \label{lem:additional_1}
+        \item At most one $C\in\mathcal{C}_z$ is such that $V_{C-C_z}$ is
+            nonempty. \label{lem:additional_5}
         \item For $C\in\mathcal{C}_z$ each $C_z$ is a complete graph.
-        \item Non-isolated vertices of $N_{ab}\setminus N(z)$ are complete to
-            $K\cup K_{ab}$.
-        \item If $N_\varnothing\setminus N(z)$ is adjacent to $N_{ab}$, then
-            $N_{cd}$ is complete to $z$.
-    \end{enumerate}
+            \label{lem:additional_6}
+    \end{lemenum}
 \end{lemma}
 
 \begin{proof}
     \leavevmode \par
-    \begin{enumerate}[label=(\roman*)]
-        \item 
-        \item Suppose $w$ is a vertex in $N_\varnothing\setminus N(z)$ adjacent to
-            $x\in N_{ab}$ and $y\in N_{cd}$. By \Cref{lem:chordal_anti_5}, both $x$
-            and $y$ are adjacent to $z$. Also, by \Cref{lem:chordal_anti_3}, $x$ is
-            not adjacent to $y$. Then, $\p{a,x,w,y,c}$ is an induced copy of $P_5$
-            (see \Cref{fig:chordal_anti_6_1}). Therefore, $w$ must be anticomplete
-            to either $N_{ab}$ or $N_{cd}$.
+    \begin{enumerate}[label=(\roman*)] 
+        \item Suppose $w\in N_\varnothing$ is adjacent to $x\in N_{ab}$ and
+            $y\in N_{cd}$. By \Cref{lem:chordal_anti_5}, both $x$ and $y$ are
+            adjacent to $z$, while \Cref{lem:chordal_anti_2_bag} implies that
+            $w$ is anticomplete to $z$. Also, by \Cref{lem:chordal_anti_3}, $x$
+            is not adjacent to $y$. Then, $\p{a,x,w,y,c}$ is an induced copy of
+            $P_5$ (see \Cref{fig:chordal_anti_6_1}). Therefore, $w$ must be
+            anticomplete to either $N_{ab}$ or $N_{cd}$.
 
             \begin{figure}[htb!]
                 \centering
@@ -3853,21 +3742,21 @@ The next lemmas give us the properties we are looking for.
                     \draw (y) to (w);
                 \end{tikzpicture}
                 \caption{An induced copy of $P_5$ given that a vertex in
-                    $N_\varnothing\setminus N(z)$ is not anticomplete to both
-                    $N_{ab}$ and $N_{cd}$.}
+                    $N_\varnothing$ is not anticomplete to both $N_{ab}$ and
+                    $N_{cd}$.}
                 \label{fig:chordal_anti_6_1}
             \end{figure}
 
-            This implies that, if $N_\varnothing\setminus N(z)$ is not
-            anticomplete to neither $N_{ab}$ nor $N_{cd}$, then there are
-            vertices $w,w'\in N_\varnothing\setminus N(z)$, $x\in N_{ab}$ and
-            $y\in N_{cd}$, such that $w$ is adjacent to $x$ and not adjacent to
-            $y$, while $w'$ is adjacent to $y$ and not adjacent to $x$. Recall
-            that $x$ and $y$ are adjacent to $z$ and nonadjacent to each other.
-            Then, $\l{w,w',x,y,z}$ induces either a copy of $C_5$ or $P_5$,
-            depending on whether $w$ and $w'$ are adjacent or not, respectively
-            (see \Cref{fig:chordal_anti_6_2}). Hence, $N_\varnothing\setminus
-            N(z)$ is anticomplete to at least one between $N_{ab}$ and $N_{cd}$.
+            This implies that, if $N_\varnothing$ is anticomplete to neither
+            $N_{ab}$ nor $N_{cd}$, then there are vertices $w,w'\in
+            N_\varnothing$, $x\in N_{ab}$ and $y\in N_{cd}$, such that $w$ is
+            adjacent to $x$ and not adjacent to $y$ and $z$, while $w'$ is
+            adjacent to $y$ and not adjacent to $x$ and $z$. Recall that $x$ and
+            $y$ are adjacent to $z$ and nonadjacent to each other. Then,
+            $\l{w,w',x,y,z}$ induces either a copy of $C_5$ or $P_5$, depending
+            on whether $w$ and $w'$ are adjacent or not, respectively (see
+            \Cref{fig:chordal_anti_6_2}). Hence, $N_\varnothing$ is anticomplete
+            to at least one between $N_{ab}$ and $N_{cd}$.
 
             \begin{figure}[htb!]
                 \centering
@@ -3933,10 +3822,57 @@ The next lemmas give us the properties we are looking for.
                     \end{scope}
                 \end{tikzpicture}
                 \caption{An induced copy of $C_5$ or $P_5$ given that
-                    $N_\varnothing\setminus N(z)$ is not anticomplete to neither
-                    $N_{ab}$ nor $N_{cd}$.}
+                    $N_\varnothing$ is anticomplete to neither $N_{ab}$ nor
+                    $N_{cd}$.}
                 \label{fig:chordal_anti_6_2}
             \end{figure}
+
+        \item
+
+        \item Suppose without loss of generality that $N_X$ is anticomplete to
+            $cd$ and $a\in N_X$, so $Y=\l{c,d}$. Let $x\in N_X\setminus N(z)$
+            and suppose $w\in N_\varnothing$ is adjacent to $y\in N_Y$. It
+            follows from \Cref{lem:chordal_anti_5} that $w$ is not adjacent to
+            $x$, and that same lemma implies that $y$ is adjacent to $z$. By
+            \Cref{lem:chordal_anti_2_bag}, $w$ is not adjacent to $z$. Moreover,
+            \Cref{lem:chordal_anti_3} implies that $x$ is not adjacent to $y$.
+            Therefore, $\p{x,a,z,y,w}$ is an induced copy of $P_5$ (see
+            \Cref{fig:additional_4}). Therefore, $N_\varnothing$ is anticomplete
+            to $N_Y$. In particular, since $N_a$ and $N_b$ are anticomplete to
+            $z$ by \Cref{lem:chordal_anti_1}, it follows that at least one of
+            $N_a\cup N_b$ and $E_{cd}$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v,lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (w) at (0,-1.5) {};
+                    \node (y) at (0,1.5) {};
+                    \node (x) [left=0.75 of w] {};
+            
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (w) to (d);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (w) to (c);
+                    \draw[lightgray] (v) to (c);
+                    \draw (w) to (x);
+                    \draw (v) to (a);
+                    \draw (y) to (a);
+                    \draw (w) to (v);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that $N_\varnothing$ is
+                    not anticomplete to $N_Y$.}
+                \label{fig:additional_4}
+            \end{figure}
+        
+        \item
 
         \item Suppose $C$ and $C'$ are components in $\mathcal{C}_z$ such that
             both $V_{C-C_z}$ and $V_{C'-C'_z}$ are nonempty. Then, there are
@@ -3980,10 +3916,8 @@ The next lemmas give us the properties we are looking for.
                 \label{fig:additional_2}
             \end{figure}
 
-        \item 
-
         \item Suppose without loss of generality that $x\in N_a$ is adjacent to
-            $y$ in $N_{ab}$. By \Cref{lem:chordal_anti_2_bag_2}, $y$ is adjacent
+            $y\in N_{ab}$. By \Cref{lem:chordal_anti_2_bag_2}, $y$ is adjacent
             to $z$. Suppose $N_{cd}$ is not complete to $z$ and let $w\in
             N_{cd}$ be nonadjacent to $z$. Notice that it $w$ is not adjacent to
             $x$ by \Cref{lem:chordal_anti_2_bag_2}, while $w$ is not adjacent to
@@ -4042,15 +3976,129 @@ names given to the sets.
     $Z=\l{a,b,c,d}$ be a subset of $V$ such that $G[Z]$ is isomorphic to $2K_2$,
     and suppose $\l{ab,cd}$ is the edge set of $G[Z]$.
     
-    Suppose that $G$ gets assigned the following monopolar partition found in
-    Case 1.1.1:
+    Suppose that $G$ has been assigned the partial monopolar partition of Case 1
+    before any subcases, that is,
     \[
-        \p{\p{N_{ab}\setminus K_{ab}} \cup N_a \cup N_b \bigcup_{C\in\mathcal{C}
+        \p{N_a \cup N_b \bigcup_{C\in\mathcal{C}
         \setminus \mathcal{C}_z} V_C \cup \l{z} , 
         K_{ab} \cup K_{cd} \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}.
     \]
+    is a partial monopolar partition of $G$. By \Cref{lem:chordal_anti_3},
+    $N_a\cup N_b$ is anticomplete to $K_{cd}$, while $N_a\cup N_b$ is
+    anticomplete to $\bigcup_{C\in \mathcal{C}_z} V_{C_z}$ by
+    \Cref{lem:chordal_anti_5}. So far, no restriction on how $N_a \cup N_b$
+    interacts with $K_{ab}$ has been forced. For $\bigcup_{C\in\mathcal{C}
+    \setminus \mathcal{C}_z} V_C$, we know that it is anticomplete to
+    $\bigcup_{C\in \mathcal{C}_z} V_{C_z}$ since they belong to different
+    components of $G[N_\varnothing]$. Meanwhile, \Cref{lem:additional_2} implies
+    that $\bigcup_{C\in\mathcal{C} \setminus \mathcal{C}_z} V_C$ is anticomplete
+    to either $K_{ab}$ or $K_{cd}$. We proceed by cases:
 
-    If $N_{ab} \setminus K_{ab}$ is nonempty, then $\bigcup_{C\in\mathcal{C}
-    \setminus \mathcal{C}_z} V_C$ is anticomplete to $K_{cd}$.
+    \paragraph{Case i: $\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C$ is
+    not anticomplete to $K_{cd}$.} Then $\bigcup_{C\in\mathcal{C} \setminus
+    \mathcal{C}_z} V_C$ is anticomplete to $K_{ab}$. Moreover, $E_{cd}$ is
+    nonempty, so \Cref{lem:additional_4} implies that $N_a\cup N_b$ is empty.
+    Notice that no restriction on how $\bigcup_{C\in\mathcal{C} \setminus
+    \mathcal{C}_z} V_C$ interacts with $K_{cd}$ has been forced, only recall
+    that each $V_C$ is not anticomplete to $K_{cd}$.
 
+    The sets of $G$ that remain to be assigned to either the independent part or
+    the cluster part are $N_{ab}\setminus K_{ab}$, $N_{cd}\setminus K_{cd}$ and
+    $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$. Nonetheless,
+    \Cref{lem:additional_3} implies that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$
+    is empty, while \Cref{lem:additional_4} implies that $N_{ab}\setminus
+    K_{ab}$ is empty. Thus, only remains $N_{cd}\setminus K_{cd}$.
+
+    As exposed in the proof of \Cref{thm:monopolar_chordal}, $N_{cd}\setminus
+    K_{cd}$ can be partitioned into two sets such that $S'_{cd}$ is stable and
+    $K'_{cd}$ is either empty or a maximal nontrivial clique. To be more
+    precise, let $I'_{cd}$ be the set of isolated vertices of $G[N_{cd}\setminus
+    K_{cd}]$, and notice that $I'_{cd}$ is a subset of $S'_{cd}$. Then, from
+    \Cref{lem:chordal_comp_2}, we have that $S'_{cd}\setminus I'_{cd}$ and
+    $K'_{cd}$ are complete to $K_{cd}$. Finally, no restriction is imposed on
+    how $I'_{cd}$ interacts with $K_{cd}$, while we know that each vertex in
+    $S'_{cd}\setminus I'_{cd}$ is not anticomplete to $K'_{cd}$ by construction,
+    and no further restriction is imposed. Thus, the monopolar partition of $G$
+    is
+    \[
+        \p{S'_{cd} \cup \bigcup_{C\in\mathcal{C}
+        \setminus \mathcal{C}_z} V_C \cup \l{z} , 
+        K_{ab} \cup K_{cd} \cup K'_{cd} \cup \bigcup_{C\in \mathcal{C}_z} 
+        V_{C_z} \cup Z}.
+    \]
+
+    We claim that $G$ is $P_5$-free and free of any cycles of length at least
+    $4$. \todo{particion y prueba}
+
+    \paragraph{Case ii: $\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C$
+    is not anticomplete to $K_{ab}$.} Then $\bigcup_{C\in\mathcal{C}\setminus
+    \mathcal{C}_z} V_C$ is anticomplete to $K_{cd}$. Similar to the previous
+    case, \Cref{lem:additional_3} implies that $\bigcup_{C\in\mathcal{C}_z}
+    V_{C-C_z}$ is empty, while \Cref{lem:additional_4} implies that
+    $N_{cd}\setminus K_{cd}$ is empty. Hence, we just need to decide how to
+    partition $N_{ab}\setminus K_{ab}$, but do observe that in this case $N_a$
+    and $N_b$ may be nonempty. However, \Cref{lem:chordal_anti_2_bag_2} implies
+    that $N_a \cup N_b$ is anticomplete to $N_{ab} \setminus K_{ab}$, and we put
+    no restriction on how $N_a \cup N_b$ interacts with $K_{ab}$. Thus, let
+    $(S'_{ab},K'_{ab})$ be a split partition of $G[N_{ab}\setminus K_{ab}]$ with
+    $S'_{ab}$ a stable set and $K'_{ab}$ is either empty or a maximal nontrivial
+    clique, we call $I'_{ab}$ the set of isolated vertices of $G[N_{ab}\setminus
+    K_{ab}]$. Once more, as stated in the last case, $S'_{ab}\setminus I'_{ab}$
+    and $K'_{ab}$ are complete to $K_{ab}$, while no restriction is imposed on
+    how $I'_{ab}$ interacts with $K_{ab}$, and each vertex in $S'_{cd}\setminus
+    I'_{cd}$ is not anticomplete to $K'_{cd}$. Therefore, the monopolar
+    partition of $G$ is
+    \[
+        \p{S'_{ab} \cup N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}
+        \setminus \mathcal{C}_z} V_C \cup \l{z} , 
+        K_{ab} \cup K'_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} 
+        V_{C_z} \cup Z}.
+    \]
+    We claim that $G$ is $P_5$-free and free of any cycles of length at least
+    $4$. \todo{particion y prueba}
+
+    \paragraph{Case iii: $\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C$
+    is empty.} As in the proof of \Cref{thm:monopolar_chordal}, suppose first
+    that $N_{ab}$ is not complete to $z$, that is, $N_{ab}\setminus K_{ab}$ is
+    nonempty. From that we deduced that both $N_{cd}\setminus K_{cd}$ and
+    $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ are empty. Additionally, we argued
+    that $N_{ab}\setminus K_{ab}$ has a partition $(S'_{ab},K'_{ab})$ where
+    $S'_{ab}$ is a stable set and $K'_{ab}$ is either empty or a maximal
+    nontrivial clique. Notice that we end up with the same partition of Case ii,
+    but now $\bigcup_{C\in\mathcal{C} \setminus \mathcal{C}_z} V_C$ is empty.
+
+    Meanwhile, if $N_{cd}$ is not complete to $z$, that is, $N_{cd}\setminus
+    K_{cd}$ is nonempty, we deduced that $N_{ab}\setminus K_{ab}$,
+    $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ and $N_a \cup N_b$ are empty.
+    Additionally, we argued that $N_{cd}\setminus K_{cd}$ has a partition
+    $(S'_{cd},K'_{cd})$ where $S'_{cd}$ is a stable set and $K'_{cd}$ is either
+    empty or a maximal nontrivial clique. Notice that we end up with the same
+    partition of Case i, but now $\bigcup_{C\in\mathcal{C} \setminus
+    \mathcal{C}_z} V_C$ is empty.
+
+    Lastly, consider both $N_{ab}\setminus K_{ab}$ and $N_{cd}\setminus K_{cd}$
+    to be empty, so the only set left to partition is
+    $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$. If it is empty, then we are done
+    and the monopolar partition is as in the one of Case ii, with $S'_{ab}$,
+    $\bigcup_{C\in\mathcal{C} \setminus \mathcal{C}_z} V_C$ and $K'_{ab}$ empty.
+    Otherwise suppose $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ is nonempty. By
+    \Cref{lem:additional_1}, $N_a\cup N_b$ is empty, while
+    \Cref{lem:additional_5} implies that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$
+    is the union of just one set, that is, there is a $D\in \mathcal{C}_z$ such
+    that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z} = V_{D-D_z}$. Futhermore,
+    \Cref{lem:additional_6} implies that $D_z$ is a complete graph. Finally, as
+    in the proof of \Cref{thm:monopolar_chordal}, $V_{D-D_z}$ can be partitioned
+    into $I_{D-D_z}$, the set of isolated vertices of $G[V_{D-D_z}]$ which have
+    no restriction on how they interact with $V_{D_z}$, and
+    $V_{D-D_z}-I_{D-D_z}$ has a split partition $(S_{D-D_z},K_{D-D_z})$ with
+    $K_{D-D_z}$ a maximal clique which is complete to $D_z$. No restriction is
+    forced between $S_{D-D_z}$ and $K_{D-D_z}$, so the final monopolar partition
+    of $G$ is
+    \[
+        \p{S_{D-D_z} \cup I_{D-D_z} \l{z}, K_{ab} \cup K_{cd} \cup 
+        \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K_{D-D_z} \cup Z}.
+    \]
+    We claim that $G$ is $P_5$-free and free of any cycles of length at least
+    $4$. \todo{particion y prueba}
+    \todo{Caso 2, r\'apido por la forma de la gr\'afica}
 \end{proof}
