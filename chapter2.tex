@@ -3878,10 +3878,10 @@ The next lemmas give us the properties we are looking for.
             both $V_{C-C_z}$ and $V_{C'-C'_z}$ are nonempty. Then, there are
             adjacent vertices $x$ and $y$ in $V_{C}$ such that $y$ is adjacent
             to $z$, while $x$ is not adjacent to $z$. Similarly, there are
-            adjacent vertices $x$ and $y$ in $V_{C'}$ such that $y'$ is adjacent
-            to $z$ and $x'$ is not adjacent to $z$. Since they are in different
-            components, $\l{x,y}$ is anticomplete to $\l{x',y'}$. Hence,
-            $\p{x,y,z,y',x'}$ is an induced copy of $P_5$ (see
+            adjacent vertices $x'$ and $y'$ in $V_{C'}$ such that $y'$ is
+            adjacent to $z$ and $x'$ is not adjacent to $z$. Since they are in
+            different components, $\l{x,y}$ is anticomplete to $\l{x',y'}$.
+            Hence, $\p{x,y,z,y',x'}$ is an induced copy of $P_5$ (see
             \Cref{fig:additional_2}). It follows that at most one component in
             $\mathcal{C}_z$ is such that $V_{C-C_z}$ is nonempty.
 
@@ -3916,43 +3916,8 @@ The next lemmas give us the properties we are looking for.
                 \label{fig:additional_2}
             \end{figure}
 
-        \item Suppose without loss of generality that $x\in N_a$ is adjacent to
-            $y\in N_{ab}$. By \Cref{lem:chordal_anti_2_bag_2}, $y$ is adjacent
-            to $z$. Suppose $N_{cd}$ is not complete to $z$ and let $w\in
-            N_{cd}$ be nonadjacent to $z$. Notice that it $w$ is not adjacent to
-            $x$ by \Cref{lem:chordal_anti_2_bag_2}, while $w$ is not adjacent to
-            $y$ by \Cref{lem:chordal_anti_3}. Therefore, $\p{x,y,z,c,w}$ is an
-            induced copy of $P_5$ (see \Cref{fig:additional_3}). Thus, $N_{cd}$
-            is complete to $z$.
+        \item 
             
-            \begin{figure}[htb!]
-                \centering
-                \begin{tikzpicture}[every node/.style={vertex}, node
-                    distance=1cm, on grid, edge]
-                    \node (v) {};
-                    \node[above left=1cm and 0.75cm of v] (a) {};
-                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
-                    \node[below left=1cm and 0.75cm of v] (c) {};
-                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
-                    \node (w) at (0,-1.5) {};
-                    \node (y) at (0,1.5) {};
-                    \node (x) [left=0.75 of y] {};
-            
-                    \draw[lightgray] (b) to (x);
-                    \draw[lightgray] (a) to (b);
-                    \draw[lightgray] (v) to (b);
-                    \draw[lightgray] (w) to (d);
-                    \draw[lightgray] (v) to (d);
-                    \draw[lightgray] (c) to (d);
-                    \draw (v) to (c);
-                    \draw (v) to (a);
-                    \draw (y) to (x);
-                    \draw (w) to (c);
-                \end{tikzpicture}
-                \caption{An induced copy of $P_5$ given that $N_{cd}$ is not
-                    complete to $z$.}
-                \label{fig:additional_3}
-            \end{figure}
     \end{enumerate}
 \end{proof}
 
@@ -3979,9 +3944,9 @@ names given to the sets.
     Suppose that $G$ has been assigned the partial monopolar partition of Case 1
     before any subcases, that is,
     \[
-        \p{N_a \cup N_b \bigcup_{C\in\mathcal{C}
+        \p{N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}
         \setminus \mathcal{C}_z} V_C \cup \l{z} , 
-        K_{ab} \cup K_{cd} \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}.
+        K_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}.
     \]
     is a partial monopolar partition of $G$. By \Cref{lem:chordal_anti_3},
     $N_a\cup N_b$ is anticomplete to $K_{cd}$, while $N_a\cup N_b$ is
@@ -4002,9 +3967,9 @@ names given to the sets.
     \mathcal{C}_z} V_C$ interacts with $K_{cd}$ has been forced, only recall
     that each $V_C$ is not anticomplete to $K_{cd}$.
 
-    The sets of $G$ that remain to be assigned to either the independent part or
-    the cluster part are $N_{ab}\setminus K_{ab}$, $N_{cd}\setminus K_{cd}$ and
-    $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$. Nonetheless,
+    The subsets of $V_G$ that remain to be assigned to either the independent
+    part or the cluster part are $N_{ab}\setminus K_{ab}$, $N_{cd}\setminus
+    K_{cd}$ and $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$. Nonetheless,
     \Cref{lem:additional_3} implies that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$
     is empty, while \Cref{lem:additional_4} implies that $N_{ab}\setminus
     K_{ab}$ is empty. Thus, only remains $N_{cd}\setminus K_{cd}$.
