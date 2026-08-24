@@ -1696,15 +1696,16 @@ $N_{abc}$, or all 3-bags are empty.
             of $G[E_{ac}]$. Indeed, suppose that component $C'$ of $G[N_{ac}]$
             is not anticomplete to nontrivial components $C$ and $D$ of
             $G[E_{ac}]$. By \Cref{lem:type_8}, there are vertices $x$ and $y$ of
-            $C'$ such that $x$ is complete to $C$ and $y$ is complete to $y$.
-            Since $C$ and $D$ are different a nontrivial, it follows from the
+            $C'$ such that $x$ is complete to $C$ and $y$ is complete to $D$.
+            Since $C$ and $D$ are different and nontrivial, it follows from the
             argument of the last paragraph that $x$ and $y$ are different.
-            Moreover, notice that $C$ is a complete graph since $G[N_{ac}]$ is a
-            cluster by \Cref{lem:type_4}, so $x$ is adjacent to $y$. Then, the
+            Moreover, notice that $C'$ is a complete graph since $G[N_{ac}]$ is
+            a cluster by \Cref{lem:type_4}, so $x$ is adjacent to $y$. Then, the
             set $\l{a,x,y}$ along with two non-isolated vertices of each
             component, $C$ and $D$, induces a copy of $H_6$ (see
-            \Cref{fig:type_3bag_4_1}). Therefore, $G[N_{ac}]$ is anticomplete to
-            all but at most one nontrivial connected component of $G[E_{ac}]$.
+            \Cref{fig:type_3bag_4_1}). Therefore, each connected component of
+            $G[N_{ac}]$ is anticomplete to all but at most one nontrivial
+            connected component of $G[E_{ac}]$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1838,7 +1839,7 @@ $N_{abc}$, or all 3-bags are empty.
                     \draw (eac3) to (ac2);
 
                 \end{tikzpicture}
-                \caption{An induced copy of $H_{6}$ given that two nontrivial
+                \caption{An induced copy of $P_{5}$ given that two nontrivial
                     connected components of $G[E_{ac}]$ are not anticomplete to
                     a sole connected component of $G[N_{ac}]$.}
                 \label{fig:type_3bag_4_4}
@@ -1852,7 +1853,7 @@ $N_{abc}$, or all 3-bags are empty.
             \Cref{lem:type_8}, $v$ is adjacent to $x$ (in fact, $x$ is complete
             to $V_C$). Suppose that $V_{C'}$ is not complete to $V_C$. Then,
             there is a vertex $y$ of $C'$ such that, by \Cref{lem:type_8}, is
-            nonadjacent to neither $u$ nor $v$. Recall that $C'$ is complete
+            adjacent to neither $u$ nor $v$. Recall that $C'$ is complete
             since $G[N_{ac}]$ is a cluster by \Cref{lem:type_4}, so $x$ is
             adjacent to $y$. Therefore, $\l{a,c,u,v,x,y}$ induces a copy of
             $H_{4}$ (see \Cref{fig:type_3bag_4_3}). Hence, $V_{C'}$ is complete
@@ -2514,13 +2515,12 @@ At last, we prove the main theorem.
     following subcases:
 
     \paragraph{Case 1.1: $N_\varnothing\setminus E_{bd}$ is not anticomplete to
-    $N_{ac}$.} Let $S$ be the set of vertices in trivial components of
-    $G[N_\varnothing\setminus E_{bd}]$, and let $\mathcal{C}$ be the set of
-    connected components of $G[N_\varnothing\setminus (E_{bd} \cup S)]$. Notice
-    $N_\varnothing \setminus E_{bd} \subseteq E_{ac}$ (in fact, $N_\varnothing
-    \setminus E_{bd} = E_{ac}$). Thus, by the proof of \Cref{lem:type_3bag_4},
-    if $C$ is the unique nontrivial component of $G[E_{ac}]$ (if it exists), we
-    have that
+    $N_{ac}$.} Notice $(N_\varnothing \setminus E_{bd}) \subseteq E_{ac}$ (in
+    fact, $N_\varnothing \setminus E_{bd} = E_{ac}$).  Let $S$ be the set of
+    isolated vertices of $G[N_\varnothing\setminus E_{bd}]$.  By the proof of
+    \Cref{lem:type_3bag_4}, if $C$ is the unique nontrivial component of
+    $G[E_{ac}]$ (if it exists), we have that $(S_C,K_C)$ is a split partition
+    of $C$ and hence
     \[
         N_{abc} \cup N_{acd} \cup N_{ac} \cup N_{a} 
         \cup E_{bd} \cup K_C \cup \l{b,d}
@@ -2529,7 +2529,7 @@ At last, we prove the main theorem.
     \[
         N_{bd} \cup S \cup S_C \cup \l{a,c}
     \]
-    is a stable set, where $(S_C,K_C)$ is a split partition of $C$.
+    is a stable set.
     
     Finally, \Cref{lem:type_6} ensures that one between $N_{b}$ and $N_{d}$ is
     empty. Take the following subcases:

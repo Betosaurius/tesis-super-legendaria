@@ -2871,9 +2871,9 @@ Now we are ready to prove the main theorem.
     \end{figure}
 
     Thus, $G[D]$ is split, so let $(S_D,K_D)$ be a split partition of $V_D$ such
-    that $K_D$ is a maximal clique. Recall that $D$ is complete to $D_z$, so
-    $K_D \cup V_{D_z}$ is a clique. Moreover, since $D$ is anticomplete to all
-    other connected components of $C_z$, it follows that
+    that $K_D$ is either empty or a nontrivial maximal clique. Recall that $D$
+    is complete to $D_z$, so $K_D \cup V_{D_z}$ is a clique. Moreover, since $D$
+    is anticomplete to all other connected components of $C_z$, it follows that
     \begin{align*}
         \Bigg(& N_a \cup  N_b \cup \bigcup_{C\in \mathcal{C}\setminus 
         \mathcal{C}_z} V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in 
@@ -3324,7 +3324,7 @@ Now we are ready to prove the main theorem.
         \label{fig:monopolar_partition_chordal_4}
     \end{figure}
 
-    \paragraph{Case 2.1.2: $N(c)\setminus \l{x}$ is not a cluster.} By a
+    \paragraph{Case 2.1.2: $G[N(c)\setminus \l{x}]$ is not a cluster.} By a
     previous argument, we have that $G[N(x)\setminus \l{c}]$ is a cluster. Let
     $w$, $y$ and $z$ be vertices in $N(c)\setminus \l{x}$ such that $\p{w,y,z}$
     is an induced copy of $P_3$. We claim that $N_{abc}=\l{x}$. Indeed, if there
@@ -4055,12 +4055,12 @@ names given to the sets.
     in the proof of \Cref{thm:monopolar_chordal}, $V_{D-D_z}$ can be partitioned
     into $I_{D-D_z}$, the set of isolated vertices of $G[V_{D-D_z}]$ which have
     no restriction on how they interact with $V_{D_z}$, and
-    $V_{D-D_z}-I_{D-D_z}$ has a split partition $(S_{D-D_z},K_{D-D_z})$ with
-    $K_{D-D_z}$ a maximal clique which is complete to $D_z$. No restriction is
-    forced between $S_{D-D_z}$ and $K_{D-D_z}$, so the final monopolar partition
-    of $G$ is
+    $V_{D-D_z}-I_{D-D_z}$ has a split partition $(S_{D-D_z},K_{D-D_z})$ such
+    that $K_{D-D_z}$ is either empty or a nontrivial maximal clique which is
+    complete to $D_z$. No restriction is forced between $S_{D-D_z}$ and
+    $K_{D-D_z}$, so the final monopolar partition of $G$ is
     \[
-        \p{S_{D-D_z} \cup I_{D-D_z} \l{z}, K_{ab} \cup K_{cd} \cup 
+        \p{S_{D-D_z} \cup I_{D-D_z} \cup \l{z}, K_{ab} \cup K_{cd} \cup 
         \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K_{D-D_z} \cup Z}.
     \]
     We claim that $G$ is $P_5$-free and free of any cycles of length at least
