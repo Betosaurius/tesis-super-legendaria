@@ -3992,21 +3992,58 @@ names given to the sets.
         V_{C_z} \cup Z}.
     \]
 
+    \newsavebox{\mybox}
+    \newlength{\maxsize}
+    \setlength{\maxsize}{0pt}
+
     \begin{figure}[htb!]
-        \newsavebox{\aber}
-        \newlength{\maxsize}
-        \foreach \n in {cdsfsed,fefves,fvesfesa}{
-        \sbox{\aber}{\strut \n}
-        \ifdim \wd\aber>\maxsize
-            \setlength{\maxsize}{\wd\aber}
-        \fi
-        }
         \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
+        \begin{tikzpicture}[every node/.style={vertex,rotate=-90}, node
             distance=1cm, on grid, edge]
-            \node (z) [label={left:$z$}] {};
-            \node [above left = 3cm and 1.5cm of z, fill=none] {$K_{ab} \cup \l{a,b}$}; 
-            \node [above right = 3cm and 1.5cm of z, fill=none] {\the\wd\aber}; 
+            \foreach \labeltext in {
+                {$\displaystyle \bigcup_{C\in \mathcal{C}_z}V_{C_z}$},
+                {$K_{ab}\cup\l{a,b}$}
+                }{
+                \sbox{\mybox}{\labeltext}
+                \ifdim\wd\mybox>\maxsize
+                    \global\maxsize=\wd\mybox
+                \fi
+            }
+            \begin{scope}[rotate=90, transform shape]
+                \node (z) [label={[label distance=1pt]left:$z$}] {};
+                \node (C1) [above left = 1.5cm and 1.5cm of z, fill=none, minimum size=\maxsize] {$K_{ab} \cup \l{a,b}$}; 
+                \node (C2) [above right = 1.5cm and 1.5cm of z, fill=none, minimum
+                size=\maxsize] {$\displaystyle \bigcup_{C\in
+                \mathcal{C}_z}V_{C_z}$};
+                \node [below left= 1cm and 0.75cm of z,label={[label distance=1pt]below:$c$}] (c) {};
+                \node [below right= 1cm and 0.75cm of z,label={[label distance=1pt]above:$d$}] (d) {};
+                \node (K) [below=4cm of z, fill=none, minimum size=0.5*\maxsize]
+                {$K_{cd}$};
+                \node (I) [left=2cm of K, fill=none, minimum size=0.5*\maxsize]
+                {$I'_{cd}$};
+                \node (K') [above right= 0.75cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$K'_{cd}$};
+                \node (S') [below right= 0.75cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$S'_{cd}$};
+                \node (Ecd) [below=3cm of K, fill=none, minimum size=\maxsize]
+                {$\displaystyle \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C$};
+
+                \node (fit) [fit= (I) (S') (K') (K), fill=none, ellipse, rotate=90] {};
+            \end{scope}
+
+            \draw[double] (z) to (C1);
+            \draw[double] (z) to (C2);
+            \draw (z) to (c);
+            \draw (z) to (d);
+            \draw (c) to (d);
+            \draw[double] (z) to (fit);
+            \draw[double] (c) to (fit);
+            \draw[double] (d) to (fit);
+            \draw[double] (K) to (S');
+            \draw[double] (K) to (K');
+            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+            \draw[dashed] (S') to (K');
+            \draw[dashed] (Ecd) to (K);
         \end{tikzpicture}
         \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
     \end{figure}
@@ -4041,6 +4078,69 @@ names given to the sets.
     We claim that $G$ is $P_5$-free and free of any cycles of length at least
     $4$. \todo{particion y prueba}
 
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex,rotate=-90}, node
+            distance=1cm, on grid, edge]
+            \foreach \labeltext in {
+                {$\displaystyle \bigcup_{C\in \mathcal{C}_z}V_{C_z}$},
+                {$K_{cd}\cup\l{c,d}$}
+                }{
+                \sbox{\mybox}{\labeltext}
+                \ifdim\wd\mybox>\maxsize
+                    \global\maxsize=\wd\mybox
+                \fi
+            }
+            \begin{scope}[rotate=90, transform shape]
+                \node (z) [label={[label distance=1pt]left:$z$}] {};
+                \node (C1) [above left = 1.5cm and 1.5cm of z, fill=none, minimum size=\maxsize] {$K_{cd} \cup \l{c,d}$}; 
+                \node (C2) [above right = 1.5cm and 1.5cm of z, fill=none, minimum
+                size=\maxsize] {$\displaystyle \bigcup_{C\in
+                \mathcal{C}_z}V_{C_z}$};
+                \node (a) [below left= 1cm and 0.75cm of z,label={[label
+                distance=1pt]below left:$a$}] {};
+                \node (b) [below right= 1cm and 0.75cm of z,label={[label
+                distance=1pt]above left:$b$}] {};
+                \node (K) [below=4cm of z, fill=none, minimum size=0.5*\maxsize]
+                {$K_{ab}$};
+                \node (I) [left=2cm of K, fill=none, minimum size=0.5*\maxsize]
+                {$I'_{ab}$};
+                \node (K') [above right= 0.75cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$K'_{ab}$};
+                \node (S') [below right= 0.75cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$S'_{ab}$};
+                \node (Eab) [below=3cm of K, fill=none, minimum size=\maxsize]
+                {$\displaystyle \bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z}
+                V_C$};
+                \node (Na) [left=2cm of a, fill=none, minimum size=0.5\maxsize] {$N_a$};
+                \node (Nb) [right=2cm of b, fill=none, minimum size=0.5\maxsize] {$N_b$};
+
+                \node (fit) [fit= (I) (S') (K') (K), fill=none, ellipse, rotate=90] {};
+            \end{scope}
+
+            \draw[double] (z) to (C1);
+            \draw[double] (z) to (C2);
+            \draw (z) to (a);
+            \draw (z) to (b);
+            \draw (a) to (b);
+            \draw[double] (z) to (fit);
+            \draw[double] (a) to (fit);
+            \draw[double] (b) to (fit);
+            \draw[double] (K) to (S');
+            \draw[double] (K) to (K');
+            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+            \draw[dashed] (S') to (K');
+            \draw[dashed] (Eab) to (K);
+            \draw[double] (a) to (Na);
+            \draw[double] (b) to (Nb);
+            \draw[decorate, decoration={snake, segment length=1.5mm, post
+            length=1mm, pre length=1mm}] (Na) to (K);
+            \draw[decorate, decoration={snake, segment length=1.5mm, post
+            length=1mm, pre length=1mm}] (Nb) to (K);
+        \end{tikzpicture}
+        \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
+    \end{figure}
+
     \paragraph{Case iii: $\bigcup_{C\in\mathcal{C}\setminus \mathcal{C}_z} V_C$
     is empty.} As in the proof of \Cref{thm:monopolar_chordal}, suppose first
     that $N_{ab}$ is not complete to $z$, that is, $N_{ab}\setminus K_{ab}$ is
@@ -4069,20 +4169,62 @@ names given to the sets.
     \Cref{lem:additional_1}, $N_a\cup N_b$ is empty, while
     \Cref{lem:additional_5} implies that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$
     is the union of just one set, that is, there is a $D\in \mathcal{C}_z$ such
-    that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z} = V_{D-D_z}$. Futhermore,
-    \Cref{lem:additional_6} implies that $D_z$ is a complete graph. Finally, as
-    in the proof of \Cref{thm:monopolar_chordal}, $V_{D-D_z}$ can be partitioned
-    into $I_{D-D_z}$, the set of isolated vertices of $G[V_{D-D_z}]$ which have
-    no restriction on how they interact with $V_{D_z}$, and
+    that $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z} = V_{D-D_z}$; this in turn
+    implies that $V_{C_z}=V_C$ for all $C\in \mathcal{C}_z\setminus \l{D}$.
+    Futhermore, \Cref{lem:additional_6} implies that $D_z$ is a complete graph.
+    Finally, as in the proof of \Cref{thm:monopolar_chordal}, $V_{D-D_z}$ can be
+    partitioned into $I_{D-D_z}$, the set of isolated vertices of $G[V_{D-D_z}]$
+    which have no restriction on how they interact with $V_{D_z}$, and
     $V_{D-D_z}-I_{D-D_z}$ has a split partition $(S_{D-D_z},K_{D-D_z})$ such
     that $K_{D-D_z}$ is either empty or a nontrivial maximal clique which is
-    complete to $D_z$. No restriction is forced between $S_{D-D_z}$ and
-    $K_{D-D_z}$, so the final monopolar partition of $G$ is
+    complete to $D_z$. Notice that each vertex in $S_{D-D_z}$ is not
+    anticomplete to $K_{D-D_z}$, so the final monopolar partition of $G$ is
     \[
         \p{S_{D-D_z} \cup I_{D-D_z} \cup \l{z}, K_{ab} \cup K_{cd} \cup 
         \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup K_{D-D_z} \cup Z}.
     \]
     We claim that $G$ is $P_5$-free and free of any cycles of length at least
     $4$. \todo{particion y prueba}
+
+    \begin{figure}[htb!]
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex,rotate=-90}, node
+            distance=1cm, on grid, edge]
+            \foreach \labeltext in {
+                {$\displaystyle \bigcup_{C\in \mathcal{C}_z\setminus \l{D}}V_{C}$},
+                {$K_{cd}\cup\l{c,d}$},{$K_{ab}\cup\l{a,b}$} 
+                }{
+                \sbox{\mybox}{\labeltext}
+                \ifdim\wd\mybox>\maxsize
+                    \global\maxsize=\wd\mybox
+                \fi
+            }
+            \begin{scope}[rotate=90, transform shape]
+                \node (z) [label={[label distance=1pt]above:$z$}] {};
+                \node (C1) [above left = 3cm of z, fill=none, minimum size=\maxsize] {$K_{cd} \cup \l{c,d}$}; 
+                \node (C2) [above right = 3cm of z, fill=none, minimum size=\maxsize] {$K_{ab}\cup\l{a,b}$};
+                \node (C3) [above = 3cm of z, fill=none, minimum size=\maxsize] {$\displaystyle \bigcup_{C\in
+                \mathcal{C}_z\setminus\l{D}}V_{C}$};
+                \node (K) [below=2cm of z, fill=none, minimum size=0.5*\maxsize]
+                {$V_{D_z}$};
+                \node (I) [left=2cm of K, fill=none, minimum size=0.5*\maxsize]
+                {$I_{D-D_z}$};
+                \node (K') [above right= 1cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$K_{D-D_z}$};
+                \node (S') [below right= 1cm and 2cm of K, fill=none, minimum
+                size=0.5*\maxsize] {$S_{D-D_z}$};
+            \end{scope}
+
+            \draw[double] (z) to (C1);
+            \draw[double] (z) to (C2);
+            \draw[double] (z) to (C3);
+            \draw[double] (z) to (K);
+            \draw[double] (K) to (S');
+            \draw[double] (K) to (K');
+            \draw[dashed] (S') to (K');
+            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+        \end{tikzpicture}
+        \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
+    \end{figure}
     \todo{Caso 2, r\'apido por la forma de la gr\'afica}
 \end{proof}
