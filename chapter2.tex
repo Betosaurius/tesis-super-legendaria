@@ -3992,6 +3992,25 @@ names given to the sets.
         V_{C_z} \cup Z}.
     \]
 
+    \begin{figure}[htb!]
+        \newsavebox{\aber}
+        \newlength{\maxsize}
+        \foreach \n in {cdsfsed,fefves,fvesfesa}{
+        \sbox{\aber}{\strut \n}
+        \ifdim \wd\aber>\maxsize
+            \setlength{\maxsize}{\wd\aber}
+        \fi
+        }
+        \centering
+        \begin{tikzpicture}[every node/.style={vertex}, node
+            distance=1cm, on grid, edge]
+            \node (z) [label={left:$z$}] {};
+            \node [above left = 3cm and 1.5cm of z, fill=none] {$K_{ab} \cup \l{a,b}$}; 
+            \node [above right = 3cm and 1.5cm of z, fill=none] {\the\wd\aber}; 
+        \end{tikzpicture}
+        \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
+    \end{figure}
+
     We claim that $G$ is $P_5$-free and free of any cycles of length at least
     $4$. \todo{particion y prueba}
 
