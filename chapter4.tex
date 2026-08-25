@@ -2148,9 +2148,9 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
 3-bag and proceed as in the other case. The following lemma uses this fact.
 
 \begin{lemma}
-    Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with an induced
-    copy of $C_4$ having $Z$ as vertex set and free of the graphs depicted in
-    Figures \ref{fig:chordal-p5-free-obstructions},
+    Let $G$ be a connected $(P_5,\text{house},C_5, \overline{P_2 + P_3})$-free
+    graph with an induced copy of $C_4$ having $Z$ as vertex set and free of the
+    graphs depicted in Figures \ref{fig:chordal-p5-free-obstructions},
     \ref{fig:p5-house-obstruction-with-c5} and
     \ref{fig:p5-house-obstruction-no-c5}.
     \begin{lemenum}
@@ -2547,7 +2547,8 @@ At last, we prove the main theorem.
     Let $F$ be the set of vertices in $K(N_b,N_{abc})$ that are not anticomplete
     to the set $N_{ac}$. By \Cref{lem:type_3bag_6}, $F$ is stable, and the same
     lemma implies that $F$ is anticomplete to $K(N_b,N_{abc})\setminus F$. Since
-    $K(N_b,N_{abc})$ is anticomplete to $D$, $F$ is anticomplete to $D$, so
+    $K(N_b,N_{abc})$ is anticomplete to $D$, as a consequence we have that $F$
+    is anticomplete to $D$, so
     \[
         N_{bd} \cup D \cup F \cup S \cup S_C \cup \l{a,c}
     \]
@@ -2556,9 +2557,9 @@ At last, we prove the main theorem.
     $K(N_b,N_{abc})\setminus F$ into $S_b$ a stable set and $K_b$ a clique.
     Since $K(N_b,N_{abc})$ is anticomplete to $D$ and $K(N_b,N_{abc})\setminus
     F$ is anticomplete to $F$, it follows that $S_b$ is anticomplete to both $D$
-    and $F$. Meanwhile, we already know that $K_b$ is complete to $N_{abc}$,
-    anticomplete to $N_{ac}$, and it is anticomplete to $N_{acd}$ and $N_a$ due
-    to \Cref{lem:anti_4,lem:anti_3}, respectively. It follows that
+    and $F$. So far, by construction we know that $K_b$ is complete to $N_{abc}$
+    and anticomplete to $N_{ac}$.   Due to \Cref{lem:anti_4,lem:anti_3} $K_b$ is
+    also anticomplete to $N_{acd}$ and $N_a$, respectively. It follows that
     \begin{align*}
         \bigg( 
             & N_{bd} \cup D \cup F \cup S_b \cup S \cup S_C \cup \l{a,c} , \\
@@ -2678,11 +2679,11 @@ At last, we prove the main theorem.
     \paragraph{Case 1.1.2: $N_b$ is empty.} Notice that we can suppose that
     $N_{acd}$ is empty, for if not, then we proceed as in the previous subcase.
     By \Cref{lem:type_3bag_5}, $G[N_d]$ is split, so there is a split partition
-    $(S_d,K_d)$ with $S_d$ a maximal stable set. By \Cref{lem:anti_2}, $N_d$ is
-    anticomplete to $N_{bd}$, while $N_d$ is anticomplete to $N_{abc}$ and
-    $N_{a}$ by \Cref{lem:anti_4,lem:anti_3}, respectively. Finally, from
-    \Cref{lem:type_3bag_7} and the maximality of $S_d$, we have that $K_d$ is
-    anticomplete to $N_{ac}$, so
+    $(S_d,K_d)$ with $K_d$ either empty or a maximal nontrivial clique. By
+    \Cref{lem:anti_2}, $N_d$ is anticomplete to $N_{bd}$, while $N_d$ is
+    anticomplete to $N_{abc}$ and $N_{a}$ by \Cref{lem:anti_4,lem:anti_3},
+    respectively. Finally, from \Cref{lem:type_3bag_7} and the maximality of
+    $S_d$, we have that $K_d$ is anticomplete to $N_{ac}$, so
    \begin{align*}
         \bigg( 
             & N_{bd} \cup S_d \cup S \cup S_C \cup \l{a,c} , \\
@@ -2943,17 +2944,16 @@ At last, we prove the main theorem.
     of generality that $G[N_b]$ is a cluster. Consider the following subcases:
 
     \paragraph{Case 2.1.1: $G[N_a]$ is split.} Let $(S,K)$ be a partition of
-    $G[N_a]$ with $S$ a stable set and $K$ a maximal nontrivial clique. By
-    \Cref{lem:anti_2}, $N_a$ is anticomplete to $N_{ac}$ and $N_b$ is
-    anticomplete to $N_{bd}$. Then, $S$ is anticomplete to $N_{ac}$, so
+    $G[N_a]$ with $S$ a stable set and $K$ is either empty or a maximal
+    nontrivial clique. By \Cref{lem:anti_2}, $N_a$ is anticomplete to $N_{ac}$
+    and $N_b$ is anticomplete to $N_{bd}$. Then, $S$ is anticomplete to
+    $N_{ac}$, so
     \[
         N_{ac}  \cup S \cup \l{b,d}
     \]
-    is stable. If $K$ is empty, trivially we have that $K$ is anticomplete to
-    $N_{bd}$. If $K$ is nonempty, due to its maximality and because it is
-    nontrivial, it is a nontrivial clique. Then, by \Cref{lem:type_14}, $K$ is
-    anticomplete to $N_{bd}$. Moreover, $K$ is anticomplete to $N_b$ by
-    \Cref{lem:anti_4}, so
+    is stable.   If $K$ is nonempty, then it is a nontrivial clique, so by
+    \Cref{lem:type_14}, $K$ is anticomplete to $N_{bd}$. Moreover, $K$ is
+    anticomplete to $N_b$ by \Cref{lem:anti_4}, so
     \[
         N_{bd} \cup N_b \cup K \cup \l{a,c}
     \]
@@ -3054,19 +3054,15 @@ At last, we prove the main theorem.
     following cases:
 
     \paragraph{Case 2.2.1: $G[E_{ac}]$ is not a cluster.} Then $G[E_{ac}]$ is
-    split, so let $(S,K)$ be a split partition of $E_{ac}$ with $K$ a maximal
-    nontrivial clique. Additionally, since $\p{a,b,c,x,a}$ is an induced copy of
-    $C_4$ and, by \Cref{lem:anti_5}, $N_{a}$ is anticomplete to $E_{ac}$, it
-    follows from \Cref{lem:type_12} that $G[N_a]$ is a cluster. Recall that
-    \Cref{lem:anti_2} implies that $N_{ac}$ is a anticomplete to $N_a$, while
-    \Cref{lem:anti_5} implies that $N_{b}$ is anticomplete to $K$. If $K$ is
-    empty, then it is obvious that
-    \[
-        N_{ac} \cup N_a  \cup K \cup \l{b,d}
-    \]
-    is a cluster. If $K$ is nonempty, then it is nontrivial, so it must be the
-    case that $N_{ac} \setminus \l{x}$ is anticomplete to $K$ as per
-    \Cref{lem:type_17}. At any rate, it follows that
+    split, so let $(S,K)$ be a split partition of $E_{ac}$ with $K$ either empty
+    or a maximal nontrivial clique. Additionally, since $\p{a,b,c,x,a}$ is an
+    induced copy of $C_4$ and, by \Cref{lem:anti_5}, $N_{a}$ is anticomplete to
+    $E_{ac}$, it follows from \Cref{lem:type_12} that $G[N_a]$ is a cluster.
+    Recall that \Cref{lem:anti_2} implies that $N_{ac}$ is a anticomplete to
+    $N_a$, while \Cref{lem:anti_5} implies that $N_{b}$ is anticomplete to $K$.
+    If $K$ is nonempty, then it is nontrivial, so it must be the case that
+    $N_{ac} \setminus \l{x}$ is anticomplete to $K$ as per \Cref{lem:type_17}.
+    It follows that
     \[
         N_{ac} \cup N_a \cup K \cup \l{b,d}
     \]
@@ -3208,8 +3204,8 @@ At last, we prove the main theorem.
     the beginning of the previous case, $\p{a,b,c,x,a}$ is an induced copy of
     $C_4$, with $E_{ac}$ anticomplete to $\l{a,b,c}\cup N_{a}$ and complete to
     $x$. Then, by \Cref{lem:type_13}, it follows that $G[N_a]$ is split. Let
-    $(S,K)$ be a split partition of $N_a$ where $K$ is a maximal nontrivial
-    clique.
+    $(S,K)$ be a split partition of $N_a$ where $K$ is either empty or a maximal
+    nontrivial clique.
 
     Notice $S$ is anticomplete to $N_{ac}$ by \Cref{lem:anti_2}, so
     \[
