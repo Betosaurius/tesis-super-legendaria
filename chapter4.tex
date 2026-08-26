@@ -2375,8 +2375,8 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
             $x$. If $N_Y$ is not stable, there are adajcent vertices $y$ and
             $y'$ in $N_Y$. Since these are non-isolated, it follows from
             \Cref{lem:type_14} that they are not adjacent to $x$. Moreover,
-            \Cref{lem:anti_5} implies that $u$ is not adjacent to neither $y$
-            nor $y'$. Then, $\p{u,x,c,b,y}$ induces a copy of $P_5$ (see
+            \Cref{lem:anti_5} implies that $u$ is adjacent to neither $y$ nor
+            $y'$. Then, $\p{u,x,c,b,y}$ induces a copy of $P_5$ (see
             \Cref{fig:3_bags_empty_5}).  It follows that $N_Y$ is stable. 
 
             \begin{figure}[htb!]
@@ -2396,7 +2396,6 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
                     \draw[lightgray] (3) to (0);
                     \draw[lightgray] (3) to (2);
                     \draw[lightgray] (b') to (1);
-                    \draw[lightgray] (b') to (d');
                     \draw[lightgray] (b'') to (b');
                     \draw[lightgray] (0) to (1);
                     \draw[lightgray] (d') to (0);
@@ -3068,7 +3067,7 @@ At last, we prove the main theorem.
     \]
     is a cluster.
 
-    Meanwhile, recall that \Cref{lem:anti_2} implies that $N_{bd}$ is a
+    Meanwhile, recall that \Cref{lem:anti_2} implies that $N_{bd}$ is
     anticomplete to $N_b$. Since $S\subseteq E_{ac}$ and \Cref{lem:anti_5}
     implies that $N_{b}$ is anticomplete $E_{ac}$, we have that
     \[
@@ -3195,17 +3194,33 @@ At last, we prove the main theorem.
 
     \paragraph{Case 2.2.2: $G[E_{ac}]$ is a cluster.} We can consider
     $G[E_{bd}]$ to be a cluster as well, since one could proceed as in the
-    previous case if $G[E_{bd}]$ is not a cluster. Additionally, if $G[E_{ac}]$
-    happens to be split, then once again we can proceed as in the previous case,
-    so consider $G[E_{ac}]$ to be not split.
+    previous case if $G[E_{bd}]$ is not a cluster. Similar to the argument that
+    at least one of $G[E_{ac}]$ and $G[E_{bd}]$ is a cluster, by
+    \Cref{lem:type_13} we have that at least one of $G[E_{ac}]$ and $G[E_{bd}]$
+    is split. If $E_{bd}$ happens to be nonempty, then recall from
+    \Cref{lem:type_18} that $N_a$ is stable. Thus, once more one could proceed
+    as in the previous argument: if $G[E_{ac}]$ is split, then take $(S,K)$ a
+    split partition of $E_{ac}$ with $K$ either empty or a maximal nontrivial
+    clique, so
+    \[
+        \p{N_{bd} \cup N_b \cup S  \cup \l{a,c}, N_{ac} \cup N_a \cup K \cup E_{bd}
+        \cup \l{b,d}}
+    \]
+    is a monopolar partition of $G$. Otherwise, $G[E_{bd}]$ is split, so take
+    $(S,K)$ to be a split partition of $E_{bd}$ with $K$ either empty or a
+    maximal nontrivial clique. Hence,
+    \[
+        \p{N_{ac} \cup N_a \cup S  \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup E_{ac}
+        \cup \l{a,c}}
+    \]
+    is a split partition of $G$. Therefore, consider $E_{bd}$ to be empty.
 
-    Similar to the argument that at least one of $G[E_{ac}]$ and $G[E_{bd}]$ is
-    a cluster, by \Cref{lem:type_13} we have that $G[E_{bd}]$ is split. As in
-    the beginning of the previous case, $\p{a,b,c,x,a}$ is an induced copy of
-    $C_4$, with $E_{ac}$ anticomplete to $\l{a,b,c}\cup N_{a}$ and complete to
-    $x$. Then, by \Cref{lem:type_13}, it follows that $G[N_a]$ is split. Let
-    $(S,K)$ be a split partition of $N_a$ where $K$ is either empty or a maximal
-    nontrivial clique.
+    Suppose that $G[E_{ac}]$ is not split. As in the beginning of the previous
+    case, $\p{a,b,c,x,a}$ is an induced copy of $C_4$, with $E_{ac}$
+    anticomplete to $\l{a,b,c}\cup N_{a}$ and complete to $x$. Then, by
+    \Cref{lem:type_13}, it follows that $G[N_a]$ is split. Let $(S,K)$ be a
+    split partition of $N_a$ where $K$ is either empty or a maximal nontrivial
+    clique.
 
     Notice $S$ is anticomplete to $N_{ac}$ by \Cref{lem:anti_2}, so
     \[
@@ -3218,31 +3233,24 @@ At last, we prove the main theorem.
     \[
         N_{bd} \cup N_b \cup K \cup E_{ac} \cup \l{a,c}
     \]
-    is a cluster, noting that $K\cup \l{a}$ is a clique. If $E_{bd}$ is stable,
-    then it is clear that
+    is a cluster, noting that $K\cup \l{a}$ is a clique. Thus,
     \[
         \p{N_{ac} \cup S \cup E_{bd} \cup \l{b,d} , N_{bd} \cup N_b \cup K 
         \cup E_{ac} \cup \l{a,c}}
     \]
-    is a monopolar partition of $G$. If $E_{bd}$ is not stable, in particular is
-    not empty, so \Cref{lem:type_18} implies that $N_a$ is stable, so $S=N_a$
-    and $K=\varnothing$. Since $E_{bd}$ induces a graph that is both split and a
-    cluster, it consists of a disjoint union of a clique and a stable set. Let
-    $(S',K')$ be a split partition of $G[E_{bd}]$ such that $S'$ is anticomplete
-    to $K'$, with $K'$ a maximal nontrivial clique. As in the previous case,
-    recall that, if $K'$ is nonempty, then it is complete to a unique $x'\in
-    N_{bd}$ and it is anticomplete to $N_{bd}\setminus \l{x'}$. It follows that
+    is a monopolar partition of $G$. Otherwise, $G[E_{ac}]$ is split. If
+    $G[N_a]$ is a cluster, then we can proceed as in Case 2.2.1, getting the
+    monopolar partition of that case with the set $E_{bd}$ empty. Lastly, if
+    $G[N_a]$ is not a cluster, then by \Cref{lem:type_7} we have that $G[N_a]$
+    is split. As in Case 2.1.1, we have the partial monopolar partition
     \[
-        N_{ac} \cup N_a \cup S' \cup \l{b,d}
+        \p{N_{ac} \cup S \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup \l{a,c}},
     \]
-    is a stable set, while
+    except that in this case $E_{ac}$ is still left to be analyzed, and $N_b$ is
+    stable rather than just inducing a cluster. Recall that $E_{ac}$ induces a
+    cluster anticomplete to $N_{bd}$, $N_{b}$ $N_a$, so
     \[
-        N_{bd} \cup N_b \cup E_{ac} \cup K' \cup \l{a,c}
-    \]
-    is a cluster, so
-    \[
-        \p{N_{ac} \cup N_a \cup S' \cup \l{b,d} , N_{bd} \cup N_b \cup
-        E_{ac} \cup K' \cup \l{a,c}}
+        \p{N_{ac} \cup S \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup E_{ac} \cup \l{a,c}},
     \]
     is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_c4_case_2_2_2}).
