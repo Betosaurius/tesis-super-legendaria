@@ -592,8 +592,8 @@ The following claims are regarding completeness relations among sets.
 
             Meanwhile, if there is a vertex $x$ such that only one between $u$
             and $v$ is adjacent to it, say $v$, then $\p{u,v,x,a,d}$ is an
-            induced copy of $P_5$. We conclude that non-isolated vertices in
-            $N_Y$ are complete to $N_X$.
+            induced copy of $P_5$ (see \Cref{fig:type_11_2}).  We conclude that
+            non-isolated vertices in $N_Y$ are complete to $N_X$.
 
             \begin{figure}[htb!]
                 \centering
@@ -1172,8 +1172,8 @@ The upcoming result gives such information.
 \end{proof}
 
 Notice that we have not been able to ensure relations of completeness or
-anticompleteness for $N_\varnothing$. Nonetheless, the next lemma shows that
-there are still some useful facts.
+anticompleteness for $N_\varnothing$. Nonetheless, the next lemma shows that we
+can derive some useful facts.
 
 \begin{lemma}
     Let $G$ be a connected $(P_5,\text{house},C_5)$-free graph with an induced
@@ -1435,6 +1435,7 @@ there are still some useful facts.
                     adjacent to both $N_{abc}$ and $N_{ac}$.}
                 \label{fig:type_9}
             \end{figure}
+
             It follows that $N_\varnothing$ is anticomplete to at least one
             between $N_{abc}$ and $N_{ac}$. Since \Cref{lem:anti_1} ensures that
             $N_{abc}$, $N_{acd}$ and $N_{ac}$ are anticomplete to each other,
@@ -1445,8 +1446,8 @@ there are still some useful facts.
             and $N_{ac}$.
 
         \item Suppose without loss of generality that $X=\l{a,b,c}$. Let $u$ and
-            $v$ be adjacent vertices in $N_\varnothing$. If $\l{u,v}$ is
-            adjacent to $N_X$, then there is an $x\in N_X$ such that, by
+            $v$ be adjacent vertices in $N_\varnothing$. If $\l{u,v}$ is not
+            anticomplete to $N_X$, then there is an $x\in N_X$ such that, by
             \Cref{lem:type_8}, is adjacent to both $u$ and $v$. Thus,
             $\l{a,b,c,x,u,v}$ induces an $H_4$ (see \Cref{fig:type_10}). Hence,
             non-isolated vertices in $N_\varnothing$ are anticomplete to
@@ -1557,8 +1558,8 @@ $N_{abc}$, or all 3-bags are empty.
             \end{figure}
 
         \item If $x$, $x'$ and $x''$ are vertices in $N_a$ inducing a copy of
-            $P_3$, it follows that, by \Cref{lem:anti_3}, these three vertices
-            are nonadjacent to $b'$, so $\l{x,x',x'',a,b,b'}$ induces a copy of
+            $P_3$, then \Cref{lem:anti_3} implies that these three vertices are
+            nonadjacent to $b'$, so $\l{x,x',x'',a,b,b'}$ induces a copy of
             $H_4$. (see \Cref{fig:type_3bag_2}) Hence, $G[N_a]$ is a cluster.
             Analogously, $G[N_c]$ is a cluster.
 
@@ -2143,9 +2144,11 @@ $N_{abc}$, or all 3-bags are empty.
     \end{enumerate}
 \end{proof}
 
-If all 3-bags are empty, notice this must be true for each induced copy of $C_4$
-in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
-3-bag and proceed as in the other case. The following lemma uses this fact.
+If all 3-bags are empty, then the same must be true for each induced copy of
+$C_4$ in $G$, otherwise, one could find such a copy of $C_4$ along with its
+nonempty 3-bag and proceed as in the corresponding case. The following lemma
+uses this fact.   Notice that an induced copy of $C_4$ together with a vertex in
+a $3$-bag results in a graph isomorphic to $\overline{P_2 + P_3}$.
 
 \begin{lemma}
     Let $G$ be a connected $(P_5,\text{house},C_5, \overline{P_2 + P_3})$-free
@@ -2176,8 +2179,8 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
     \leavevmode \par
     \begin{enumerate}[label=(\roman*)]
         \item Suppose without loss of generality that $X=\l{a,c}$. Suppose $u$
-            and $v$ are adjacent vertices in $N_{X}$. Then, $\p{a,u,c,d,a}$ is a
-            $4$-cycle with a nonempty 3-bag, since $v\in N_{acu}$ (see
+            and $v$ are adjacent vertices in $N_{X}$. Hence, $\l{a,c,d,u,v}$
+            induces a copy of $\overline{P_2 + P_3}$ (see
             \Cref{fig:3_bags_empty}). It follows that $N_X$ is stable.
 
             \begin{figure}[htb!]
@@ -2244,9 +2247,9 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
             \end{figure}
 
             Meanwhile, if both $u$ and $v$ are adjacent to $w$, then
-            $\p{a,b,w,v,a}$ is a $4$-cycle with a nonempty $3$-bag, since $u\in
-            N_{avw}$ (see \Cref{fig:3_bags_empty_2}). Thus, non-isolated
-            vertices in $N_Y$ are anticomplete to $N_X$.
+            $\l{a,b,u,v,w}$ induces a copy of $\overline{P_2 + P_3}$ (see
+            \Cref{fig:3_bags_empty_2}). Thus, non-isolated vertices in $N_Y$ are
+            anticomplete to $N_X$.
 
             \begin{figure}[htb!]
                 \centering
@@ -2292,8 +2295,9 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
             while $y$ is adjacent to $y'$ and not adjacent to $x'$.
             Additionally, $x$ is not adjacent to $y$ by \Cref{lem:type_16},
             while $x'$ is not adjacent to $y'$ since they belong to different
-            connected components. Therefore, $\p{x',x,c,y,y'}$ is an induced
-            copy of $P_5$. (see \Cref{fig:3_bags_empty_3}).
+            connected components of $G[N_\varnothing]$. Therefore,
+            $\p{x',x,c,y,y'}$ is an induced copy of $P_5$. (see
+            \Cref{fig:3_bags_empty_3}).
             
             \begin{figure}[htb!]
                 \centering
@@ -2330,8 +2334,8 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
             $G[E_X]$ that they are not anticomplete to. Then, there is a vertex
             $x$ in $N_X$ that is complete to $E_X$. Moreover, if $u$ and $v$ are
             adjacent vertices in $E_X$, and there is a vertex $y$ in $N_X$
-            adjacent to both $u$ and $v$, then $\p{c,x,u,y,c}$ is an induced
-            copy of $C_4$ with a nonempty 3-bag, since $v\in N_{uxy}$ (see
+            (different from $x$) adjacent to both $u$ and $v$, then
+            $\l{c,u,v,x,y}$ induces a copy of $\overline{P_2 + P_3}$ (see
             \Cref{fig:3_bags_empty_4}).
 
             \begin{figure}[htb!]
@@ -2409,7 +2413,7 @@ in $G$, otherwise, one could find such a copy of $C_4$ along with its nonempty
             \end{figure}
         
         \item Suppose without loss of generality that $X=\l{a,c}$ and
-            $Y=\l{b,d}$. Let $u\in N_\varnothing$ be adjacent to $x$. By
+            $Y=\l{b,d}$. Let $u\in N_\varnothing$ be adjacent to $x \in N_X$. By
             \Cref{lem:type_8}, $u$ is not adjacent to $y\in N_Y$. Then, if $x$
             is not adjacent to $y$, we have that $\p{u,x,c,d,y}$ is an induced
             copy of $P_5$ (see \Cref{fig:3_bags_empty_7}). Therefore, $x$ is
