@@ -1762,10 +1762,10 @@ anticompleteness.
             Since $w$ is a vertex of $C$ and such a subgraph is not anticomplete
             to $z$, it follows that there is a $wz$-path $P$ of minimum length
             contained in $V_C\cup \l{z}$. Furthermore, $P$ is an induced
-            subgraph of $G$ since it is of minimum length. Let $w'$ be the last
-            vertex of $P$ (ordered from $w$ to $z$) adjacent to $x$. If $w'$ is
-            adjacent to $z$, then $\l{a,c,d,w',x,z}$ induces a copy of $H_4$
-            (see \Cref{fig:chordal_anti_2_bag}).
+            subgraph of $G$ since it is of minimum length. Let $w'$ be the
+            second to last vertex of $P$ (ordered from $w$ to $z$) adjacent to
+            $x$. If $w'$ is adjacent to $z$, then $\l{a,c,d,w',x,z}$ induces a
+            copy of $H_4$ (see \Cref{fig:chordal_anti_2_bag}).
 
             \begin{figure}[htb!]
                 \centering
@@ -1798,10 +1798,11 @@ anticompleteness.
             \end{figure}
 
             If $w'$ is not adjacent to $z$, notice that, by construction, the
-            subgraph defined by the $w'z$-path of $P$ has all its middle
-            vertices anticomplete to $x$ and $z$, and such $w'z$-path has length
-            at least 2 since $w'$ is not adjacent to $z$. Thus, the $w'z$-path,
-            along with $x$, induces a cylce of length at least 4 (see
+            subgraph defined by the $w'z$-path of $P$ has all its interior
+            vertices anticomplete to $x$ and, except from the second to last,
+            also anticomplete to $z$.  Such a $w'z$-path has length at least 2
+            since $w'$ is not adjacent to $z$. Thus, the $w'z$-path, along with
+            $x$, induces a cylce of length at least 4 (see
             \Cref{fig:chordal_anti_2_bag_2}). It follows that $N_X$ is
             anticomplete to $C$.
 
