@@ -4083,12 +4083,12 @@ names given to the sets.
             \draw (z) to (c);
             \draw (z) to (d);
             \draw (c) to (d);
-            \draw[double] (z) to (fit);
+            \draw[double] (z) to (K);
             \draw[double] (c) to (fit);
             \draw[double] (d) to (fit);
             \draw[double] (K) to (S');
             \draw[double] (K) to (K');
-            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+            \draw (I) to (K);
             \draw[dashed] (S') to (K');
             \draw[dashed] (Ecd) to (K);
         \end{tikzpicture}
@@ -4170,20 +4170,18 @@ names given to the sets.
             \draw (z) to (a);
             \draw (z) to (b);
             \draw (a) to (b);
-            \draw[double] (z) to (fit);
+            \draw[double] (z) to (K);
             \draw[double] (a) to (fit);
             \draw[double] (b) to (fit);
             \draw[double] (K) to (S');
             \draw[double] (K) to (K');
-            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+            \draw (I) to (K);
             \draw[dashed] (S') to (K');
             \draw[dashed] (Eab) to (K);
             \draw[double] (a) to (Na);
             \draw[double] (b) to (Nb);
-            \draw[decorate, decoration={snake, segment length=1.5mm, post
-            length=1mm, pre length=1mm}] (Na) to (K);
-            \draw[decorate, decoration={snake, segment length=1.5mm, post
-            length=1mm, pre length=1mm}] (Nb) to (K);
+            \draw (Na) to (K);
+            \draw (Nb) to (K);
         \end{tikzpicture}
         \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
     \end{figure}
@@ -4269,7 +4267,7 @@ names given to the sets.
             \draw[double] (K) to (S');
             \draw[double] (K) to (K');
             \draw[dashed] (S') to (K');
-            \draw[decorate, decoration={snake, segment length=1.5mm, post length=1mm, pre length=1mm}] (I) to (K);
+            \draw (I) to (K);
         \end{tikzpicture}
         \caption{Structure of $G$ monopolar chordal and $P_5$-free.}
     \end{figure}
