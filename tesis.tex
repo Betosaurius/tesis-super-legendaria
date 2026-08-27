@@ -99,6 +99,16 @@
   }
 }
 
+% Special dots
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
+
 
 % Ajuste de parametros en la pagina
 \usepackage{geometry}
