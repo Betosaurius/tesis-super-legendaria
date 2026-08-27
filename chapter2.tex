@@ -1095,8 +1095,8 @@ two types of $P_5$-free graphs with an induced copy of $2K_2$.
 
 \begin{lemma}
     \label{lem:chordal_connectedness}
-    Let $G$ be a $P_5$-free graph with an induced copy of a $2K_2$ having vertex
-    set $Z$. One of the following must be true:
+    Let $G$ be a connected $P_5$-free graph with an induced copy of a $2K_2$
+    having vertex set $Z$. One of the following must be true:
     \begin{enumerate}[label=(\roman*)]
         \item There is a vertex adjacent to both edges of $G[Z]$.
         \item There are adjacent vertices $x$ and $y$ with $x$ complete to the
@@ -1106,7 +1106,7 @@ two types of $P_5$-free graphs with an induced copy of $2K_2$.
 \end{lemma}
 
 \begin{proof}
-    Suppose (i) does not happen. Since $G$ is $P_5$-free, there exists a path of
+    Suppose (i) does not happen. Since $G$ is connected, there exists a path of
     minimum length, $P$, whose initial vertex is in $\l{a,b}$, its final vertex
     is in $\l{c,d}$, and all middle vertices are not in $Z$. Since (i) is not
     true, such a path has at least 4 vertices. Moreover, if it has at least $5$
@@ -1156,7 +1156,7 @@ and 3-bags, respectively.
 \begin{lemma}
     \label{lem:neighborhoods_chordal_anti}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ having $Z$ as vertex set and free of the graphs depicted in
+    $2K_2$ having vertex set $Z$ and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different proper
     subsets of $Z$.
     \begin{lemenum}
@@ -1234,7 +1234,7 @@ The upcoming lemma deals with the structure within exact neighborhoods.
 \begin{lemma}
     \label{lem:neighborhoods_chordal_types}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ with $Z$ as vertex set and free of the graphs depicted in
+    $2K_2$ having vertex set $Z$ and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different
     subsets of $Z$.
     \begin{lemenum}
@@ -1578,7 +1578,7 @@ anticompleteness.
 
 \begin{lemma}
     Let $G$ be a connected chordal $P_5$-free graph with and induced copy of
-    $2K_2$ having $Z$ as vertex set and free of the graphs depicted in
+    $2K_2$ having vertex set $Z$ and free of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. Let $X$ and $Y$ be different
     nonempty proper subsets of $Z$. Suppose that $N_Z=\l{z}$.
     \begin{lemenum}
@@ -1589,8 +1589,9 @@ anticompleteness.
             $N_\varnothing$ is anticomplete to $N_X \setminus N(z)$. In
             particular, 1-bags are anticomplete to $N_\varnothing$.
             \label{lem:chordal_anti_5}
-        \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $N_X$ is
-            anticomplete to $N_\varnothing \cap N(z)$.
+        \item Let $C$ be a connected comoponent of $N_\varnothing$ not
+            anticomplete to $z$. If $N_X$ is a 2-bag complete to an edge of
+            $G[Z]$, then $N_X$ is anticomplete to $C$.
             \label{lem:chordal_anti_2_bag}
         \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, and $N_Y$ is a
             1-bag, then $N_Y$ is anticomplete to $N_X \setminus N(z)$.
@@ -1754,12 +1755,17 @@ anticompleteness.
             \end{figure}
 
         
-        \item Suppose without loss of generality that $X=\l{a,b}$. If $x\in N_X$
-            is adjacent to a vertex $w\in N_\varnothing \cap N(z)$, then $x$ is
-            adjacent to $z$ by \Cref{lem:chordal_anti_5}. Hence,
-            $\l{a,c,d,w,x,z}$ induces a copy of $H_4$ (see
-            \Cref{fig:chordal_anti_2_bag}). It follows that $N_X$ is
-            anticomplete to $N_\varnothing \cap N(z)$.
+        \item Suppose without loss of generality that $X=\l{a,b}$. Suppose $C$
+            is not anticomplete to $N_X$ and let $w\in V_C$ be adjacent to $x\in
+            N_X$. By \Cref{lem:chordal_anti_5}, $x$ is adjacent to $z$.
+
+            Since $w$ is a vertex of $C$ and such a subgraph is not anticomplete
+            to $z$, it follows that there is a $wz$-path $P$ of minimum length
+            contained in $V_C\cup \l{z}$. Furthermore, $P$ is an induced
+            subgraph of $G$ since it is of minimum length. Let $w'$ be the last
+            vertex of $P$ (ordered from $w$ to $z$) adjacent to $x$. If $w'$ is
+            adjacent to $z$, then $\l{a,c,d,w',x,z}$ induces a copy of $H_4$
+            (see \Cref{fig:chordal_anti_2_bag}).
 
             \begin{figure}[htb!]
                 \centering
@@ -1787,8 +1793,48 @@ anticompleteness.
                     \draw (w) to (v);
                 \end{tikzpicture}
                 \caption{An induced copy of $H_4$ given that $N_X$ is not
-                    anticomplete to $N_\varnothing \cap N(z)$.}
+                    anticomplete to $C$.}
                 \label{fig:chordal_anti_2_bag}
+            \end{figure}
+
+            If $w'$ is not adjacent to $z$, notice that, by construction, the
+            subgraph defined by the $w'z$-path of $P$ has all its middle
+            vertices anticomplete to $x$ and $z$, and such $w'z$-path has length
+            at least 2 since $w'$ is not adjacent to $z$. Thus, the $w'z$-path,
+            along with $x$, induces a cylce of length at least 4 (see
+            \Cref{fig:chordal_anti_2_bag_2}). It follows that $N_X$ is
+            anticomplete to $C$.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (w) at (0,1.5) {};
+                    \node (x) [right=0.75 of b] {};
+                    \node (y) [below=1 of x] {};
+                    \node[Label] at ($(0,0) - (x)$) {};
+            
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (w) to (b);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (a);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (w) to (a);
+                    \draw (v) to (y);
+                    \draw (w) to (x);
+                    \draw (w) to (v);
+                    \draw[loosely dotted, line width=0.75pt] (x) to (y);
+                \end{tikzpicture}
+                \caption{An induced copy of a cycle of length at least $4$ given
+                    that $N_X$ is not anticomplete to $C$.}
+                \label{fig:chordal_anti_2_bag_2}
             \end{figure}
         
         \item Suppose without loss of generality that $X=\l{a,b}$. If $N_Y$ is
