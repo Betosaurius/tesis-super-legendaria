@@ -1075,18 +1075,17 @@ for.
     \end{figure}
 \end{proof}
 
-Having indentified the minimal obstructions, we devote ourselves to proving that
-these are all minimal obstructions. For that purpose we turn to split graphs
-which are those whose vertex set can be partitioned into a stable set and a
-clique. In particular, split graphs are monopolar. Since split graphs are
-exactly the $\l{2K_2, C_4, C_5}$-free graphs, it follows that a chordal graph is
-split if and only if it is $2K_2$-free. In \cite{heggernesNJC14,hellDAM141},
-linear-time certifying algorithms for recognizing split graphs are shown. Thus,
-given a chordal graph, one can run such an algorithm to decide whether the graph
-is split, which in turn implies the graph is monopolar, or get a $2K_2$ as a
-certificate of non-membership. Therefore, to solve \textsc{Monopolarity} in
-chordal graphs, it suffices to solve it for those graphs that contain an induced
-copy of $2K_2$. 
+Having identified the minimal obstructions, we devote ourselves to proving that
+these are all. For that purpose we turn to split graphs which are those whose
+vertex set can be partitioned into a stable set and a clique. In particular,
+split graphs are monopolar. Since split graphs are exactly the $\l{2K_2, C_4,
+C_5}$-free graphs, it follows that a chordal graph is split if and only if it is
+$2K_2$-free. In \cite{heggernesNJC14,hellDAM141}, linear-time certifying
+algorithms for recognizing split graphs are shown. Thus, given a chordal graph,
+one can run such an algorithm to decide whether the graph is split, which in
+turn implies the graph is monopolar, or get a $2K_2$ as a certificate of
+non-membership. Therefore, to solve \textsc{Monopolarity} in chordal graphs, it
+suffices to solve it for those graphs that contain an induced copy of $2K_2$. 
 
 Throughout the rest of this section, we assume that the graphs have an induced
 copy of $2K_2$, whose vertex set is $Z=\l{a,b,c,d}$ and it is such that $ab$ and
@@ -2345,8 +2344,8 @@ Now we are ready to prove the main theorem.
 
 \begin{proof}
     Since monopolarity is hereditary, it follows from
-    \Cref{prop:minimal_obs_chordal} that $G$ does not contain any of the
-    mentioned graphs as an induced subgraph.
+    \Cref{prop:minimal_obs_chordal} that if $G$ is monopolar, then it does not
+    contain any of the mentioned graphs as an induced subgraph.
 
     Suppose that $G$ does not contain any of the graphs depicted in
     \Cref{fig:chordal-p5-free-obstructions}. We proceed by considering the
@@ -2445,104 +2444,21 @@ Now we are ready to prove the main theorem.
         \label{fig:empty_component}
     \end{figure}
     
-    By \Cref{lem:chordal_anti_5}, $N_{ab}\setminus K_{ab}$ is anticomplete to
-    $V_C$ for $C\in \mathcal{C}$. Furthermore, \Cref{lem:chordal_anti_2_bag_2}
-    implies that $N_{ab}\setminus K_{ab}$ is anticomplete to both $N_a$ and
-    $N_b$. Once more, we proceed by taking the following subcases:
-    
-    \paragraph{Case 1.1.1: $N_{ab}\setminus K_{ab}$ is stable.} Aforementioned
-    arguments imply that
-    \[ 
-        \p{N_{ab}\setminus K_{ab}} \cup N_a \cup N_b \bigcup_{C\in\mathcal{C}
-        \setminus \mathcal{C}_z} V_C \cup \l{z}
-    \]
-    is stable, so
-    \[
-        \p{\p{N_{ab}\setminus K_{ab}} \cup N_a \cup N_b \bigcup_{C\in\mathcal{C}
-        \setminus \mathcal{C}_z} V_C \cup \l{z} , 
-        K_{ab} \cup K_{cd} \bigcup_{C\in \mathcal{C}_z} V_{C_z} \cup Z}
-    \]
-    is a monopolar partition of $G$  (see
-    \Cref{fig:monopolar_partition_chordal_1}).
-
-    \begin{figure}[htb!]
-        \centering
-        \begin{tikzpicture}[every node/.style={vertex}, node
-            distance=1cm, on grid, edge]
-            \node (v) {};
-            \node[above left=1cm and 0.75cm of v] (a) {};
-            \node[above right=1cm and 0.75cm of v] (b) {};
-            \node[below left=1cm and 0.75cm of v] (c) {};
-            \node[below right=1cm and 0.75cm of v] (d) {};
-            \node (cd) at (0,-1.5) {};
-            \node (ab1) at (0,1.5) {};
-            \node (ab2) at ($(b) + (-0.25,1.5)$) {};
-            \node (ab3) at ($(a) + (0.25,1.5)$) {};
-            \node (a') at ($(a) + (120:1)$) {};
-            \node (b') at ($(b) + (60:1)$) {};
-            \node (v1) at ($(v) + (1,0)$) {};
-            \node (v2) at ($(v1) + (30:0.75)$) {};
-            \node (v3) at ($(v1) + (-30:0.75)$) {};
-            \node (e) at (0,3) {};
-            \node [Label] at ($(0,0) - (v2)$) {};
-
-            \draw (a) to (b);
-            \draw (v) to (a);
-            \draw (v) to (b);
-            \draw (v) to (c);
-            \draw (v) to (d);
-            \draw (c) to (d);
-            \draw (c) to (cd);
-            \draw (d) to (cd);
-            \draw (v) to (cd);
-            \draw (a) to (ab1);
-            \draw (b) to (ab1);
-            \draw (v) to (ab1);
-            \draw (a) to (ab2);
-            \draw (b) to (ab2);
-            \draw (a) to (ab3);
-            \draw (b) to (ab3);
-            \draw (ab2) to (ab1);
-            \draw (a') to (a);
-            \draw (b') to (b);
-            \draw (a') to (ab1);
-            \draw (v) to (v1);
-            \draw (v) to (v2);
-            \draw (v) to (v3);
-            \draw (v1) to (v2);
-            \draw (v1) to (v3);
-            \draw (v2) to (v3);
-            \draw (ab1) to (e);
-
-            \begin{scope}[on background layer, scale=1.5]
-                \draw[fill=red!20, draw=none] \convexpath{c,d,cd}{3.5pt};
-                \draw[fill=red!20, draw=none] \convexpath{v1,v2,v3}{3.5pt};
-                \draw[fill=red!20, draw=none] \convexpath{ab1, b, a}{3.5pt};
-                \draw[fill=blue!20, draw=none] \convexpath{ab2, ab3}{3.5pt};
-                \node[fit= (v), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (a'), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (b'), inner sep=0.5pt, draw=none, fill=blue!20] {};
-                \node[fit= (e), inner sep=0.5pt, draw=none, fill=blue!20] {};
-            \end{scope}
-        \end{tikzpicture}
-        \caption{A monopolar partition of $G$.}
-        \label{fig:monopolar_partition_chordal_1}
-    \end{figure}
-
-    \paragraph{Case 1.1.2: $N_{ab}\setminus K_{ab}$ is not stable.} Observe that
-    $G[N_{ab} \setminus K_{ab}]$ is split by \Cref{lem:chordal_types_6}, so let
-    $(S'_{ab},K'_{ab})$ be a split partition of it, where $K'_{ab}$ is a maximal
-    clique. As in the previous subcase, we already have that
+    Observe that $G[N_{ab} \setminus K_{ab}]$ is split by
+    \Cref{lem:chordal_types_6}, so let $(S'_{ab},K'_{ab})$ be a split partition
+    of it, where $K'_{ab}$ is either empty or a maximal nontrivial clique. By
+    \Cref{lem:chordal_anti_5}, $N_{ab}\setminus K_{ab}$ is anticomplete to $V_C$
+    for $C\in \mathcal{C}$. Furthermore, \Cref{lem:chordal_anti_2_bag_2} implies
+    that $N_{ab}\setminus K_{ab}$ is anticomplete to both $N_a$ and $N_b$. Thus,
     \[
         S'_{ab} \cup N_a \cup N_b \cup \bigcup_{C\in\mathcal{C}\setminus 
         \mathcal{C}_z} V_C \cup  \l{z}
     \]
-    is stable. Furthermore, since $N_{ab}\setminus K_{ab}$ is not stable and
-    $K'_{ab}$ is maximal, it follows that $K'_{ab}$ contains at least two
-    vertices. Therefore, by \Cref{lem:chordal_comp_2}, $K'_{ab}$ is complete to
-    $K_{ab}$. Additionally, \Cref{lem:chordal_anti_3} implies that $K'_{ab}$ is
-    anticomplete to $K_{cd}$. Since we have already stated that $N_{ab}\setminus
-    K_{ab}$ is anticomplete to $V_C$ for $C\in \mathcal{C}$, we have that
+    is stable. If $K'_{ab}$ is nonempty, then it is nontrivial. Therefore, by
+    \Cref{lem:chordal_comp_2}, $K'_{ab}$ is complete to $K_{ab}$. Additionally,
+    \Cref{lem:chordal_anti_3} implies that $K'_{ab}$ is anticomplete to
+    $K_{cd}$. Since we have already stated that $N_{ab}\setminus K_{ab}$ is
+    anticomplete to $V_C$ for $C\in \mathcal{C}$, we have that
     \[
         K_{ab} \cup K'_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} 
         V_{C_z} \cup Z
@@ -2646,15 +2562,9 @@ Now we are ready to prove the main theorem.
     
     Also, every claim from the previous subcase regarding $N_{ab}$ still hold in
     this case for $N_{cd}$, since every lemma used works for any 2-bag complete
-    to an edge of $G[Z]$. Hence, if $N_{cd}\setminus K_{cd}$ is stable, then
-    \[
-        \p{\p{N_{cd}\setminus K_{cd}} \cup \bigcup_{C\in\mathcal{C}\setminus 
-        \mathcal{C}_z} V_C \cup \l{z} , K_{ab} \cup K_{cd} \cup \bigcup_{C\in 
-        \mathcal{C}_z} V_{C_z} \cup Z}
-    \]
-    is a monopolar partition of $G$, whereas if $N_{cd}\setminus K_{cd}$ is not
-    stable, then we use its split partition $(S'_{cd},K'_{cd})$ with $K'_{cd}$ a
-    maximal clique, to obtain that
+    to an edge of $G[Z]$. Hence, if $(S'_{cd},K'_{cd})$ is a split partition of
+    $N_{cd}\setminus K_{cd}$ with $K'_{cd}$ either empty or a maximal nontrivial
+    clique, then
     \[
         \p{S_{cd} \cup \bigcup_{C\in\mathcal{C}\setminus 
         \mathcal{C}_z} V_C \cup \l{z} , K_{ab} \cup K_{cd} \cup K'_{cd} \cup 
@@ -2666,22 +2576,19 @@ Now we are ready to prove the main theorem.
     immediate that $N_{ab}=K_{ab}$ and $N_{cd}=K_{cd}$, so we only need to
     check how to partition the sets $V_{C-C_z}$ for each $C\in \mathcal{C}_z$.
     
-    Let $\mathcal{C}_{C,0}$ be the set of connected components of $C-C_z$ that
-    are trivial. Similarly, let $\mathcal{C}_{C,1}$ be the set of connected
-    components of $C-C_z$ that are not trivial. Recall that, by
-    \Cref{lem:chordal_anti_5}, $V_C$ is anticomplete to both $N_a$ and $N_b$.
-    Thus,
+    Let $I_C$ be the set of vertices in trivial connected components of $C-C_z$.
+    Recall that, by \Cref{lem:chordal_anti_5}, $V_C$ is anticomplete to both
+    $N_a$ and $N_b$. Thus,
     \[
         N_a \cup N_b \cup \bigcup_{C\in \mathcal{C} \setminus \mathcal{C}_z} 
-        V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in \mathcal{C}_{C,0}}
-        V_D} \cup \l{z}
+        V_C \cup \bigcup_{C\in \mathcal{C}_z} I_C \cup \l{z}
     \]
-    is stable. Let $D\in \mathcal{C}_{C,1}$. Since $C$ is connected, there is a
-    connected component of $C_z$, $D_z$, to which $D$ is not anticomplete to.
-    Let $x\in V_{D}$ and $y\in V_{D_z}$ be adjacent vertices. If there is a
-    vertex $w\in V_{C_z}$ not adjacent to $y$ and adjacent to $x$, then
-    $\p{w,x,y,z,w}$ is an induced copy of $C_4$ (see
-    \Cref{fig:more_than_one_component}).
+    is stable. Let $D$ be a connected component of $C-C_z-I_C$ --- notice that
+    $D$ is nontrivial. Since $C$ is connected, there is a connected component of
+    $C_z$, $D_z$, to which $D$ is not anticomplete to. Let $x\in V_{D}$ and
+    $y\in V_{D_z}$ be adjacent vertices. If there is a vertex $w\in V_{C_z}$ not
+    adjacent to $y$ and adjacent to $x$, then $\p{w,x,y,z,w}$ is an induced copy
+    of $C_4$ (see \Cref{fig:more_than_one_component}).
 
     \begin{figure}[htb!]
         \centering
@@ -2788,13 +2695,13 @@ Now we are ready to prove the main theorem.
         \label{fig:D_complete_y}
     \end{figure}
 
-    Finally, we claim that $D$ is the unique component in $\mathcal{C}_{C,1}$.
-    If there was another component, $D'$, the two previous claims imply that
-    there is a unique component $D_z'$ of $C_z$ to which $D'$ is complete. Since
-    $D'$ is nontrivial and connected, there are adjacent vertices $x'$ and $w'$
-    of $D'$. Similarly, let $x$ and $w$ be adjacent vertices of $D$. On the one
-    hand, if $D_z$ happens to be $D_z'$, then if $y$ is a vertex of $D_z$, it
-    follows that $\l{a,b,z,c,d,y,x,w,x',w'}$ induces a copy of $H_5$ (see
+    Finally, we claim that $D$ is the unique component of $C-C_z-I_C$. If there
+    was another component, $D'$, the two previous claims imply that there is a
+    unique component $D_z'$ of $C_z$ to which $D'$ is complete. Since $D'$ is
+    nontrivial and connected, there are adjacent vertices $x'$ and $w'$ of $D'$.
+    Similarly, let $x$ and $w$ be adjacent vertices of $D$. On the one hand, if
+    $D_z$ happens to be $D_z'$, then if $y$ is a vertex of $D_z$, it follows
+    that $\l{a,b,c,d,w,w',x,x',y,z}$ induces a copy of $H_5$ (see
     \Cref{fig:D_unique_1}).
 
     \begin{figure}[htb!]
@@ -2876,10 +2783,10 @@ Now we are ready to prove the main theorem.
         \label{fig:D_unique_2}
     \end{figure}
 
-    Furthermore, we claim that $G[D]$ is split. If that was not the case, there
-    is an induced copy of $2K_2$ in $D$. Let $w$ and $x$ be adjacent vertices of
+    Furthermore, we claim that $D$ is split. If that was not the case, there is
+    an induced copy of $2K_2$ in $D$. Let $w$ and $x$ be adjacent vertices of
     $D$ and anticomplete to adjacent vertices $w'$ and $x'$ of $D$. If $y$ is a
-    vertex of $D_z$, then we have that $\l{a,b,z,c,d,y,w,x,w',x'}$ induces a
+    vertex of $D_z$, then we have that $\l{a,b,c,d,w,w',x,x',y,z}$ induces a
     copy of $H_5$ (see \Cref{fig:C-C_v_split}).
     
     \begin{figure}[htb!]
@@ -2912,22 +2819,23 @@ Now we are ready to prove the main theorem.
             \draw (y) to (y');
             \draw (v) to (w);
         \end{tikzpicture}
-        \caption{An induced copy of $H_5$ given that a component in
-        $\mathcal{C}_{C,1}$ is not split.}
+        \caption{An induced copy of $H_5$ given that $D$ is not split.}
         \label{fig:C-C_v_split}
     \end{figure}
 
-    Thus, $G[D]$ is split, so let $(S_D,K_D)$ be a split partition of $V_D$ such
+    Thus, $D$ is split, so let $(S_D,K_D)$ be a split partition of $V_D$ such
     that $K_D$ is either empty or a nontrivial maximal clique. Recall that $D$
-    is complete to $D_z$, so $K_D \cup V_{D_z}$ is a clique. Moreover, since $D$
-    is anticomplete to all other connected components of $C_z$, it follows that
+    is complete to $D_z$, so $K_D \cup V_{D_z}$ is a clique and $D$ is
+    anticomplete to all other connected components of $C_z$. Finally, for each
+    $C\in \mathcal{C}_z$, denote by $D(C)$ the unique nontrivial connected
+    component of $C-C_z$, if it exists. By \Cref{lem:chordal_anti_2_bag}, each
+    $K_{D(C)}$ is anticomplete to $K_{ab}$ and $K_{cd}$, so it follows that
     \begin{align*}
         \Bigg(& N_a \cup  N_b \cup \bigcup_{C\in \mathcal{C}\setminus 
-        \mathcal{C}_z} V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{\bigcup_{D\in 
-        \mathcal{C}_{C,0}} V_D \cup \bigcup_{D\in \mathcal{C}_{C,1}} S_D} \cup 
-        \l{z}, \\ 
-        & K_{ab} \cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup 
-        \bigcup_{D\in \mathcal{C}_{C,1}} K_D} \cup Z \Bigg)
+        \mathcal{C}_z} V_C \cup \bigcup_{C\in \mathcal{C}_z} \p{I_C \cup
+        S_{D(C)}} \cup \l{z},\\
+        & K_{ab}\cup K_{cd} \cup \bigcup_{C\in \mathcal{C}_z} \p{V_{C_z} \cup
+        K_{D(C)}} \cup Z \Bigg)
     \end{align*}
     is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_chordal_3})
@@ -3685,9 +3593,9 @@ This phenomenon happens because the exact neighborhoods of the induced copy of
 the $2K_2$ have enough \textit{nice} properties so that they bypass every check
 for $P_5$ in the algorithm. In particular, the induced copy of $P_5$ in
 \Cref{fig:variant_chordal_1} arises from both $\mathcal{C}\setminus
-\mathcal{C}_z$ and $\mathcal{C}_{C,1}$ being nonempty for a $C\in\mathcal{C}_z$.
-Notice that this relies heavily on the copy of $2K_2$ that the algorithm decides
-to work on, since another choice for it could make the procedure detect a $P_5$.
+\mathcal{C}_z$ and $C-C_z-I_C$ being nonempty for a $C\in\mathcal{C}_z$. Notice
+that this relies heavily on the copy of $2K_2$ that the algorithm decides to
+work on, since another choice for it could make the procedure detect a $P_5$.
 
 In order to avoid this ``nondeterministic'' aspect of our algorithm, we would
 like to recognize, even after finding a monopolar partition, if the graph is
@@ -3724,7 +3632,7 @@ will be either
 The next lemmas give us the properties we are looking for.
 
 \begin{lemma}
-    Let $G$ be a monopolar chordal graph with an induced copy of $2K_2$ with
+    Let $G$ be a monopolar chordal graph with an induced copy of $2K_2$ having
     vertex set $Z=\l{a,b,c,d}$ and edge set $\l{ab,cd}$. Suppose $N_Z$ is
     nonempty and let $z\in N_Z$. Suppose without loss of generality that $N_{c}$
     and $N_{d}$ are empty. The following holds:
@@ -3874,7 +3782,55 @@ The next lemmas give us the properties we are looking for.
                 \label{fig:chordal_anti_6_2}
             \end{figure}
 
-        \item
+        \item Suppose both $E_{ab}\cup E_{cd}$ and $\bigcup_{C\in\mathcal{C}_z}
+            V_{C-C_z}$ are nonempty. Suppose without loss of generality that
+            $E_{ab}$ is nonempty and let $w\in E_{ab}$ be adjacent to $x\in
+            N_{ab}$. Let $C\in \mathcal{C}_z$ be such that $V_{C-C_z}$ is
+            nonempty. 
+            
+            On the one hand, by \Cref{lem:chordal_anti_5}, $x$ is adjacent to
+            $z$, while \Cref{lem:chordal_anti_2_bag} implies that $w$ is not
+            adjacent to $z$. On the other hand, since $C$ is connected, there
+            must be a vertex $y$ of $C_z$ adjacent to a vertex $y'$ of $C-C_z$.
+            Once more, \Cref{lem:chordal_anti_2_bag} implies that $\l{y,y'}$ is
+            anticomplete to $\l{w,x}$. Thus, $\p{w,x,z,y,y'}$ is an induced copy
+            of $P_5$ (see \Cref{fig:additional_1}). It follows that at least one
+            of $E_{ab}\cup E_{cd}$ and $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$
+            is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (z) {};
+                    \node[above left=1cm and 0.75cm of z, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of z, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+                    \node (w) at (0.75,-0.5) {};
+                    \node (w') at (0.75,0.5) {};
+                    \node (x) at (0,1.5) {};
+                    \node (x') at (0.75,1.5) {};
+
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (z) to (b);
+                    \draw[lightgray] (z) to (c);
+                    \draw[lightgray] (z) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (x) to (b);
+                    \draw[lightgray] (a) to (x);
+                    \draw[lightgray] (z) to (a);
+                    \draw (z) to (x);
+                    \draw (w') to (z);
+                    \draw (w') to (w);
+                    \draw (x') to (x);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that both $E_{ab}\cup
+                    E_{cd}$ and $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ are
+                    nonempty.}
+                \label{fig:additional_1}
+            \end{figure}
+            
 
         \item Suppose without loss of generality that $N_X$ is anticomplete to
             $cd$ and $a\in N_X$, so $Y=\l{c,d}$. Let $x\in N_X\setminus N(z)$
@@ -3919,7 +3875,47 @@ The next lemmas give us the properties we are looking for.
                 \label{fig:additional_4}
             \end{figure}
         
-        \item
+        \item Suppose both $N_{a}\cup N_{b}$ and $\bigcup_{C\in\mathcal{C}_z}
+            V_{C-C_z}$ are nonempty. Suppose without loss of generality that
+            $N_a$ is nonempty and let $x\in N_a$. Let $C\in \mathcal{C}_z$
+            be such that $V_{C-C_z}$ is nonempty. 
+            
+            On the one hand, since $C$ is connected, there must be a vertex $y$
+            of $C_z$ adjacent to a vertex $y'$ of $C-C_z$. On the other, by
+            \Cref{lem:chordal_anti_1}, $x$ is not adjacent to $z$, while
+            \Cref{lem:chordal_anti_5} implies that $x$ is anticomplete to
+            $\l{y,y'}$. Hence, $\p{x,a,z,y,y'}$ is an  induced copy of $P_5$.
+            (see \Cref{fig:additional_3}). Therefore, at least one of $N_{a}\cup
+            N_{b}$ and $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ is empty.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (z) {};
+                    \node[above left=1cm and 0.75cm of z] (a) {};
+                    \node[above right=1cm and 0.75cm of z, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of z, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of z, lightgray] (d) {};
+                    \node (w) at (0.75,-0.5) {};
+                    \node (w') at (0.75,0.5) {};
+                    \node (x) at (-0.75,1.5) {};
+
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (z) to (b);
+                    \draw[lightgray] (z) to (c);
+                    \draw[lightgray] (z) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw (a) to (x);
+                    \draw (z) to (a);
+                    \draw (w') to (z);
+                    \draw (w') to (w);
+                \end{tikzpicture}
+                \caption{An induced copy of $P_5$ given that both $N_{a}\cup
+                    N_{b}$ and $\bigcup_{C\in\mathcal{C}_z} V_{C-C_z}$ are
+                    nonempty.}
+                \label{fig:additional_3}
+            \end{figure}
 
         \item Suppose $C$ and $C'$ are components in $\mathcal{C}_z$ such that
             both $V_{C-C_z}$ and $V_{C'-C'_z}$ are nonempty. Then, there are
@@ -3963,8 +3959,55 @@ The next lemmas give us the properties we are looking for.
                 \label{fig:additional_2}
             \end{figure}
 
-        \item 
-            
+        \item Suppose $C_z$ is not a complete graph and let $x$ and $y$ be
+            nonadjacent vertices of $C_z$. Since $C$ is connected, there must be
+            an $xy$-path $P$ of mininum length contained in $C$. By
+            \Cref{lem:chordal_types_K_cluster}, $C_z$ is a cluster, so $x$ not
+            being adjacent to $y$ implies that they belong to different
+            connected components of $C_z$. Thus, $P$ must have vertices of
+            $C-C_z$. Let $w$ be the first vertex of $P$ in $V_{C-C_z}$, and let
+            $x'$ be the vertex of $P$ preceeding $w$--- notice that $x'$ is not
+            adjacent to $y$. Let $y$ be the first vertex of $P$ in $V_{C_z}$
+            after $w$, and let $w'$ be the vertex of $P$ preceeding $y'$.
+            Observe that $y'$ is not adjacent to $x'$ since $P$ is of minimum
+            length, and the same reason implies that the $ww'$-path contained in
+            $P$ is induced. By construction, such a $ww'$-path is anticomplete
+            to $z$ and has at least one vertex ($w$ may be $w'$). Thus, such a
+            path, alogn with $\l{x',y',z}$, is an induced cycle of length at
+            least $4$ (see \Cref{fig:additional_5}). We conclude that $C_z$ is a
+            complete graph.
+
+            \begin{figure}[htb!]
+                \centering
+                \begin{tikzpicture}[every node/.style={vertex}, node
+                    distance=1cm, on grid, edge]
+                    \node (v) {};
+                    \node[above left=1cm and 0.75cm of v, lightgray] (a) {};
+                    \node[above right=1cm and 0.75cm of v, lightgray] (b) {};
+                    \node[below left=1cm and 0.75cm of v, lightgray] (c) {};
+                    \node[below right=1cm and 0.75cm of v, lightgray] (d) {};
+                    \node (x) at (30:1.25) {};
+                    \node (w) at (-30:1.25) {};
+                    \node (y) at ($(x) + (0.75,0)$) {};
+                    \node (y') at ($(w) + (0.75,0)$) {};
+                    \node[Label] at ($(0,0) - (y)$) {};
+
+                    \draw[lightgray] (a) to (b);
+                    \draw[lightgray] (v) to (b);
+                    \draw[lightgray] (v) to (c);
+                    \draw[lightgray] (v) to (d);
+                    \draw[lightgray] (c) to (d);
+                    \draw[lightgray] (v) to (a);
+                    \draw (v) to (w);
+                    \draw (v) to (x);
+                    \draw (y) to (x);
+                    \draw (y') to (w);
+                    \path (y) -- node[draw=none,fill=none] {\rvdots} (y');
+                \end{tikzpicture}
+                \caption{An induced cycle of length at least $4$, given that
+                    $C_z$ is not a complete graph.}
+                \label{fig:additional_5}
+            \end{figure}
     \end{enumerate}
 \end{proof}
 
@@ -3978,7 +4021,7 @@ either $P_5$, $C_4$ or $C_5$. We refer to the proof of that theorem for the
 names given to the sets.
 
 \begin{theorem}
-    \todo{esto}
+    If $G$ is a connected monopolar graph that satisfy $(P_5,\text{house})$-free graph 
 \end{theorem}
 
 \begin{proof}
