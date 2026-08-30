@@ -3217,7 +3217,10 @@ At last, we prove the main theorem.
         \p{N_{ac} \cup N_a \cup S  \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup E_{ac}
         \cup \l{a,c}}
     \]
-    is a split partition of $G$. Therefore, consider $E_{bd}$ to be empty.
+    is a split partition of $G$ (see
+    \Cref{fig:monopolar_partition_c4_case_2_2_1} for a representation of the
+    last two partitions, since they are identical under a relabeling of the
+    vertices of the $4$-cycle). Therefore, consider $E_{bd}$ to be empty.
 
     Suppose that $G[E_{ac}]$ is not split. As in the beginning of the previous
     case, $\p{a,b,c,x,a}$ is an induced copy of $C_4$, with $E_{ac}$
@@ -3239,22 +3242,8 @@ At last, we prove the main theorem.
     \]
     is a cluster, noting that $K\cup \l{a}$ is a clique. Thus,
     \[
-        \p{N_{ac} \cup S \cup E_{bd} \cup \l{b,d} , N_{bd} \cup N_b \cup K 
+        \p{N_{ac} \cup S \cup \l{b,d} , N_{bd} \cup N_b \cup K 
         \cup E_{ac} \cup \l{a,c}}
-    \]
-    is a monopolar partition of $G$. Otherwise, $G[E_{ac}]$ is split. If
-    $G[N_a]$ is a cluster, then we can proceed as in Case 2.2.1, getting the
-    monopolar partition of that case with the set $E_{bd}$ empty. Lastly, if
-    $G[N_a]$ is not a cluster, then by \Cref{lem:type_7} we have that $G[N_a]$
-    is split. As in Case 2.1.1, we have the partial monopolar partition
-    \[
-        \p{N_{ac} \cup S \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup \l{a,c}},
-    \]
-    except that in this case $E_{ac}$ is still left to be analyzed, and $N_b$ is
-    stable rather than just inducing a cluster. Recall that $E_{ac}$ induces a
-    cluster anticomplete to $N_{bd}$, $N_{b}$ and $N_a$, so
-    \[
-        \p{N_{ac} \cup S \cup \l{b,d}, N_{bd} \cup N_b \cup K \cup E_{ac} \cup \l{a,c}},
     \]
     is a monopolar partition of $G$ (see
     \Cref{fig:monopolar_partition_c4_case_2_2_2}).
@@ -3270,20 +3259,15 @@ At last, we prove the main theorem.
                 \node (ac2) at (-45:0.75) {};
                 \node (bd1) at (45:0.75) {};
                 \node (bd2) at (-135:0.75) {};
-                \node (a1) at ($(0) + (135:0.5)$) {};
-                \node (a2) at ($(bd1) + (135:0.5)$) {};
-                \node (a3) at ($(0) + (-45:0.5)$) {};
-                \node (a4) at ($(bd1) + (-45:0.5)$) {};
+                \node (a1) at ($(0) + (-15:0.25)$) {};
+                \node (a2) at ($(0) + (45:0.25)$) {};
+                \node (a3) at ($(0) + (105:0.25)$) {};
                 \node (b1) at (-1,0.25) {};
                 \node (b2) at (-1,-0.25) {};
                 \node (eac2) at ($(ac1) + (-20:0.45)$) {};
                 \node (eac3) at ($(ac1) + (-35:0.65)$) {};
                 \node (eac4) at ($(ac1) + (-55:0.65)$) {};
                 \node (eac1) at ($(ac1) + (-70:0.45)$) {};
-                \node (ebd1) at ($(bd1) + (-100:0.5)$) {};
-                \node (ebd2) at ($(bd1) + (-115:0.75)$) {};
-                \node (ebd3) at ($(bd1) + (-130:0.5)$) {};
-                \node (ebd4) at ($(bd1) + (-165:0.4)$) {};
                 
                 \draw (0) to (1);
                 \draw (1) to (2);
@@ -3303,12 +3287,7 @@ At last, we prove the main theorem.
                 \draw (bd2) to (ac2);
                 \draw (0) to (a1);
                 \draw (0) to (a2);
-                \draw (bd1) to (a1);
-                \draw (bd1) to (a2);
                 \draw (0) to (a3);
-                \draw (0) to (a4);
-                \draw (bd1) to (a3);
-                \draw (bd1) to (a4);
                 \draw (b1) to (1);
                 \draw (b2) to (1);
                 \draw (b1) to (ac1);
@@ -3320,15 +3299,9 @@ At last, we prove the main theorem.
                 \draw (ac1) to (eac3);
                 \draw (ac1) to (eac4);
                 \draw (eac2) to (eac3);
-                \draw (bd1) to (ebd1);
-                \draw (bd1) to (ebd2);
-                \draw (bd1) to (ebd3);
-                \draw (bd1) to (ebd4);
-                \draw (ebd1) to (ebd2);
-                \draw (ebd2) to (ebd3);
-                \draw (ebd1) to (ebd3);
                 \draw (eac4) to (eac1);
-
+                \draw (a1) to (a2);
+                \draw (a3) to (a2);
             \end{scope}
 
             \begin{scope}[on background layer, scale=1.5]
@@ -3337,21 +3310,27 @@ At last, we prove the main theorem.
                 \node[fit = (1), draw=none, fill=blue!20, inner sep=0.5pt] {};
                 \node[fit = (3), draw=none, fill=blue!20, inner sep=0.5pt] {};
                 \node[fit = (a1), draw=none, fill=blue!20, inner sep=0.5pt] {};
-                \node[fit = (a2), draw=none, fill=blue!20, inner sep=0.5pt] {};
-                \node[fit = (a3), draw=none, fill=blue!20, inner sep=0.5pt] {};
-                \node[fit = (a4), draw=none, fill=blue!20, inner sep=0.5pt] {};
-                \node[fit = (ebd4), draw=none, fill=blue!20, inner sep=0.5pt] {};
                 \node[fit=(2), draw=none, fill=red!20, inner sep=0.5pt] {};
-                \node[fit=(0), draw=none, fill=red!20, inner sep=0.5pt] {};
                 \node[fit=(bd2), draw=none, fill=red!20, inner sep=0.5pt] {};
+                \node[fit=(bd1), draw=none, fill=red!20, inner sep=0.5pt] {};
                 \node[fit=(b1), draw=none, fill=red!20, inner sep=0.5pt] {};
                 \node[fit=(b2), draw=none, fill=red!20, inner sep=0.5pt] {};
                 \draw[fill=red!20, draw=none] \convexpath{eac1,eac4}{3.5pt};
                 \draw[fill=red!20, draw=none] \convexpath{eac2,eac3}{3.5pt};
-                \draw[fill=red!20, draw=none] \convexpath{ebd1,ebd2,ebd3,bd1}{3.5pt};
+                \draw[fill=red!20, draw=none] \convexpath{a3,a2,0}{3.5pt};
             \end{scope}
         \end{tikzpicture}
         \caption{A monopolar partition of $G$.}
         \label{fig:monopolar_partition_c4_case_2_2_2}
     \end{figure}
+    
+    Otherwise, $G[E_{ac}]$ is split. If $G[N_a]$ is a cluster, then we can
+    proceed as in Case 2.2.1, getting the monopolar partition of that case with
+    the set $E_{bd}$ empty. Lastly, if $G[N_a]$ is not a cluster, then by
+    \Cref{lem:type_7} we have that $G[N_a]$ is split. Hence, we can proceed as
+    with the previous monopolar partition given, since all we used was that
+    $E_{ac}$ induces a cluster and $N_a$ induces a split graph.
+
+    We conclude that $G$ is monopolar.
+    
 \end{proof}
