@@ -6,6 +6,65 @@
 \end{corollary}
 
 \begin{proposition}
-    The problem of decing whether a graph has a $(k,\infty)$-polar partition for
-    $k\geq 1$ is NP-complete.
+    The problem of deciding whether a graph has a $(k,\infty)$-polar partition
+    for $k\geq 1$ is NP-complete.
 \end{proposition}
+
+\begin{proof}
+    We proceed by induction. Recall that determining if a graph has a
+    $(1,\infty)$-polar partion is equivalent to deciding wheter $G$ is monopolar
+    or not, which is NP-complete.
+
+    Suppose that it is NP-complete to determine if a graph has a
+    $(k,\infty)$-polar partition. By means of a polynomial reduction, we proceed
+    to prove that the problem of deciding wheter a graph has a
+    $(k+1,\infty)$-polar partition is also NP-complete. Clearly this last
+    problem is NP, since a polynomial time verifier for this language receives
+    the input graph $G$ along with the $(k+1,\infty)$-polar partition of $G$,
+    $(A,B)$, if it exists. The process of verification searches for an induced
+    copy of either $K_2 + K_1$ or $K_{k+2}$ in $G[A]$, and searches for an
+    induced copy of $P_3$ in $G[B]$, which can be done in time $O(n^{k+2})$.
+
+    The function of the polynomial reduction adds to graph $G$ two vertices, $x$
+    and $y$, which are universal to $G$ and nonadjacent to each other. Call $G'$
+    the resulting graph--- it is immediate that $G'$ can be constructed in
+    linear-time with respect to the order of $G$. We claim that $G$ has a
+    $(k,\infty)$-polar partition if and only if $G'$ has a $(k+1,\infty)$-polar
+    partition.
+
+    Suppose that $G$ has a $(k,\infty)$-polar partition, $(A,B)$. Since $x$ and
+    $y$ are nonadjacent and complete to $G$, it follows that $A\cup \l{x,y}$
+    induces a complete $(k+1)$-partite graph. Hence, $(A\cup \l{x,y}, B)$ is a
+    $(k+1,\infty)$-polar partition of $G$.
+
+    Suppose that $G'$ has a $(k+1,\infty)$-polar partition of $(A,B)$. We
+    proceed by cases depending on which part $x$ and $y$ lie on:
+
+    \paragraph{Case 1: Both $x$ and $y$ are in $B$.} Since $x$ and $y$ are
+    nonadjacent, complete to $G$ and $B$ induces a cluster, we have that no
+    other vertex of $G$ is in $B$. Therefore, $G=G'[A]$, so it is a complete
+    $(k+1)$-partite graph. Let $A_1$ be a part of such a graph. Then,
+    $A\setminus A_1$ induces a complete $k$-partite graph, while $A_1$ being
+    stable implies that it induces a cluster, so $(A\setminus A_1, A_1)$ is a
+    $(k,\infty)$-polar partition of $G$.
+
+    \paragraph{Case 2: At least one of $x$ and $y$ is in $B$.} Suppose without
+    loss of generality that $y\in B$. Since $B$ induces a cluster and $y$ is
+    complete to $G$, it follows that $B$ has exactly one clique, $C$, which
+    contains $y$, and $C\setminus \l{y}$ is a subset of $V_G$. Hence, all
+    vertices of $G$, except for those in $C\setminus \l{y}$, are in $A$. Since
+    $x\in A$ and it is complete to $G$, it follows that $x$ is in a trivial part
+    of the complete $(k+1)$-partite graph $G'[A]$. Then, $G - (C\setminus
+    \l{y})$ is a complete $k$-partite graph, and $C\setminus \l{y}$, which
+    contains the remaining vertices of $G$, is a clique. Thus, $(A\setminus
+    \l{x}, B\setminus \l{y})$ is a $(k,\infty)$-polar partition of $G$.
+
+    \paragraph{Case 3: Both $x$ and $y$ are in $A$.} Since $x$ and $y$ are
+    nonadjacent, it must be that $x$ and $y$ are in the same stable part of
+    $G'[A]$. Therefore, $G'[A] - x - y$ is a complete $k$-partite graph, so
+    $(A\setminus \l{x,y},B)$ is a $(k,\infty)$-polar partition of $G$.
+
+    Thereby, deciding wheter a graph has a $(k+1,\infty)$-polar partition is
+    NP-complete. The result follows by induction.
+
+\end{proof}
