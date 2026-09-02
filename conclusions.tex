@@ -5,32 +5,35 @@
     $(P_5,\text{house})$-free graph is monopolar.
 \end{corollary}
 
+Let $k$ be a positive integer.   The decision problem
+$(k,\infty)$-\textsc{Polarity} takes a graph $G$ as an input and asks whether
+$G$ admits a $(k,\infty)$-polar partition.   Clearly
+$(1,\infty)$-\textsc{Polarity} coincides with \textsc{Monopolarity}.
+
 \begin{proposition}
-    The problem of deciding whether a graph has a $(k,\infty)$-polar partition
-    for $k\geq 1$ is NP-complete.
+    $(k,\infty)$-\textsc{Polarity} is NP-complete for any positive integer $k$.
 \end{proposition}
 
 \begin{proof}
-    We proceed by induction. Recall that determining if a graph has a
-    $(1,\infty)$-polar partion is equivalent to deciding wheter $G$ is monopolar
-    or not, which is NP-complete.
+    We proceed by induction. Since \textsc{Monopolarity} is NP-complete, we have
+    that $(1,\infty)$-\textsc{Polarity} is NP-complete.
 
-    Suppose that it is NP-complete to determine if a graph has a
-    $(k,\infty)$-polar partition. By means of a polynomial reduction, we proceed
-    to prove that the problem of deciding wheter a graph has a
-    $(k+1,\infty)$-polar partition is also NP-complete. Clearly this last
+    Suppose that $(k,\infty)$-\textsc{Polarity} is NP-complete. By means of a
+    polynomial reduction, we proceed to prove that
+    $(k+1,\infty)$-\textsc{Polarity} is also NP-complete. Clearly this last
     problem is NP, since a polynomial time verifier for this language receives
     the input graph $G$ along with the $(k+1,\infty)$-polar partition of $G$,
     $(A,B)$, if it exists. The process of verification searches for an induced
     copy of either $K_2 + K_1$ or $K_{k+2}$ in $G[A]$, and searches for an
-    induced copy of $P_3$ in $G[B]$, which can be done in time $O(n^{k+2})$.
+    induced copy of $P_3$ in $G[B]$.  Both searches can be performed in time
+    $O(n^{k+2})$.
 
-    The function of the polynomial reduction adds to graph $G$ two vertices, $x$
-    and $y$, which are universal to $G$ and nonadjacent to each other. Call $G'$
-    the resulting graph--- it is immediate that $G'$ can be constructed in
-    linear-time with respect to the order of $G$. We claim that $G$ has a
-    $(k,\infty)$-polar partition if and only if $G'$ has a $(k+1,\infty)$-polar
-    partition.
+    Let $G$ be an input graph for $(k,\infty)$-\textsc{Polarity}.  The
+    polynomial reduction $G'$ is obtained from $G$ by adding two vertices, $x$
+    and $y$, which are universal to $G$ and nonadjacent to each other.    It is
+    immediate that $G'$ can be constructed in time $O(|V_G|)$. We claim that $G$
+    has a $(k,\infty)$-polar partition if and only if $G'$ has a
+    $(k+1,\infty)$-polar partition.
 
     Suppose that $G$ has a $(k,\infty)$-polar partition, $(A,B)$. Since $x$ and
     $y$ are nonadjacent and complete to $G$, it follows that $A\cup \l{x,y}$
@@ -38,7 +41,7 @@
     $(k+1,\infty)$-polar partition of $G$.
 
     Suppose that $G'$ has a $(k+1,\infty)$-polar partition of $(A,B)$. We
-    proceed by cases depending on which part $x$ and $y$ lie on:
+    proceed by cases depending on which part $x$ and $y$ lie on.
 
     \paragraph{Case 1: Both $x$ and $y$ are in $B$.} Since $x$ and $y$ are
     nonadjacent, complete to $G$ and $B$ induces a cluster, we have that no
@@ -53,15 +56,17 @@
     complete to $G$, it follows that $B$ has exactly one clique, $C$, which
     contains $y$, and $C\setminus \l{y}$ is a subset of $V_G$. Hence, all
     vertices of $G$, except for those in $C\setminus \l{y}$, are in $A$. Since
-    $x\in A$ and it is complete to $G$, it follows that $x$ is in a trivial part
-    of the complete $(k+1)$-partite graph $G'[A]$. Then, $G - (C\setminus
+    $x\in A$ and it is complete to $G$, it follows that $x$ is in a singleton
+    part of the complete $(k+1)$-partite graph $G'[A]$. Then, $G - (C\setminus
     \l{y})$ is a complete $k$-partite graph, and $C\setminus \l{y}$, which
     contains the remaining vertices of $G$, is a clique. Thus, $(A\setminus
     \l{x}, B\setminus \l{y})$ is a $(k,\infty)$-polar partition of $G$.
 
     \paragraph{Case 3: Both $x$ and $y$ are in $A$.} Since $x$ and $y$ are
     nonadjacent, it must be that $x$ and $y$ are in the same stable part of
-    $G'[A]$. Therefore, $G'[A] - x - y$ is a complete $k$-partite graph, so
+    $G'[A]$.   Moreover, as $x$ and $y$ are complete to $G$, it must be the case
+    that $\{x,y\}$ is a part in the complete multipartition of $G'[A]$.
+    Therefore, $G'[A] - \{x, y\}$ is a complete $k$-partite graph, so
     $(A\setminus \l{x,y},B)$ is a $(k,\infty)$-polar partition of $G$.
 
     Thereby, deciding wheter a graph has a $(k+1,\infty)$-polar partition is
