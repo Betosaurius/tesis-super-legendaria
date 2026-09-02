@@ -1890,7 +1890,7 @@ Now we give a lemma for structure within bags.
             \label{lem:chordal_types_5}
         \item If $N_X$ is a 2-bag complete to an edge of $G[Z]$, then $N_X \cap
             N(z)$ is a clique. \label{lem:chordal_types_K_clique}
-        \item The set $G[N_\varnothing \cap N(z)]$ is a cluster.
+        \item The graph $G[N_\varnothing \cap N(z)]$ is a cluster.
             \label{lem:chordal_types_K_cluster}
         \item If $N_X$ is a 1-bag, then $N_X$ is stable.
             \label{lem:chordal_types_4}
@@ -4432,9 +4432,41 @@ We get the next result as an immediate corollary.
 \section{Time complexity of the algorithm}
 
 To end the chapter, we have to prove that the procedures stated in all previous
-lemmas and theorems can efectively be done by a linear-time algorithm.
+lemmas and theorems can efectively be done by a linear-time algorithm. We will
+go through the steps that it takes.
 
-\todo{eso}
+At the beginning, the algorithm checks if the graph is chordal. If not, then it
+returns an induced cycle of length at least 4 and starts to execute instructions
+to be described in the next chapters. In \cite{chordal-recog}, authors devise a
+linear-time algorithm that recognizes chordal graphs and returns a perfect
+elimination order if the graph is chordal, and in \cite{chordal-recog-addendum}
+an extended version of the algorithm, also running in linear time, is presented
+so that it returns an induced cycle of length at least 4 if the graph is not
+chordal.
+
+Once the graph is known to be chordal, the algorithm checks if it is a split
+graph. Recall that \cite{heggernesNJC14,hellDAM141} exhibit linear-time
+certifying algorithms for recognizing split graphs. If the graph is split, then
+the partition returned is a monopolar partition. Otherwise, the algorithm finds
+and induced copy of $2K_2$, $C_4$ or $C_5$. The latter two cases are handled in
+the next chapter, so we focus on the case when the graph has an induced copy of
+$2K_2$.
+
+After finding an induced copy of $2K_2$, the exact neighborhoods of such a copy
+get calculated, recalling that such a thing can be done in linear time. Checking
+which of them cannot be simultaneously nonempty and which have to be complete or
+anticomplete to can also be done in linear time. For each bag, we have already
+see that in linear time one can check if it induces a complete, empty, split. If
+one would like to prove that a bag induces a cluster, such a thing can be
+accomplished by running a BFS to find all connected components, and then
+verifying if the degree of each vertex is equal to the size of its component
+minus one; otherwise, a second pass of BFS can be executed to find an induced
+copy of $P_3$.
+
+Additionally, by executing a BFS, one can find adjacent vertices linking two
+parts of a bipartition of a connected subgraph. In the same fashion, one can
+identify isolated and non-isolated vertices within bags. Hence, from this
+discussion the following result is obtained.
 
 \begin{corollary}
     There exists a linear-time certyfing algorithm that decides whether a graph
