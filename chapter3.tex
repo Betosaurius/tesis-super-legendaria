@@ -3,17 +3,19 @@
 
 Having solved the case for chordal graphs, now we turn our attention to
 non-chordal graphs --- such graphs contain an induced copy of a cycle of length
-at least 4. Since we only consider $P_5$-free graphs, we know that each induced
-cycle has length at most 5. We devote this chapter to the family of graphs with
-an induced copy of $C_5$.
+at least $4$. Since we only consider $P_5$-free graphs, we know that each
+induced cycle has length at most $5$: if when checking chordality, the algorithm
+finds an induced cycle of length at least $6$, then is returns $5$ consecutive
+vertices of such a cycle as an induced copy of $P_5$. We devote this chapter to
+the family of graphs with an induced copy of $C_5$.
 
 
 \section{Characterization of monopolarity}
 \label{sec:c5_characterization}
 
-Note that, for all graphs in the present chapter with an induced copy of $C_5$,
-the labelling of the vertices of the 5-cycle is determined by the drawing shown
-below. Thus, vertices of a 5-cycle are labeled from $a$ to $e$, starting with
+For all graphs in the present chapter with an induced copy of $C_5$, the
+labelling of the vertices of the $5$-cycle is determined by the drawing shown
+below. Thus, vertices of a $5$-cycle are labeled from $a$ to $e$, starting with
 the rightmost vertex and following a counter-clockwise order (see
 \Cref{fig:labels_c5}).
 
@@ -34,12 +36,12 @@ the rightmost vertex and following a counter-clockwise order (see
         \label{fig:labels_c5}
     \end{figure}
 
-Recall that the final algorithm first checks if the input graph is chordal. If
-it finds an induced copy of $C_5$, then it executes the processes described in
-the following section. Otherwise, if it detects an induced copy of $C_4$, then
-it proceeds to execute the instructions that will be described in the next
-chapter. If at any point of such instructions the algorithm finds an induced
-copy of $C_5$ (that, by chance, was not detected by the algorithm that verifies
+Recall that the full algorithm first checks if the input graph is chordal. If it
+finds an induced copy of $C_5$, then it executes the processes described in the
+following section. Otherwise, if it detects an induced copy of $C_4$, then it
+proceeds to execute the instructions that will be described in the next chapter.
+If at any point of such instructions the algorithm finds an induced copy of
+$C_5$ (that, by chance, was not detected by the algorithm that verifies
 chordality), then it switches to do the procedures of the present chapter.
 
 We start our analysis with a useful observation.
@@ -1563,7 +1565,11 @@ considering that $G$ does not contain the aforementioned minimal obstructions.
 \end{proof}
 
 We proceed to prove that the claimed minimal obstructions are indeed all the
-graphs that prevent $G$ from being monopolar.
+graphs that prevent $G$ from being monopolar. Different from the way it was done
+in the previous chapter, we have already stated the necessary and sufficient
+conditions that must hold within the exact neighborhoods for the graph to also
+be $(P_5,\text{house})$-free. Thus, once a monopolar partition for a graphs is
+found, we use the previous lemmas to deduce the complete structure of the graph. 
 
 \begin{theorem}
     \label{thm:monopolar_c5}
@@ -1637,7 +1643,7 @@ graphs that prevent $G$ from being monopolar.
     \end{figure}
     
     \paragraph{Case 1: Three $3$-bags are nonempty.} The aforementioned argument
-    implies that no vertex of $C$ is adjacent to all the $3$-bags. Hence,
+    implies that no vertex of $C$ is complete to all the $3$-bags. Hence,
     suppose without loss of generality that these are $N_{abc}$, $N_{bcd}$ and
     $N_{ade}$. Take $b'\in N_{abc}$, $c'\in N_{bcd}$ and $e'\in N_{ade}$. Once
     more, \Cref{lem:c5_comp_2} implies that $b'$ is adjacent to $c'$, while
@@ -2264,11 +2270,71 @@ graphs that prevent $G$ from being monopolar.
     
 \end{proof}
 
-Observe that we have shown, exhaustively, how the monopolar graphs in this
-family look like. Thus, the theorem yields the following corollary.
+\section{Structure and time complexity of the algorithm}
+
+As stated before the last theorem, we have shown exhaustively how the monopolar
+graphs in this family look like. Moreover, up to symmetry, observe that all
+monopolar partitions given in the proof of \Cref{thm:monopolar_c5} have the same
+structure of \Cref{fig:monopolar_partition_1}. Thus, the theorem yields the
+following corollary.
+
+\setlength{\maxsize}{0pt}
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}[every node/.style={vertex}, node
+        distance=1cm, on grid, edge]
+        \foreach \labeltext in {{$N_{be} \cup \l{a}$}, {$N_{cd} \cup \l{d}$},
+        {$N_{abc} \cup \l{b}$}, {$N_{bcd} \cup \l{c}$}, {$N_{ade} \cup \l{e}$},
+        {$N_{ad}$}}{
+            \sbox{\mybox}{\labeltext}
+            \ifdim\wd\mybox>\maxsize
+                \global\maxsize=\wd\mybox
+            \fi
+        }
+        \begin{scope}
+            \node (A) [fill=none, minimum size=\maxsize] at (18:2.5) {$N_{be} \cup \l{a}$}; 
+            \node (B) [fill=none, minimum size=\maxsize] at (90:2.5) {$N_{abc} \cup \l{b}$};
+            \node (C) [fill=none, minimum size=\maxsize] at (162:2.5) {$N_{bcd} \cup \l{c}$};
+            \node (D) [fill=none, minimum size=\maxsize] at (234:2.5) {$N_{cd} \cup \l{d}$};
+            \node (E) [fill=none, minimum size=\maxsize] at (306:2.5) {$N_{ade} \cup \l{e}$};
+            \node (AD) [fill=none, minimum size=\maxsize] at (0,0) {$N_{ad}$};
+        \end{scope}
+
+        \draw[double] (A) to (B);
+        \draw[double] (B) to (C);
+        \draw[double] (C) to (D);
+        \draw[double] (D) to (E);
+        \draw[double] (A) to (E);
+        \draw[double] (AD) to (D);
+        \draw[double] (AD) to (A);
+    \end{tikzpicture}
+    \caption{Structure of monopolar $(P_5,\text{house})$-free graphs with an
+        induced copy of $C_5$. As in the previous chapter, double edges indicate
+        completeness, while no edges indicate anticompleteness.}
+    \label{fig:monopolar_partition_general_c5}
+\end{figure}
 
 \begin{corollary}
     A connected monopolar graph $(P_5,\text{house})$-free with an induced copy
-    of $C_5$ has the structure of one of the graphs shown in
-    \Cref{fig:monopolar_partition_1,fig:monopolar_partition_2,fig:monopolar_partition_3,fig:monopolar_partition_5}.
+    of $C_5$ has the structure of \Cref{fig:monopolar_partition_general_c5}.
+\end{corollary}
+
+Finally, we are left to argue discuss the time-complexity of the procedures
+described by the lemmas and theorem of the chapter. Observe that all
+instructions in this case rely only on the exact neighborhoods: checking whether
+they are nonempty, induce clusters or complete graphs, or are complete or
+anticomplete to other exact neighborhoods. Recall that these checks can be done
+in linear time. As for $N_\varnothing$, it being nonempty returns an induced
+copy of $P_5$ by executing a BFS to get a path of minimal length from
+$N_\varnothing$ to the induced copy of $C_5$. Henceforth, the next corollary
+takes place.
+
+\begin{corollary}
+    There is a linear-time certyfing algorithm that decides whether a graph with
+    an induced copy of $C_5$ is monopolar, $P_5$-free and house-free, provided
+    that an induced copy of $C_5$ is given as an input. In particular, deciding
+    monopolarity in graphs with an induced copy of $C_5$ is linear-time solvable
+    on $(P_5,\text{house})$-free graphs, once more provided that an induced copy
+    of $C_5$ is given as an input.
 \end{corollary}
