@@ -3334,3 +3334,50 @@ At last, we prove the main theorem.
     We conclude that $G$ is monopolar.
     
 \end{proof}
+
+As a final note before the next section, we aim to find, as in the previous
+chapters, sufficient conditions, verifiable in linear time, to ensure that a
+graph with an induced copy of $C_4$ is not only monopolar, but
+$(P_5,\text{house})$-free. However, a quick inspection of which claims need to
+hold seem to be intricate to describe. For instance one can verify that in
+several of the figures shown in the last proof some sets described in the
+monopolar partition are empty in the graph representing such a partition, this
+is intended for the graphs need to be $(P_5,\text{house})$-free. Although some
+of our existing lemmas could be generalized to consider this additional claims,
+we are yet to find the most convenient way to do so, avoiding the sectioning of
+a proof into multiple subcases.
+
+\section{Time complexity of the algorithm}
+
+To end the chapter, let us analyze the time complexity of the algorithm
+extracted from the previous section. Once more, recall that all exact
+neighborhoods can be computed in linear time, and the same holds for checking
+whether they are complete or anticomplete to each other. Whenever one wants to
+check for a bag to be $C_4$ or $C_5$ free, the algorithm to test chordality can
+be cast to do so and proceed depending on which cycle finds: if an induced copy
+of $C_4$ arises, then it returns such a cycle along with a vertex complete to
+it, or it returns an induced copy of $C_5$ in order to calculate its exact
+neighborhoods as per \Cref{cap:c5}. Otherwise, recall that an induced copy of
+$P_5$ can be extracted from an induced cycle of length at least $6$.
+
+Other checks done on the exact neighborhoods are when deciding if they induce
+complete, empty, cluster or split graphs, all of which we have argued to be done
+in linear time. Perhaps the most interesting one concerns \Cref{lem:type_7}, in
+which we need to verify that a $1$-bag induces either a cluster or a split
+graph. The checks in the proof of such an item require us to identify an induced
+copy of $P_3$ and use the existance of an induced copy of $2K_2$ to arise one of
+several possible obstructions: once the induced copies have been found, a finite
+number of checks on the adjacencies between vertices of such copies are carried
+out, thus giving linear time.
+
+Another procedure executed has to do with the connected components of
+$N_\varnothing$. These can be calculated in linear time by executing a BFS, and
+checking homogeneousness to bags can also be done in linear time by comparing
+the neighborhoods of the vertices in each connected component. The same goes for
+identifying non-isolated vertices within bags, a pass of BFS identifies such
+vertices. Hence, the following corollary takes place.
+
+\begin{corollary}
+    There is a linear-time certyfing algorithm that decides monopolarity on the
+    family of $(P_5,\text{house})$-graphs.
+\end{corollary}
