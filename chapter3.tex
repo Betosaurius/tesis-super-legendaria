@@ -2270,7 +2270,9 @@ found, we use the previous lemmas to deduce the complete structure of the graph.
     
 \end{proof}
 
-\section{Structure and time complexity of the algorithm}
+\section[Structure of the graph and time complexity of the algorithm]{Structure
+of the graph and time complexity of the algorithm %
+\sectionmark{Structure and time complexity}}
 
 As stated before the last theorem, we have shown exhaustively how the monopolar
 graphs in this family look like. Moreover, up to symmetry, observe that all
@@ -2320,15 +2322,14 @@ following corollary.
     of $C_5$ has the structure of \Cref{fig:monopolar_partition_general_c5}.
 \end{corollary}
 
-Finally, we are left to argue discuss the time-complexity of the procedures
-described by the lemmas and theorem of the chapter. Observe that all
-instructions in this case rely only on the exact neighborhoods: checking whether
-they are nonempty, induce clusters or complete graphs, or are complete or
-anticomplete to other exact neighborhoods. Recall that these checks can be done
-in linear time. As for $N_\varnothing$, it being nonempty returns an induced
-copy of $P_5$ by executing a BFS to get a path of minimal length from
-$N_\varnothing$ to the induced copy of $C_5$. Henceforth, the next corollary
-takes place.
+Finally, we are left to discuss the time-complexity of the procedures described
+by the lemmas and theorem of the chapter. Observe that all instructions in this
+case rely only on the exact neighborhoods: checking whether they are nonempty,
+induce clusters or complete graphs, or are complete or anticomplete to other
+exact neighborhoods. Recall that these checks can be done in linear time. As for
+$N_\varnothing$, it being nonempty returns an induced copy of $P_5$ by executing
+a BFS to get a path of minimal length from $N_\varnothing$ to the induced copy
+of $C_5$. Henceforth, the next corollary takes place.
 
 \begin{corollary}
     There is a linear-time certyfing algorithm that decides whether a graph with
