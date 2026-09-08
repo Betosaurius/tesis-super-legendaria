@@ -2452,6 +2452,7 @@ a $3$-bag results in a graph isomorphic to $\overline{P_2 + P_3}$.
 At last, we prove the main theorem.
 
 \begin{theorem}
+    \label{thm:monopolar_c4}
     A connected $(P_5,\text{house},C_5)$-free graph $G$ with an induced copy of
     $C_4$ is monopolar if and only if it does not contain any of the graphs
     depicted in Figures \ref{fig:chordal-p5-free-obstructions},
@@ -3378,6 +3379,8 @@ identifying non-isolated vertices within bags, a pass of BFS identifies such
 vertices. Hence, the following corollary takes place.
 
 \begin{corollary}
+    \label{cor:algorithm_c4}
     There is a linear-time certyfing algorithm that decides monopolarity on the
-    family of $(P_5,\text{house})$-graphs.
+    family of $(P_5,\text{house})$-graphs with an induced copy of $C_4$,
+    provided that such a copy is given as an input.
 \end{corollary}
