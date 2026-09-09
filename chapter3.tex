@@ -2322,21 +2322,21 @@ following corollary.
     of $C_5$ has the structure of \Cref{fig:monopolar_partition_general_c5}.
 \end{corollary}
 
-Finally, we are left to discuss the time-complexity of the procedures described
+Finally, we are left to discuss the time complexity of the procedures described
 by the lemmas and theorem of the chapter. Observe that all instructions in this
 case rely only on the exact neighborhoods: checking whether they are nonempty,
-induce clusters or complete graphs, or are complete or anticomplete to other
-exact neighborhoods. Recall that these checks can be done in linear time. As for
-$N_\varnothing$, it being nonempty returns an induced copy of $P_5$ by executing
-a BFS to get a path of minimal length from $N_\varnothing$ to the induced copy
-of $C_5$. Henceforth, the next corollary takes place.
+they induce clusters or complete graphs, or they are complete or anticomplete to
+other exact neighborhoods. Recall that these checks can be done in linear time.
+When $N_\varnothing$ is nonempty an execution of BFS returns an induced copy of
+$P_5$ by getting a path of minimal length from $N_\varnothing$ to the induced
+copy of $C_5$. Henceforth, the next corollary takes place.
 
 \begin{corollary}
     \label{cor:algorithm_c5}
-    There is a linear-time certyfing algorithm that decides whether a graph with
-    an induced copy of $C_5$ is monopolar, $P_5$-free and house-free, provided
-    that an induced copy of $C_5$ is given as an input. In particular, deciding
-    monopolarity in graphs with an induced copy of $C_5$ is linear-time solvable
-    on $(P_5,\text{house})$-free graphs, once more provided that an induced copy
-    of $C_5$ is given as an input.
+    There is a linear-time certifying algorithm that decides whether a graph
+    with an induced copy of $C_5$ is monopolar, $P_5$-free and house-free,
+    provided that an induced copy of $C_5$ is given as an input. In particular,
+    deciding monopolarity in graphs with an induced copy of $C_5$ is linear-time
+    solvable on $(P_5,\text{house})$-free graphs, once more provided that an
+    induced copy of $C_5$ is given as an input.
 \end{corollary}
