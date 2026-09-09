@@ -1,15 +1,96 @@
 \chapter{Introduction}
 \label{cha:intro}
 
+Even though most of the common graph theory notions and objects are well
+understood, the area lacks a consistent and unified terminology. For that
+matter, we devote this chapter to the introduction of the basic definitions
+along with notation. We also present some ground results on which we build our
+work. Even for the familiarized reader, we encourage to at least skim through
+the sections, as we introduce some non-standard notations for operations between
+graphs, as well as conventions for certain types of partitions of graphs. All
+definitions not considered in here can be found in either \cite{bondy2008} or
+\cite{diestel2017}.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Graphs}
+\section{Graphs and algorithms}
 \label{sec:graphs}
 
-%TODO: Definiciones no estándar, el diamante
+All graphs considered in this work are finite, simple and undirected. We denote
+by $V$ and $E$ the vertex and edge sets of a graph $G$, respectively. For a
+vertex $v\in V$, $N(v)$ is the set of neighbors of $v$, and the degree of a
+vertex is $d(v) = |N(v)|$. For $S\subseteq V$, we write $G[S]$ for the subgraph
+of $G$ induced by $S$. When two graphs $G$ and $H$ are isomorphic, we write $G
+\cong H$.
 
+The complement of a graph $G$ is denoted by $\overline{G}$, and the disjoint
+union of two graphs $G$ and $H$ is referred to as $G + H$. For a positive
+integer $k$, let $kG$ denote the disjoint union of $k$ copies of $G$. We denote
+by $G-S$ the subgraph $G[V\setminus S]$ --- if $S$ is a singleton, then we write
+$G-v$ instead of $G-\l{v}$.
+
+For a positive integer $n$, we denote by $K_n$, $C_n$ and $P_n$ the complete
+graph, the cycle, and the path on $n$ vertices, respectively. We say that a set
+$S\subseteq V$ is independent or stable if $G[S] \cong \overline{K_{|S|}}$, and
+$S$ is a clique if $G[S] \cong K_{|S|}$. We say that a graph is a cluster if it
+is the disjoint union of complete graphs, and a graph is a complete multipartite
+if it is the complement of a cluster. We call a graph $G$ chordal if it does not
+contain any induced cycle of length at least four, that is, if $C$ is a cycle in
+$G$ of length at least four, then two non-consecutive vertices of $C$ are
+adjacent, and such an edge is called a chord of $C$.
+
+We say that a vertex $v$ is universal if it is adjacent to all other vertices of
+$G$, and isolated if it is adjacent to none. Additionally, $v$ is said to be
+simplicial if $N(v)$ is a clique.
+
+Finally, in \Cref{fig:classic} we present two classic graphs that we will
+frequently refer to.
+
+\begin{figure}[htb!]
+    \centering
+    \begin{tikzpicture}
+        \matrix[column sep=0.4cm]{
+            \node {
+                \begin{tikzpicture}[every node/.style={vertex}, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i) at ({(360/4)*\i + 90}:1) {};
+
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+                    \draw (2) to (3);
+                    \draw (0) to (3);
+                    \draw (0) to (2);
+                \end{tikzpicture}
+            }; &
+            \node {
+                \begin{tikzpicture}[every node/.style={vertex}, edge]
+                    \foreach \i in {0,...,3}
+                        \node (\i) at ({(360/4)*\i + 45}:1) {};
+                    \path let \p1=(0) in node (r) at (0,2*\y1) {};
+
+                    \draw (0) to (1);
+                    \draw (1) to (2);
+                    \draw (2) to (3);
+                    \draw (3) to (0);
+                    \draw (r) to (0);
+                    \draw (1) to (r);
+                \end{tikzpicture}
+            }; \\
+            \node {diamond}; &
+            \node {house}; \\
+        };
+    \end{tikzpicture}
+    \caption{Some classic graphs.}
+    \label{fig:classic}
+\end{figure}
+
+Now we briefly discuss some notions regarding algorithms on graphs. Mainly, we
+are interested in the running time of algorithms. For that matter, we use the
+standard big-$O$ notation to describe asymptotic behavior. For all algorithms
+described in this work, whenever we say that it runs in linear time, we mean
+that its time-complexity is $O(|V| + |E|)$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,7 +101,6 @@
 
 %TODO: Obstrucciones, libres de F, consecuencias basicas de la definicion.
 
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -28,13 +108,15 @@
 \section{Chordal graphs and its subclasses}
 \label{sec:chordal-defs}
 
+A well-studied class of graphs is that of chordal graphs. In
+\cite{golumbic2004}, Golumbic presents some characterizations of chordal graphs,
+one of which yields a linear-time algorithm to recognize them. 
+
 %TODO: Definicion cordal, caracterizaciones relevantes (peo), linealidad de clan maximo y similares.
 
 %TODO: Definicion split y caracterizaciones relevantes. Reconocimiento en tiempo
 %lineal (sucesion de grados y algoritmo certificador). Partición con K vacío o
 %clan maximal no trivial.
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
