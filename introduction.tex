@@ -18,12 +18,12 @@ definitions not considered in here can be found in either \cite{bondy2008} or
 \section{Graphs and algorithms}
 \label{sec:graphs}
 
-All graphs considered in this work are finite, simple and undirected. We denote
-by $V$ and $E$ the vertex and edge sets of a graph $G$, respectively. For a
-vertex $v\in V$, $N(v)$ is the set of neighbors of $v$, and the degree of a
-vertex is $d(v) = |N(v)|$. For $S\subseteq V$, we write $G[S]$ for the subgraph
-of $G$ induced by $S$. When two graphs $G$ and $H$ are isomorphic, we write $G
-\cong H$.
+All graphs considered in this work are finite, undirected with neither loops nor
+parallel edges. We denote by $V$ and $E$ the vertex and edge sets of a graph
+$G$, respectively. For a vertex $v\in V$, $N(v)$ is the set of neighbors of $v$,
+and the degree of a vertex is $d(v) = |N(v)|$. For $S\subseteq V$, we write
+$G[S]$ for the subgraph of $G$ induced by $S$. When two graphs $G$ and $H$ are
+isomorphic, we write $G \cong H$.
 
 The complement of a graph $G$ is denoted by $\overline{G}$, and the disjoint
 union of two graphs $G$ and $H$ is referred to as $G + H$. For a positive
@@ -38,8 +38,8 @@ $S$ is a clique if $G[S] \cong K_{|S|}$. We say that a graph is a cluster if it
 is the disjoint union of complete graphs, and a graph is a complete multipartite
 if it is the complement of a cluster. We call a graph $G$ chordal if it does not
 contain any induced cycle of length at least four, that is, if $C$ is a cycle in
-$G$ of length at least four, then two non-consecutive vertices of $C$ are
-adjacent, and such an edge is called a chord of $C$.
+$G$ of length at least four, then there is a pair of adjacent non-consecutive
+vertices of $C$; such an edge is called a chord of $C$.
 
 We say that a vertex $v$ is universal if it is adjacent to all other vertices of
 $G$, and isolated if it is adjacent to none. Additionally, $v$ is said to be
@@ -51,7 +51,7 @@ frequently refer to.
 \begin{figure}[htb!]
     \centering
     \begin{tikzpicture}
-        \matrix[column sep=0.4cm]{
+        \matrix[column sep=1.5cm]{
             \node {
                 \begin{tikzpicture}[every node/.style={vertex}, edge]
                     \foreach \i in {0,...,3}
@@ -90,7 +90,38 @@ Now we briefly discuss some notions regarding algorithms on graphs. Mainly, we
 are interested in the running time of algorithms. For that matter, we use the
 standard big-$O$ notation to describe asymptotic behavior. For all algorithms
 described in this work, whenever we say that it runs in linear time, we mean
-that its time-complexity is $O(|V| + |E|)$.
+that its time complexity is $O(|V| + |E|)$.
+
+It is well known that for an input graph $G$, it is possible to order its
+adjacency lists to have compatible orderings, i.e., there is a linear ordering
+of $V$ such that within each adjacency list, the vertices appear in that
+ordering.   Therefore, we will assume that this is always the case.
+
+Given a partition $\mathcal{P}$ of constant size for an input graph $G$, it is
+possible to construct copies of the subgraphs $G[P]$ for each $P \in
+\mathcal{P}$ in linear time by traversing the adjacency lists of each vertex in
+$G$.   Thus, given an input graph $G$, it is possible to execute a linear-time
+algorithm in each $G[P]$ in time proportional to the number of vertices and
+edges of $G[P]$.   It is of particular interest for this work to know that
+$G[P]$ can be tested to be split, empty, complete or a cluster graph in linear
+time.
+
+, such a thing can be accomplished by
+running a BFS to find all connected components, and then verifying if the degree
+of each vertex is equal to the size of its component minus one; otherwise, a
+second pass of BFS can be executed to find an induced copy of $P_3$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Exact neighborhoods}
+\label{sec:exact-neigh}
+
+%TODO: Definiciones de vecindades exactas y breve explicacion de como calcularlas en tiempo lineal.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -117,16 +148,6 @@ one of which yields a linear-time algorithm to recognize them.
 %TODO: Definicion split y caracterizaciones relevantes. Reconocimiento en tiempo
 %lineal (sucesion de grados y algoritmo certificador). Partición con K vacío o
 %clan maximal no trivial.
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Exact neighborhoods}
-\label{sec:exact-neigh}
-
-%TODO: Definiciones de vecindades exactas y breve explicacion de como calcularlas en tiempo lineal.
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
