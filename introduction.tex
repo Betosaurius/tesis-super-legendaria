@@ -39,20 +39,43 @@ is the disjoint union of complete graphs, and a graph is a complete multipartite
 if it is the complement of a cluster. We call a graph $G$ chordal if it does not
 contain any induced cycle of length at least four, that is, if $C$ is a cycle in
 $G$ of length at least four, then there is a pair of adjacent non-consecutive
-vertices of $C$; such an edge is called a chord of $C$.
+vertices of $C$; such an edge is called a chord of $C$. If the vertex set of
+graph $G$ can be partitioned into $(S,K)$ such that $S$ is stable and $K$ is a
+clique, then we call $G$ a split graph. Every time we work on a split graph, we
+will provide partitions as in the format $(S,K)$, where $S$ and $K$ may contain
+additional labels to ease the task of identifying which set they are a part
+from. At any rate, the $S$ part will always indicate the stable one, while $K$
+will always indicate the clique one.
 
 We say that a vertex $v$ is universal if it is adjacent to all other vertices of
 $G$, and isolated if it is adjacent to none. Additionally, $v$ is said to be
-simplicial if $N(v)$ is a clique.
+simplicial if $N(v)$ is a clique. Given $W_1$ and $W_2$ disjoint subsets of $V$,
+we say that $W_1$ is complete to $W_2$ if all vertices in $W_1$ are adjacent to
+all vertices in $W_2$. Similarly, if all vertices in $W_1$ are not adjacent to
+all vertices in $W_2$, we say that $W_1$ is anticomplete to $W_2$. Sometimes,
+rather than talking about completeness or anticompleteness between sets, it is
+easier to identify a set by the graph it induces. Hence, we often interchange
+the sets $W_1$ and $W_2$ with the graphs $G[W_1]$ and $G[W_2]$, so when we say
+that $G[W_1]$ is complete to $W_2$, we mean it as in $W_1$ being complete to
+$W_2$.
 
+We say that a graph is a hole if it is a cycle of length at least five, and a
+graph is an anti-hole if its complement is a hole. A graph is an odd hole if it
+is a hole of odd length, and similarly we define an odd anti-hole. For a set of
+graphs $\mathcal{G}$, we say that a graph $H$ is $\mathcal{G}$-free when $H$
+does not contain, as an induced subgraph, any of the graphs in $\mathcal{G}$. We
+mainly neglect to name the class of graphs and instead write the elements of
+such a class a tuple. Notice that cluster graphs are exactly the $P_3$-free
+graphs, while complete multipartite graphs are the $(K_1 + K_2)$-free graphs.
 Finally, in \Cref{fig:classic} we present two classic graphs that we will
-frequently refer to.
+frequently refer to (diamond and house), along with other graphs that we just
+refer to in the conclusions.
 
 \begin{figure}[htb!]
     \centering
     \begin{tikzpicture}
-        \matrix[column sep=1.5cm]{
-            \node {
+        \matrix[column sep=1cm]{
+            \node{
                 \begin{tikzpicture}[every node/.style={vertex}, edge]
                     \foreach \i in {0,...,3}
                         \node (\i) at ({(360/4)*\i + 90}:1) {};
@@ -64,22 +87,69 @@ frequently refer to.
                     \draw (0) to (2);
                 \end{tikzpicture}
             }; &
-            \node {
+            \node{
                 \begin{tikzpicture}[every node/.style={vertex}, edge]
-                    \foreach \i in {0,...,3}
-                        \node (\i) at ({(360/4)*\i + 45}:1) {};
-                    \path let \p1=(0) in node (r) at (0,2*\y1) {};
+                    \foreach \i in {0,...,4}
+                        \node (\i) at ({(360/5)*\i + 90}:1) {};
+
+                    \draw (0) to (1);
+                    \draw (1) to (2);
+                    \draw (2) to (3);
+                    \draw (3) to (4);
+                    \draw (0) to (4);
+                    \draw (4) to (1);
+                \end{tikzpicture}
+            }; &
+            \node{
+                \begin{tikzpicture}[every node/.style={vertex}, edge]
+                    \node (0) at (1,1) {};
+                    \node (1) at (0,1) {};
+                    \node (2) at (0,0) {};
+                    \node (3) at (1,0) {};
+                    \node (h) at (0,-1) {};
 
                     \draw (0) to (1);
                     \draw (1) to (2);
                     \draw (2) to (3);
                     \draw (3) to (0);
-                    \draw (r) to (0);
-                    \draw (1) to (r);
+                    \draw (2) to (h);
+                \end{tikzpicture}
+            }; &
+            \node{
+                \begin{tikzpicture}[every node/.style={vertex}, edge]
+                    \foreach \i in {0,...,2}
+                        \node (\i) at ({(360/3)*\i - 90}:0.75) {};
+                    \node (h1) at ($(1) + (70:0.75)$){};
+                    \node (h2) at ($(2) + (110:0.75)$){};
+
+                    \draw (0) to (1);
+                    \draw (2) to (1);
+                    \draw (2) to (0);
+                    \draw (2) to (h2);
+                    \draw (1) to (h1);
+                \end{tikzpicture}
+            }; &
+            \node{
+                \begin{tikzpicture}[every node/.style={vertex}, edge]
+                    \node (0) at (1,1) {};
+                    \node (1) at (0,1) {};
+                    \node (2) at (0,0) {};
+                    \node (3) at (1,0) {};
+                    \node (h) at (0,-1) {};
+
+                    \draw (0) to (1);
+                    \draw (1) to (2);
+                    \draw (1) to (3);
+                    \draw (2) to (3);
+                    \draw (3) to (0);
+                    \draw (2) to (h);
                 \end{tikzpicture}
             }; \\
             \node {diamond}; &
-            \node {house}; \\
+            \node {house}; &
+            \node {P}; &
+            \node {bull}; &
+            \node {kite}; \\
         };
     \end{tikzpicture}
     \caption{Some classic graphs.}
@@ -103,14 +173,16 @@ possible to construct copies of the subgraphs $G[P]$ for each $P \in
 $G$.   Thus, given an input graph $G$, it is possible to execute a linear-time
 algorithm in each $G[P]$ in time proportional to the number of vertices and
 edges of $G[P]$.   It is of particular interest for this work to know that
-$G[P]$ can be tested to be split, empty, complete or a cluster graph in linear
-time.
-
-, such a thing can be accomplished by
-running a BFS to find all connected components, and then verifying if the degree
+$G[P]$ can be tested to be empty, complete, split or a cluster graph in linear
+time. Checking whether a graph is either empty or complete is easily
+accomplished by traversing the adjacency lists of each vertex, verifying that
+each list is either empty or contains all vertices, and getting either a pair of
+adjacent or nonadjacent vertices as a no-certificate for emptiness or
+completeness, respectively. Meanwhile, to check whether a graph is a cluster, we
+can run a BFS to find all connected components, and then verify that the degree
 of each vertex is equal to the size of its component minus one; otherwise, a
-second pass of BFS can be executed to find an induced copy of $P_3$.
-
+second pass of BFS can be executed to find an induced copy of $P_3$. The case of
+split graphs is discussed in \Cref{sec:chordal-defs}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -119,8 +191,48 @@ second pass of BFS can be executed to find an induced copy of $P_3$.
 \section{Exact neighborhoods}
 \label{sec:exact-neigh}
 
-%TODO: Definiciones de vecindades exactas y breve explicacion de como calcularlas en tiempo lineal.
+When deciding if a graph $G$ can be partitioned in a particular way, it is often
+useful to know how vertices of $G$ behave with respect to a subgraph $H$ of $G$.
+One of the earliest examples of this is due to Brandst\"adt in
+\cite{brandstadt1996}, where the author determines when a graph $G$ has a
+partition generalizing that of a split graph. This is done by fixing a partial
+partition on the vertices of the graph depending on whether their neighborhoods
+have a desired structure. Afterwards, such a partial partition is used to decide
+if it can be extended to a whole partitions, once more analyzing the
+neighborhoods of the remaining vertices. For our purposes, we intend to use a
+refined version of the aforementioned technique, now introduced with a proper
+name and a rather easy description.
 
+Given a subgraph $H$ of $G$ with vertex set $W$, we want to classify the
+vertices of $G-W$ based on which vertices of $H$ they are adjacent to. Thus, for
+each $S\subseteq W$, let $N_S$ be the set of vertices $x$ of $G-W$ such that
+$N(x)\cap W = S$. From the definition follows that the vertices in $N_S$ are
+those outside $H$ that are adjacent to exactly the vertices in $S$ and to no
+other vertex of $H$. Hence, the sets $N_S$ receive a convenient name: exact
+neighborhoods. It is immediate that sets $N_S$, along with $W$, partition the
+set $V$.
+
+Suppose now that $H$ is not a subgraph of graph $G$, but it is a fixed graph. If
+we happen to know that $G$ contains a subgraph isomorphic to $H$, $G'$, then we
+can partition the vertices of $G$ as stated in the last paragraph. Moreover,
+since $H$ is fixed, the partiton obtained is of constant size. This yields to a
+fairly simple algorithm that calculates the exact neighborhoods in linear time
+provided that $G'$ is labeled: for each vertex $x$ not in $G'$, scan its
+adjacency list to decide which vertices of $G'$ are adjacent to $x$. This
+determines a label that gets assigned to $x$ indicating the exact neighborhood
+it belongs to.
+
+The advantages of the partition go beyond the classification of vertices. Given
+a pair of distinct exact neighborhoods $N_X$ and $N_Y$, we can decide in linear
+time if two of these are complete or anticomplete to each other. Indeed, it
+suffices to go through the adjacency list of each vertex in $N_X$ and verify
+that each has as many neighbors in $N_Y$ as $|N_Y|$. If not, then at some point
+the algorithm finds a vertex $x$ in $N_X$ such that it is not adjacent to all
+vertices in $N_Y$, and scanning the adjacency lists of the vertices in $N_Y$
+will eventually yield a vertex $y\in N_Y$ not adjacent to $x$. Likewise, to
+prove that $N_X$ is anticomplete to $N_Y$, we verify for each vertex in $N_X$
+that the number of neighbors it has in $N_Y$ is zero, otherwise, one immediately
+gets two adjacent vertices witnessing the no-anticompleteness.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -130,7 +242,77 @@ second pass of BFS can be executed to find an induced copy of $P_3$.
 \section{Hereditary properties}
 \label{sec:hereditary}
 
-%TODO: Obstrucciones, libres de F, consecuencias basicas de la definicion.
+Among the several ways to classify graphs, one of great use is by looking at the
+properties they satisfy. We conceptualize this idea by straight up calling a
+family of graphs a property, this with the intention of the graphs in each
+family to indeed satisfy a fix set of properties --- hence, we indistinctly use
+class, familiy and property with the same meaning. We distinguish when a class
+of graphs is broad enough to the point that it is closed under taking induced
+subgraphs of it elements. This is what we call a hereditary property,
+conveniently named to reflect that the property that defines the class is passed
+on to all induced subgraphs.
+
+The importance of hereditary properties resides on a useful charcterization of
+them. From the definition follows that $K_1$ is in any nonempty hereditary class
+of graphs $\mathcal{F}$. Thus, for any $G\notin \mathcal{F}$, there must be an
+induced subgraph $H$ of $G$ such that $H\notin \mathcal{F}$ and it is minimal,
+that is, $H-x$ is in $\mathcal{F}$ for any vertex $x$ of $H$. Graph $H$ is
+called a minimal obstruction for $\mathcal{F}$ or that $H$ is an minimal
+$\mathcal{F}$ obstruction. Let $\text{Obs}(\mathcal{F})$ be the set of all
+minimal obstructions for the class $\mathcal{F}$. It is obvious that a graph $G$
+is in $\mathcal{F}$ if and only if $G$ is $\text{Obs}(\mathcal{F})$-free. This
+implies that either one can design a hereditary property to consist of the
+graphs free of the $G$'s in a fixed class $\mathcal{F}$, or one can star with an
+hereditary property and then determine which are their minimal obstructions. As
+an example of the first idea, we concentrate our work on the class of
+$(P_5,\text{house})$-free graphs.
+
+Notice that the class of $(P_5,\text{house})$-free graphs satisfies an
+additional condition than just being hereditary. Notice that
+$\overline{P_5}=\text{house}$. Therefore, if graph $G$ is
+$(P_5,\text{house})$-free, then we additionally know that $\overline{G}$ is also
+$(P_5,\text{house})$-free. This extends to general hereditary classes
+$\mathcal{F}$ when the set of minimal obstructions is closed under
+complementation, which implies that $\mathcal{F}$ is also closed under
+complementation --- it is easy to see that this is an if and only if. The
+decision problem of deciding whether a graph belongs to $\mathcal{F}$ is called
+the $\mathcal{F}$-recognition problem.
+
+Another relevant type of class is that of additive properties. A property is
+additive if it is closed under taking disjoint unions. From here, it is clear
+that the minimal obstructions for a hereditary and additive property
+$\mathcal{F}$ are connected.
+
+To end the section, we take a look at an important result concerning this type
+of properties. In general, the most interesting partition problems in the area
+arise by combining (or composing) several types of hereditary properties. For
+example, the property of being and empty graph is hereditary, and so we get to
+the problem of deciding when a graph $G$ admits a partition of its vertex set
+into $(V_1,V_2)$ such that both $G[V_1]$ and $G[V_2]$ are empty graphs --- this
+is none other than the problem of deciding when $G$ is bipartite, and it is
+clear that the family of bipartite graphs is hereditary. The last construction
+can be generalized as follows: Take a positive integer $k$ and $k$ fixed
+hereditary classes of graphs, $\mathcal{F}_1, \dots, \mathcal{F}_k$. If we allow
+graphs to have partitions in which some parts may be empty, then we get that the
+class of graphs $G$ admiting a vertex partition into $k$ sets $(V_1,\dots,V_K)$
+such that $G[V_i]\in \mathcal{F_i}$ for all $i$, is a hereditary property.
+
+Regarding these kinds of hereditary properties, the following result by Farrugia
+(\cite{farrugia2004}) tells us that one can only do so much in terms of the time
+complexity to recognize these families.
+
+\begin{theorem}[\cite{farrugia2004}]
+\label{thm:farrugia}
+    Let $\mathcal{F}_1$ and $\mathcal{F}_2$ be additive hereditary properties
+    with at least one of them not being the class of empty graphs. Then,
+    recognizing the class of graphs $G$ with a vertex partition $(V_1,V_2)$ such
+    that $G[V_1]\in \mathcal{F}_1$ and $G[V_2]\in \mathcal{F}_2$ is NP-hard.
+    Furthermore, recognizing such a class is NP-complete if and only if both
+    $\mathcal{F}_1$-recognition and $\mathcal{F}_2$-recognition is in NP.
+\end{theorem}
+
+We use this theorem in \Cref{sec:polarity-defs} to establish some initial time-complexity
+results of the problem we are going to tackle.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -139,31 +321,142 @@ second pass of BFS can be executed to find an induced copy of $P_3$.
 \section{Chordal graphs and its subclasses}
 \label{sec:chordal-defs}
 
-A well-studied class of graphs is that of chordal graphs. In
-\cite{golumbic2004}, Golumbic presents some characterizations of chordal graphs,
-one of which yields a linear-time algorithm to recognize them. 
+A well-studied class of graphs is that of chordal graphs. From the definition
+follows that this class is hereditary, addtive and its minimal obstructions are
+all cycles of length at least $4$. These graphs have been widely studied under
+different names, and their distinguished applications and properties led to the
+need to recognize such a family in an efficient way. In \cite{fulkerson1965},
+Fulkerson and Gross proposed a condition that all chordal graphs must satisfy,
+and such a conditions can be verified in linear time. Here, we develop that same
+idea as Golumbic presented it in \cite{golumbic2004}.
 
-%TODO: Definicion cordal, caracterizaciones relevantes (peo), linealidad de clan maximo y similares.
+A perfect elimination ordering for a graph $G$ is a linear ordering of its
+vertices $(v_1,\dots,v_n)$ such that, for each $i$, $v_i$ is a simplicial vertex
+of $G[\l{v_i,\dots, v_n}]$, i.e., the forward neighborhood of vertex $v_i$ is a
+clique. In \cite{golumbic2004}, it is argued a graph is chordal if and only if
+it has a perfect elimination ordering of its vertices. Moreover, it is shown
+that such an ordering can be obtained in linear time by means of a Lex-BFS,
+outputting the ordering as a yes-certificate.
 
-%TODO: Definicion split y caracterizaciones relevantes. Reconocimiento en tiempo
-%lineal (sucesion de grados y algoritmo certificador). Partición con K vacío o
-%clan maximal no trivial.
+The linear-time implementation of Lex-BFS is due to Rose, Tarjan and Lueker in
+\cite{lexbfs}. Later, in \cite{chordal-recog} and \cite{chordal-recog-addendum},
+Tarjan and Yannakakis present a simple algorithm that not only finds the
+ordering if it exists, but it is able to return an induced cycle of length at
+least $4$ as a no-certificate if the graph is not chordal. Furthermore, every
+maximal clique in a chordal graph is such that it consists of a vertex $x$ and
+its forward neighborhood in a perfect elimination ordering of the graph. Hence,
+finding a clique of maximum size is achievable by calculating the cardinalities
+of the forward neighborhoods and picking whichever attains the maximum.
+Throughout our work, we will use the fact that there is a linear-time certifying
+algorithm that decides if a graph is chordal and that we can find a maximum
+clique within the sam time bound.
 
+There is a particular class of chordal graphs that is of special interest.
+Recall that split graphs are those whose vertex set can be partitioned into
+$(S,K)$, with $S$ a stable set and $K$ a clique. At first sight, it does not
+seem that split graphs are indeed chordal. However, in an unavailable work of
+F\"oldes and Hammer, published as proceedings, authors point out that split
+graphs are exactly the $\p{2K_2,C_4,C_5}$-free graphs, which in turn imply that
+they are free of any induced cycle of length at least 4 noting that every $C_k$
+with $k\geq 6$ contains an induced copy of $2K_2$. Later in \cite{hammer1981},
+Hammer and Simeone found a necessary and suficient algebraic condition on the
+degree sequence of a graph $G$ for it to be split. Thus, this implied the
+existance of a linear-time algorithm that recognize split graphs, although it
+lacked no-certificates and the yes-certificate was an equation instead of a
+proper split partition. Nonetheless, in \cite{heggernesNJC14,hellDAM141} authors
+devise linear-time certyfing algorithms that, in this case, either returns a
+split partition, or a minimal obstruction contain as an induced subgraph in the
+input graph.
+
+As with chordal graphs, if the graph is split, the algorithm can be
+complemented with a fast check on the vertices of the clique part to be a
+maximum clique. Once more, this algorithm will be cast frequently to find either
+obstructions or split partitions. Additionally, a quick check on the adjacency
+lists can verify if the graph is empty. In those case, notice that we can make
+the $K$ part to be empty. Otherwise, if the graph is not empty, then $K$ will
+not only be nonempty, but making it a maximum clique leads to it being
+nontrivial. It follows that there is a certifying algorithm that recognizes
+split graphs and, if it is split, it returns a partition $(S,K)$ with $K$ either
+empty or a nontrivial maximal clique.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Polarity}
+\section{Polarity, monopolarity and previous results}
 \label{sec:polarity-defs}
 
-\section{Monopolarity}
-\label{cap:mono}
+Continuing with the examples of hereditary properties, one that also has been
+widely studied is the class of polar graphs, although these have received many
+names. Polar graphs were first described in \cite{tyshkevich1985} as those
+graphs $G$ such that their vertex set admits a partition $(A,B)$ with the
+property that $G[A]$ is a complete multipartite graph, while $G[B]$ is a cluster
+graph. It is easy to see that polar graphs generalize several well-known
+families of graphs, mainly bipartite and split graphs. Another trivial fact of
+polar graphs is that they form a hereditary class. Nonetheless, several hard
+problems (in general) which have been proved to be efficiently solvable in
+bipartite and split graphs, tend to remain difficult when restricted to polar
+graphs, like \textsc{3-Colorability} (\cite{barbato2021}).
 
-\section{Previous results}
-\label{sec:previous}
+Even more than not being able to solve problems on polar graphs, Chernyak and
+Chernyak proved in \cite{chernyak1986} that recognizing polar graphs is
+NP-complete --- we write \textsc{Polarity} to denote the decision problem of
+deciding whether a graph is polar. It is important to note here that, even
+though cluster graphs and complete multipartite graphs have a finite number of
+minimal obstructions ($P_3$ and $K_1 + K_2$, respectively), we have that there
+is an infinite amount of minimal polar obstructions, even when restricted to
+those that are chordal (\cite{chordal}). More recently, Le and Nevries proved in
+\cite{Le2014} that the problem remains NP-complete even in the class of planar
+triangle-free graphs of maximum degree 3, and in the class of planar
+$\p{C_4,\dots,C_k}$-free graphs of maximum degree 3 for every $k\geq 4$.
+
+Knowing that \textsc{Polarity} stands out has a hard problem, one would like to
+find an intermediate problem or property in hopes of finding the core of the
+difficulty within the problem. Even though several degrees of polarity have been
+proposed, the one that stands the most is monopolarity. A graph is said to be
+monopolar if it has a polar partition $(A,B)$ such that $G[A]$ is an empty graph
+rather than complete multipartite graph --- similar to \textsc{Polarity}, we
+denote by \textsc{Monopolarity} the corresponding decision problem. This version
+of monopolar graphs is introduced in \cite{chordal} as an intermediate problem
+aiming to solve \textsc{Polarity} in chordal graphs. This approach is successful
+as authors were able to solve the problem in polynomial time. Similar positive
+results were obtained in \cite{ekim2008}, where it is proved that
+\textsc{Polarity} is polynomial-time solvable in the class of $P_4$-free graphs,
+otherwise known as cographs. However, one should notice that even this problem
+quite difficult: in \Cref{pro:additive} we show that the class of monopolar
+graphs is additive. Thereby, \Cref{thm:farrugia} implies that
+\textsc{Monopolarity} is NP-complete.
+
+That being the case, we would like to explore the problem of polarity on new
+family of graphs, one that we have the security that at least
+\textsc{Monopolarity} is a traceable problem.
+
+A good approach to decide which family is suitable for the problem is to proceed
+as it has been done regarding other hard problems in graph theory. For example,
+\textsc{Coloring} has been analyzed for all families of graphs that forbid
+exactly one graph, also known as monogenic families. This has allowed us to
+identify the structures that inherently make the problem hard. By the results in
+\cite{Le2014}, \textsc{Polarity} is known to be NP-complete on almost all
+monogenic families, so we decided to deep dive into a bigenic family, that is, a
+class with two forbidden graphs. One natural family that has not been explored
+and arises as a natural continuation of the work done in \cite{chordal,ekim2008}
+is that of $(P_5,\text{house})$-free graphs, which has the additional property
+of being self-complementary. Note that polar graphs are also closed under
+complementation.
+
+Currently, nothing is known about the complexity of \textsc{Polarity} in
+$(P_5,\text{house})$-free graphs. Nonetheless, a positive result in
+\cite{Le2014} yields to a $O(|V|^4)$-time algorithm that decides monopolarity on
+$(P_5,\text{house})$-free graphs. Furthermore, even though the algorithm runs in
+polynomial time, we do not know if there is a finite number of
+$(P_5,\text{house})$-free minimal monopolar obstructions.
+
+For sake of completeness and before we start with the main chapters, we prove
+the following proposition and corollaries that follow from the discussion in
+\Cref{sec:hereditary}.
 
 \begin{proposition}
+\label{pro:additive}
     Let $G$ and $H$ be graphs.   If $G$ and $H$ are monopolar, then $G+H$ is
     monopolar.
 \end{proposition}
@@ -184,6 +477,3 @@ one of which yields a linear-time algorithm to recognize them.
 \begin{corollary}
     Every minimal obstruction for monopolarity is a connected graph.
 \end{corollary}
-
-
-%TODO: Polarity definitions and basic results (NP-completness, etc.)
