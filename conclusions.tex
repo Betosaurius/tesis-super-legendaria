@@ -1,5 +1,9 @@
 \chapter{Conclusions}
 
+% Remove section number from theorem-like environments
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+\setcounter{theorem}{0}
+
 Throughout the three previous chapters, we have been able to provide efficient
 certifying algorithms to solve \textsc{Monopolarity} on $(P_5,\text{house})$-free
 graphs depending on whether the graph is chordal, or contains an induced copy of
@@ -72,11 +76,11 @@ complementation, the following result holds as a direct consequence of
 the complement of a graph can be computed in time $O(|V|^2)$.
 
 \begin{corollary}
-    There is a $O(|V|^2)$ certifying algorithm that decides whether a
-    $(P_5,\text{house})$-free graph admits an $(\infty,1)$-polar partition.
-    Additionally, the minimal obstructions to $(\infty,1)$-polarity in the class
-    of $(P_5,\text{house})$-free graphs are the graphs $\overline{H_i}$ with
-    $i\in \l{1,...,14}$.
+    There is a certifying algorithm, running on time $O(|V|^2)$, that decides
+    whether a $(P_5,\text{house})$-free graph admits an $(\infty,1)$-polar
+    partition. Additionally, the minimal obstructions to $(\infty,1)$-polarity
+    in the class of $(P_5,\text{house})$-free graphs are the graphs
+    $\overline{H_i}$ with $i\in \l{1,...,14}$.
 \end{corollary}
 
 We believe that a linear-time certifying algorithm to recognize
@@ -162,13 +166,15 @@ the absence of certain structures within graphs. For instance, consider a graph
 $F$ with no universal vertex nor a pair of nonadjacent universal vertices. It is
 clear that any $F$-free graph $G$ is such that the $G'$ constructed in the proof
 of the last result is also $F$-free. In particular, for any disconnected graph
-$F$ with at least one non-trivial component, $G$ being $F$-free implies that
-$G'$ is $F$-free. The same holds for all graphs $F$ with every vertex having at
-least two non-neighbors, which includes all cycles $C_n$ for $n\geq 5$. This
+$F$ with at least one nontrivial component, $G$ being $F$-free implies that $G'$
+is $F$-free. The same holds for all graphs $F$ with every vertex having at least
+two non-neighbors, which includes all cycles $C_n$ for $n\geq 5$. This
 discussion allows us to further generalize the last proposition to families with
 forbidden graphs in which monopolarity is NP-complete and the forbidden graphs
 are as described above.   The families considered in our next result are just a
-representative sample not intended to be exhaustive.
+representative sample not intended to be exhaustive --- the proofs of
+\textsc{Monopolarity} being NP-complete for these families are derived from the
+results in \cite{Le2014}.
 
 \begin{corollary}
     The problem $(k,\infty)$-\textnormal{\scshape Polarity} is NP-complete for
@@ -178,9 +184,11 @@ representative sample not intended to be exhaustive.
         \item $\mathcal{F} = \l{C_5,\text{house}}$
         \item $\mathcal{F} = \l{C_6,\text{house}}$
         \item $\mathcal{F} = \l{C_7,\text{odd anti-hole}}$
-        \item $\mathcal{F} = \l{K_2 + K_3,\overline{P},\text{house}}$
+        \item $\mathcal{F} = \l{C_5,\dots,C_n}$ for all $n\geq 5$
+        \item $\mathcal{F} = \l{K_1 + K_3, \text{house}}$
         \item $\mathcal{F} = \l{P}$
-        \item $\mathcal{F} = \l{S_3,S_4,\text{net}}$
+        \item $\mathcal{F} = \l{\overline{2P_3}}$
         \item $\mathcal{F} = \l{\text{bull},\text{house}}$
+        \item $\mathcal{F} = \l{\text{bull},\text{kite}}$
     \end{enumerate}
 \end{corollary}
