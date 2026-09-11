@@ -33,42 +33,46 @@ $G-v$ instead of $G-\l{v}$.
 
 For a positive integer $n$, we denote by $K_n$, $C_n$ and $P_n$ the complete
 graph, the cycle, and the path on $n$ vertices, respectively. We say that a set
-$S\subseteq V$ is independent or stable if $G[S] \cong \overline{K_{|S|}}$, and
-$S$ is a clique if $G[S] \cong K_{|S|}$. We say that a graph is a cluster if it
-is the disjoint union of complete graphs, and a graph is a complete multipartite
-if it is the complement of a cluster. We call a graph $G$ chordal if it does not
-contain any induced cycle of length at least four, that is, if $C$ is a cycle in
-$G$ of length at least four, then there is a pair of adjacent non-consecutive
-vertices of $C$; such an edge is called a chord of $C$. If the vertex set of
-graph $G$ can be partitioned into $(S,K)$ such that $S$ is stable and $K$ is a
-clique, then we call $G$ a split graph. Every time we work on a split graph, we
+$S\subseteq V$ is \indice{independent} or \indice{stable} if $G[S] \cong
+\overline{K_{|S|}}$, and $S$ is a \indice{clique} if $G[S] \cong K_{|S|}$. We
+say that a graph is a \indice{cluster} if it is the disjoint union of complete
+graphs, and a graph is a complete multipartite if it is the complement of a
+cluster. We call a graph $G$ \indice{chordal} if it does not contain any induced
+cycle of length at least four, that is, if $C$ is a cycle in $G$ of length at
+least four, then there is a pair of adjacent non-consecutive vertices of $C$;
+such an edge is called a \indice{chord} of $C$. If the vertex set of graph $G$
+can be partitioned into $(S,K)$ such that $S$ is stable and $K$ is a clique,
+then we call $G$ a \indice{split} graph. Every time we work on a split graph, we
 provide partitions as in the format $(S,K)$, and while we sometimes use variants
-like $(S',K')$ or $(S_1, K_1)$,  the $S$ part  always indicate the stable one,
+like $(S',K')$ or $(S_1, K_1)$,  the $S$ part always indicate the stable one,
 while $K$ always indicate the clique one.
 
-We say that a vertex $v$ is universal if it is adjacent to all other vertices of
-$G$, and isolated if it is adjacent to none. Additionally, $v$ is said to be
-simplicial if $N(v)$ is a clique. Given $W_1$ and $W_2$ disjoint subsets of $V$,
-we say that $W_1$ is complete to $W_2$ if all vertices in $W_1$ are adjacent to
-all vertices in $W_2$. Similarly, if all vertices in $W_1$ are not adjacent to
-all vertices in $W_2$, we say that $W_1$ is anticomplete to $W_2$. Sometimes,
-rather than talking about completeness or anticompleteness between sets, it is
-easier to identify a set by the graph it induces. Hence, we often interchange
-the sets $W_1$ and $W_2$ with the graphs $G[W_1]$ and $G[W_2]$, so when we say
-that $G[W_1]$ is complete to $G[W_2]$, we mean it as in $W_1$ being complete to
+We say that a vertex $v$ is \indice{universal} if it is adjacent to all other
+vertices of $G$, and \indice{isolated} if it is adjacent to none. Additionally,
+$v$ is said to be \indice{simplicial} if $N(v)$ is a clique. Given $W_1$ and
+$W_2$ disjoint subsets of $V$, we say that $W_1$ is
+\textbf{complete}\index{complete sets} to $W_2$ if all vertices in $W_1$ are
+adjacent to all vertices in $W_2$. Similarly, if all vertices in $W_1$ are not
+adjacent to all vertices in $W_2$, we say that $W_1$ is
+\textbf{anticomplete}\index{anticomplete sets} to $W_2$. Sometimes, rather than
+talking about completeness or anticompleteness between sets, it is easier to
+identify a set by the graph it induces. Hence, we often interchange the sets
+$W_1$ and $W_2$ with the graphs $G[W_1]$ and $G[W_2]$, so when we say that
+$G[W_1]$ is complete to $G[W_2]$, we mean it as in $W_1$ being complete to
 $W_2$.
 
-We say that a graph is a hole if it is a cycle of length at least five, and a
-graph is an anti-hole if its complement is a hole. A graph is an odd hole if it
-is a hole of odd length, and similarly we define an odd anti-hole. For a set of
-graphs $\mathcal{G}$, we say that a graph $H$ is $\mathcal{G}$-free when $H$
-does not contain, as an induced subgraph, any of the graphs in $\mathcal{G}$. We
-usually enumerate the members of $\mathcal{G}$ as a tuple instead of a set, and
-sometimes completely avoid curly brackets or parentheses when $\mathcal{G}$
-consists of a single graph.   Notice that cluster graphs are exactly the
-$P_3$-free graphs, while complete multipartite graphs are the $(K_1 + K_2)$-free
-graphs. Finally, in \Cref{fig:classic} we present two classic graphs that we
-frequently refer to (diamond and house), along with other graphs that we just
+We say that a graph is a \indice{hole} if it is a cycle of length at least five,
+and a graph is an \indice{anti-hole} if its complement is a hole. A graph is an
+\indice{odd hole} if it is a hole of odd length, and similarly we define an
+\indice{odd anti-hole}. For a set of graphs $\mathcal{G}$, we say that a graph
+$H$ is \indice{$\mathcal{G}$-free} when $H$ does not contain, as an induced
+subgraph, any of the graphs in $\mathcal{G}$. We usually enumerate the members
+of $\mathcal{G}$ as a tuple instead of a set, and sometimes completely avoid
+curly brackets or parentheses when $\mathcal{G}$ consists of a single graph.
+Notice that cluster graphs are exactly the $P_3$-free graphs, while complete
+multipartite graphs are the $(K_1 + K_2)$-free graphs. Finally, in
+\Cref{fig:classic} we present two classic graphs that we frequently refer to
+(\indice{diamond} and \indice{house}), along with other graphs that we just
 refer to in the conclusions.
 
 \begin{figure}[htb!]
@@ -159,8 +163,8 @@ refer to in the conclusions.
 Now we briefly discuss some notions regarding algorithms on graphs. Mainly, we
 are interested in the running time of algorithms. For that matter, we use the
 standard big-$O$ notation to describe asymptotic behavior. For all algorithms
-described in this work, whenever we say that it runs in linear time, we mean
-that its time complexity is $O(|V| + |E|)$.
+described in this work, whenever we say that it runs in \indice{linear time}, we
+mean that its time complexity is $O(|V| + |E|)$.
 
 It is well known that for an input graph $G$, it is possible to order its
 adjacency lists to have compatible orderings, i.e., there is a linear ordering
@@ -212,8 +216,8 @@ each $S\subseteq W$, let $N^W_S$ (or $N_S$ when there is no ambiguity) be the
 set of vertices $x$ of $G-W$ such that $N(x)\cap W = S$. From the definition it
 follows that the vertices in $N_S$ are those outside $H$ that are adjacent to
 exactly the vertices in $S$ and to no other vertex of $H$. Hence, the sets $N_S$
-receive a convenient name: exact neighborhoods. It is immediate that sets $N_S$,
-along with $W$, partition the set $V$.
+receive a convenient name: \indice{exact neighborhoods}. It is immediate that
+sets $N_S$, along with $W$, partition the set $V$.
 
 Suppose now that $H$ is not a subgraph of graph $G$, but it is a fixed graph. If
 we happen to know that $G$ contains a subgraph isomorphic to $H$, $G'$, then we
@@ -251,27 +255,27 @@ family of graphs a property, this with the intention of the graphs in each
 family to indeed satisfy a fixed set of properties --- hence, we indistinctly
 use class, familiy and property with the same meaning. We distinguish when a
 class of graphs is broad enough to the point that it is closed under taking
-induced subgraphs of it elements. This is what we call a hereditary property,
-conveniently named to reflect that the property that defines the class is passed
-on to all induced subgraphs.
+induced subgraphs of it elements. This is what we call a \indice{hereditary
+property}, conveniently named to reflect that the property that defines the
+class is passed on to all induced subgraphs.
 
 The importance of hereditary properties resides on a useful charcterization of
 them. From the definition it follows that $K_1$ is in any nonempty hereditary
 class of graphs $\mathcal{F}$. Thus, for any $G\notin \mathcal{F}$, there must
 be an induced subgraph $H$ of $G$ such that $H\notin \mathcal{F}$ and it is
 minimal, that is, $H-x$ is in $\mathcal{F}$ for any vertex $x$ of $H$. Graph $H$
-is called a minimal obstruction for $\mathcal{F}$ or that $H$ is an minimal
-$\mathcal{F}$ obstruction. Let $\text{Obs}(\mathcal{F})$ be the set of all
-minimal obstructions for the class $\mathcal{F}$. It is obvious that a graph $G$
-is in $\mathcal{F}$ if and only if $G$ is $\text{Obs}(\mathcal{F})$-free. This
-implies that either one can design a hereditary property to consist of the
+is called a \indice{minimal obstruction} for $\mathcal{F}$ or that $H$ is an
+minimal $\mathcal{F}$ obstruction. Let $\text{Obs}(\mathcal{F})$ be the set of
+all minimal obstructions for the class $\mathcal{F}$. It is obvious that a graph
+$G$ is in $\mathcal{F}$ if and only if $G$ is $\text{Obs}(\mathcal{F})$-free.
+This implies that either one can design a hereditary property to consist of the
 graphs free of the $G$'s in a fixed class $\mathcal{F}$, or one can start with
 an hereditary property and then determine which are its minimal obstructions. As
 an example of the first idea, we concentrate our work on the class of
 $(P_5,\text{house})$-free graphs.
 
 Notice that the class of $(P_5,\text{house})$-free graphs satisfies an
-additional condition than just being hereditary. Notice that
+additional condition than just being hereditary. Observe that
 $\overline{P_5}=\text{house}$. Therefore, if graph $G$ is
 $(P_5,\text{house})$-free, then we additionally know that $\overline{G}$ is also
 $(P_5,\text{house})$-free. This extends to general hereditary classes
@@ -281,10 +285,10 @@ complementation --- it is easy to see that this is an if and only if. The
 decision problem of deciding whether a graph belongs to $\mathcal{F}$ is called
 the $\mathcal{F}$-recognition problem.
 
-Another relevant type of class is that of additive properties. A property is
-additive if it is closed under taking disjoint unions. From here, it is clear
-that the minimal obstructions for a hereditary and additive property
-$\mathcal{F}$ are connected.
+Another relevant type of class is that of \textbf{additive
+properties}\index{additive property}. A property is additive if it is closed
+under taking disjoint unions. From here, it is clear that the minimal
+obstructions for a hereditary and additive property $\mathcal{F}$ are connected.
 
 To end the section, we take a look at an important result concerning this type
 of properties. In general, the most interesting partition problems in the area
@@ -332,17 +336,17 @@ addtive and its minimal obstructions are all cycles of length at least $4$.
 These graphs have been widely studied under different names, and their
 distinguished applications and properties led to the need to recognize such a
 family in an efficient way. In \cite{fulkerson1965}, Fulkerson and Gross
-proposed a condition that all chordal graphs must satisfy, and such a conditions
+proposed a condition that all chordal graphs must satisfy, and such a condition
 can be verified in linear time. Here, we develop that same idea as Golumbic
 presented it in \cite{golumbic2004}.
 
-A perfect elimination ordering for a graph $G$ is a linear ordering of its
-vertices $(v_1,\dots,v_n)$ such that, for each $i$, $v_i$ is a simplicial vertex
-of $G[\l{v_i,\dots, v_n}]$, i.e., the forward neighborhood of vertex $v_i$ is a
-clique. In \cite{golumbic2004}, it is argued a graph is chordal if and only if
-it has a perfect elimination ordering of its vertices. Moreover, it is shown
-that such an ordering can be obtained in linear time by means of a Lex-BFS,
-outputting the ordering as a yes-certificate.
+A \indice{perfect elimination ordering} for a graph $G$ is a linear ordering of
+its vertices $(v_1,\dots,v_n)$ such that, for each $i$, $v_i$ is a simplicial
+vertex of $G[\l{v_i,\dots, v_n}]$, i.e., the forward neighborhood of vertex
+$v_i$ is a clique. In \cite{golumbic2004}, it is argued a graph is chordal if
+and only if it has a perfect elimination ordering of its vertices. Moreover, it
+is shown that such an ordering can be obtained in linear time by means of a
+Lex-BFS, outputting the ordering as a yes-certificate.
 
 The linear-time implementation of Lex-BFS is due to Rose, Tarjan and Lueker in
 \cite{lexbfs}. Later, in \cite{chordal-recog} and \cite{chordal-recog-addendum},
@@ -378,7 +382,7 @@ As with chordal graphs, if the graph is split, the algorithm can be complemented
 with a fast check on the vertices of the clique part for it to be a maximum
 clique. Once more, we frequently invoke this algorithm to find either
 obstructions or split partitions. Additionally, a quick check on the adjacency
-lists can verify if the graph is empty. In those case, notice that we can make
+lists can verify if the graph is empty. In those cases, notice that we can make
 the $K$ part to be empty. Otherwise, if the graph is not empty, then $K$ is not
 only nonempty, but making it a maximum clique leads to it being nontrivial. It
 follows that there is a certifying algorithm that recognizes split graphs and,
@@ -393,11 +397,11 @@ nontrivial maximal clique.
 \label{sec:polarity-defs}
 
 Continuing with the examples of hereditary properties, one that also has been
-widely studied is the class of polar graphs, although these have received many
-names. Polar graphs were first described in \cite{tyshkevich1985} as those
-graphs $G$ such that their vertex set admits a partition $(A,B)$ with the
-property that $G[A]$ is a complete multipartite graph, while $G[B]$ is a cluster
-graph. It is easy to see that polar graphs generalize several well-known
+widely studied is the class of \indice{polar} graphs, although these have
+received many names. Polar graphs were first described in \cite{tyshkevich1985}
+as those graphs $G$ such that their vertex set admits a partition $(A,B)$ with
+the property that $G[A]$ is a complete multipartite graph, while $G[B]$ is a
+cluster graph. It is easy to see that polar graphs generalize several well-known
 families of graphs, mainly bipartite and split graphs. Another trivial fact
 about polar graphs is that they form a hereditary class. Nonetheless, several
 hard problems (in general) which have been proved to be efficiently solvable in
@@ -420,17 +424,17 @@ Knowing that \textsc{Polarity} stands out has a hard problem, one would like to
 find an intermediate problem or property in hopes of finding the core of the
 difficulty within the problem. Even though several degrees of polarity have been
 proposed, the one that stands the most is monopolarity. A graph is said to be
-monopolar if it has a polar partition $(A,B)$ such that $G[A]$ is an empty graph
-rather than a complete multipartite graph --- similar to \textsc{Polarity}, we
-denote by \textsc{Monopolarity} the corresponding decision problem. This version
-of monopolar graphs is introduced in \cite{chordal} as an intermediate problem
-aiming to solve \textsc{Polarity} in chordal graphs. This approach is successful
-as authors were able to solve the problem in polynomial time. Similar positive
-results were obtained in \cite{ekim2008}, where it is proved that
-\textsc{Polarity} is polynomial-time solvable in the class of $P_4$-free graphs,
-otherwise known as cographs. However, one should notice that even this problem
-quite difficult: in \Cref{pro:additive} we show that the class of monopolar
-graphs is additive. Thereby, \Cref{thm:farrugia} implies that
+\indice{monopolar} if it has a polar partition $(A,B)$ such that $G[A]$ is an
+empty graph rather than a complete multipartite graph --- similar to
+\textsc{Polarity}, we denote by \textsc{Monopolarity} the corresponding decision
+problem. Said version of monopolar graphs is introduced in \cite{chordal} as an
+intermediate problem aiming to solve \textsc{Polarity} in chordal graphs. This
+approach is successful as authors were able to solve the problem in polynomial
+time. Similar positive results were obtained in \cite{ekim2008}, where it is
+proved that \textsc{Polarity} is polynomial-time solvable in the class of
+$P_4$-free graphs, otherwise known as cographs. However, one should notice that
+even this problem quite difficult: in \Cref{pro:additive} we show that the class
+of monopolar graphs is additive. Thereby, \Cref{thm:farrugia} implies that
 \textsc{Monopolarity} is NP-complete.
 
 That being the case, we would like to explore the problem of polarity on new
