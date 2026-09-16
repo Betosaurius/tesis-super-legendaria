@@ -1,6 +1,6 @@
-% !TEX TS-program = latexmk
+%% !TEX TS-program = latexmk
 
-\documentclass[12pt,twoside,spanish]{book}
+\documentclass[12pt,twoside]{book}
 
 % Verificacion de sintaxis sin producir salida:
 % descomentar la segunda linea para verificar
@@ -27,8 +27,18 @@
 \usepackage{amssymb}
 \usepackage{mathrsfs}
 
+% Bullets especiales
+\usepackage{enumitem}
+
 % Colores
 \usepackage[table]{xcolor}
+
+%TODO
+\usepackage{todonotes}
+
+%Bibliografía
+\usepackage[backend=biber, style=vancouver, sorting=nyt]{biblatex}
+\addbibresource{bib.bib}
 
 \definecolor{verdeOscuro}{rgb}{0,0.6,0}
 \definecolor{verdeAzulado}{RGB}{3,168,108}
@@ -40,49 +50,69 @@
 \usepackage{hyperref}
 \hypersetup{
   colorlinks,
-  urlcolor={malva}
+  urlcolor={malva},
+  citecolor={red}
 }
-
-% Codigo
-\usepackage{listings}
-\lstset{
-  language=[LaTeX]TeX,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  extendedchars=true,
-  numberstyle=\tiny\color{gris},
-  keywordstyle=\color{blue},
-  commentstyle=\color{verdeOscuro},
-  stringstyle=\color{malva},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3,
-  backgroundcolor=\color{grisClaro},
-  moretexcs={color},
-}
-
 
 % Algoritmos
 \usepackage[ruled,lined,linesnumbered,commentsnumbered]{algorithm2e}
 
 %\usepackage[all]{xy}
+\usepackage{pgfmath}
 
 % Generacion de dibujos con TeX
 \usepackage{tikz}
-\usetikzlibrary{arrows,shapes,matrix,decorations,calc,positioning}
-\tikzstyle{arc}   =[->,shorten <=3pt, shorten >=3pt,
-                   >=stealth, line width=1.1pt]
+\usetikzlibrary{arrows,shapes,matrix,decorations,calc,positioning,fit,shapes.geometric,backgrounds, decorations.pathmorphing}
 \tikzstyle{edge}  =[shorten <=2pt, shorten >=2pt,
                     >=stealth, line width=1.1pt]
-\tikzstyle{myloop}=[style={},shorten <=1pt, shorten >=1pt,
-                    >=stealth, line width=1.1pt, loop]
 \tikzstyle{vertex}=[circle, draw, minimum size=6pt,
                     line width=0.75pt, inner sep=0pt,
-                    outer sep=0pt]
+                    outer sep=0pt, fill=black]
+\tikzstyle{Label} =[inner sep=1pt, fill=none, draw=none]
+
+% Source - https://tex.stackexchange.com/a/28537
+% Posted by Simon Byrne, modified by community. See post 'Timeline' for change history
+% Retrieved 2026-03-20, License - CC BY-SA 3.0
+
+\newcommand{\convexpath}[2]{
+  [   
+  create hullcoords/.code={
+    \global\edef\namelist{#1}
+    \foreach [count=\counter] \nodename in \namelist {
+      \global\edef\numberofnodes{\counter}
+      \coordinate (hullcoord\counter) at (\nodename);
+    }
+    \coordinate (hullcoord0) at (hullcoord\numberofnodes);
+    \pgfmathtruncatemacro\lastnumber{\numberofnodes+1}
+    \coordinate (hullcoord\lastnumber) at (hullcoord1);
+  },
+  create hullcoords
+  ]
+  ($(hullcoord1)!#2!-90:(hullcoord0)$)
+  \foreach [
+  evaluate=\currentnode as \previousnode using int(\currentnode-1),
+  evaluate=\currentnode as \nextnode using int(\currentnode+1)
+  ] \currentnode in {1,...,\numberofnodes} {
+    let \p1 = ($(hullcoord\currentnode) - (hullcoord\previousnode)$),
+    \n1 = {atan2(\y1,\x1) + 90},
+    \p2 = ($(hullcoord\nextnode) - (hullcoord\currentnode)$),
+    \n2 = {atan2(\y2,\x2) + 90},
+    \n{delta} = {Mod(\n2-\n1,360) - 360}
+    in 
+    {arc [start angle=\n1, delta angle=\n{delta}, radius=#2]}
+    -- ($(hullcoord\nextnode)!#2!-90:(hullcoord\currentnode)$) 
+  }
+}
+
+% Special dots
+\makeatletter
+\DeclareRobustCommand{\rvdots}{%
+  \vbox{
+    \baselineskip4\p@\lineskiplimit\z@
+    \kern-\p@
+    \hbox{.}\hbox{.}\hbox{.}
+  }}
+\makeatother
 
 
 % Ajuste de parametros en la pagina
@@ -124,6 +154,9 @@
 
 % Referencias con nombres automaticos
 \usepackage{cleveref}
+\newlist{lemenum}{enumerate}{1}
+\setlist[lemenum]{label=(\roman*), ref=\thelemma~(\roman*)}
+\crefalias{lemenumi}{lemma}
 
 % Definiciones de nuevos ambientes
 \newtheorem{theorem}{Theorem}[section]
@@ -163,6 +196,10 @@
 \textbf{#2}\index{#1!#2}%
 }
 
+%Macros para delimitadores
+\renewcommand{\l}[1]{\left\{#1\right\}}
+\newcommand{\p}[1]{\left(#1\right)}
+
 \begin{document}
 
 \frontmatter
@@ -170,6 +207,7 @@
 \include{caratula}
 \include{hojadedatos}
 \include{acknowledgements}
+\include{preface}
 \tableofcontents
 
 
@@ -177,11 +215,17 @@
 
 \include{introduction}
 \include{chapter2}
+\include{chapter3}
+\include{chapter4}
+\include{conclusions}
 
 
 \backmatter
 
+\phantomsection
+\cleardoublepage
+\addcontentsline{toc}{chapter}{\indexname}
 \printindex
-\include{bibliografia}
+\printbibliography[heading=bibintoc]
 
 \end{document}

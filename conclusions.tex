@@ -1,0 +1,194 @@
+\chapter{Conclusions}
+
+% Remove section number from theorem-like environments
+\renewcommand{\thetheorem}{\thechapter.\arabic{theorem}}
+\setcounter{theorem}{0}
+
+Throughout the three previous chapters, we have been able to provide efficient
+certifying algorithms to solve \textsc{Monopolarity} on $(P_5,\text{house})$-free
+graphs depending on whether the graph is chordal, or contains an induced copy of
+either $C_4$ or $C_5$. Whenever the graphs contains an induced copy of $C_4$ or
+$C_5$, the algotithm requires for such a copy to be given as an input.
+Nonetheless, if the algorithm changes its state to execute the procedures of
+either \Cref{cap:c5} or \Cref{cap:no_c5}, it happens because it has already
+found an induced cycle. This result is summarized in the next corollary as a
+consequence of \Cref{cor:algorithm_chordal,cor:algorithm_c5,cor:algorithm_c4}.
+
+\begin{corollary}
+    There is a linear-time certifying algorithm that decides whether a
+    $(P_5,\text{house})$-free graph is monopolar.
+\end{corollary}
+
+Recall that, except for the graphs containing an induced copy of $C_4$, we were
+able to describe the complete structure of monopolar $(P_5,\text{house})$-free
+graphs. Thus, a slightly stronger result can be stated for those graphs, as a
+consequence of \Cref{cor:algorithm_chordal,cor:algorithm_c5}.
+
+\begin{corollary}
+    There is a linear-time certifying algorithm that decides if a $C_4$-free
+    graph is monopolar and $(P_5,\text{house})$-free.
+\end{corollary}
+
+We leave as an open problem to complete the structure of monopolar $(P_5,
+\text{house})$-free graphs with an induced $C_4$, which in turn will generalize
+the last corollary to graphs that are not $C_4$-free. Once that is done, we
+would have a linear-time certifying recognition algorithm for the family of
+monopolar $(P_5,\text{house})$-free graphs. For the moment, observe that our
+algorithm still can return a monopolar partition even when the input graph is
+not $(P_5,\text{house})$-free. Whenever the graph is chordal, we have ensured
+that it also returns an induced copy of $P_5$, if one exists, and the same goes
+for graphs with an induced copy of $C_5$. Lastly, if the algorithm outputs one
+of the monopolar partitions given in the proof of \Cref{thm:monopolar_c4}, then
+we cannot ensure that the input graph is indeed $(P_5,\text{house})$-free.
+
+Having characterized monopolarity in $(P_5,\text{house})$-free graphs, we can
+now consider the more general problem of polarity in the same class of graphs.
+In particular, the next result proved in \cite{Contreras2024} implies that we
+already have all disconnected $(P_5,\text{house})$-free obstructions to
+polarity.
+
+\begin{lemma}[\cite{Contreras2024}]
+    If $G$ is a graph, then $G$ is disconnected minimal polar obstruction if and
+    only if $G \cong P_3 + H$, where $H$ is a minimal monopolar obstruction
+    which is not a minimal polar obstruction.
+\end{lemma}
+
+It is easy to see that from all monopolar obstructions given, only $H_7$, $H_9$
+and $H_{10}$ are not polar. Thus, the aforementioned lemma implies the following
+result.
+
+\begin{corollary}
+    The disconnected $(P_5,\text{house})$-free minimal polar obstructions are
+    the graphs $P_3 + H_i$ with $i\in \l{1,...,14}\setminus \l{7,9,10}$.
+\end{corollary}
+
+We leave as an open problem the study the connected $(P_5,\text{house})$-free
+minimal polar obstructions.  Observe that it suffices to consider the connected
+$(P_5,\text{house})$-free minimal polar obstructions that also have a connected
+complement, so all obstructions left to find are not cographs (graphs with no
+induced $P_4$).
+
+We now briefley turn our attention to the complementary problem of
+\textsc{Monopolarity}, that is, the problem of finding an $(\infty,1)$-polar
+partition. Since the class of $(P_5,\text{house})$-free graphs is closed under
+complementation, the following result holds as a direct consequence of
+\Cref{cor:algorithm_chordal,cor:algorithm_c5,cor:algorithm_c4} and the fact that
+the complement of a graph can be computed in time $O(|V|^2)$.
+
+\begin{corollary}
+    There is a certifying algorithm, running on time $O(|V|^2)$, that decides
+    whether a $(P_5,\text{house})$-free graph admits an $(\infty,1)$-polar
+    partition. Additionally, the minimal obstructions to $(\infty,1)$-polarity
+    in the class of $(P_5,\text{house})$-free graphs are the graphs
+    $\overline{H_i}$ with $i\in \l{1,...,14}$.
+\end{corollary}
+
+We believe that a linear-time certifying algorithm to recognize
+$(\infty,1)$-polar graphs when the input is a $(P_5, \text{house})$-free graph
+can be obtained by means of an analysis similar to the one done in this work.
+Nonetheless, some details must be taken into consideration, in particular, the
+tests that involve calculating connected components and their interaction.
+
+Finally, we give an additional result regarding intermediate levels of polarity.
+Let $k$ be a positive integer.   The decision problem
+$(k,\infty)$-\textsc{Polarity} takes a graph $G$ as an input and asks whether
+$G$ admits a $(k,\infty)$-polar partition.   Clearly
+$(1,\infty)$-\textsc{Polarity} coincides with \textsc{Monopolarity}.
+
+\begin{proposition}
+\label{pro:np-hardness}
+    The problem $(k,\infty)$-\textnormal{\scshape Polarity} is NP-complete for
+    any positive integer $k$.
+\end{proposition}
+
+\begin{proof}
+    We proceed by induction. Since \textsc{Monopolarity} is NP-complete, we have
+    that $(1,\infty)$-\textsc{Polarity} is NP-complete.
+
+    Suppose that $(k,\infty)$-\textsc{Polarity} is NP-complete. By means of a
+    polynomial reduction, we proceed to prove that
+    $(k+1,\infty)$-\textsc{Polarity} is also NP-complete. Clearly this last
+    problem is NP, since a polynomial time verifier for this language receives
+    the input graph $G$ along with the $(k+1,\infty)$-polar partition of $G$,
+    $(A,B)$, if it exists. The process of verification searches for an induced
+    copy of either $K_2 + K_1$ or $K_{k+2}$ in $G[A]$, and searches for an
+    induced copy of $P_3$ in $G[B]$.  Both searches can be performed in time
+    $O(n^{k+2})$.
+
+    Let $G$ be an input graph for $(k,\infty)$-\textsc{Polarity}.  The
+    polynomial reduction $G'$ is obtained from $G$ by adding two vertices, $x$
+    and $y$, which are universal to $G$ and nonadjacent to each other.    It is
+    immediate that $G'$ can be constructed in time $O(|V_G|)$. We claim that $G$
+    has a $(k,\infty)$-polar partition if and only if $G'$ has a
+    $(k+1,\infty)$-polar partition.
+
+    Suppose that $G$ has a $(k,\infty)$-polar partition, $(A,B)$. Since $x$ and
+    $y$ are nonadjacent and complete to $G$, it follows that $A\cup \l{x,y}$
+    induces a complete $(k+1)$-partite graph. Hence, $(A\cup \l{x,y}, B)$ is a
+    $(k+1,\infty)$-polar partition of $G'$.
+
+    Suppose that $G'$ has a $(k+1,\infty)$-polar partition $(A,B)$. We proceed
+    by cases depending on which part $x$ and $y$ lie on.
+
+    \paragraph{Case 1: Both $x$ and $y$ are in $B$.} Since $x$ and $y$ are
+    nonadjacent, complete to $G$ and $B$ induces a cluster, we have that no
+    other vertex of $G$ is in $B$. Therefore, $G=G'[A]$, so it is a complete
+    $(k+1)$-partite graph. Let $A_1$ be a part of such a graph. Then,
+    $A\setminus A_1$ induces a complete $k$-partite graph, while $A_1$ being
+    stable implies that it induces a cluster, so $(A\setminus A_1, A_1)$ is a
+    $(k,\infty)$-polar partition of $G$.
+
+    \paragraph{Case 2: At least one of $x$ and $y$ is in $B$.} Suppose without
+    loss of generality that $y\in B$. Since $B$ induces a cluster and $y$ is
+    complete to $G$, it follows that $B$ has exactly one clique, $C$, which
+    contains $y$, and $C\setminus \l{y}$ is a subset of $V_G$. Hence, all
+    vertices of $G$, except for those in $C\setminus \l{y}$, are in $A$. Since
+    $x\in A$ and it is complete to $G$, it follows that $x$ is in a singleton
+    part of the complete $(k+1)$-partite graph $G'[A]$. Then, $G - (C\setminus
+    \l{y})$ is a complete $k$-partite graph, and $C\setminus \l{y}$, which
+    contains the remaining vertices of $G$, is a clique. Thus, $(A\setminus
+    \l{x}, B\setminus \l{y})$ is a $(k,\infty)$-polar partition of $G$.
+
+    \paragraph{Case 3: Both $x$ and $y$ are in $A$.} Since $x$ and $y$ are
+    nonadjacent, it must be that $x$ and $y$ are in the same stable part of
+    $G'[A]$.   Moreover, as $x$ and $y$ are complete to $G$, it must be the case
+    that $\{x,y\}$ is a part in the complete multipartition of $G'[A]$.
+    Therefore, $G'[A] - \{x, y\}$ is a complete $k$-partite graph, so
+    $(A\setminus \l{x,y},B)$ is a $(k,\infty)$-polar partition of $G$.
+
+    Thereby, deciding wheter a graph has a $(k+1,\infty)$-polar partition is
+    NP-complete. The result follows by induction.
+
+\end{proof}
+
+The construction described in \Cref{pro:np-hardness} is such that it preserves
+the absence of certain structures within graphs. For instance, consider a graph
+$F$ with no universal vertex nor a pair of nonadjacent universal vertices. It is
+clear that any $F$-free graph $G$ is such that the $G'$ constructed in the proof
+of the last result is also $F$-free. In particular, for any disconnected graph
+$F$ with at least one nontrivial component, $G$ being $F$-free implies that $G'$
+is $F$-free. The same holds for all graphs $F$ with every vertex having at least
+two non-neighbors, which includes all cycles $C_n$ for $n\geq 5$. This
+discussion allows us to further generalize the last proposition to families with
+forbidden graphs in which monopolarity is NP-complete and the forbidden graphs
+are as described above.   The families considered in our next result are just a
+representative sample not intended to be exhaustive --- the proofs of
+\textsc{Monopolarity} being NP-complete for these families are derived from the
+results in \cite{Le2014}.
+
+\begin{corollary}
+    The problem $(k,\infty)$-\textnormal{\scshape Polarity} is NP-complete for
+    any positive integer $k$ in the class of $\mathcal{F}$-free graphs, where
+    $\mathcal{F}$ is one of the following:
+    \begin{enumerate}
+        \item $\mathcal{F} = \l{C_5,\text{house}}$
+        \item $\mathcal{F} = \l{C_6,\text{house}}$
+        \item $\mathcal{F} = \l{C_7,\text{odd anti-hole}}$
+        \item $\mathcal{F} = \l{C_5,\dots,C_n}$ for all $n\geq 5$
+        \item $\mathcal{F} = \l{K_1 + K_3, \text{house}}$
+        \item $\mathcal{F} = \l{P}$
+        \item $\mathcal{F} = \l{\overline{2P_3}}$
+        \item $\mathcal{F} = \l{\text{bull},\text{house}}$
+        \item $\mathcal{F} = \l{\text{bull},\text{kite}}$
+    \end{enumerate}
+\end{corollary}

@@ -1,78 +1,62 @@
-%%
-%% Portada creada por la Facultad de Ciencias
-%%
-
-%%
-%% Esqueleto para la portada de las tesis para
-%% la Facultad de Ciencias de la UNAM
-%%
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Comandos para la portada
-
 \newcommand{\titulo}[1]{\def\eltitulo{#1}}
-%* la carrera corresponde al tí­tulo otorgado -Matemático-
-%* NO AL NOMBRE DE LA CARRERA -Matemáticas- --RRP
 \newcommand{\carrera}[1]{\def\lacarrera{#1}}
-\newcommand{\nombre}[1]{\def\elnombre{#1}}      %* Del alumno
-\newcommand{\director}[1]{\def\eldirector{#1}}  %* De tesis
+\newcommand{\nombre}[1]{\def\elnombre{#1}}
+\newcommand{\director}[1]{\def\eldirector{#1}}
 \newcommand{\fecha}[1]{\def\lafecha{#1}}
+\newcommand{\entidad}[1]{\def\laentidad{#1}}
 
-%% Llene los siguientes datos (use MAYÚSCULAS)
-%% Estos datos aparecerán en la portada y los encabezados
-\titulo{POLARITY AND RELATED CONCEPTS IN GRAPHS FREE OF THE FIVE VERTEX PATH AND ITS COMPLEMENT}
+% Datos
+\titulo{MONOPOLARITY IN GRAPHS FREE OF THE FIVE VERTEX PATH AND ITS COMPLEMENT}
 \nombre{\uppercase{HUMBERTO LOZANO CH\'AVEZ}}
-\carrera{MAESTRO EN CIENCIAS}
+\carrera{MAESTRO EN CIENCIAS MATEM\'ATICAS}
 \director{\uppercase{C\'ESAR HERN\'ANDEZ CRUZ}}
-\fecha{2021}
-
+\fecha{SEPTIEMBRE 2026}
+\entidad{FACULTAD DE CIENCIAS}
 
 \thispagestyle{empty}
 
-%% Barra izquierda - Escudos
-\hskip-1.5cm
-\begin{minipage}[c][10cm][s]{3cm}
-  \begin{center}
-    \includegraphics[height=2.6cm]{escudo-unam}\\[10pt]
-    \hskip2pt\vrule width2pt height13cm\hskip1mm
-    \vrule width1pt height13cm\\[10pt]
-    \includegraphics[height=2.6cm]{escudo-ciencias}
-  \end{center}
-\end{minipage}\quad
-%% Barra derecha - Tí­tulos
-\begin{minipage}[c][9.5cm][s]{10cm}
-  \begin{center}
-    % Barra superior
-    {\large \scshape Universidad Nacional Aut\'onoma de M\'exico}
-    \vspace{.3cm}
-    \hrule height2pt
-    \vspace{.1cm}
-    \hrule height1pt
-    \vspace{.3cm}
-    {\scshape Facultad de Ciencias}
-
-    % Titulo del trabajo
-    \vspace{3cm}
-
-    {\Large \eltitulo}
-
-    \vspace{3cm}
-
-    % Tipo de trabajo
-    \makebox[8cm][s]{\Huge T E S I S}\\[8pt]
-    QUE PARA OPTAR POR EL GRADO DE:\\[3pt]
-    \mbox{}\lacarrera\\[13pt]
-    PRESENTA:\\[3pt]
-    \elnombre
-
+\begin{titlepage}
+    \newgeometry{top=3cm, bottom=3cm, left=3cm, right=3cm}
+    \centering
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.2\textwidth]{escudo-unam-azul.png}
+    \end{figure}
+    
+    % Institución
+    {\bfseries\large UNIVERSIDAD NACIONAL AUT\'ONOMA DE M\'EXICO\par}
+    \vspace{1cm}
+    
+    % Programa
+    {PROGRAMA DE MAESTR\'IA Y DOCTORADO EN CIENCIAS MATEM\'ATICAS \par Y DE LA ESPECIALIZACI\'ON EN ESTAD\'ISTICA APLICADA\par}
+    \vspace{1.5cm}
+    
+    % Título del trabajo
+    {\bfseries\Large \eltitulo\par}
+    \vspace{1.5cm}
+    
+    % Tipo de trabajo y grado
+    {\bfseries\Large T E S I S\par}
+    \vspace{0.5cm}
+    {\large QUE PARA OPTAR POR EL GRADO DE:\par}
+    \vspace{0.5cm}
+    {\bfseries\large MAESTRO EN CIENCIAS\par}
+    \vspace{0.5cm}
+    
+    % Autor
+    {\large P R E S E N T A :\par}
+    \vspace{0.5cm}
+    {\bfseries\large \elnombre \par}
     \vspace{2cm}
-
-    {\small DIRECTOR DE TESIS:\\ \eldirector}
-
-    \vspace{2cm}
-
-    \lafecha
-
-  \end{center}
-\end{minipage}
+    
+    % Director
+    {\large DIRECTOR:\par}
+    {\bfseries\large \eldirector\par}
+    \vspace{0.2cm}
+    { \laentidad\par}
+    
+    \vfill
+    
+    {\large CIUDAD DE M\'EXICO, \lafecha.}
+\end{titlepage}

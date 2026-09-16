@@ -42,6 +42,8 @@ tesis.pdf
 *-blx.aux
 *-blx.bib
 *.run.xml
+*.bbx
+*.cbx
 
 ## Build tool auxiliary files:
 *.fdb_latexmk
